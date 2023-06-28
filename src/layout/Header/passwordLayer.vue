@@ -16,8 +16,8 @@
 
 <script lang="ts">
 import type { Ref } from 'vue'
-import type { ElFormItemContext } from 'element-plus/lib/el-form/src/token'
 import { defineComponent, ref } from 'vue'
+import type { FormInstance } from 'element-plus'
 import { ElMessage } from 'element-plus'
 import { useStore } from 'vuex'
 import type { LayerType } from '@/components/layer/index.vue'
@@ -40,8 +40,8 @@ export default defineComponent({
             },
         },
     },
-    setup(props, ctx) {
-        const ruleForm: Ref<ElFormItemContext | null> = ref(null)
+    setup() {
+        const ruleForm: Ref<FormInstance | null> = ref(null)
         const layerDom: Ref<LayerType | null> = ref(null)
         const store = useStore()
         const form = ref({
@@ -64,7 +64,7 @@ export default defineComponent({
                             new: form.value.new,
                         }
                         passwordChange(params)
-                            .then((res) => {
+                            .then(() => {
                                 ElMessage({
                                     type: 'success',
                                     message: '密码修改成功，即将跳转到登录页面',

@@ -5,14 +5,26 @@
 /** 引入类型 */
 
 /** 引入路由相关的资源 */
-import FrontRoutes from './permission/front'
+/** 路由类型 */
+import type { Route } from './index.type'
+
+/** 引入需要权限的Modules */
+import Dashboard from './modules/dashboard'
+import Pages from './modules/pages'
+import Menu from './modules/menu'
+import SystemManage from './modules/systemManage'
 import router, { modules } from './index'
 
 /** 引入vuex实例 */
 import store from '@/store'
 
-/** 引入纯前端路由 */
-/** 引入后端路由 */
+/** 登录后需要动态加入的本地路由 */
+const FrontRoutes: Route[] = [
+    ...Dashboard,
+    ...Pages,
+    ...Menu,
+    ...SystemManage,
+]
 
 /**
  * @name 动态路由的权限新增，供登录后调用

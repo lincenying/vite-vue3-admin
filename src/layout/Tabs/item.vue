@@ -35,6 +35,7 @@ export default defineComponent({
             default: false,
         },
     },
+    emits: ['close', 'reload'],
     setup(props, { emit }) {
     // 关闭按钮
         function closeTab() {

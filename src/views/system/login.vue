@@ -24,7 +24,6 @@
                         </template>
                     </el-input>
                     <el-input
-                        ref="password"
                         v-model="form.password"
                         size="large"
                         :type="passwordType"
@@ -43,7 +42,7 @@
                         </template>
                     </el-input>
 
-                    <el-button type="primary" :loading="form.loading" style="width: 100%;" size="medium" @click="submit">
+                    <el-button type="primary" :loading="form.loading" style="width: 100%;" size="default" @click="submit">
                         {{ $t('message.system.login') }}
                     </el-button>
                 </el-form>
@@ -58,7 +57,6 @@
 <script lang="ts">
 import { defineComponent, reactive, ref } from 'vue'
 import { useStore } from 'vuex'
-import { useRoute, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import { systemSubTitle, systemTitle } from '@/config'
 import selectLang from '@/layout/Header/functionList/word.vue'
@@ -70,8 +68,6 @@ export default defineComponent({
     },
     setup() {
         const store = useStore()
-        const router = useRouter()
-        const route = useRoute()
         const form = reactive({
             name: 'admin',
             password: '123456',
@@ -82,7 +78,7 @@ export default defineComponent({
             passwordType.value === '' ? passwordType.value = 'password' : passwordType.value = ''
         }
         const checkForm = () => {
-            return new Promise((resolve, reject) => {
+            return new Promise((resolve) => {
                 if (form.name === '') {
                     ElMessage.warning({
                         message: '用户名不能为空',

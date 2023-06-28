@@ -28,12 +28,9 @@ NProgress.configure({ showSpinner: false })
  * @detail 针对modules的任何修改，均会同步至菜单级别，记住，是针对变量名为：moduels的修改
  **/
 
-console.log(System)
 const modules = reactive([
     ...System,
 ])
-
-console.log(modules)
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -67,7 +64,7 @@ router.beforeEach((to, _from, next) => {
 // 路由跳转后的监听操作
 router.afterEach((to, _from) => {
     const keepAliveComponentsName = store.getters['keepAlive/keepAliveComponentsName'] || []
-    const name = to.matched[to.matched.length - 1].components.default.name
+    const name = to.matched[to.matched.length - 1].components?.default.name
     if (to.meta && to.meta.cache && name && !keepAliveComponentsName.includes(name))
         store.commit('keepAlive/addKeepAliveComponentsName', name)
 

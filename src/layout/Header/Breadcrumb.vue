@@ -3,7 +3,7 @@
         <transition-group appear name="breadcrumb">
             <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
                 <span
-                    v-if="item.redirect === 'noRedirect' || index == levelList.length - 1"
+                    v-if="item.redirect === 'noRedirect' || index === levelList.length - 1"
                     class="no-redirect"
                 >{{ $t(item.meta.title) }}</span>
                 <a v-else @click.prevent="handleLink(item)">
@@ -28,7 +28,7 @@ export default defineComponent({
         const router = useRouter()
         const getBreadcrumb = (): void => {
             const matched = route.matched.filter(item => item.meta && item.meta.title)
-            const first = matched[0]
+            // const first = matched[0]
             levelList.value = matched.filter(
                 item => item.meta && item.meta.title && item.meta.breadcrumb !== false,
             )

@@ -49,8 +49,9 @@ export default defineComponent({
             },
         },
         pageLayout: { type: String, default: 'total, sizes, prev, pager, next, jumper' }, // 分页需要显示的东西，默认全部
-        pageSizes: { type: Array, default: [10, 20, 50, 100] },
+        pageSizes: { type: Array, default: () => [10, 20, 50, 100] },
     },
+    emits: ['getTableData', 'selectionChange'],
     setup(props, context) {
         const table: any = ref(null)
         let timer: any = null
@@ -75,7 +76,7 @@ export default defineComponent({
         }
         // 选择监听器
         const handleSelectionChange = (val: []) => {
-            context.emit('selection-change', val)
+            context.emit('selectionChange', val)
         }
         // 解决BUG：keep-alive组件使用时，表格浮层高度不对的问题
         onActivated(() => {

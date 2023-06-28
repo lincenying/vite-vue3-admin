@@ -13,11 +13,6 @@ interface ModulesKeys {
     session: string[]
 }
 
-interface Mutation {
-    type: any
-    payload: any
-}
-const exclude = ['actions', 'getters', 'mutations', 'namespaced']
 export default function Persistent({ key, modules, modulesKeys }: Socket) {
     return (store: any) => {
         const localOldState = JSON.parse(localStorage.getItem(key) || '{}')
@@ -30,7 +25,7 @@ export default function Persistent({ key, modules, modulesKeys }: Socket) {
 
             store.replaceState(modules)
         }
-        store.subscribe((mutation: Mutation, state: any) => {
+        store.subscribe(() => {
             // 判断是否需要缓存数据至localStorage
             if (modulesKeys.local.length > 0) {
                 const localData = setData(store.state, modulesKeys.local)

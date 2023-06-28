@@ -48,6 +48,7 @@ export default defineComponent({
             required: true,
         },
     },
+    emits: ['confirm'],
     setup(props, ctx) {
         function confirm() {
             ctx.emit('confirm')

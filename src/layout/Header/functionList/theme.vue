@@ -15,7 +15,7 @@
                 v-for="(row, index) in style"
                 :key="index"
                 v-model:active="state.style"
-                :name="index"
+                :name="`${index}`"
                 :tip="$t(row.name)"
                 :logo="row.logo.background"
                 :menu="row.menu.background"
@@ -54,7 +54,6 @@
 <script lang="ts">
 import { defineComponent, reactive, ref, watch } from 'vue'
 import { useStore } from 'vuex'
-import { useI18n } from 'vue-i18n'
 import themeIcon from './theme/theme-icon.vue'
 import themeColor from './theme/theme-color.vue'
 import type { Colors } from '@/theme/index'
@@ -68,6 +67,7 @@ interface Option {
 interface State {
     style: string
     primaryColor: string
+    primaryTextColor: string
     menuType: string
 }
 export default defineComponent({
@@ -77,7 +77,6 @@ export default defineComponent({
     },
     setup() {
         const store = useStore()
-        const { t } = useI18n()
         // 只取值，不做computed
         const state: State = reactive({
             style: store.state.app.theme.state.style,
@@ -113,7 +112,7 @@ export default defineComponent({
             }
         }
         // 监听数据的变化
-        watch(state, (newVal) => {
+        watch(state, () => {
             const theme = {
                 state: {
                     ...state,

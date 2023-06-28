@@ -55,6 +55,7 @@ export default defineComponent({
             default: '',
         },
     },
+    emits: ['update:active'],
     setup(props, ctx) {
     // 点击事件，触发v-model修改active值
         const handleClick = () => {

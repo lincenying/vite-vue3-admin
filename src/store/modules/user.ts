@@ -38,7 +38,7 @@ const actions = {
                 .then((res) => {
                     commit('tokenChange', res.data.token)
                     dispatch('getInfo', { token: res.data.token })
-                        .then((infoRes) => {
+                        .then(() => {
                             resolve(res.data.token)
                         })
                 }).catch((err) => {
@@ -48,7 +48,7 @@ const actions = {
     },
     // get user info after user logined
     getInfo({ commit }: ActionContext<userState, userState>, params: any) {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             getInfoApi(params)
                 .then((res) => {
                     commit('infoChange', res.data.info)
@@ -58,12 +58,12 @@ const actions = {
     },
 
     // login out the system after user click the loginOut button
-    loginOut({ commit }: ActionContext<userState, userState>) {
+    loginOut() {
         loginOutApi()
-            .then((res) => {
+            .then(() => {
 
             })
-            .catch((error) => {
+            .catch(() => {
 
             })
             .finally(() => {

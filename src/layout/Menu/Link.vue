@@ -16,10 +16,10 @@ export default defineComponent({
             required: true,
         },
     },
-    setup(props) {
+    setup() {
         const store = useStore()
         const isCollapse = computed(() => store.state.app.isCollapse)
-        const linkProps = (to) => {
+        const linkProps = (to: string) => {
             return {
                 to,
             }

@@ -5,7 +5,7 @@ import type { keepAliveState } from '@/store/modules/keepAlive'
 import type { appState } from '@/store/modules/app'
 
 const debug = import.meta.env.MODE !== 'production'
-const files = import.meta.globEager('./modules/*.ts')
+const files: Record<string, any> = import.meta.glob('./modules/*.ts')
 
 export interface RootState {
     user: userState

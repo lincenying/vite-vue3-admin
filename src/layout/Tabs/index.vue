@@ -42,7 +42,6 @@
 
 <script lang="ts">
 /** 类型引用 */
-import type { Ref } from 'vue'
 import type { ElScrollbar } from 'element-plus'
 
 /** 引用vue系列函数 */
@@ -64,7 +63,7 @@ export default defineComponent({
         const store = useStore()
         const route = useRoute()
         const router = useRouter()
-        const scrollbarDom: Ref<typeof ElScrollbar | null> = ref(null)
+        const scrollbarDom = ref<InstanceType<typeof ElScrollbar>>()
         const scrollLeft = ref(0)
         const defaultMenu = {
             path: '/dashboard',
@@ -143,7 +142,7 @@ export default defineComponent({
         }
 
         // 删除菜单项
-        function delMenu(menu: any, nextPath?: string) {
+        function delMenu(menu: any, nextPath?: string | null) {
             let index = 0
             if (!menu.meta.hideClose) {
                 if (menu.meta.cache && menu.name)
@@ -163,19 +162,17 @@ export default defineComponent({
         // 初始化activeMenu
         function initMenu(menu: object) {
             activeMenu = menu
-            // nextTick(() => {
-            //     setPosition()
-            // })
+            nextTick(() => {
+                setPosition()
+            })
         }
         /** 设置当前滚动条应该在的位置 */
         function setPosition() {
-            console.log(scrollbarDom.value)
-            console.log(scrollbarDom.value?.wrapRef.value)
             if (scrollbarDom.value) {
                 const domBox = {
-                    scrollbar: scrollbarDom.value.wrapRef.value.querySelector('.el-scrollbar__wrap ') as HTMLDivElement,
-                    activeDom: scrollbarDom.value.wrapRef.value.querySelector('.active') as HTMLDivElement,
-                    activeFather: scrollbarDom.value.wrapRef.value.querySelector('.el-scrollbar__view') as HTMLDivElement,
+                    scrollbar: scrollbarDom.value.$el.querySelector('.el-scrollbar__wrap ') as HTMLDivElement,
+                    activeDom: scrollbarDom.value.$el.querySelector('.active') as HTMLDivElement,
+                    activeFather: scrollbarDom.value.$el.querySelector('.el-scrollbar__view') as HTMLDivElement,
                 }
                 let hasDoms = true
                 Object.keys(domBox).forEach((dom) => {

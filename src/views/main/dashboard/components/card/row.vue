@@ -24,7 +24,7 @@ export default defineComponent({
             },
         },
     },
-    setup(props) {
+    setup() {
 
     },
 })

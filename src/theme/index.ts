@@ -1,5 +1,5 @@
 export interface Colors {
-    name: '' // 国际化版本请提供国际化字符串如：message.system.setting.style.default，非国际化版本直接写字符串，如：默认菜单风格
+    name: string // 国际化版本请提供国际化字符串如：message.system.setting.style.default，非国际化版本直接写字符串，如：默认菜单风格
     menu: {
         textColor: string
         background: string

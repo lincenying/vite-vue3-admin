@@ -34,6 +34,7 @@ export default defineComponent({
             default: '#fff',
         },
     },
+    emits: ['update:active', 'update:activeTextColor'],
     setup(props, ctx) {
     // 点击事件，触发v-model修改active值
         const handleClick = () => {

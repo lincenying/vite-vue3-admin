@@ -1,4 +1,4 @@
-import type { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
+import type { AxiosError, AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
 import store from '@/store'
@@ -12,8 +12,8 @@ const service: AxiosInstance = axios.create({
 
 // 请求前的统一处理
 service.interceptors.request.use(
-    (config: AxiosRequestConfig) => {
-    // JWT鉴权处理
+    (config: InternalAxiosRequestConfig) => {
+        // JWT鉴权处理
         if (store.getters['user/token'])
             config.headers.token = store.state.user.token
 
@@ -39,7 +39,7 @@ service.interceptors.response.use(
     (error: AxiosError) => {
         console.log(error) // for debug
         const badMessage: any = error.message || error
-        const code = parseInt(badMessage.toString().replace('Error: Request failed with status code ', ''))
+        const code = Number.parseInt(badMessage.toString().replace('Error: Request failed with status code ', ''))
         showError({ code, message: badMessage })
         return Promise.reject(error)
     },

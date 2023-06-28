@@ -10,7 +10,6 @@ import { resolve } from 'node:path'
 import type { ConfigEnv, UserConfigExport } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { viteMockServe } from 'vite-plugin-mock'
-import { vitePluginSvg } from '@webxrd/vite-plugin-svg'
 
 import Components from './vite.config.components'
 
@@ -62,15 +61,6 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
                     setupProdMockServer();
                 `,
                 logger: true,
-            }),
-            vitePluginSvg({
-                // 必要的。必须是绝对路径组成的数组。
-                iconDirs: [
-                    resolve(__dirname, 'src/assets/svg'),
-                ],
-                // 必要的。入口script
-                main: resolve(__dirname, 'src/main.js'),
-                symbolIdFormat: 'icon-[name]',
             }),
             ...Components(),
         ],
