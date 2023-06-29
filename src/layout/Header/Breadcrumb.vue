@@ -1,5 +1,5 @@
 <template>
-    <el-breadcrumb class="app-breadcrumb hidden-sm-and-down" separator="/">
+    <el-breadcrumb class="hidden-sm-and-down app-breadcrumb" separator="/">
         <transition-group appear name="breadcrumb">
             <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
                 <span v-if="item.redirect === 'noRedirect' || index === levelList.length - 1" class="no-redirect">{{ item.meta.title }}</span>

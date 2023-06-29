@@ -1,15 +1,12 @@
 import { acceptHMRUpdate } from 'pinia'
-import { StorageSerializers } from '@vueuse/core'
+import { keepAliveStorage } from '@/composables/storage'
 
-interface KeepAliveStoreType {
+export interface KeepAliveStoreType {
     keepAliveComponentsName: string[]
 }
 
-const lsKey = '__keepAlive__'
-let ls = $(useStorage<Nullable<KeepAliveStoreType>>(`${lsKey}`, null, undefined, { serializer: StorageSerializers.object }))
-
 const useKeepAliveStore = defineStore('keepAliveStore', () => {
-    const state = reactive<KeepAliveStoreType>(ls || {
+    const state = reactive<KeepAliveStoreType>(keepAliveStorage.value || {
         keepAliveComponentsName: [],
     })
 
@@ -37,7 +34,7 @@ const useKeepAliveStore = defineStore('keepAliveStore', () => {
 })
 
 useKeepAliveStore(piniaInit).$subscribe((_mutation, state) => {
-    ls = state
+    keepAliveStorage.value = state
 })
 
 export default useKeepAliveStore

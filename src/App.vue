@@ -1,19 +1,19 @@
 <template>
-    <el-config-provider :size="size">
-        <router-view v-slot="{ Component, route }">
-            <component :is="Component" :key="route.fullPath" />
-        </router-view>
+    <el-config-provider :size="elementSize">
+        <LayoutIndex />
     </el-config-provider>
 </template>
 
 <script lang="ts" setup>
+import LayoutIndex from './layout/index.vue'
+
 defineOptions({
     name: 'App',
     inheritAttrs: true,
 })
 
 const globalStore = useGlobalStore()
-const { size } = $(storeToRefs(globalStore))
+const { elementSize } = $(storeToRefs(globalStore))
 </script>
 
 <style>

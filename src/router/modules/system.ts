@@ -1,31 +1,30 @@
 import type { Route } from '../index.type'
 import { createNameComponent } from '../createNode'
-import LayoutIndex from '@/layout/index.vue'
 
 const route: Route[] = [
     {
         path: '/system',
-        component: markRaw(LayoutIndex),
         redirect: '/404',
         hideMenu: true,
         meta: { title: '系统目录' },
-        children: [
-            {
-                path: '/404',
-                component: createNameComponent(() => import('@/views/system/404.vue')),
-                meta: { title: '404', hideTabs: true },
-            },
-            {
-                path: '/401',
-                component: createNameComponent(() => import('@/views/system/401.vue')),
-                meta: { title: '401', hideTabs: true },
-            },
-            {
-                path: '/redirect/:path(.*)',
-                component: createNameComponent(() => import('@/views/system/redirect.vue')),
-                meta: { title: '重定向页面', hideTabs: true },
-            },
-        ],
+    },
+    {
+        path: '/404',
+        component: createNameComponent(() => import('@/views/system/404.vue')),
+        hideMenu: true,
+        meta: { title: '404', hideTabs: true },
+    },
+    {
+        path: '/401',
+        component: createNameComponent(() => import('@/views/system/401.vue')),
+        hideMenu: true,
+        meta: { title: '401', hideTabs: true },
+    },
+    {
+        path: '/redirect/:path(.*)',
+        component: createNameComponent(() => import('@/views/system/redirect.vue')),
+        hideMenu: true,
+        meta: { title: '重定向页面', hideTabs: true },
     },
     {
         path: '/login',
@@ -33,11 +32,10 @@ const route: Route[] = [
         hideMenu: true,
         meta: { title: '登录', hideTabs: true },
     },
-    // 找不到路由重定向到404页面
+    // 找不到路由重定向到首页
     {
         path: '/:pathMatch(.*)',
-        component: LayoutIndex,
-        // redirect: '/404',
+        redirect: '/',
         hideMenu: true,
         meta: { title: '' },
     },

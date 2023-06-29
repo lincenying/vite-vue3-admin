@@ -21,7 +21,7 @@ export interface LayoutTablePage {
 export interface LayoutTableProps {
     data: any[]
     select?: any[]
-    showIndex: boolean
+    showIndex?: boolean
     showSelection: boolean
     showPage?: boolean
     page: LayoutTablePage

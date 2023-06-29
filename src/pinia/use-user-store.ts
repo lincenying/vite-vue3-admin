@@ -1,5 +1,5 @@
 import { acceptHMRUpdate } from 'pinia'
-import { StorageSerializers } from '@vueuse/core'
+import { userStorage } from '@/composables/storage'
 
 import { getInfoApi, loginApi, loginOutApi } from '@/api/user'
 
@@ -8,11 +8,8 @@ export interface UserState {
     info: Obj
 }
 
-const lsKey = '__user__'
-let ls = $(useStorage<Nullable<UserState>>(`${lsKey}`, null, undefined, { serializer: StorageSerializers.object }))
-
 const useUserStore = defineStore('userStore', () => {
-    const state: UserState = reactive(ls || {
+    const state: UserState = reactive(userStorage.value || {
         token: '', // 登录token
         info: {}, // 用户信息
     })
@@ -78,7 +75,7 @@ const useUserStore = defineStore('userStore', () => {
 })
 
 useUserStore(piniaInit).$subscribe((_mutation, state) => {
-    ls = state
+    userStorage.value = state
 })
 
 export default useUserStore

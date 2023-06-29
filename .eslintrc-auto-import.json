@@ -301,6 +301,9 @@
     "useKeepAliveStore": true,
     "useUserStore": true,
     "keepAliveStoreWithout": true,
-    "userStoreWithout": true
+    "userStoreWithout": true,
+    "globalStorage": true,
+    "keepAliveStorage": true,
+    "userStorage": true
   }
 }

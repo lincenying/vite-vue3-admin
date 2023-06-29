@@ -120,6 +120,7 @@ header {
         }
     }
     .user-info {
+        display: flex;
         margin-left: 20px;
         .el-dropdown-link {
             color: var(--system-header-breadcrumb-text-color);
