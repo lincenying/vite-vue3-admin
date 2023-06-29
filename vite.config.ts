@@ -4,6 +4,8 @@ import vuePlugin from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import VueMacros from 'unplugin-vue-macros'
 import { viteMockServe } from 'vite-plugin-mock'
+import UnoCSS from 'unocss/vite'
+import { warmup } from 'vite-plugin-warmup'
 
 import Components from './vite.config.components'
 
@@ -78,6 +80,11 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
                 logger: true,
             }),
             ...Components(),
+            UnoCSS({}),
+            warmup({
+                // warm up the files and its imported JS modules recursively
+                clientFiles: ['./src/main.ts', './src/views/**/*.vue'],
+            }),
         ],
         css: {
             postcss: {

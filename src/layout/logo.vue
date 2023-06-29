@@ -1,6 +1,6 @@
 <template>
     <div class="logo-container">
-        <!-- <img src="@/assets/logo.png" alt=""> -->
+        <img h-30px w-30px src="@/assets/logo.png" alt="">
         <h1 v-if="!isCollapse">后台管理系统</h1>
     </div>
 </template>

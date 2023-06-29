@@ -5,18 +5,19 @@
 import { createApp } from 'vue'
 import ElementPlus from 'element-plus'
 
-import 'element-plus/theme-chalk/display.css' // 引入基于断点的隐藏类
-import 'element-plus/dist/index.css'
+import '@unocss/reset/tailwind.css'
+import 'uno.css'
 
-import 'normalize.css'
+import 'element-plus/theme-chalk/display.css'
 
+// 引入基于断点的隐藏类
 // css初始化
 import './assets/style/common.scss' // 公共css
 import './theme/modules/chinese/index.scss'
+
 import App from './App.vue'
-import store from './store'
 import router from './router'
 
 /** 权限路由处理主方法 */
 const app = createApp(App)
-setupPinia(app).use(ElementPlus, { size: 'small' }).use(store).use(router).mount('#app')
+setupPinia(app).use(ElementPlus, { size: 'default' }).use(router).mount('#app')
