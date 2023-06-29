@@ -11,16 +11,16 @@
  * @params hideMenu: 是否隐藏当前路由结点不在导航中展示
  * @params alwayShow: 只有一个子路由时是否总是展示菜单，默认false
  */
-import { reactive } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
+
 import System from './modules/system'
 import Dashboard from './modules/dashboard'
 import Pages from './modules/pages'
 import Menu from './modules/menu'
-import SystemManage from './modules/systemManage'
-import store from '@/store'
-import NProgress from '@/utils/system/nprogress'
+import SystemManage from './modules/system-manage'
 import { changeTitle } from '@/utils/system/title'
+import NProgress from '@/utils/system/nprogress'
+import store from '@/store'
 
 // 引入不需要权限的modules
 

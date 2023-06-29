@@ -1,30 +1,20 @@
-/*
- * @Author: luoxi
- * @Date: 2022-01-25 09:51:12
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2023-02-21 22:57:42
- * @FilePath: \vue-admin-box\vite.config.ts
- * @Description:
- */
-import { resolve } from 'node:path'
+import path from 'node:path'
 import type { ConfigEnv, UserConfigExport } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import vuePlugin from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+import VueMacros from 'unplugin-vue-macros'
 import { viteMockServe } from 'vite-plugin-mock'
 
 import Components from './vite.config.components'
 
 function pathResolve(dir: string): any {
-    return resolve(__dirname, '.', dir)
+    return path.resolve(__dirname, '.', dir)
 }
 
 const alias: Record<string, string> = {
     '@': pathResolve('src'),
 }
 
-/**
- * @description-en vite document address
- * @description-cn vite官网
- * https://vitejs.cn/config/ */
 export default ({ command }: ConfigEnv): UserConfigExport => {
     const prodMock = true
     return {
@@ -41,16 +31,41 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
             },
         },
         build: {
+            target: 'es2018',
+            cssTarget: 'chrome79',
+            minify: true,
+            assetsInlineLimit: 4096,
+            chunkSizeWarningLimit: 1000,
+            outDir: 'dist',
             rollupOptions: {
+                input: {
+                    main: path.resolve(__dirname, 'index.html'),
+                },
+                external: /\.\/assets.*/,
                 output: {
-                    manualChunks: {
-                        echarts: ['echarts'],
+                    manualChunks(id: string) {
+                        if (id.includes('node_modules')) {
+                            if (id.includes('echarts') || id.includes('zrender'))
+                                return 'echarts'
+                            return 'vendor'
+                        }
                     },
                 },
             },
         },
         plugins: [
-            vue(),
+            VueMacros.vite({
+                plugins: {
+                    vue: vuePlugin({
+                        template: {
+                            compilerOptions: {
+                                isCustomElement: (tag: string) => ['def'].includes(tag),
+                            },
+                        },
+                    }),
+                    vueJsx: vueJsx(),
+                },
+            }),
             viteMockServe({
                 mockPath: 'mock',
                 localEnabled: command === 'serve',

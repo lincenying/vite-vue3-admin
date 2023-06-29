@@ -17,7 +17,7 @@ export default [
     {
         url: '/mock/menu/list',
         method: 'post',
-        response: ({ body }) => {
+        response: () => {
             return {
                 code: 200,
                 data: menu,

@@ -1,7 +1,6 @@
 // 1. 用于解决keep-alive需要name的问题，动态生成随机name供keep-alive使用
 // 2. 用于解决transition动画内部结点只能为根元素的问题，单文件可写多结点
-import type { DefineComponent } from 'vue'
-import { createVNode, defineComponent, h, nextTick, ref } from 'vue'
+import { type DefineComponent, createVNode } from 'vue'
 import reload from './reload.vue'
 import NProgress from '@/utils/system/nprogress'
 

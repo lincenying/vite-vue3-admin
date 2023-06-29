@@ -19,8 +19,4 @@ import router from './router'
 
 /** 权限路由处理主方法 */
 const app = createApp(App)
-app.use(ElementPlus, { size: 'small' })
-app.use(store)
-app.use(router)
-// app.config.performance = true
-app.mount('#app')
+app.use(ElementPlus, { size: 'small' }).use(store).use(router).mount('#app')

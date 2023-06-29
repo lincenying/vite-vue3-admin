@@ -39,7 +39,7 @@ export interface Style {
 }
 export const style: Style = {
     default: {
-        name: 'message.system.setting.style.default',
+        name: '默认菜单风格',
         menu: {
             textColor: '#bfcbd9',
             background: '#181f31',
@@ -71,7 +71,7 @@ export const style: Style = {
         },
     },
     light: {
-        name: 'message.system.setting.style.light',
+        name: '亮色菜单风格',
         menu: {
             textColor: '#272727',
             background: '#fff',
@@ -103,7 +103,7 @@ export const style: Style = {
         },
     },
     chinese: {
-        name: 'message.system.setting.style.chinese',
+        name: '中国水墨风',
         menu: {
             textColor: '#c7c7c7',
             background: '#232323',
@@ -135,7 +135,7 @@ export const style: Style = {
         },
     },
     dark: {
-        name: 'message.system.setting.style.dark',
+        name: '暗色菜单风格',
         menu: {
             textColor: '#bbb',
             background: '#18181c',

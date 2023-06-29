@@ -8,49 +8,38 @@
     </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
 import { Close, RefreshRight } from '@element-plus/icons'
+import type { MenuItemProps } from '../layout.types'
 
-export default defineComponent({
-    components: {
-        RefreshRight,
-        Close,
-    },
-    props: {
-        menu: {
-            type: Object,
-            default: () => {
-                return {
-                    path: '',
-                    meta: {
-                        label: '',
-                        hideClose: false,
-                    },
-                }
-            },
+const props = withDefaults(defineProps<MenuItemProps>(), {
+    menu: () => ({
+        path: '',
+        meta: {
+            title: '',
+            label: '',
+            hideClose: false,
         },
-        active: {
-            type: Boolean,
-            default: false,
-        },
-    },
-    emits: ['close', 'reload'],
-    setup(props, { emit }) {
-    // 关闭按钮
-        function closeTab() {
-            emit('close')
-        }
-        // 刷新按钮
-        function reload() {
-            emit('reload')
-        }
-        return {
-            closeTab,
-            reload,
-        }
-    },
+    }),
+    active: false,
 })
+
+const emit = defineEmits(['close', 'reload'])
+
+defineOptions({
+    name: 'TabsItem',
+})
+
+const { menu, active } = $(toRefs(props))
+
+// 关闭按钮
+function closeTab() {
+    emit('close')
+}
+// 刷新按钮
+function reload() {
+    emit('reload')
+}
 </script>
 
 <style lang="scss" scoped>

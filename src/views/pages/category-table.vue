@@ -1,0 +1,41 @@
+<template>
+    <div class="full">
+        <div class="left">
+            <Category />
+        </div>
+        <div class="content">
+            <MyTable />
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import Category from './category-table/category.vue'
+import MyTable from './category-table/my-table.vue'
+
+defineOptions({
+    name: 'CategoryTable',
+    inheritAttrs: true,
+})
+
+const active: any = ref({})
+provide('active', active)
+</script>
+
+<style lang="scss" scoped>
+.full {
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    display: flex;
+    .left {
+        width: 250px;
+    }
+    .content {
+        flex: 1;
+        width: calc(100% - 250px);
+        height: 100%;
+    }
+}
+</style>

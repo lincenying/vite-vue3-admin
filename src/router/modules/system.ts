@@ -1,11 +1,11 @@
 import type { Route } from '../index.type'
 import { createNameComponent } from '../createNode'
-import Layout from '@/layout/index.vue'
+import LayoutIndex from '@/layout/index.vue'
 
 const route: Route[] = [
     {
         path: '/system',
-        component: Layout,
+        component: markRaw(LayoutIndex),
         redirect: '/404',
         hideMenu: true,
         meta: { title: '系统目录' },
@@ -36,7 +36,7 @@ const route: Route[] = [
     // 找不到路由重定向到404页面
     {
         path: '/:pathMatch(.*)',
-        component: Layout,
+        component: LayoutIndex,
         // redirect: '/404',
         hideMenu: true,
         meta: { title: '' },
