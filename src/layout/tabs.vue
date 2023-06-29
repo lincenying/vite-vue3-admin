@@ -1,7 +1,7 @@
 <template>
     <div class="tabs">
         <ElScrollbar ref="scrollbarDom" class="scroll-container tags-view-container" @wheel.passive="handleWhellScroll" @scroll="handleScroll">
-            <tabsItem v-for="menu in menuList" :key="menu.meta.title" :menu="menu" :active="activeMenu.path === menu.path" @close="delMenu(menu)" @reload="handlePageReload" />
+            <tabsItem v-for="menu in tabsStorage" :key="menu.meta.title" :menu="menu" :active="activeMenu.path === menu.path" @close="delMenu(menu)" @reload="handlePageReload" />
         </ElScrollbar>
         <div class="handle">
             <div id="vueAdminBoxTabRefresh" @click="handlePageReload" />
@@ -16,8 +16,8 @@
                     <el-dropdown-menu>
                         <el-dropdown-item class="tab-ddropdown-item" :icon="RefreshLeft" @click="handlePageReload">重新加载</el-dropdown-item>
                         <el-dropdown-item class="tab-ddropdown-item" :icon="CircleClose" :disabled="currentDisabled" @click="handleCloseCurrentRoute">关闭当前标签</el-dropdown-item>
-                        <el-dropdown-item class="tab-ddropdown-item" :icon="CircleClose" :disabled="menuList.length < 3" @click="handleCloseOtherRoute">关闭其他标签</el-dropdown-item>
-                        <el-dropdown-item class="tab-ddropdown-item" :icon="CircleClose" :disabled="menuList.length <= 1" @click="handleCloseAllRoute">关闭所有标签</el-dropdown-item>
+                        <el-dropdown-item class="tab-ddropdown-item" :icon="CircleClose" :disabled="tabsStorage.length < 3" @click="handleCloseOtherRoute">关闭其他标签</el-dropdown-item>
+                        <el-dropdown-item class="tab-ddropdown-item" :icon="CircleClose" :disabled="tabsStorage.length <= 1" @click="handleCloseAllRoute">关闭所有标签</el-dropdown-item>
                     </el-dropdown-menu>
                 </template>
             </el-dropdown>
@@ -32,9 +32,10 @@
 import { ElScrollbar } from 'element-plus'
 import { ArrowDown, CircleClose, FullScreen, RefreshLeft } from '@element-plus/icons'
 import type { AnyFn } from '@vueuse/core'
-
 import tabsItem from './tabs/item.vue'
-import tabsHook from './tabs/tabsHook'
+import type { TabsType } from '@/composables/storage'
+
+import { tabsStorage } from '@/composables/storage'
 
 defineOptions({
     name: 'LayoutTabs',
@@ -52,18 +53,16 @@ const scrollLeft = ref(0)
 const defaultMenu = {
     path: '/dashboard',
     meta: { title: '首页', hideClose: true },
-}
+} as TabsType
 const currentDisabled = computed(() => route.path === defaultMenu.path)
 
 let activeMenu: any = reactive({ path: '' })
-const menuList = ref(tabsHook.getItem())
-if (menuList.value.length === 0) {
+
+if (tabsStorage.value?.length === 0) {
     // 判断之前有没有调用过
     addMenu(defaultMenu)
 }
-watch(menuList, (newVal: []) => {
-    tabsHook.setItem(newVal)
-})
+
 router.afterEach(() => {
     addMenu(route)
     initMenu(route)
@@ -91,7 +90,7 @@ function handleCloseCurrentRoute() {
 }
 // 关闭除了当前标签之外的所有标签
 function handleCloseOtherRoute() {
-    menuList.value = [defaultMenu]
+    tabsStorage.value = [defaultMenu]
     if (route.path !== defaultMenu.path)
         addMenu(route)
 
@@ -100,7 +99,7 @@ function handleCloseOtherRoute() {
 
 // 关闭所有的标签，除了首页
 function handleCloseAllRoute() {
-    menuList.value = [defaultMenu]
+    tabsStorage.value = [defaultMenu]
     setKeepAliveData()
     router.push(defaultMenu.path)
 }
@@ -108,14 +107,14 @@ function handleCloseAllRoute() {
 // 添加新的菜单项
 function addMenu(menu: any) {
     const { path, meta, name } = menu
-    if (meta.hideTabs)
+    if (meta.hideTabs || !meta.title)
         return
 
-    const hasMenu = menuList.value.some((obj: any) => {
+    const hasMenu = tabsStorage.value.some((obj: any) => {
         return obj.path === path
     })
     if (!hasMenu) {
-        menuList.value.push({
+        tabsStorage.value.push({
             path,
             meta,
             name,
@@ -130,15 +129,15 @@ function delMenu(menu: any, nextPath?: string | null) {
         if (menu.meta.cache && menu.name)
             keepAliveStore.delKeepAliveComponentsName(menu.name)
 
-        index = menuList.value.findIndex((item: any) => item.path === menu.path)
-        menuList.value.splice(index, 1)
+        index = tabsStorage.value.findIndex((item: any) => item.path === menu.path)
+        tabsStorage.value.splice(index, 1)
     }
     if (nextPath) {
         router.push(nextPath)
         return
     }
     if (menu.path === activeMenu.path)
-        index - 1 > 0 ? router.push(menuList.value[index - 1].path) : router.push(defaultMenu.path)
+        index - 1 > 0 ? router.push(tabsStorage.value[index - 1].path) : router.push(defaultMenu.path)
 }
 
 // 初始化activeMenu
@@ -158,7 +157,7 @@ function setPosition() {
         }
         let hasDoms = true
         Object.keys(domBox).forEach((dom) => {
-            if (!dom)
+            if (!domBox[dom as 'scrollbar' | 'activeDom' | 'activeFather'])
                 hasDoms = false
         })
         if (!hasDoms)
@@ -177,7 +176,7 @@ function setPosition() {
 // 配置需要缓存的数据
 function setKeepAliveData() {
     const keepAliveNames: string[] = []
-    menuList.value.forEach((menu: any) => {
+    tabsStorage.value.forEach((menu: any) => {
         menu.meta && menu.meta.cache && menu.name && keepAliveNames.push(menu.name)
     })
     keepAliveStore.setKeepAliveComponentsName(keepAliveNames)

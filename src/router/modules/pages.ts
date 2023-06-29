@@ -13,7 +13,7 @@ const route: Route[] = [
         parentPath: '/pages',
         path: '/pages/crudTable',
         component: createNameComponent(() => import('@/views/pages/crud-table.vue')),
-        meta: { title: '业务表格', cache: false, roles: ['admin', 'editor'] },
+        meta: { title: '业务表格', cache: true, roles: ['admin', 'editor'] },
     },
     {
         parentPath: '/pages',

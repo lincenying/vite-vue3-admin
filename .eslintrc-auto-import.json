@@ -304,6 +304,7 @@
     "userStoreWithout": true,
     "globalStorage": true,
     "keepAliveStorage": true,
-    "userStorage": true
+    "userStorage": true,
+    "tabsStorage": true
   }
 }

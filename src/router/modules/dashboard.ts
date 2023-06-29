@@ -6,13 +6,18 @@ const route: Route[] = [
         path: '/',
         redirect: '/dashboard',
         level: 1,
-        meta: { title: 'Dashboard', icon: 'sfont system-home' },
+        meta: {
+            title: '首页',
+            icon: 'sfont system-home',
+            hideTabs: true,
+        },
+        alwayShow: true,
     },
     {
         parentPath: '/',
         path: '/dashboard',
         component: createNameComponent(() => import('@/views/dashboard/index.vue')),
-        meta: { title: '首页', icon: 'sfont system-home', hideClose: true },
+        meta: { title: 'Dashboard', icon: 'sfont system-home', hideClose: true },
     },
 ]
 

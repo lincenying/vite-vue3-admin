@@ -1,3 +1,5 @@
+import type { TabsType } from '@/composables/storage'
+
 export interface ThemeColorProps {
     active: string
     activeTextColor: string
@@ -18,13 +20,6 @@ export interface ThemeIconProps {
 }
 
 export interface MenuItemProps {
-    menu: {
-        path: string
-        meta: {
-            title: string
-            label: string
-            hideClose: boolean
-        }
-    }
+    menu: TabsType
     active: boolean
 }

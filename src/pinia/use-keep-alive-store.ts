@@ -1,12 +1,11 @@
 import { acceptHMRUpdate } from 'pinia'
-import { keepAliveStorage } from '@/composables/storage'
 
 export interface KeepAliveStoreType {
     keepAliveComponentsName: string[]
 }
 
 const useKeepAliveStore = defineStore('keepAliveStore', () => {
-    const state = reactive<KeepAliveStoreType>(keepAliveStorage.value || {
+    const state = reactive<KeepAliveStoreType>({
         keepAliveComponentsName: [],
     })
 
@@ -31,10 +30,6 @@ const useKeepAliveStore = defineStore('keepAliveStore', () => {
         addKeepAliveComponentsName,
         delKeepAliveComponentsName,
     }
-})
-
-useKeepAliveStore(piniaInit).$subscribe((_mutation, state) => {
-    keepAliveStorage.value = state
 })
 
 export default useKeepAliveStore
