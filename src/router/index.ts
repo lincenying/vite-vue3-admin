@@ -14,6 +14,10 @@
 import { reactive } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import System from './modules/system'
+import Dashboard from './modules/dashboard'
+import Pages from './modules/pages'
+import Menu from './modules/menu'
+import SystemManage from './modules/systemManage'
 import store from '@/store'
 import NProgress from '@/utils/system/nprogress'
 import { changeTitle } from '@/utils/system/title'
@@ -30,6 +34,10 @@ NProgress.configure({ showSpinner: false })
 
 const modules = reactive([
     ...System,
+    ...Dashboard,
+    ...Pages,
+    ...Menu,
+    ...SystemManage,
 ])
 
 const router = createRouter({

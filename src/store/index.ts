@@ -5,13 +5,15 @@ import type { keepAliveState } from '@/store/modules/keepAlive'
 import type { appState } from '@/store/modules/app'
 
 const debug = import.meta.env.MODE !== 'production'
-const files: Record<string, any> = import.meta.glob('./modules/*.ts')
+const files: Record<string, any> = import.meta.glob('./modules/*.ts', { eager: true })
 
 export interface RootState {
     user: userState
     keepAlive: keepAliveState
     app: appState
 }
+
+console.log(files)
 
 const modules: any = {}
 Object.keys(files).forEach((c: string) => {
@@ -33,6 +35,8 @@ const persistent = Persistent({
         session: [],
     },
 })
+
+console.log(modules)
 
 export default createStore<RootState>({
     modules: {

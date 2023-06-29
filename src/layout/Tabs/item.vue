@@ -1,10 +1,10 @@
 <template>
     <div class="tags-view-item" :class="active ? 'active' : ''">
         <router-link v-if="menu.meta.title" :to="menu.path">
-            {{ $t(menu.meta.title) }}
+            {{ menu.meta.title }}
         </router-link>
         <el-icon v-if="active" @click.stop="reload"><RefreshRight /></el-icon>
-        <el-icon v-if="!menu.meta.hideClose" :alt="$t('message.common.del')" @click.stop="closeTab"><Close /></el-icon>
+        <el-icon v-if="!menu.meta.hideClose" alt="删除" @click.stop="closeTab"><Close /></el-icon>
     </div>
 </template>
 

@@ -3,19 +3,19 @@
         <el-sub-menu v-if="showMenuType === 2" :index="pathResolve" :show-timeout="0" :hide-timeout="0">
             <template #title>
                 <i v-if="menu.meta.icon" :class="menu.meta.icon" />
-                <span>{{ $t(menu.meta.title) }}</span>
+                <span>{{ menu.meta.title }}</span>
             </template>
             <menu-item v-for="(item, key) in menu.children" :key="key" :menu="item" :base-path="pathResolve" />
         </el-sub-menu>
         <AppLink v-else-if="showMenuType === 1" :to="pathResolve">
             <el-menu-item v-if="!menu.children[0].children || menu.children[0].children.length === 0" :index="pathResolve">
                 <i v-if="menu.children[0].meta.icon || menu.meta.icon" :class="menu.children[0].meta.icon || menu.meta.icon" />
-                <template #title>{{ $t(menu.children[0].meta.title) }}</template>
+                <template #title>{{ menu.children[0].meta.title }}</template>
             </el-menu-item>
             <el-sub-menu v-else :index="pathResolve" :show-timeout="0" :hide-timeout="0">
                 <template #title>
                     <i v-if="menu.children[0].meta.icon || menu.meta.icon" :class="menu.children[0].meta.icon || menu.meta.icon" />
-                    <span>{{ $t(menu.children[0].meta.title) }}</span>
+                    <span>{{ menu.children[0].meta.title }}</span>
                 </template>
                 <menu-item v-for="(item, key) in menu.children[0].children" :key="key" :menu="item" :base-path="pathResolve" />
             </el-sub-menu>
@@ -23,7 +23,7 @@
         <AppLink v-else :to="pathResolve">
             <el-menu-item :index="pathResolve">
                 <i v-if="menu.meta.icon" :class="menu.meta.icon" />
-                <template #title>{{ $t(menu.meta.title) }}</template>
+                <template #title>{{ menu.meta.title }}</template>
             </el-menu-item>
         </AppLink>
     </template>

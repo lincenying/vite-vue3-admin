@@ -2,13 +2,9 @@
     <div class="layout-container">
         <div class="layout-container-form space-between flex">
             <div class="layout-container-form-handle">
-                <el-button type="primary" :icon="Plus" @click="handleAdd">
-                    {{
-                        $t("message.common.add")
-                    }}
-                </el-button>
+                <el-button type="primary" :icon="Plus" @click="handleAdd">新增</el-button>
                 <el-popconfirm
-                    :title="$t('message.common.delTip')"
+                    title="确定删除选中的数据吗？"
                     @confirm="handleDel(chooseData)"
                 >
                     <template #reference>
@@ -17,7 +13,7 @@
                             :icon="Delete"
                             :disabled="chooseData.length === 0"
                         >
-                            {{ $t("message.common.delBat") }}
+                            批量删除
                         </el-button>
                     </template>
                 </el-popconfirm>
@@ -25,7 +21,7 @@
             <div class="layout-container-form-search">
                 <el-input
                     v-model="query.input"
-                    :placeholder="$t('message.common.searchTip')"
+                    placeholder="请输入关键词进行检索"
                 />
                 <el-button
                     type="primary"
@@ -33,18 +29,17 @@
                     class="search-btn"
                     @click="getTableData(true)"
                 >
-                    {{ $t("message.common.search") }}
+                    搜索
                 </el-button>
             </div>
         </div>
         <div class="layout-container-table">
-            <Table
-                ref="table"
+            <CompTable
                 v-model:page="page"
                 v-loading="loading"
                 :show-selection="true"
                 :data="tableData"
-                @getTableData="getTableData"
+                @get-table-data="getTableData"
                 @selection-change="handleSelectionChange"
             >
                 <el-table-column prop="id" label="Id" align="center" width="80" />
@@ -71,7 +66,7 @@
                     </template>
                 </el-table-column>
                 <el-table-column
-                    :label="$t('message.common.handle')"
+                    label="操作"
                     align="center"
                     fixed="right"
                     width="200"
@@ -79,21 +74,21 @@
                     <template #default="scope">
                         <el-button @click="handleEdit(scope.row)">
                             {{
-                                $t("message.common.update")
+                                '编辑'
                             }}
                         </el-button>
                         <el-popconfirm
-                            :title="$t('message.common.delTip')"
+                            title="确定删除选中的数据吗？"
                             @confirm="handleDel([scope.row])"
                         >
                             <template #reference>
-                                <el-button type="danger">{{ $t("message.common.del") }}</el-button>
+                                <el-button type="danger">{{ '删除' }}</el-button>
                             </template>
                         </el-popconfirm>
                     </template>
                 </el-table-column>
-            </Table>
-            <Layer v-if="layer.show" :layer="layer" @getTableData="getTableData" />
+            </CompTable>
+            <Layer v-if="layer.show" :layer="layer" @get-table-data="getTableData" />
         </div>
     </div>
 </template>
@@ -106,11 +101,11 @@ import Layer from './layer.vue'
 import type { Page } from '@/components/table/type'
 import { del, getData, updateStatus } from '@/api/system/user'
 import type { LayerInterface } from '@/components/layer/index.vue'
-import Table from '@/components/table/index.vue'
+import CompTable from '@/components/table/index.vue'
 
 export default defineComponent({
     components: {
-        Table,
+        CompTable,
         Layer,
     },
     setup() {
@@ -157,7 +152,7 @@ export default defineComponent({
                     tableData.value = data
                     page.total = Number(res.data.pager.total)
                 })
-                .catch((error) => {
+                .catch(() => {
                     tableData.value = []
                     page.index = 1
                     page.total = 0
@@ -175,7 +170,7 @@ export default defineComponent({
                     })
                     .join(','),
             }
-            del(params).then((res) => {
+            del(params).then(() => {
                 ElMessage({
                     type: 'success',
                     message: '删除成功',
@@ -206,13 +201,13 @@ export default defineComponent({
                 status: row.status,
             }
             updateStatus(params)
-                .then((res) => {
+                .then(() => {
                     ElMessage({
                         type: 'success',
                         message: '状态变更成功',
                     })
                 })
-                .catch((err) => {
+                .catch(() => {
                     ElMessage({
                         type: 'error',
                         message: '状态变更失败',

@@ -1,5 +1,5 @@
 <template>
-    <a href="https://github.com/cmdparkour/vue-admin-box" target="_blank" :title="$t('message.system.github')"><i class="sfont system-github" /></a>
+    <a href="https://github.com/cmdparkour/vue-admin-box" target="_blank" title="访问github地址"><i class="sfont system-github" /></a>
 </template>
 
 <script lang="ts">

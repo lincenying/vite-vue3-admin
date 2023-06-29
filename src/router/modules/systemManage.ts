@@ -7,13 +7,13 @@ const route: Route[] = [
         path: '/systemManage',
         component: Layout,
         redirect: '/systemManage/menu',
-        meta: { title: 'message.menu.systemManage.name', icon: 'sfont system-xitongzhuangtai' },
+        meta: { title: '系统管理', icon: 'sfont system-xitongzhuangtai' },
         alwayShow: true,
         children: [
             {
                 path: 'user',
                 component: createNameComponent(() => import('@/views/main/systemManage/users/index.vue')),
-                meta: { title: 'message.menu.systemManage.user' },
+                meta: { title: '用户' },
             },
         ],
     },

@@ -11,7 +11,6 @@
             <!-- 快捷功能按钮 -->
             <div class="function-list">
                 <div class="hidden-sm-and-down function-list-item"><FullScreen /></div>
-                <div class="function-list-item"><SizeChange /></div>
                 <div class="function-list-item hidden-sm-and-down"><Theme /></div>
                 <div class="function-list-item hidden-sm-and-down"><Github /></div>
             </div>
@@ -19,13 +18,13 @@
             <div class="user-info">
                 <el-dropdown>
                     <span class="el-dropdown-link">
-                        {{ $t('message.system.user') }}
+                        管理员
                         <i class="sfont system-xiala" />
                     </span>
                     <template #dropdown>
                         <el-dropdown-menu>
-                            <el-dropdown-item @click="showPasswordLayer">{{ $t('message.system.changePassword') }}</el-dropdown-item>
-                            <el-dropdown-item @click="loginOut">{{ $t('message.system.loginOut') }}</el-dropdown-item>
+                            <el-dropdown-item @click="showPasswordLayer">修改密码</el-dropdown-item>
+                            <el-dropdown-item @click="loginOut">退出登录</el-dropdown-item>
                         </el-dropdown-menu>
                     </template>
                 </el-dropdown>
@@ -39,7 +38,6 @@
 import { computed, defineComponent, reactive } from 'vue'
 import { useStore } from 'vuex'
 import FullScreen from './functionList/fullscreen.vue'
-import SizeChange from './functionList/sizeChange.vue'
 import Github from './functionList/github.vue'
 import Theme from './functionList/theme.vue'
 import Breadcrumb from './Breadcrumb.vue'
@@ -49,7 +47,6 @@ export default defineComponent({
     components: {
         FullScreen,
         Breadcrumb,
-        SizeChange,
         Github,
         Theme,
         PasswordLayer,

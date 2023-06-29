@@ -4,18 +4,18 @@
             <div class="login-content-left">
                 <img :src="loginLeftPng">
                 <div class="login-content-left-mask">
-                    <div>{{ $t(systemTitle) }}</div>
-                    <div>{{ $t(systemSubTitle) }}</div>
+                    <div>后台管理系统</div>
+                    <div>时间不在于你拥有多少,而在于你怎样使用。</div>
                 </div>
             </div>
 
             <div class="box-inner">
-                <h1>{{ $t('message.system.welcome') }}</h1>
+                <h1>欢迎登录</h1>
                 <el-form class="form">
                     <el-input
                         v-model="form.name"
                         size="large"
-                        :placeholder="$t('message.system.userName')"
+                        placeholder="用户名"
                         type="text"
                         maxlength="50"
                     >
@@ -27,7 +27,7 @@
                         v-model="form.password"
                         size="large"
                         :type="passwordType"
-                        :placeholder="$t('message.system.password')"
+                        placeholder="密码"
                         name="password"
                         maxlength="50"
                     >
@@ -42,13 +42,9 @@
                         </template>
                     </el-input>
 
-                    <el-button type="primary" :loading="form.loading" style="width: 100%;" size="default" @click="submit">
-                        {{ $t('message.system.login') }}
-                    </el-button>
+                    <el-button type="primary" :loading="form.loading" style="width: 100%;" size="default" @click="submit">登录</el-button>
                 </el-form>
-                <div class="fixed-top-right">
-                    <SelectLang />
-                </div>
+                <div class="fixed-top-right" />
             </div>
         </div>
     </div>
@@ -59,12 +55,10 @@ import { defineComponent, reactive, ref } from 'vue'
 import { useStore } from 'vuex'
 import { ElMessage } from 'element-plus'
 import { systemSubTitle, systemTitle } from '@/config'
-import selectLang from '@/layout/Header/functionList/word.vue'
 import loginLeftPng from '@/assets/login/left.jpg'
 
 export default defineComponent({
     components: {
-        SelectLang: selectLang,
     },
     setup() {
         const store = useStore()

@@ -2,16 +2,16 @@
     <div class="layout-container">
         <div class="layout-container-form space-between flex">
             <div class="layout-container-form-handle">
-                <el-button type="primary" :icon="Plus" @click="handleAdd">{{ $t('message.common.add') }}</el-button>
-                <el-popconfirm :title="$t('message.common.delTip')" @confirm="handleDel(chooseData)">
+                <el-button type="primary" :icon="Plus" @click="handleAdd">{{ '新增' }}</el-button>
+                <el-popconfirm :title="'确定删除选中的数据吗？'" @confirm="handleDel(chooseData)">
                     <template #reference>
-                        <el-button type="danger" :icon="Delete" :disabled="chooseData.length === 0">{{ $t('message.common.delBat') }}</el-button>
+                        <el-button type="danger" :icon="Delete" :disabled="chooseData.length === 0">{{ '批量删除' }}</el-button>
                     </template>
                 </el-popconfirm>
             </div>
             <div class="layout-container-form-search">
-                <el-input v-model="query.input" :placeholder="$t('message.common.searchTip')" @change="getTableData(true)" />
-                <el-button type="primary" :icon="Search" class="search-btn" @click="getTableData(true)">{{ $t('message.common.search') }}</el-button>
+                <el-input v-model="query.input" :placeholder="'请输入关键词进行检索'" @change="getTableData(true)" />
+                <el-button type="primary" :icon="Search" class="search-btn" @click="getTableData(true)">{{ '搜索' }}</el-button>
             </div>
         </div>
         <div class="layout-container-table">
@@ -29,12 +29,12 @@
                 <el-table-column prop="number" label="数字" align="center" />
                 <el-table-column prop="chooseName" label="选择器" align="center" />
                 <el-table-column prop="radioName" label="单选框" align="center" />
-                <el-table-column :label="$t('message.common.handle')" align="center" fixed="right" width="200">
+                <el-table-column :label="'操作'" align="center" fixed="right" width="200">
                     <template #default="scope">
-                        <el-button @click="handleEdit(scope.row)">{{ $t('message.common.update') }}</el-button>
-                        <el-popconfirm :title="$t('message.common.delTip')" @confirm="handleDel([scope.row])">
+                        <el-button @click="handleEdit(scope.row)">{{ '编辑' }}</el-button>
+                        <el-popconfirm :title="'确定删除选中的数据吗？'" @confirm="handleDel([scope.row])">
                             <template #reference>
-                                <el-button type="danger">{{ $t('message.common.del') }}</el-button>
+                                <el-button type="danger">{{ '删除' }}</el-button>
                             </template>
                         </el-popconfirm>
                     </template>

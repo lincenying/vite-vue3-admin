@@ -5,9 +5,9 @@
                 <span
                     v-if="item.redirect === 'noRedirect' || index === levelList.length - 1"
                     class="no-redirect"
-                >{{ $t(item.meta.title) }}</span>
+                >{{ item.meta.title }}</span>
                 <a v-else @click.prevent="handleLink(item)">
-                    {{ $t(item.meta.title) }}
+                    {{ item.meta.title }}
                 </a>
             </el-breadcrumb-item>
         </transition-group>
