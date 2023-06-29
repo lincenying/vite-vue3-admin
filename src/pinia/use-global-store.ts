@@ -1,3 +1,6 @@
+import { acceptHMRUpdate } from 'pinia'
+import { StorageSerializers } from '@vueuse/core'
+
 interface Option<T> {
     name: keyof optionKey<T>
     value: optionValue<T>
@@ -11,7 +14,7 @@ interface optionValue<T> {
     value: T[keyof T]
 }
 
-export interface appState {
+export interface AppState {
     isCollapse: boolean
     contentFullScreen: boolean
     showLogo: boolean
@@ -24,6 +27,7 @@ export interface appState {
         state: {
             style: string
             primaryColor: string
+            primaryTextColor: string
             menuType: string
         }
     }
@@ -31,8 +35,11 @@ export interface appState {
     [key: string]: unknown
 }
 
-function state() {
-    return {
+const lsKey = '__global__'
+let ls = $(useStorage<Nullable<AppState>>(`${lsKey}`, null, undefined, { serializer: StorageSerializers.object }))
+
+const useGlobalStore = defineStore('globalStore', () => {
+    const state: AppState = reactive(ls || {
         isCollapse: false, // 侧边栏是否收缩展示
         contentFullScreen: false, // 内容是否可全屏展示
         showLogo: true, // 是否显示Logo
@@ -45,35 +52,41 @@ function state() {
             state: {
                 style: 'default',
                 primaryColor: '#409eff',
+                primaryTextColor: '',
                 menuType: 'side',
             },
         },
         menuList: [],
-    }
-}
+    })
 
-// mutations
-const mutations = {
-    isCollapseChange(state: appState, type: boolean) {
+    function isCollapseChange(type: boolean) {
         state.isCollapse = type
-    },
-    contentFullScreenChange(state: appState, type: boolean) {
+    }
+    function contentFullScreenChange(type: boolean) {
         state.contentFullScreen = type
-    },
-    menuListChange(state: appState, arr: []) {
+    }
+    function menuListChange(arr: []) {
         state.menuList = arr
-    },
-    stateChange(state: appState, option: Option<appState>) {
+    }
+    function stateChange(option: Option<AppState>) {
         state[option.name] = option.value
-    },
-}
+    }
 
-// actions
-const actions = {}
+    return {
+        ...toRefs(state),
+        isCollapseChange,
+        contentFullScreenChange,
+        menuListChange,
+        stateChange,
+    }
+})
 
-export default {
-    namespaced: true,
-    state,
-    actions,
-    mutations,
-}
+useGlobalStore(piniaInit).$subscribe((_mutation, state) => {
+    ls = state
+})
+
+export default useGlobalStore
+export const globalStoreWithout = () => useGlobalStore(piniaInit)
+
+if (import.meta.hot)
+    import.meta.hot.accept(acceptHMRUpdate(useGlobalStore, import.meta.hot))

@@ -41,7 +41,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useStore } from 'vuex'
 import ThemeIcon from './theme-icon.vue'
 import ThemeColor from './theme-color.vue'
 import type { Colors } from '@/theme/index'
@@ -53,7 +52,7 @@ defineOptions({
 
 interface Option {
     name: string
-    value: boolean
+    value: any
     store: string
 }
 interface State {
@@ -63,14 +62,12 @@ interface State {
     menuType: string
 }
 
-const store = useStore()
+const globalStore = useGlobalStore()
+
+const { showLogo, showTabs, expandOneMenu, theme } = $(storeToRefs(globalStore))
 // 只取值，不做computed
-const state: State = reactive({
-    style: store.state.app.theme.state.style,
-    primaryColor: store.state.app.theme.state.primaryColor,
-    primaryTextColor: store.state.app.theme.state.primaryTextColor,
-    menuType: store.state.app.theme.state.menuType,
-})
+const state = reactive<State>(theme.state)
+
 const themeColorArr = [
     { color: '#409eff', textColor: '#fff', tip: '默认蓝' },
     { color: '#d60f20', textColor: '#fff', tip: '玫瑰红' },
@@ -105,23 +102,22 @@ watch(state, () => {
             ...state,
         },
     }
-    store.commit('app/stateChange', {
-        name: 'theme',
-        value: theme,
+    globalStore.$patch({
+        theme,
     })
     setTheme()
 })
 const drawer = ref(false)
 const options = reactive([
-    { name: '显示logo', value: store.state.app.showLogo, store: 'showLogo' },
-    { name: '显示面包屑导航', value: store.state.app.showTabs, store: 'showTabs' },
-    { name: '保持一个菜单展开', value: store.state.app.expandOneMenu, store: 'expandOneMenu' },
+    { name: '显示logo', value: showLogo, store: 'showLogo' },
+    { name: '显示面包屑导航', value: showTabs, store: 'showTabs' },
+    { name: '保持一个菜单展开', value: expandOneMenu, store: 'expandOneMenu' },
 ])
 function handleDrawerChange(value: boolean) {
     drawer.value = value
 }
 function onChange(option: Option) {
-    store.commit('app/stateChange', { name: option.store, value: option.value })
+    globalStore.stateChange({ name: option.store, value: option.value })
 }
 setTheme()
 </script>

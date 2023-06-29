@@ -35,7 +35,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useStore } from 'vuex'
 import { ElMessage } from 'element-plus'
 import loginLeftPng from '@/assets/login/left.jpg'
 
@@ -44,7 +43,8 @@ defineOptions({
     inheritAttrs: true,
 })
 
-const store = useStore()
+const userStore = useUserStore()
+
 const form = reactive({
     name: 'admin',
     password: '123456',
@@ -80,8 +80,8 @@ function submit() {
             name: form.name,
             password: form.password,
         }
-        store
-            .dispatch('user/login', params)
+        userStore
+            .login(params)
             .then(async () => {
                 ElMessage.success({
                     message: '登录成功',

@@ -7,15 +7,13 @@
 </template>
 
 <script lang="ts" setup>
-import { useStore } from 'vuex'
-
 defineOptions({
     name: 'App',
     inheritAttrs: true,
 })
 
-const store = useStore()
-const size = computed(() => store.state.app.elementSize)
+const globalStore = useGlobalStore()
+const { size } = $(storeToRefs(globalStore))
 </script>
 
 <style>

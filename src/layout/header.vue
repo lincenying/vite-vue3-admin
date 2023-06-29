@@ -35,8 +35,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useStore } from 'vuex'
-
 import Breadcrumb from './header/breadcrumb.vue'
 import dialogPassword from './header/dialog-password.vue'
 import FullScreen from './header/fullscreen.vue'
@@ -48,7 +46,10 @@ defineOptions({
     name: 'LayoutHeader',
 })
 
-const store = useStore()
+const userStore = useUserStore()
+const globalStore = useGlobalStore()
+
+const { isCollapse } = $(storeToRefs(globalStore))
 // const router = useRouter()
 // const route = useRoute()
 const layer = reactive<LayoutDialogLayer>({
@@ -56,15 +57,14 @@ const layer = reactive<LayoutDialogLayer>({
     title: '',
     showButton: true,
 })
-const isCollapse = computed(() => store.state.app.isCollapse)
 // isCollapse change to hide/show the sidebar
 function opendStateChange() {
-    store.commit('app/isCollapseChange', !isCollapse.value)
+    globalStore.isCollapseChange(!isCollapse)
 }
 
 // login out the system
 function loginOut() {
-    store.dispatch('user/loginOut')
+    userStore.loginOut()
 }
 
 function showPasswordLayer() {

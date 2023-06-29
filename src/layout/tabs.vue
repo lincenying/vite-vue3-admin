@@ -30,7 +30,6 @@
 
 <script lang="ts" setup>
 import { ElScrollbar } from 'element-plus'
-import { useStore } from 'vuex'
 import { ArrowDown, CircleClose, FullScreen, RefreshLeft } from '@element-plus/icons'
 import type { AnyFn } from '@vueuse/core'
 
@@ -41,7 +40,11 @@ defineOptions({
     name: 'LayoutTabs',
 })
 
-const store = useStore()
+const globalStore = useGlobalStore()
+const keepAliveStore = useKeepAliveStore()
+
+const { contentFullScreen } = $(storeToRefs(globalStore))
+
 const route = useRoute()
 const router = useRouter()
 const scrollbarDom = ref<InstanceType<typeof ElScrollbar>>()
@@ -50,7 +53,6 @@ const defaultMenu = {
     path: '/dashboard',
     meta: { title: '首页', hideClose: true },
 }
-const contentFullScreen = computed(() => store.state.app.contentFullScreen)
 const currentDisabled = computed(() => route.path === defaultMenu.path)
 
 let activeMenu: any = reactive({ path: '' })
@@ -69,7 +71,7 @@ router.afterEach(() => {
 
 // 全屏
 function handleFullscreen() {
-    store.commit('app/contentFullScreenChange', !contentFullScreen.value)
+    globalStore.contentFullScreenChange(!contentFullScreen)
 }
 // 当前页面组件重新加载
 function handlePageReload() {
@@ -126,7 +128,7 @@ function delMenu(menu: any, nextPath?: string | null) {
     let index = 0
     if (!menu.meta.hideClose) {
         if (menu.meta.cache && menu.name)
-            store.commit('keepAlive/delKeepAliveComponentsName', menu.name)
+            keepAliveStore.delKeepAliveComponentsName(menu.name)
 
         index = menuList.value.findIndex((item: any) => item.path === menu.path)
         menuList.value.splice(index, 1)
@@ -174,11 +176,11 @@ function setPosition() {
 
 // 配置需要缓存的数据
 function setKeepAliveData() {
-    const keepAliveNames: any[] = []
+    const keepAliveNames: string[] = []
     menuList.value.forEach((menu: any) => {
         menu.meta && menu.meta.cache && menu.name && keepAliveNames.push(menu.name)
     })
-    store.commit('keepAlive/setKeepAliveComponentsName', keepAliveNames)
+    keepAliveStore.setKeepAliveComponentsName(keepAliveNames)
 }
 
 /** 监听鼠标滚动事件 */

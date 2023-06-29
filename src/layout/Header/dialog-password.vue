@@ -19,7 +19,6 @@ import type { Ref } from 'vue'
 import { ref } from 'vue'
 import type { FormInstance } from 'element-plus'
 import { ElMessage } from 'element-plus'
-import { useStore } from 'vuex'
 import { passwordChange } from '@/api/user'
 import type { LayerType, LayoutDialogProps } from '@/components/components.types'
 
@@ -37,11 +36,13 @@ defineOptions({
     name: 'DialogPassword',
 })
 
+const userStore = useUserStore()
+
 const { layer } = $(toRefs(props))
 
 const ruleForm: Ref<FormInstance | null> = ref(null)
 const layerDom: Ref<LayerType | null> = ref(null)
-const store = useStore()
+
 const form = ref({
     userId: '123465',
     name: '',
@@ -69,7 +70,7 @@ function submit() {
                         })
                         layerDom.value && layerDom.value.close()
                         setTimeout(() => {
-                            store.dispatch('user/loginOut')
+                            userStore.loginOut()
                         }, 2000)
                     })
             }

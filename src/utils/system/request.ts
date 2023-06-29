@@ -1,7 +1,9 @@
 import type { AxiosError, AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
-import store from '@/store'
+
+const userStore = userStoreWithout()
+const { token } = $(storeToRefs(userStore))
 
 const baseURL: any = import.meta.env.VITE_BASE_URL
 
@@ -14,8 +16,8 @@ const service: AxiosInstance = axios.create({
 service.interceptors.request.use(
     (config: InternalAxiosRequestConfig) => {
         // JWT鉴权处理
-        if (store.getters['user/token'])
-            config.headers.token = store.state.user.token
+        if (token)
+            config.headers.token = token
 
         return config
     },
@@ -50,7 +52,7 @@ function showError(error: any) {
     // token过期，清除本地数据，并跳转至登录页面
     if (error.code === 403) {
     // to re-login
-        store.dispatch('user/loginOut')
+        userStore.loginOut()
     }
     else {
         ElMessage({

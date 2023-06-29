@@ -5,8 +5,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useStore } from 'vuex'
-
 const props = defineProps<{
     to: string
 }>()
@@ -17,8 +15,10 @@ defineOptions({
 
 const { to } = $(toRefs(props))
 
-const store = useStore()
-const isCollapse = computed(() => store.state.app.isCollapse)
+const globalStore = useGlobalStore()
+
+const { isCollapse } = $(storeToRefs(globalStore))
+
 const type = ref('router-link')
 
 function linkProps(to: string) {
@@ -27,8 +27,8 @@ function linkProps(to: string) {
     }
 }
 function hideMenu() {
-    if (document.body.clientWidth <= 1000 && !isCollapse.value)
-        store.commit('app/isCollapseChange', true)
+    if (document.body.clientWidth <= 1000 && !isCollapse)
+        globalStore.isCollapseChange(true)
 }
 </script>
 

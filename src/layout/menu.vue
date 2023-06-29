@@ -17,16 +17,16 @@
 </template>
 
 <script lang="ts" setup>
-import { useStore } from 'vuex'
 import MenuItem from './menu/menu-item.vue'
 
 defineOptions({
     name: 'LayoutMenu',
 })
 
-const store = useStore()
-const isCollapse = computed(() => store.state.app.isCollapse)
-const expandOneMenu = computed(() => store.state.app.expandOneMenu)
+const globalStore = useGlobalStore()
+
+const { isCollapse, expandOneMenu } = $(storeToRefs(globalStore))
+
 const allRoutes = useRouter().options.routes
 const route = useRoute()
 const activeMenu: any = computed(() => {

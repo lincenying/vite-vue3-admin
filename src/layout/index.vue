@@ -25,7 +25,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useStore } from 'vuex'
 import { useEventListener } from '@vueuse/core'
 import LayoutMenu from './menu.vue'
 import LayoutLogo from './logo.vue'
@@ -36,19 +35,18 @@ defineOptions({
     name: 'LayoutIndex',
 })
 
-const store = useStore()
-// computed
-const isCollapse = computed(() => store.state.app.isCollapse)
-const contentFullScreen = computed(() => store.state.app.contentFullScreen)
-const showLogo = computed(() => store.state.app.showLogo)
-const showTabs = computed(() => store.state.app.showTabs)
-const keepAliveComponentsName = computed(() => store.getters['keepAlive/keepAliveComponentsName'])
+const keepAliveStore = useKeepAliveStore()
+const globalStore = useGlobalStore()
+
+const { isCollapse, contentFullScreen, showLogo, showTabs } = $(storeToRefs(globalStore))
+const { keepAliveComponentsName } = $(storeToRefs(keepAliveStore))
+
 // 页面宽度变化监听后执行的方法
 function resizeHandler() {
-    if (document.body.clientWidth <= 1000 && !isCollapse.value)
-        store.commit('app/isCollapseChange', true)
-    else if (document.body.clientWidth > 1000 && isCollapse.value)
-        store.commit('app/isCollapseChange', false)
+    if (document.body.clientWidth <= 1000 && !isCollapse)
+        globalStore.isCollapseChange(true)
+    else if (document.body.clientWidth > 1000 && isCollapse)
+        globalStore.isCollapseChange(false)
 }
 // 初始化调用
 resizeHandler()
@@ -60,7 +58,7 @@ onBeforeMount(() => {
 // methods
 // 隐藏菜单
 function hideMenu() {
-    store.commit('app/isCollapseChange', true)
+    globalStore.isCollapseChange(true)
 }
 </script>
 

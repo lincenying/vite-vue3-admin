@@ -291,6 +291,16 @@
     "watchThrottled": true,
     "watchTriggerable": true,
     "watchWithFilter": true,
-    "whenever": true
+    "whenever": true,
+    "globalStoreWithout": true,
+    "indexStoreWithout": true,
+    "piniaInit": true,
+    "piniaStoreWithout": true,
+    "setupPinia": true,
+    "useGlobalStore": true,
+    "useKeepAliveStore": true,
+    "useUserStore": true,
+    "keepAliveStoreWithout": true,
+    "userStoreWithout": true
   }
 }

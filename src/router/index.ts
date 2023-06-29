@@ -20,7 +20,6 @@ import Menu from './modules/menu'
 import SystemManage from './modules/system-manage'
 import { changeTitle } from '@/utils/system/title'
 import NProgress from '@/utils/system/nprogress'
-import store from '@/store'
 
 // 引入不需要权限的modules
 
@@ -48,10 +47,16 @@ const router = createRouter({
 // 未授权时可访问的白名单
 const whiteList = ['/login']
 
+const userStore = userStoreWithout()
+const keepAliveStore = keepAliveStoreWithout()
+
+const { token } = $(storeToRefs(userStore))
+const { keepAliveComponentsName } = $(storeToRefs(keepAliveStore))
+
 // 路由跳转前的监听操作
 router.beforeEach((to, _from, next) => {
     NProgress.start()
-    if (store.state.user.token) {
+    if (token) {
         to.meta.title && (changeTitle(to.meta.title)) // 动态title
         if (to.path === '/login') {
             next('/')
@@ -71,10 +76,9 @@ router.beforeEach((to, _from, next) => {
 
 // 路由跳转后的监听操作
 router.afterEach((to, _from) => {
-    const keepAliveComponentsName = store.getters['keepAlive/keepAliveComponentsName'] || []
     const name = to.matched[to.matched.length - 1].components?.default.name
     if (to.meta && to.meta.cache && name && !keepAliveComponentsName.includes(name))
-        store.commit('keepAlive/addKeepAliveComponentsName', name)
+        keepAliveStore.addKeepAliveComponentsName(name)
 
     NProgress.done()
 })

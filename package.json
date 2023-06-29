@@ -24,6 +24,7 @@
     "mockjs": "^1.1.0",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
+    "pinia": "^2.1.4",
     "sortablejs": "^1.15.0",
     "splitpanes": "^3.1.5",
     "throttle-debounce": "^5.0.0",

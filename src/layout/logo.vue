@@ -6,14 +6,12 @@
 </template>
 
 <script lang="ts" setup>
-import { useStore } from 'vuex'
-
 defineOptions({
     name: 'LayoutLogo',
 })
 
-const store = useStore()
-const isCollapse = computed(() => store.state.app.isCollapse)
+const globalStore = useGlobalStore()
+const { isCollapse } = $(storeToRefs(globalStore))
 </script>
 
 <style lang="scss" scoped>
