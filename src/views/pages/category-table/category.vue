@@ -17,7 +17,6 @@
 <script lang="ts" setup>
 import type { Ref } from 'vue'
 import { debounce } from 'throttle-debounce'
-import { getCategory } from '@/api/table'
 
 defineOptions({
     name: 'Category',
@@ -37,7 +36,7 @@ const loading = ref(true)
 const active: any = inject('active')
 const nomore = ref(false)
 
-function getCategoryData(init?: boolean) {
+async function getCategoryData(init?: boolean) {
     loading.value = true
     if (init || firstLoading.value) {
         firstLoading.value = false
@@ -56,26 +55,19 @@ function getCategoryData(init?: boolean) {
         pageSize: page.size,
         keyword: input.value,
     }
-    getCategory(params)
-        .then((res) => {
-            if (page.index === 1) {
-                list.value = res.data.list
-                active.value = list.value[0]
-            }
-            else {
-                list.value = list.value.concat(res.data.list)
-            }
-            page.index += 1
-            page.total = res.data.pager.total
-        })
-        .catch(() => {
-            page.index = 1
-            page.total = 0
-            list.value = []
-        })
-        .finally(() => {
-            loading.value = false
-        })
+    const { code, data } = await $api.post<ResponseDataLists<any[]>>('/table/category', params)
+    if (code === 200) {
+        if (page.index === 1) {
+            list.value = data.list
+            active.value = list.value[0]
+        }
+        else {
+            list.value = list.value.concat(data.list)
+        }
+        page.index += 1
+        page.total = data.pager.total
+    }
+    loading.value = false
 }
 const searchData = debounce(300, getCategoryData)
 function changeActive(row: any) {

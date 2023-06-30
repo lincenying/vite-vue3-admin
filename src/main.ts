@@ -3,7 +3,6 @@
  * @Description:
  */
 import { createApp } from 'vue'
-import ElementPlus from 'element-plus'
 
 import '@unocss/reset/tailwind.css'
 import 'uno.css'
@@ -17,7 +16,8 @@ import './theme/modules/chinese/index.scss'
 
 import App from './App.vue'
 import router from './router'
+import globalPlugin from '@/plugin/global'
 
 /** 权限路由处理主方法 */
 const app = createApp(App)
-setupPinia(app).use(ElementPlus, { size: 'default' }).use(router).mount('#app')
+setupPinia(app).use(router).use(globalPlugin).mount('#app')

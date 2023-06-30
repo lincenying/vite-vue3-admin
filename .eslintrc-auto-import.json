@@ -305,6 +305,8 @@
     "globalStorage": true,
     "keepAliveStorage": true,
     "userStorage": true,
-    "tabsStorage": true
+    "tabsStorage": true,
+    "loginMsgBox": true,
+    "showMsg": true
   }
 }

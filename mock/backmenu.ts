@@ -3,6 +3,8 @@
  * @Description:
  */
 
+import type { MockMethod } from 'vite-plugin-mock'
+
 export default [
     {
         url: '/mock/menu/list',
@@ -457,4 +459,4 @@ export default [
             }
         },
     },
-]
+] as MockMethod[]

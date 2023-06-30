@@ -90,10 +90,9 @@
 </template>
 
 <script lang="ts" setup>
-import { ElMessage } from 'element-plus'
 import { Delete, Plus, Search } from '@element-plus/icons'
 import UserDialogModify from './users/dialog-user-modify.vue'
-import { del, getData, updateStatus } from '@/api/system/user'
+import { ElMessage } from '@/config/element'
 import LayoutTable from '@/components/layout-table.vue'
 import type { LayoutDialogLayer, LayoutTablePage } from '@/components/components.types'
 
@@ -119,14 +118,14 @@ const page: LayoutTablePage = reactive({
     total: 0,
 })
 const loading = ref(true)
-const tableData = ref([])
+const tableData = ref<any[]>([])
 const chooseData = ref([])
 function handleSelectionChange(val: []) {
     chooseData.value = val
 }
 // 获取表格数据
 // params <init> Boolean ，默认为false，用于判断是否需要初始化分页
-function getTableData(init?: Boolean) {
+async function getTableData(init?: Boolean) {
     loading.value = true
     if (init)
         page.index = 1
@@ -136,40 +135,29 @@ function getTableData(init?: Boolean) {
         pageSize: page.size,
         ...query,
     }
-    getData(params)
-        .then((res) => {
-            const data = res.data.list
-            data.forEach((d: any) => {
-                d.loading = false
-            })
-            tableData.value = data
-            page.total = Number(res.data.pager.total)
+    const { code, data } = await $api.post<ResponseDataLists<any[]>>('/system/user/list', params)
+    if (code === 200) {
+        data.list.forEach((d: any) => {
+            d.loading = false
         })
-        .catch(() => {
-            tableData.value = []
-            page.index = 1
-            page.total = 0
-        })
-        .finally(() => {
-            loading.value = false
-        })
+        tableData.value = data.list
+        page.total = Number(data.pager.total)
+    }
+    loading.value = false
 }
 // 删除功能
-function handleDel(data: object[]) {
+async function handleDel(data: object[]) {
     const params = {
-        ids: data
-            .map((e: any) => {
-                return e.id
-            })
-            .join(','),
+        ids: data.map((e: any) => { return e.id }).join(','),
     }
-    del(params).then(() => {
+    const { code } = await $api.post<void>('/system/user/del', params)
+    if (code === 200) {
         ElMessage({
             type: 'success',
             message: '删除成功',
         })
         getTableData(tableData.value.length === 1)
-    })
+    }
 }
 // 新增弹窗功能
 function handleAdd() {
@@ -184,7 +172,7 @@ function handleEdit(row: any) {
     layer.show = true
 }
 // 状态编辑功能
-function handleUpdateStatus(row: any) {
+async function handleUpdateStatus(row: any) {
     if (!row.id)
         return
 
@@ -193,22 +181,14 @@ function handleUpdateStatus(row: any) {
         id: row.id,
         status: row.status,
     }
-    updateStatus(params)
-        .then(() => {
-            ElMessage({
-                type: 'success',
-                message: '状态变更成功',
-            })
+    const { code } = await $api.post<void>('/system/user/updateStatus', params)
+    if (code === 200) {
+        ElMessage({
+            type: 'success',
+            message: '状态变更成功',
         })
-        .catch(() => {
-            ElMessage({
-                type: 'error',
-                message: '状态变更失败',
-            })
-        })
-        .finally(() => {
-            row.loading = false
-        })
+    }
+    row.loading = false
 }
 getTableData(true)
 </script>

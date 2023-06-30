@@ -45,12 +45,11 @@
 </template>
 
 <script lang="ts" setup>
-import { ElMessage } from 'element-plus'
 import { Delete, Plus, Search } from '@element-plus/icons'
 import dialogModify from './crud-table/dialog-modify.vue'
 import { radioData, selectData } from './crud-table/enum'
+import { ElMessage } from '@/config/element'
 import layoutTable from '@/components/layout-table.vue'
-import { del, getData } from '@/api/table'
 import type { LayoutDialogLayer, LayoutTablePage } from '@/components/components.types'
 
 defineOptions({
@@ -75,14 +74,14 @@ const page: LayoutTablePage = reactive({
     total: 0,
 })
 const loading = ref(true)
-const tableData = ref([])
+const tableData = ref<any[]>([])
 const chooseData = ref([])
 function handleSelectionChange(val: []) {
     chooseData.value = val
 }
 // 获取表格数据
 // params <init> Boolean ，默认为false，用于判断是否需要初始化分页
-function getTableData(init: boolean) {
+async function getTableData(init: boolean) {
     loading.value = true
     if (init)
         page.index = 1
@@ -92,47 +91,40 @@ function getTableData(init: boolean) {
         pageSize: page.size,
         ...query,
     }
-    getData(params)
-        .then((res) => {
-            const data = res.data.list
-            if (Array.isArray(data)) {
-                data.forEach((d) => {
-                    const select = selectData.find(select => select.value === d.choose)
-                    select ? d.chooseName = select.label : d.chooseName = d.choose
-                    const radio = radioData.find(select => select.value === d.radio)
-                    if (radio)
-                        d.radioName = radio.label
-                    else
-                        d.radioName = d.radio
-                })
-            }
-            tableData.value = res.data.list
-            page.total = Number(res.data.pager.total)
-        })
-        .catch(() => {
-            tableData.value = []
-            page.index = 1
-            page.total = 0
-        })
-        .finally(() => {
-            loading.value = false
-        })
+    const { code, data } = await $api.post<ResponseDataLists<any[]>>('/table/list', params)
+    if (code === 200) {
+        if (Array.isArray(data.list)) {
+            data.list.forEach((d) => {
+                const select = selectData.find(select => select.value === d.choose)
+                select ? d.chooseName = select.label : d.chooseName = d.choose
+                const radio = radioData.find(select => select.value === d.radio)
+                if (radio)
+                    d.radioName = radio.label
+                else
+                    d.radioName = d.radio
+            })
+        }
+        tableData.value = data.list
+        page.total = Number(data.pager.total)
+    }
+
+    loading.value = false
 }
 // 删除功能
-function handleDel(data: object[]) {
+async function handleDel(data: object[]) {
     const params = {
         ids: data.map((e: any) => {
             return e.id
         }).join(','),
     }
-    del(params)
-        .then(() => {
-            ElMessage({
-                type: 'success',
-                message: '删除成功',
-            })
-            getTableData(tableData.value.length === 1)
+    const { code } = await $api.post<void>('/table/del', params)
+    if (code === 200) {
+        ElMessage({
+            type: 'success',
+            message: '删除成功',
         })
+        getTableData(tableData.value.length === 1)
+    }
 }
 // 新增弹窗功能
 function handleAdd() {

@@ -14,6 +14,13 @@ interface optionValue<T> {
     value: T[keyof T]
 }
 
+export interface ThemeState {
+    style: string
+    primaryColor: string
+    primaryTextColor: string
+    menuType: string
+}
+
 export interface AppState {
     isCollapse: boolean
     contentFullScreen: boolean
@@ -24,12 +31,7 @@ export interface AppState {
     elementSize: '' | 'default' | 'small' | 'large'
     lang: string
     theme: {
-        state: {
-            style: string
-            primaryColor: string
-            primaryTextColor: string
-            menuType: string
-        }
+        state: ThemeState
     }
     menuList: Array<unknown>
     [key: string]: unknown

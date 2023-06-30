@@ -11,6 +11,15 @@ declare type Obj = Record<string, any>
 /** 键为字符串, 值为 T 的对象 */
 declare type ObjT<T> = Record<string, T>
 
+declare interface ResponseDataLists<T> {
+    list: T
+    pager: {
+        page: number
+        pageSize: number
+        total: number
+    }
+}
+
 /**
  * 接口返回模板
  * ```
@@ -25,7 +34,7 @@ declare type ObjT<T> = Record<string, T>
 declare interface ResponseData<T> {
     data: T
     code: number
-    message: string
+    msg: string
     info?: string
 }
 

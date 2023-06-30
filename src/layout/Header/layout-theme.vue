@@ -45,6 +45,7 @@ import ThemeIcon from './theme-icon.vue'
 import ThemeColor from './theme-color.vue'
 import type { Colors } from '@/theme/index'
 import { style } from '@/theme/index'
+import type { ThemeState } from '@/pinia/use-global-store'
 
 defineOptions({
     name: 'LayoutTheme',
@@ -55,18 +56,12 @@ interface Option {
     value: any
     store: string
 }
-interface State {
-    style: string
-    primaryColor: string
-    primaryTextColor: string
-    menuType: string
-}
 
 const globalStore = useGlobalStore()
 
 const { showLogo, showTabs, expandOneMenu, theme } = $(storeToRefs(globalStore))
 // 只取值，不做computed
-const state = reactive<State>(theme.state)
+const state = reactive<ThemeState>(theme.state)
 
 const themeColorArr = [
     { color: '#409eff', textColor: '#fff', tip: '默认蓝' },
@@ -108,7 +103,7 @@ watch(state, () => {
     setTheme()
 })
 const drawer = ref(false)
-const options = reactive([
+const options = reactive<Option[]>([
     { name: '显示logo', value: showLogo, store: 'showLogo' },
     { name: '显示面包屑导航', value: showTabs, store: 'showTabs' },
     { name: '保持一个菜单展开', value: expandOneMenu, store: 'expandOneMenu' },

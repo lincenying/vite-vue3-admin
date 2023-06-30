@@ -1,8 +1,8 @@
 import type { AxiosError, AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 import axios from 'axios'
-import { ElMessage } from 'element-plus'
+import { ElMessage } from '@/config/element'
 
-const baseURL: any = import.meta.env.VITE_BASE_URL
+const baseURL: string = import.meta.env.VITE_BASE_URL
 
 const service: AxiosInstance = axios.create({
     baseURL,
@@ -50,7 +50,7 @@ function showError(error: any) {
     if (error.code === 403) {
     // to re-login
 
-        useUserStore().loginOut()
+        userStoreWithout().loginOut()
     }
     else {
         ElMessage({

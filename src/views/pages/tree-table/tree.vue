@@ -9,35 +9,34 @@
       ></el-input> -->
         </div>
         <div class="list system-scrollbar">
-            <el-tree ref="tree" class="my-tree" :data="data" :props="defaultProps" :expand-on-click-node="false" node-key="id" highlight-current default-expand-all @node-click="handleNodeClick" />
+            <el-tree ref="tree" class="my-tree" :data="treeData" :props="defaultProps" :expand-on-click-node="false" node-key="id" highlight-current default-expand-all @node-click="handleNodeClick" />
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
-import { getTree } from '@/api/table'
-
 defineOptions({
     name: 'Tree',
     inheritAttrs: true,
 })
 
-const data = ref([])
+const treeData = ref<any[]>([])
 const tree: Ref<any | null> = ref(null)
 const defaultProps = {
     children: 'children',
     label: 'label',
 }
 const active: any = inject('active')
-function getTreeData() {
+async function getTreeData() {
     const params = {}
-    getTree(params).then((res) => {
-        data.value = res.data
-        active.value = res.data[0]
+    const { code, data } = await $api.post<any[]>('/table/tree', params)
+    if (code === 200) {
+        treeData.value = data
+        active.value = data[0]
         nextTick(() => {
             tree.value && tree.value.setCurrentKey(active.value.id)
         })
-    })
+    }
 }
 function handleNodeClick(row: any) {
     active.value = row

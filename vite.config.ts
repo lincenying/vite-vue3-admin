@@ -29,7 +29,11 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
             host: '0.0.0.0',
             open: true,
             proxy: { // 代理配置
-                '/dev': 'https://www.fastmock.site/mock/48cab8545e64d93ff9ba66a87ad04f6b/',
+                '/api': {
+                    target: 'http://127.0.0.1:3001',
+                    changeOrigin: true,
+                    rewrite: (path: string) => path.replace(/^\/api/, '/mock'),
+                },
             },
         },
         build: {

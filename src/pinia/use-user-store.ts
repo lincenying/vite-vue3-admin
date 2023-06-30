@@ -1,8 +1,6 @@
 import { acceptHMRUpdate } from 'pinia'
 import { userStorage } from '@/composables/storage'
 
-import { getInfoApi, loginApi, loginOutApi } from '@/api/user'
-
 export interface UserState {
     token: string
     info: Obj
@@ -22,46 +20,32 @@ const useUserStore = defineStore('userStore', () => {
     }
 
     // login by login.vue
-    function login(params: any) {
-        return new Promise((resolve, reject) => {
-            loginApi(params)
-                .then((res) => {
-                    tokenChange(res.data.token)
-                    getInfo({ token: res.data.token })
-                        .then(() => {
-                            resolve(res.data.token)
-                        })
-                }).catch((err) => {
-                    reject(err)
-                })
-        })
+    async function login(params: any) {
+        const { code, data } = await $api.post<any>('/user/login', params)
+        if (code === 200 && data) {
+            await getInfo({ token: data.token })
+            return data.token
+        }
+        return null
     }
     // get user info after user logined
-    function getInfo(params: any) {
-        return new Promise((resolve) => {
-            getInfoApi(params)
-                .then((res) => {
-                    infoChange(res.data.info)
-                    resolve(res.data.info)
-                })
-        })
+    async function getInfo(params: any) {
+        const { code, data } = await $api.post<any>('/user/info', params)
+        if (code === 200) {
+            infoChange(data.info)
+            return data.info
+        }
+        return null
     }
 
     // login out the system after user click the loginOut button
-    function loginOut() {
-        loginOutApi()
-            .then(() => {
+    async function loginOut() {
+        await $api.post('/user/out')
 
-            })
-            .catch(() => {
-
-            })
-            .finally(() => {
-                localStorage.removeItem('tabs')
-                localStorage.removeItem('vuex')
-                sessionStorage.removeItem('vuex')
-                location.reload()
-            })
+        localStorage.removeItem('tabs')
+        localStorage.removeItem('vuex')
+        sessionStorage.removeItem('vuex')
+        location.reload()
     }
 
     return {

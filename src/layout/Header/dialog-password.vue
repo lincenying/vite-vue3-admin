@@ -18,8 +18,7 @@
 import type { Ref } from 'vue'
 import { ref } from 'vue'
 import type { FormInstance } from 'element-plus'
-import { ElMessage } from 'element-plus'
-import { passwordChange } from '@/api/user'
+import { ElMessage } from '@/config/element'
 import type { LayerType, LayoutDialogProps } from '@/components/components.types'
 
 const props = withDefaults(defineProps<LayoutDialogProps>(), {
@@ -55,24 +54,24 @@ const rules = {
 }
 function submit() {
     if (ruleForm.value) {
-        ruleForm.value.validate((valid) => {
+        ruleForm.value.validate(async (valid) => {
             if (valid) {
                 const params = {
                     id: form.value.userId,
                     old: form.value.old,
                     new: form.value.new,
                 }
-                passwordChange(params)
-                    .then(() => {
-                        ElMessage({
-                            type: 'success',
-                            message: '密码修改成功，即将跳转到登录页面',
-                        })
-                        layerDom.value && layerDom.value.close()
-                        setTimeout(() => {
-                            userStore.loginOut()
-                        }, 2000)
+                const { code } = await $api.post<void>('/user/passwordChange', params)
+                if (code === 200) {
+                    ElMessage({
+                        type: 'success',
+                        message: '密码修改成功，即将跳转到登录页面',
                     })
+                    layerDom.value && layerDom.value.close()
+                    setTimeout(() => {
+                        userStore.loginOut()
+                    }, 2000)
+                }
             }
             else {
                 return false

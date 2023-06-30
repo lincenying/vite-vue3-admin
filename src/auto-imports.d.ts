@@ -53,6 +53,7 @@ declare global {
   const isRef: typeof import('vue')['isRef']
   const keepAliveStorage: typeof import('./composables/storage')['keepAliveStorage']
   const keepAliveStoreWithout: typeof import('./pinia/use-keep-alive-store')['keepAliveStoreWithout']
+  const loginMsgBox: typeof import('./composables/message')['loginMsgBox']
   const makeDestructurable: typeof import('@vueuse/core')['makeDestructurable']
   const markRaw: typeof import('vue')['markRaw']
   const nextTick: typeof import('vue')['nextTick']
@@ -99,6 +100,7 @@ declare global {
   const shallowReactive: typeof import('vue')['shallowReactive']
   const shallowReadonly: typeof import('vue')['shallowReadonly']
   const shallowRef: typeof import('vue')['shallowRef']
+  const showMsg: typeof import('./composables/message')['showMsg']
   const storeToRefs: typeof import('pinia')['storeToRefs']
   const syncRef: typeof import('@vueuse/core')['syncRef']
   const syncRefs: typeof import('@vueuse/core')['syncRefs']
@@ -361,6 +363,7 @@ declare module 'vue' {
     readonly isRef: UnwrapRef<typeof import('vue')['isRef']>
     readonly keepAliveStorage: UnwrapRef<typeof import('./composables/storage')['keepAliveStorage']>
     readonly keepAliveStoreWithout: UnwrapRef<typeof import('./pinia/use-keep-alive-store')['keepAliveStoreWithout']>
+    readonly loginMsgBox: UnwrapRef<typeof import('./composables/message')['loginMsgBox']>
     readonly makeDestructurable: UnwrapRef<typeof import('@vueuse/core')['makeDestructurable']>
     readonly markRaw: UnwrapRef<typeof import('vue')['markRaw']>
     readonly nextTick: UnwrapRef<typeof import('vue')['nextTick']>
@@ -406,6 +409,7 @@ declare module 'vue' {
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
+    readonly showMsg: UnwrapRef<typeof import('./composables/message')['showMsg']>
     readonly storeToRefs: UnwrapRef<typeof import('pinia')['storeToRefs']>
     readonly syncRef: UnwrapRef<typeof import('@vueuse/core')['syncRef']>
     readonly syncRefs: UnwrapRef<typeof import('@vueuse/core')['syncRefs']>
@@ -662,6 +666,7 @@ declare module '@vue/runtime-core' {
     readonly isRef: UnwrapRef<typeof import('vue')['isRef']>
     readonly keepAliveStorage: UnwrapRef<typeof import('./composables/storage')['keepAliveStorage']>
     readonly keepAliveStoreWithout: UnwrapRef<typeof import('./pinia/use-keep-alive-store')['keepAliveStoreWithout']>
+    readonly loginMsgBox: UnwrapRef<typeof import('./composables/message')['loginMsgBox']>
     readonly makeDestructurable: UnwrapRef<typeof import('@vueuse/core')['makeDestructurable']>
     readonly markRaw: UnwrapRef<typeof import('vue')['markRaw']>
     readonly nextTick: UnwrapRef<typeof import('vue')['nextTick']>
@@ -707,6 +712,7 @@ declare module '@vue/runtime-core' {
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
+    readonly showMsg: UnwrapRef<typeof import('./composables/message')['showMsg']>
     readonly storeToRefs: UnwrapRef<typeof import('pinia')['storeToRefs']>
     readonly syncRef: UnwrapRef<typeof import('@vueuse/core')['syncRef']>
     readonly syncRefs: UnwrapRef<typeof import('@vueuse/core')['syncRefs']>

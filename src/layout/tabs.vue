@@ -1,8 +1,8 @@
 <template>
     <div class="tabs">
-        <ElScrollbar ref="scrollbarDom" class="scroll-container tags-view-container" @wheel.passive="handleWhellScroll" @scroll="handleScroll">
+        <el-scrollbar ref="scrollbarDom" class="scroll-container tags-view-container" @wheel.passive="handleWhellScroll" @scroll="handleScroll">
             <tabsItem v-for="menu in tabsStorage" :key="menu.meta.title" :menu="menu" :active="activeMenu.path === menu.path" @close="delMenu(menu)" @reload="handlePageReload" />
-        </ElScrollbar>
+        </el-scrollbar>
         <div class="handle">
             <div id="vueAdminBoxTabRefresh" @click="handlePageReload" />
             <div id="vueAdminBoxTabCloseSelf" @click="handleCloseCurrentRoute" />
@@ -29,7 +29,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ElScrollbar } from 'element-plus'
 import { ArrowDown, CircleClose, FullScreen, RefreshLeft } from '@element-plus/icons'
 import type { AnyFn } from '@vueuse/core'
 import tabsItem from './tabs/item.vue'

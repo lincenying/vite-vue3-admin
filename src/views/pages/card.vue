@@ -39,7 +39,6 @@
 <script lang="ts" setup>
 import type { Ref } from 'vue'
 import { onMounted, reactive, ref } from 'vue'
-import { getData } from '@/api/card'
 import type { LayoutTablePage } from '@/components/components.types'
 
 defineOptions({
@@ -55,25 +54,19 @@ const page: LayoutTablePage = reactive({
     size: 20,
     total: 0,
 })
-function getListData() {
+async function getListData() {
     loading.value = true
     const params = {
         page: page.index,
         pageSize: page.size,
     }
-    getData(params)
-        .then((res) => {
-            page.total = res.data.pager.total
-            list.value = res.data.list
-        })
-        .catch(() => {
-            list.value = []
-            page.index = 1
-            page.total = 0
-        })
-        .finally(() => {
-            loading.value = false
-        })
+    const { code, data } = await $api.post<ResponseDataLists<any[]>>('/card/list', params)
+    if (code === 200) {
+        page.total = data.pager.total
+        list.value = data.list
+    }
+
+    loading.value = false
 }
 // 分页相关：监听页码切换事件
 function handleCurrentChange(val: number) {

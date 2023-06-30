@@ -30,9 +30,8 @@
 
 <script lang="ts" setup>
 import type { FormInstance } from 'element-plus'
-import { ElMessage } from 'element-plus'
+import { ElMessage } from '@/config/element'
 import layoutDialog from '@/components/layout-dialog.vue'
-import { add, update } from '@/api/table'
 import type { LayerType, LayoutDialogProps } from '@/components/components.types'
 
 const props = withDefaults(defineProps<LayoutDialogProps>(), {
@@ -86,28 +85,28 @@ function submit() {
     }
 }
 // 新增提交事件
-function addForm(params: object) {
-    add(params)
-        .then(() => {
-            ElMessage({
-                type: 'success',
-                message: '新增成功',
-            })
-            emit('getTableData', true)
-            layerDom.value && layerDom.value.close()
+async function addForm(params: object) {
+    const { code } = await $api.post('/user/add', params)
+    if (code === 200) {
+        ElMessage({
+            type: 'success',
+            message: '新增成功',
         })
+        emit('getTableData', true)
+        layerDom.value && layerDom.value.close()
+    }
 }
 // 编辑提交事件
-function updateForm(params: object) {
-    update(params)
-        .then(() => {
-            ElMessage({
-                type: 'success',
-                message: '编辑成功',
-            })
-            emit('getTableData', false)
-            layerDom.value && layerDom.value.close()
+async function updateForm(params: object) {
+    const { code } = await $api.post('/user/update', params)
+    if (code === 200) {
+        ElMessage({
+            type: 'success',
+            message: '编辑成功',
         })
+        emit('getTableData', false)
+        layerDom.value && layerDom.value.close()
+    }
 }
 function onUpdate(payload: boolean) {
     emit('update', payload)
