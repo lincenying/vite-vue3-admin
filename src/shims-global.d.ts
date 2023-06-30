@@ -34,7 +34,7 @@ declare interface ResponseDataLists<T> {
 declare interface ResponseData<T> {
     data: T
     code: number
-    msg: string
+    message: string
     info?: string
 }
 

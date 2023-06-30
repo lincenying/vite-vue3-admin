@@ -21,7 +21,7 @@ export default [
                         total: 198,
                     },
                 },
-                msg: '',
+                message: 'success',
             }
         },
     },

@@ -455,7 +455,7 @@ export default [
                         },
                     ],
                 },
-                msg: '',
+                message: 'success',
             }
         },
     },

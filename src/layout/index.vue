@@ -13,7 +13,7 @@
             <el-main>
                 <router-view v-slot="{ Component, route }">
                     <transition :name="route.meta.transition || 'fade-transform'" mode="out-in">
-                        <keep-alive v-if="keepAliveComponentsName" :include="keepAliveComponentsName">
+                        <keep-alive v-if="keepAliveComponentsName" :include="keepAliveComponentsName as string[]">
                             <component :is="Component" :key="route.fullPath" />
                         </keep-alive>
                         <component :is="Component" v-else :key="route.fullPath" />

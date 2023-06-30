@@ -40,13 +40,14 @@ export default [
                     data: {
                         token: user.token,
                     },
+                    message: 'success',
                 }
             }
             else {
                 return {
                     code: 401,
                     data: {},
-                    msg: '用户名或密码错误',
+                    message: '用户名或密码错误',
                 }
             }
         },
@@ -65,13 +66,14 @@ export default [
                     data: {
                         info,
                     },
+                    message: 'success',
                 }
             }
             else {
                 return {
                     code: 403,
                     data: {},
-                    msg: '无访问权限',
+                    message: '无访问权限',
                 }
             }
         },
@@ -83,7 +85,7 @@ export default [
             return {
                 code: 200,
                 data: {},
-                msg: 'success',
+                message: 'success',
             }
         },
     },
@@ -94,7 +96,7 @@ export default [
             return {
                 code: 200,
                 data: {},
-                msg: 'success',
+                message: 'success',
             }
         },
     },

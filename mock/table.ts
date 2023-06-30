@@ -20,7 +20,7 @@ export default [
                         total: 198,
                     },
                 },
-                msg: '',
+                message: 'success',
             }
         },
     },
@@ -42,7 +42,7 @@ export default [
                         total: 100,
                     },
                 },
-                msg: '',
+                message: 'success',
             }
         },
     },
@@ -96,7 +96,7 @@ export default [
                         }],
                     }],
                 }],
-                msg: '',
+                message: 'success',
             }
         },
     },
@@ -107,7 +107,7 @@ export default [
             return {
                 code: 200,
                 data: {},
-                msg: '',
+                message: 'success',
             }
         },
     },
@@ -118,7 +118,7 @@ export default [
             return {
                 code: 200,
                 data: {},
-                msg: '',
+                message: 'success',
             }
         },
     },
@@ -129,7 +129,7 @@ export default [
             return {
                 code: 200,
                 data: {},
-                msg: '',
+                message: 'success',
             }
         },
     },
