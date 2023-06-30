@@ -10,7 +10,7 @@
         <div class="right-box">
             <!-- 快捷功能按钮 -->
             <div class="function-list">
-                <div class="function-list-item hidden-sm-and-down"><FullScreen /></div>
+                <div class="hidden-sm-and-down function-list-item"><FullScreen /></div>
                 <div class="function-list-item hidden-sm-and-down"><LayoutTheme /></div>
                 <div class="function-list-item hidden-sm-and-down"><Github /></div>
             </div>
@@ -23,7 +23,7 @@
                     </span>
                     <template #dropdown>
                         <el-dropdown-menu>
-                            <el-dropdown-item @click="showPasswordLayer">修改密码</el-dropdown-item>
+                            <el-dropdown-item @click="showPasswordDialog">修改密码</el-dropdown-item>
                             <el-dropdown-item @click="loginOut">退出登录</el-dropdown-item>
                         </el-dropdown-menu>
                     </template>
@@ -67,7 +67,7 @@ function loginOut() {
     userStore.loginOut()
 }
 
-function showPasswordLayer() {
+function showPasswordDialog() {
     layer.show = true
 }
 </script>

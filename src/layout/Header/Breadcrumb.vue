@@ -1,5 +1,5 @@
 <template>
-    <el-breadcrumb class="hidden-sm-and-down app-breadcrumb" separator="/">
+    <el-breadcrumb class="app-breadcrumb hidden-sm-and-down" separator="/">
         <transition-group appear name="breadcrumb">
             <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
                 <span v-if="item.redirect === 'noRedirect' || index === levelList.length - 1" class="no-redirect">{{ item.meta.title }}</span>
@@ -19,15 +19,17 @@ defineOptions({
     name: 'BreadCrumb',
 })
 
-const levelList: Ref<RouteLocationMatched[]> = ref([])
+const levelList = ref<RouteLocationMatched[]>([])
 const route = useRoute()
 const router = useRouter()
+
 function getBreadcrumb(): void {
     const matched = route.matched.filter(item => item.meta && item.meta.title)
     // const first = matched[0]
     levelList.value = matched.filter(item => item.meta && item.meta.title && item.meta.breadcrumb !== false)
 }
 getBreadcrumb()
+
 watch(
     () => route.path,
     () => getBreadcrumb(),

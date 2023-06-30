@@ -16,7 +16,6 @@ defineOptions({
 const { to } = $(toRefs(props))
 
 const globalStore = useGlobalStore()
-
 const { isCollapse } = $(storeToRefs(globalStore))
 
 const type = ref('router-link')

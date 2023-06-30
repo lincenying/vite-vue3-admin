@@ -7,6 +7,7 @@ const route: Route[] = [
         redirect: '/pages/crudTable',
         level: 1,
         meta: { title: '页面', icon: 'sfont system-page' },
+        children: [],
         alwayShow: true,
     },
     {
@@ -14,24 +15,28 @@ const route: Route[] = [
         path: '/pages/crudTable',
         component: createNameComponent(() => import('@/views/pages/crud-table.vue')),
         meta: { title: '业务表格', cache: true, roles: ['admin', 'editor'] },
+        children: [],
     },
     {
         parentPath: '/pages',
         path: '/pages/categoryTable',
         component: createNameComponent(() => import('@/views/pages/category-table.vue')),
         meta: { title: '分类联动表格', cache: true, roles: ['admin'] },
+        children: [],
     },
     {
         parentPath: '/pages',
         path: '/pages/treeTable',
         component: createNameComponent(() => import('@/views/pages/tree-table.vue')),
         meta: { title: '树联动表格', cache: true },
+        children: [],
     },
     {
         parentPath: '/pages',
         path: '/pages/card',
         component: createNameComponent(() => import('@/views/pages/card.vue')),
         meta: { title: '卡片列表', cache: true },
+        children: [],
     },
 ]
 

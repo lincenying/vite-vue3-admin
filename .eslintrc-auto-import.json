@@ -307,6 +307,11 @@
     "userStorage": true,
     "tabsStorage": true,
     "loginMsgBox": true,
-    "showMsg": true
+    "showMsg": true,
+    "changeTitle": true,
+    "closeAllTab": true,
+    "closeCurrentTab": true,
+    "closeOtherTab": true,
+    "refreshCurrentTab": true
   }
 }

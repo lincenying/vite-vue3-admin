@@ -1,16 +1,11 @@
 <template>
     <div>
-        <el-dialog
-            v-model="show"
-            :title="layer.title"
-            :width="layer.width"
-            center
-        >
+        <el-dialog v-model="show" :title="layer.title" :width="layer.width" center>
             <slot />
             <template v-if="layer.showButton" #footer>
                 <div>
-                    <el-button type="primary" @click="onConfirm">确认</el-button>
-                    <el-button @click="onClose">取消</el-button>
+                    <el-button type="primary" @click="emit('confirm')">确认</el-button>
+                    <el-button @click="show = false">取消</el-button>
                 </div>
             </template>
         </el-dialog>
@@ -35,12 +30,7 @@ defineOptions({
 })
 
 const show = ref<boolean>(props.layer.show)
-function onConfirm() {
-    emit('confirm')
-}
-function onClose() {
-    show.value = false
-}
+
 watch(show, () => {
     emit('update', show.value)
 })

@@ -31,9 +31,10 @@
 
 <script lang="ts" setup>
 import AppLink from './link.vue'
+import type { Route } from '@/router/index.type'
 
 const props = defineProps<{
-    menu: Obj
+    menu: Route
     basePath?: string
 }>()
 
@@ -50,7 +51,7 @@ const showMenuType = computed(() => {
         return 2
     else if (menu.children && menu.children.length === 1 && !menu.alwayShow)
         return 1
-    else return 0
+    return 0
 })
 </script>
 

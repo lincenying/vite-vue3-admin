@@ -19,7 +19,7 @@ export type Route = {
     /** @name 是否隐藏菜单，可选 @description 这个属性通常用于详情页面、404、401页面等不需要显示在总菜单里面的 @default false */
     hideMenu?: boolean
     /** @name 路由子集，和Route类型一致的数组，可选 */
-    children?: Route[]
+    children: Route[]
     level?: number
     parentPath?: string
 } & RouteRecordRaw

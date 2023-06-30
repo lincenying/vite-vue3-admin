@@ -1,4 +1,5 @@
 import { StorageSerializers } from '@vueuse/core'
+import type { RouteRecordName } from 'vue-router'
 import type { AppState } from '@/pinia/use-global-store'
 import type { KeepAliveStoreType } from '@/pinia/use-keep-alive-store'
 import type { UserState } from '@/pinia/use-user-store'
@@ -7,10 +8,12 @@ export interface TabsType {
     path: string
     meta: {
         title: string
-        label: string
-        hideClose: boolean
+        label?: string
+        hideClose?: boolean
+        hideTabs?: boolean
+        cache?: boolean
     }
-    name?: string
+    name?: RouteRecordName | Nullable<string>
 }
 
 export const globalStorage = useStorage<Nullable<AppState>>('__global__', null, undefined, { serializer: StorageSerializers.object })

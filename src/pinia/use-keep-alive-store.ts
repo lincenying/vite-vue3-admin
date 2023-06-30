@@ -1,7 +1,8 @@
 import { acceptHMRUpdate } from 'pinia'
+import type { RouteRecordName } from 'vue-router'
 
 export interface KeepAliveStoreType {
-    keepAliveComponentsName: string[]
+    keepAliveComponentsName: RouteRecordName[]
 }
 
 const useKeepAliveStore = defineStore('keepAliveStore', () => {
@@ -10,13 +11,13 @@ const useKeepAliveStore = defineStore('keepAliveStore', () => {
     })
 
     // 重置，Push, splice keep-alive对象
-    function setKeepAliveComponentsName(nameArr: string[]) {
+    function setKeepAliveComponentsName(nameArr: RouteRecordName[]) {
         state.keepAliveComponentsName = nameArr
     }
-    function addKeepAliveComponentsName(name: string) {
+    function addKeepAliveComponentsName(name: RouteRecordName) {
         state.keepAliveComponentsName.push(name)
     }
-    function delKeepAliveComponentsName(name: string) {
+    function delKeepAliveComponentsName(name: RouteRecordName) {
         const key = state.keepAliveComponentsName.indexOf(name)
         if (key !== -1) {
             state.keepAliveComponentsName.splice(key, 1)

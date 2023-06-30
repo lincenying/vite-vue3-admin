@@ -10,5 +10,10 @@ declare module 'vue-router' {
         title: string
         breadcrumb?: boolean
         transition?: string
+        activeMenu?: string
+        label?: string
+        hideClose?: boolean
+        hideTabs?: boolean
+        cache?: boolean
     }
 }

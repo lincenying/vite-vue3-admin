@@ -31,32 +31,25 @@ const { isCollapse, expandOneMenu } = $(storeToRefs(globalStore))
 const allRoutes = useRouter().options.routes as Route[]
 
 function getChildren(parentPath: string): Route[] {
-    return allRoutes
-        .filter(item => item.parentPath === parentPath && !item.hideMenu)
-        .map((item) => {
-            return {
-                ...item,
-                children: getChildren(item.path),
-            }
-        })
-}
-
-const routes = allRoutes
-    .filter(item => item.level === 1 && !item.hideMenu)
-    .map((item) => {
+    return allRoutes.filter(item => item.parentPath === parentPath && !item.hideMenu).map((item) => {
         return {
             ...item,
             children: getChildren(item.path),
         }
     })
+}
+
+const routes = allRoutes.filter(item => item.level === 1 && !item.hideMenu).map((item) => {
+    return {
+        ...item,
+        children: getChildren(item.path),
+    }
+})
 
 const route = useRoute()
-const activeMenu: any = computed(() => {
+const activeMenu = computed(() => {
     const { meta, path } = route
-    if (meta.activeMenu)
-        return meta.activeMenu
-
-    return path
+    return meta.activeMenu || path
 })
 onMounted(() => {})
 </script>

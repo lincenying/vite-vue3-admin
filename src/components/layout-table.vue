@@ -1,14 +1,6 @@
 <template>
     <div class="system-table-box">
-        <el-table
-            v-bind="$attrs"
-            ref="table"
-            class="system-table"
-            border
-            height="100%"
-            :data="data"
-            @selection-change="handleSelectionChange"
-        >
+        <ElTable v-bind="$attrs" ref="tableRef" class="system-table" border height="100%" :data="data" @selection-change="handleSelectionChange">
             <el-table-column v-if="showSelection" type="selection" align="center" width="50" />
             <el-table-column v-if="showIndex" label="序号" width="60" align="center">
                 <template #default="scope">
@@ -16,7 +8,7 @@
                 </template>
             </el-table-column>
             <slot />
-        </el-table>
+        </ElTable>
         <el-pagination
             v-if="showPage"
             v-model:current-page="page.index"
@@ -33,6 +25,7 @@
 </template>
 
 <script lang="ts" setup>
+import type { TableInstance } from 'element-plus'
 import type { LayoutTableProps } from './components.types'
 
 const props = withDefaults(defineProps<LayoutTableProps>(), {
@@ -52,20 +45,12 @@ defineOptions({
     name: 'LayoutTable',
 })
 
-const {
-    data,
-    showIndex,
-    showSelection,
-    showPage,
-    page,
-    pageLayout,
-    pageSizes,
-} = $(toRefs(props))
+const { data, showIndex, showSelection, showPage, page, pageLayout, pageSizes } = $(toRefs(props))
 
-const table: any = ref(null)
-let timer: any = null
+const tableRef = ref<TableInstance>()
+let timer: Nullable<string> = null
 // 分页相关：监听页码切换事件
-function handleCurrentChange(val: Number) {
+function handleCurrentChange(val: number) {
     if (timer) {
         emit('updateProps', { key: 'index', value: 1 })
     }
@@ -75,7 +60,7 @@ function handleCurrentChange(val: Number) {
     }
 }
 // 分页相关：监听单页显示数量切换事件
-function handleSizeChange(val: Number) {
+function handleSizeChange(val: number) {
     timer = 'work'
     setTimeout(() => {
         timer = null
@@ -89,25 +74,25 @@ function handleSelectionChange(val: []) {
 }
 // 解决BUG：keep-alive组件使用时，表格浮层高度不对的问题
 onActivated(() => {
-    table.value.doLayout()
+    tableRef.value?.doLayout()
 })
 </script>
 
 <style lang="scss" scoped>
-  .system-table-box {
+.system-table-box {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     height: 100%;
     .system-table {
-      flex: 1;
-      height: 100%;
+        flex: 1;
+        height: 100%;
     }
 
     .system-page {
-      margin-top: 20px;
+        margin-top: 20px;
     }
-  }
+}
 </style>
 ./components.types

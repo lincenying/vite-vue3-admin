@@ -15,8 +15,6 @@
 </template>
 
 <script lang="ts" setup>
-import type { Ref } from 'vue'
-import { ref } from 'vue'
 import type { FormInstance } from 'element-plus'
 import { ElMessage } from '@/config/element'
 import type { LayerType, LayoutDialogProps } from '@/components/components.types'
@@ -39,8 +37,8 @@ const userStore = useUserStore()
 
 const { layer } = $(toRefs(props))
 
-const ruleForm: Ref<FormInstance | null> = ref(null)
-const layerDom: Ref<LayerType | null> = ref(null)
+const ruleForm = ref<Nullable<FormInstance>>(null)
+const layerDom = ref<Nullable<LayerType>>(null)
 
 const form = ref({
     userId: '123465',

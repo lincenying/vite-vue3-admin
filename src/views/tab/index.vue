@@ -14,8 +14,6 @@
 </template>
 
 <script lang="ts" setup>
-import { closeAllTab, closeCurrentTab, closeOtherTab, refreshCurrentTab } from '@/utils/tab'
-
 defineOptions({
     name: 'TabIndex',
     inheritAttrs: true,

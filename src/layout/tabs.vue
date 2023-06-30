@@ -31,6 +31,8 @@
 <script lang="ts" setup>
 import { ArrowDown, CircleClose, FullScreen, RefreshLeft } from '@element-plus/icons'
 import type { AnyFn } from '@vueuse/core'
+import type { ScrollbarInstance } from 'element-plus'
+import type { RouteRecordName } from 'vue-router'
 import tabsItem from './tabs/item.vue'
 import type { TabsType } from '@/composables/storage'
 
@@ -47,15 +49,20 @@ const { contentFullScreen } = $(storeToRefs(globalStore))
 
 const route = useRoute()
 const router = useRouter()
-const scrollbarDom = ref<InstanceType<typeof ElScrollbar>>()
+const scrollbarDom = ref<ScrollbarInstance>()
 const scrollLeft = ref(0)
-const defaultMenu = {
+
+const defaultMenu: TabsType = {
     path: '/dashboard',
     meta: { title: '首页', hideClose: true },
-} as TabsType
+}
+
 const currentDisabled = computed(() => route.path === defaultMenu.path)
 
-let activeMenu: any = reactive({ path: '' })
+let activeMenu = reactive<TabsType>({
+    path: '',
+    meta: { title: '', hideClose: true },
+})
 
 if (tabsStorage.value?.length === 0) {
     // 判断之前有没有调用过
@@ -82,8 +89,8 @@ function handlePageReload() {
 // 关闭当前标签，首页不关闭
 function handleCloseCurrentRoute() {
     if (route.path !== defaultMenu.path) {
-        const tab = document.getElementById('vueAdminBoxTabCloseSelf')
-        const nextPath = tab?.getAttribute('nextPath')
+        const tabElement = document.getElementById('vueAdminBoxTabCloseSelf')
+        const nextPath = tabElement?.getAttribute('nextPath')
         delMenu(route, nextPath)
     }
 }
@@ -104,12 +111,12 @@ function handleCloseAllRoute() {
 }
 
 // 添加新的菜单项
-function addMenu(menu: any) {
+function addMenu(menu: TabsType) {
     const { path, meta, name } = menu
     if (meta.hideTabs || !meta.title)
         return
 
-    const hasMenu = tabsStorage.value.some((obj: any) => {
+    const hasMenu = tabsStorage.value.some((obj) => {
         return obj.path === path
     })
     if (!hasMenu) {
@@ -140,7 +147,7 @@ function delMenu(menu: any, nextPath?: string | null) {
 }
 
 // 初始化activeMenu
-function initMenu(menu: object) {
+function initMenu(menu: TabsType) {
     activeMenu = menu
     nextTick(() => {
         setPosition()
@@ -174,9 +181,10 @@ function setPosition() {
 
 // 配置需要缓存的数据
 function setKeepAliveData() {
-    const keepAliveNames: string[] = []
-    tabsStorage.value.forEach((menu: any) => {
-        menu.meta && menu.meta.cache && menu.name && keepAliveNames.push(menu.name)
+    const keepAliveNames: RouteRecordName[] = []
+    tabsStorage.value.forEach((menu) => {
+        if (menu.meta && menu.meta.cache && menu.name)
+            keepAliveNames.push(menu.name)
     })
     keepAliveStore.setKeepAliveComponentsName(keepAliveNames)
 }

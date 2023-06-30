@@ -27,6 +27,7 @@ export function showMsg(config: ConfigType) {
     }
     ElMessage[type](content)
 }
+
 export function loginMsgBox(content: string, pathname: string) {
     ElMessageBox.alert(content, '提示', {
         confirmButtonText: '确定',

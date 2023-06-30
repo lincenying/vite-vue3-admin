@@ -18,8 +18,7 @@ import Dashboard from './modules/dashboard'
 import Pages from './modules/pages'
 import Menu from './modules/menu'
 import SystemManage from './modules/system-manage'
-import { changeTitle } from '@/utils/system/title'
-import NProgress from '@/utils/system/nprogress'
+import NProgress from '@/utils/nprogress'
 
 // 引入不需要权限的modules
 

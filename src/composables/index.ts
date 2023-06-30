@@ -1,7 +1,6 @@
-/*
- * @Date: 2022-09-25 20:05:01
- * @Description: tab面板的操作方法
- */
+export function changeTitle(name: string) {
+    document.title = `${name}-后台管理系统`
+}
 
 /** 关闭当前标签 */
 export function closeCurrentTab(nextPath?: string) {

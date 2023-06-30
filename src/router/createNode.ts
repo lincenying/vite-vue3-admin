@@ -2,7 +2,7 @@
 // 2. 用于解决transition动画内部结点只能为根元素的问题，单文件可写多结点
 import { type DefineComponent, createVNode } from 'vue'
 import reload from './reload.vue'
-import NProgress from '@/utils/system/nprogress'
+import NProgress from '@/utils/nprogress'
 
 export function createNameComponent(component: () => Promise<any>): () => Promise<DefineComponent<{}, {}, any>> {
     return () => {
