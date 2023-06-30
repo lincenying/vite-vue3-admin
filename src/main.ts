@@ -11,7 +11,8 @@ import 'element-plus/theme-chalk/display.css'
 
 // 引入基于断点的隐藏类
 // css初始化
-import './assets/style/common.scss' // 公共css
+import './assets/style/common.scss'// 公共css
+import './assets/style/element.scss'
 import './theme/modules/chinese/index.scss'
 
 import App from './App.vue'

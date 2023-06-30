@@ -9,7 +9,7 @@
                 <div class="theme-icon-content-header" :style="{ 'background-color': header }" />
                 <div class="theme-icon-content-main" :style="{ 'background-color': main }">
                     <div v-if="active === name" class="active">
-                        <i class="iconfont system-success" :style="{ color: activeColor }" />
+                        <i class="iconfont icon-chenggong" :style="{ color: activeColor }" />
                     </div>
                 </div>
             </div>

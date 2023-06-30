@@ -69,6 +69,9 @@ onMounted(() => {})
         .el-sub-menu {
             background-color: var(--system-menu-background) !important;
         }
+        .el-menu-item i {
+            line-height: 1;
+        }
         .el-menu-item i,
         .el-menu-item-group__title,
         .el-sub-menu__title i {

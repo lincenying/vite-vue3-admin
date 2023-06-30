@@ -8,7 +8,7 @@ const route: Route[] = [
         level: 1,
         meta: {
             title: '首页',
-            icon: 'iconfont system-home',
+            icon: 'iconfont icon-shouye',
             hideTabs: true,
         },
         alwayShow: true,
@@ -18,7 +18,7 @@ const route: Route[] = [
         parentPath: '/',
         path: '/dashboard',
         component: createNameComponent(() => import('@/views/dashboard/index.vue')),
-        meta: { title: 'Dashboard', icon: 'iconfont system-home', hideClose: true },
+        meta: { title: 'Dashboard', icon: 'iconfont icon-dashboard', hideClose: true },
         children: [],
     },
 ]

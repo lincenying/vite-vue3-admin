@@ -14,15 +14,15 @@
                 <el-form class="form">
                     <el-input v-model="form.name" size="large" placeholder="用户名" type="text" maxlength="50">
                         <template #prepend>
-                            <i class="iconfont system-xingmingyonghumingnicheng" />
+                            <i class="iconfont icon-user" />
                         </template>
                     </el-input>
                     <el-input v-model="form.password" size="large" :type="passwordType" placeholder="密码" name="password" maxlength="50">
                         <template #prepend>
-                            <i class="iconfont system-mima" />
+                            <i class="iconfont icon-mima" />
                         </template>
                         <template #append>
-                            <i class="iconfont password-icon" :class="passwordType ? 'system-yanjing-guan' : 'system-yanjing'" @click="passwordTypeChange" />
+                            <i class="iconfont password-icon" :class="passwordType ? 'icon-yanjing_yincang' : 'icon-yanjing_xianshi'" @click="passwordTypeChange" />
                         </template>
                     </el-input>
 

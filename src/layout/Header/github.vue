@@ -1,5 +1,5 @@
 <template>
-    <a href="https://github.com/cmdparkour/vue-admin-box" target="_blank" title="访问github地址"><i class="iconfont system-github" /></a>
+    <a href="https://github.com/lincenying/vue3-admin" target="_blank" title="访问github地址"><i class="iconfont icon-github" /></a>
 </template>
 
 <script lang="ts" setup></script>
