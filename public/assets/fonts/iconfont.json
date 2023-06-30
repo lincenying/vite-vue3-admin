@@ -1,0 +1,107 @@
+{
+  "id": "4146438",
+  "name": "Vue3-Admin",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "8798016",
+      "name": "我的粉丝",
+      "font_class": "wodefensi",
+      "unicode": "e7d3",
+      "unicode_decimal": 59347
+    },
+    {
+      "icon_id": "9512711",
+      "name": "微博",
+      "font_class": "weibo",
+      "unicode": "e645",
+      "unicode_decimal": 58949
+    },
+    {
+      "icon_id": "10435333",
+      "name": "change_record_type",
+      "font_class": "change_1",
+      "unicode": "e647",
+      "unicode_decimal": 58951
+    },
+    {
+      "icon_id": "10937697",
+      "name": "赞",
+      "font_class": "good",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "15162772",
+      "name": "renjijiaohu",
+      "font_class": "renjijiaohu",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "27500507",
+      "name": "fensiguanli",
+      "font_class": "fensiguanli",
+      "unicode": "e622",
+      "unicode_decimal": 58914
+    },
+    {
+      "icon_id": "572583",
+      "name": "weixin",
+      "font_class": "weixin",
+      "unicode": "e638",
+      "unicode_decimal": 58936
+    },
+    {
+      "icon_id": "880321",
+      "name": "exchange",
+      "font_class": "exchange_2",
+      "unicode": "e6ad",
+      "unicode_decimal": 59053
+    },
+    {
+      "icon_id": "1272148",
+      "name": "评论",
+      "font_class": "pinglun",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "5092588",
+      "name": "exchange",
+      "font_class": "exchange_3",
+      "unicode": "e63e",
+      "unicode_decimal": 58942
+    },
+    {
+      "icon_id": "5835468",
+      "name": "好友",
+      "font_class": "haoyou",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "6235462",
+      "name": "点赞",
+      "font_class": "dianzan",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "7417089",
+      "name": "转发",
+      "font_class": "zhuanfa",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "7917573",
+      "name": "people",
+      "font_class": "people",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    }
+  ]
+}

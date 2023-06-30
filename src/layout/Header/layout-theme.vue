@@ -1,6 +1,6 @@
 <template>
     <div title="系统设置" @click="handleDrawerChange(true)">
-        <i class="sfont system-shezhi" />
+        <i class="iconfont system-shezhi" />
     </div>
     <el-drawer v-model="drawer" title="系统设置" size="300px" :show-close="false" direction="rtl">
         <h3>整体风格设置</h3>

@@ -2,7 +2,7 @@
     <el-tooltip class="item" effect="dark" :content="tip" placement="top">
         <div class="theme-color" :style="{ 'background-color': color }" @click="handleClick">
             <div v-if="active === color" class="active">
-                <i class="sfont system-success" :style="{ color: textColor }" />
+                <i class="iconfont system-success" :style="{ color: textColor }" />
             </div>
         </div>
     </el-tooltip>

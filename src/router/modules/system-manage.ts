@@ -6,7 +6,7 @@ const route: Route[] = [
         path: '/systemManage',
         redirect: '/systemManage/user',
         level: 1,
-        meta: { title: '系统管理', icon: 'sfont system-xitongzhuangtai' },
+        meta: { title: '系统管理', icon: 'iconfont system-xitongzhuangtai' },
         children: [],
         alwayShow: true,
     },

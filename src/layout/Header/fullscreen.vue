@@ -1,6 +1,6 @@
 <template>
     <div :title="isFullscreen ? '退出全屏' : '全屏'">
-        <i class="sfont" :class="isFullscreen ? 'system-quanping' : 'system-quanping1'" @click="toggle" />
+        <i class="iconfont" :class="isFullscreen ? 'system-quanping' : 'system-quanping1'" @click="toggle" />
     </div>
 </template>
 

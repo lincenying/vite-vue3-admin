@@ -6,7 +6,7 @@ const route: Route[] = [
         path: '/pages',
         redirect: '/pages/crudTable',
         level: 1,
-        meta: { title: '页面', icon: 'sfont system-page' },
+        meta: { title: '页面', icon: 'iconfont system-page' },
         children: [],
         alwayShow: true,
     },

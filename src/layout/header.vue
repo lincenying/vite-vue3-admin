@@ -3,14 +3,14 @@
         <div class="left-box">
             <!-- 收缩按钮 -->
             <div class="menu-icon" @click="opendStateChange">
-                <i class="sfont head-fold" :class="isCollapse ? 'system-s-unfold' : 'system-s-fold'" />
+                <i class="head-fold iconfont" :class="isCollapse ? 'icon-s-unfold' : 'icon-s-fold'" />
             </div>
             <Breadcrumb />
         </div>
         <div class="right-box">
             <!-- 快捷功能按钮 -->
             <div class="function-list">
-                <div class="hidden-sm-and-down function-list-item"><FullScreen /></div>
+                <div class="function-list-item hidden-sm-and-down"><FullScreen /></div>
                 <div class="function-list-item hidden-sm-and-down"><LayoutTheme /></div>
                 <div class="function-list-item hidden-sm-and-down"><Github /></div>
             </div>
@@ -19,7 +19,7 @@
                 <el-dropdown>
                     <span class="el-dropdown-link">
                         管理员
-                        <i class="sfont system-xiala" />
+                        <i class="iconfont icon-down" />
                     </span>
                     <template #dropdown>
                         <el-dropdown-menu>
