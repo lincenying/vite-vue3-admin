@@ -5,7 +5,7 @@ export default [
     {
         url: '/mock/system/user/list',
         method: 'post',
-        response: (opt: { body: { page: any; pageSize: any } }) => {
+        response: (opt: { body: { page: number; pageSize: number } }) => {
             const { page, pageSize } = opt.body
             return {
                 code: 200,

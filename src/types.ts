@@ -52,8 +52,8 @@ export interface UserListType {
     name: string
     password: string
     token: string
-    status: number
-    isAdmin: number
+    status?: number
+    isAdmin?: number
     info: {
         name: string
     }
