@@ -1,44 +1,9 @@
 import { acceptHMRUpdate } from 'pinia'
+import type { GlobalState, GlobalStateOption } from './store.types'
 import { globalStorage } from '@/composables/storage'
 
-interface Option<T> {
-    name: keyof optionKey<T>
-    value: optionValue<T>
-}
-
-type optionKey<T> = {
-    [name in keyof T]: string
-}
-
-interface optionValue<T> {
-    value: T[keyof T]
-}
-
-export interface ThemeState {
-    style: string
-    primaryColor: string
-    primaryTextColor: string
-    menuType: string
-}
-
-export interface AppState {
-    isCollapse: boolean
-    contentFullScreen: boolean
-    showLogo: boolean
-    fixedTop: boolean
-    showTabs: boolean
-    expandOneMenu: boolean
-    elementSize: '' | 'default' | 'small' | 'large'
-    lang: string
-    theme: {
-        state: ThemeState
-    }
-    menuList: Array<unknown>
-    [key: string]: unknown
-}
-
 const useGlobalStore = defineStore('globalStore', () => {
-    const state: AppState = reactive(globalStorage.value || {
+    const state: GlobalState = reactive(globalStorage.value || {
         isCollapse: false, // 侧边栏是否收缩展示
         contentFullScreen: false, // 内容是否可全屏展示
         showLogo: true, // 是否显示Logo
@@ -67,7 +32,7 @@ const useGlobalStore = defineStore('globalStore', () => {
     function menuListChange(arr: []) {
         state.menuList = arr
     }
-    function stateChange(option: Option<AppState>) {
+    function stateChange(option: GlobalStateOption<GlobalState>) {
         state[option.name] = option.value
     }
 

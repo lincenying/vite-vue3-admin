@@ -4,7 +4,7 @@ import { createNameComponent } from '../createNode'
 const route: Route[] = [
     {
         path: '/menu',
-        redirect: '/menu/menu-2',
+        redirect: '/menu/menu-1',
         alwayShow: true,
         level: 1,
         meta: { title: '多级嵌套菜单', icon: 'iconfont icon-caidan' },
@@ -13,7 +13,7 @@ const route: Route[] = [
     {
         parentPath: '/menu',
         path: '/menu/menu-1',
-        redirect: '/menu/menu-2',
+        redirect: '/menu/menu-1-1',
         meta: { title: '二级菜单1', icon: 'iconfont icon-yemian' },
         children: [],
     },

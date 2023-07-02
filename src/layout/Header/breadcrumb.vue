@@ -1,5 +1,5 @@
 <template>
-    <el-breadcrumb class="app-breadcrumb hidden-sm-and-down" separator="/">
+    <el-breadcrumb class="hidden-sm-and-down app-breadcrumb" separator="/">
         <transition-group appear name="breadcrumb">
             <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
                 <span v-if="item.redirect === 'noRedirect' || index === levelList.length - 1" class="no-redirect">{{ item.meta.title }}</span>
@@ -14,6 +14,7 @@
 <script lang="ts" setup>
 import type { RouteLocationMatched } from 'vue-router'
 import { useRoute, useRouter } from 'vue-router'
+import type { Route } from '@/router/index.type'
 
 defineOptions({
     name: 'BreadCrumb',
@@ -23,10 +24,22 @@ const levelList = ref<RouteLocationMatched[]>([])
 const route = useRoute()
 const router = useRouter()
 
+const allRoutes = router.options.routes as Route[]
+
+function getParentsRoute(arr: RouteLocationMatched[] = [], key: string) {
+    const obj = allRoutes.find(item => item.path === key)
+    arr.unshift(obj as RouteLocationMatched)
+    if (obj && obj.parentPath)
+        return getParentsRoute(arr, obj.parentPath)
+    return arr
+}
+
 function getBreadcrumb(): void {
     const matched = route.matched.filter(item => item.meta && item.meta.title)
-    // const first = matched[0]
-    levelList.value = matched.filter(item => item.meta && item.meta.title && item.meta.breadcrumb !== false)
+    if (matched && matched[0]) {
+        const fullMatched = getParentsRoute([], matched[0].path)
+        levelList.value = fullMatched.filter(item => item.meta && item.meta.title && item.meta.breadcrumb !== false)
+    }
 }
 getBreadcrumb()
 

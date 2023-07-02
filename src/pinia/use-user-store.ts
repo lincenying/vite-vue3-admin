@@ -1,10 +1,6 @@
 import { acceptHMRUpdate } from 'pinia'
+import type { UserState } from './store.types'
 import { userStorage } from '@/composables/storage'
-
-export interface UserState {
-    token: string
-    info: Obj
-}
 
 const useUserStore = defineStore('userStore', () => {
     const state: UserState = reactive(userStorage.value || {
@@ -38,13 +34,13 @@ const useUserStore = defineStore('userStore', () => {
         return null
     }
 
-    // login out the system after user click the loginOut button
-    async function loginOut() {
+    // login out the system after user click the logout button
+    async function logout() {
         await $api.post('/user/out')
 
-        localStorage.removeItem('tabs')
-        localStorage.removeItem('vuex')
-        sessionStorage.removeItem('vuex')
+        globalStorage.value = null
+        userStorage.value = null
+        tabsStorage.value = []
         location.reload()
     }
 
@@ -54,7 +50,7 @@ const useUserStore = defineStore('userStore', () => {
         infoChange,
         login,
         getInfo,
-        loginOut,
+        logout,
     }
 })
 

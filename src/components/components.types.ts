@@ -1,3 +1,5 @@
+import type { AnyFn } from '@vueuse/core'
+
 export interface LayoutDialogLayer<T = Obj> {
     show: boolean
     title: string
@@ -10,7 +12,7 @@ export interface LayoutDialogProps {
     layer: LayoutDialogLayer
 }
 export interface LayerType {
-    close: Function
+    close: AnyFn
 }
 
 export interface LayoutTablePage {

@@ -3,7 +3,7 @@ import type { ConfigEnv, UserConfigExport } from 'vite'
 import vuePlugin from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import VueMacros from 'unplugin-vue-macros'
-import { viteMockServe } from 'vite-plugin-mock'
+import { viteMockServe } from '@lincy/vite-plugin-mock'
 import UnoCSS from 'unocss/vite'
 import { warmup } from 'vite-plugin-warmup'
 
@@ -18,7 +18,6 @@ const alias: Record<string, string> = {
 }
 
 export default ({ command }: ConfigEnv): UserConfigExport => {
-    const prodMock = true
     return {
         base: './',
         resolve: {
@@ -74,13 +73,7 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
             }),
             viteMockServe({
                 mockPath: 'mock',
-                localEnabled: command === 'serve',
-                prodEnabled: command !== 'serve' && prodMock,
-                watchFiles: true,
-                injectCode: `
-                    import { setupProdMockServer } from '../mockProdServer';
-                    setupProdMockServer();
-                `,
+                enable: command === 'serve' || process.env.VITE_APP_ENV === 'test',
                 logger: true,
             }),
             ...Components(),

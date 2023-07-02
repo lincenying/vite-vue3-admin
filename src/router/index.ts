@@ -1,11 +1,3 @@
-/*
- * @Author: luoxi
- * @Date: 2022-01-25 09:51:12
- * @LastEditors: luoxi
- * @LastEditTime: 2022-01-25 12:25:51
- * @FilePath: \vue-admin-box\src\router\index.ts
- * @Description:
- */
 /**
  * @description 所有人可使用的参数配置列表
  * @params hideMenu: 是否隐藏当前路由结点不在导航中展示

@@ -67,7 +67,7 @@ function submit() {
                     })
                     layerDom.value && layerDom.value.close()
                     setTimeout(() => {
-                        userStore.loginOut()
+                        userStore.logout()
                     }, 2000)
                 }
             }

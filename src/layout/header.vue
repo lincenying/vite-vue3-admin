@@ -3,7 +3,7 @@
         <div class="left-box">
             <!-- 收缩按钮 -->
             <div class="menu-icon" @click="opendStateChange">
-                <i class="head-fold iconfont" :class="isCollapse ? 'icon-s-unfold' : 'icon-s-fold'" />
+                <i class="iconfont head-fold" :class="isCollapse ? 'icon-s-unfold' : 'icon-s-fold'" />
             </div>
             <Breadcrumb />
         </div>
@@ -23,8 +23,8 @@
                     </span>
                     <template #dropdown>
                         <el-dropdown-menu>
-                            <el-dropdown-item @click="showPasswordDialog">修改密码</el-dropdown-item>
-                            <el-dropdown-item @click="loginOut">退出登录</el-dropdown-item>
+                            <el-dropdown-item @click="handleModifyPass">修改密码</el-dropdown-item>
+                            <el-dropdown-item @click="handleLogout">退出登录</el-dropdown-item>
                         </el-dropdown-menu>
                     </template>
                 </el-dropdown>
@@ -63,11 +63,11 @@ function opendStateChange() {
 }
 
 // login out the system
-function loginOut() {
-    userStore.loginOut()
+function handleLogout() {
+    userStore.logout()
 }
 
-function showPasswordDialog() {
+function handleModifyPass() {
     layer.show = true
 }
 </script>
