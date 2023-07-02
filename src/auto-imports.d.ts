@@ -6,6 +6,8 @@ export {}
 declare global {
   const $api: typeof import('@/api')['$api']
   const EffectScope: typeof import('vue')['EffectScope']
+  const activeCategoryKey: typeof import('./composables/provide')['activeCategoryKey']
+  const activeTreeKey: typeof import('./composables/provide')['activeTreeKey']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
   const autoResetRef: typeof import('@vueuse/core')['autoResetRef']
   const changeTitle: typeof import('./composables/index')['changeTitle']
@@ -127,6 +129,8 @@ declare global {
   const unref: typeof import('vue')['unref']
   const unrefElement: typeof import('@vueuse/core')['unrefElement']
   const until: typeof import('@vueuse/core')['until']
+  const updateActiveCategoryKey: typeof import('./composables/provide')['updateActiveCategoryKey']
+  const updateActiveTreeKey: typeof import('./composables/provide')['updateActiveTreeKey']
   const useActiveElement: typeof import('@vueuse/core')['useActiveElement']
   const useAnimate: typeof import('@vueuse/core')['useAnimate']
   const useArrayDifference: typeof import('@vueuse/core')['useArrayDifference']
@@ -322,6 +326,8 @@ declare module 'vue' {
   interface ComponentCustomProperties {
     readonly $api: UnwrapRef<typeof import('@/api')['$api']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
+    readonly activeCategoryKey: UnwrapRef<typeof import('./composables/provide')['activeCategoryKey']>
+    readonly activeTreeKey: UnwrapRef<typeof import('./composables/provide')['activeTreeKey']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
     readonly changeTitle: UnwrapRef<typeof import('./composables/index')['changeTitle']>
@@ -441,6 +447,8 @@ declare module 'vue' {
     readonly unref: UnwrapRef<typeof import('vue')['unref']>
     readonly unrefElement: UnwrapRef<typeof import('@vueuse/core')['unrefElement']>
     readonly until: UnwrapRef<typeof import('@vueuse/core')['until']>
+    readonly updateActiveCategoryKey: UnwrapRef<typeof import('./composables/provide')['updateActiveCategoryKey']>
+    readonly updateActiveTreeKey: UnwrapRef<typeof import('./composables/provide')['updateActiveTreeKey']>
     readonly useActiveElement: UnwrapRef<typeof import('@vueuse/core')['useActiveElement']>
     readonly useAnimate: UnwrapRef<typeof import('@vueuse/core')['useAnimate']>
     readonly useArrayDifference: UnwrapRef<typeof import('@vueuse/core')['useArrayDifference']>
@@ -630,6 +638,8 @@ declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
     readonly $api: UnwrapRef<typeof import('@/api')['$api']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
+    readonly activeCategoryKey: UnwrapRef<typeof import('./composables/provide')['activeCategoryKey']>
+    readonly activeTreeKey: UnwrapRef<typeof import('./composables/provide')['activeTreeKey']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
     readonly changeTitle: UnwrapRef<typeof import('./composables/index')['changeTitle']>
@@ -749,6 +759,8 @@ declare module '@vue/runtime-core' {
     readonly unref: UnwrapRef<typeof import('vue')['unref']>
     readonly unrefElement: UnwrapRef<typeof import('@vueuse/core')['unrefElement']>
     readonly until: UnwrapRef<typeof import('@vueuse/core')['until']>
+    readonly updateActiveCategoryKey: UnwrapRef<typeof import('./composables/provide')['updateActiveCategoryKey']>
+    readonly updateActiveTreeKey: UnwrapRef<typeof import('./composables/provide')['updateActiveTreeKey']>
     readonly useActiveElement: UnwrapRef<typeof import('@vueuse/core')['useActiveElement']>
     readonly useAnimate: UnwrapRef<typeof import('@vueuse/core')['useAnimate']>
     readonly useArrayDifference: UnwrapRef<typeof import('@vueuse/core')['useArrayDifference']>

@@ -20,7 +20,7 @@ const useUserStore = defineStore('userStore', () => {
     }
 
     // login by login.vue
-    async function login(params: any) {
+    async function login(params: { name: string; password: string }) {
         const { code, data } = await $api.post<any>('/user/login', params)
         if (code === 200 && data) {
             await getInfo({ token: data.token })
@@ -29,7 +29,7 @@ const useUserStore = defineStore('userStore', () => {
         return null
     }
     // get user info after user logined
-    async function getInfo(params: any) {
+    async function getInfo(params: { token: string }) {
         const { code, data } = await $api.post<any>('/user/info', params)
         if (code === 200) {
             infoChange(data.info)

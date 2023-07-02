@@ -11,10 +11,10 @@
 </template>
 
 <script lang="ts" setup>
-import type { CardListType } from './card-index.vue'
+import type { IndexCardType } from '@/types'
 
 const props = defineProps<{
-    row: CardListType
+    row: IndexCardType
 }>()
 
 const { row } = $(toRefs(props))

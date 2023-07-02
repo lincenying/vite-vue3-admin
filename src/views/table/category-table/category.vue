@@ -5,7 +5,7 @@
             <el-input v-model="input" placeholder="请输入内容" @input="searchData(true)" />
         </div>
         <ul ref="listDom" v-infinite-scroll="getCategoryData" class="list system-scrollbar" :infinite-scroll-immediate="false" style="overflow: auto">
-            <li v-for="item in list" :key="item.id" :class="{ active: item.id === active.id }" @click="changeActive(item)">
+            <li v-for="item in list" :key="item.id" :class="{ active: item.id === activeCategory?.id }" @click="changeActive(item)">
                 <span>{{ item.name }}</span>
             </li>
             <p v-if="loading" class="load-tip">加载中...</p>
@@ -15,37 +15,41 @@
 </template>
 
 <script lang="ts" setup>
-import type { Ref } from 'vue'
 import { debounce } from 'throttle-debounce'
+import type { CategoryType } from '@/types'
+import { activeCategoryKey, updateActiveCategoryKey } from '@/composables/provide'
 
 defineOptions({
     name: 'Category',
     inheritAttrs: true,
 })
 
-const listDom: Ref<HTMLElement | null> = ref(null)
+const listDom = ref<HTMLElement>()
 const page = {
     index: 1,
     size: 30,
     total: 0,
 }
+const [loading, toggleLoading] = useToggle(false)
+const [isFirst, toggleisFirst] = useToggle(false)
+
 const input = ref('')
-const list = ref<{ id: string; name: string }[]>([])
-const firstLoading = ref(true)
-const loading = ref(true)
-const active: any = inject('active')
+const list = ref<CategoryType[]>([])
 const nomore = ref(false)
 
+const activeCategory = inject(activeCategoryKey)
+const updateActiveCategory = inject(updateActiveCategoryKey, () => {})
+
 async function getCategoryData(init?: boolean) {
-    loading.value = true
-    if (init || firstLoading.value) {
-        firstLoading.value = false
+    const { stop } = useTimeoutFn(() => toggleLoading(true), 200)
+    if (init || isFirst.value) {
+        toggleisFirst(false)
         page.index = 1
         listDom.value && (listDom.value.scrollTop = 0)
     }
     else {
         if (page.index * page.size >= page.total) {
-            loading.value = false
+            toggleLoading(false)
             nomore.value = true
             return
         }
@@ -55,11 +59,11 @@ async function getCategoryData(init?: boolean) {
         pageSize: page.size,
         keyword: input.value,
     }
-    const { code, data } = await $api.post<ResponseDataLists<any[]>>('/table/category', params)
+    const { code, data } = await $api.post<ResponseDataLists<CategoryType[]>>('/table/category', params)
     if (code === 200) {
         if (page.index === 1) {
             list.value = data.list
-            active.value = list.value[0]
+            updateActiveCategory(list.value[0])
         }
         else {
             list.value = list.value.concat(data.list)
@@ -67,11 +71,12 @@ async function getCategoryData(init?: boolean) {
         page.index += 1
         page.total = data.pager.total
     }
-    loading.value = false
+    stop()
+    toggleLoading(false)
 }
 const searchData = debounce(300, getCategoryData)
-function changeActive(row: any) {
-    active.value = row
+function changeActive(row: CategoryType) {
+    updateActiveCategory(row)
 }
 getCategoryData(true)
 </script>

@@ -15,7 +15,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 import System from './modules/system'
 import Dashboard from './modules/dashboard'
-import Pages from './modules/pages'
+import Table from './modules/table'
 import Menu from './modules/menu'
 import SystemManage from './modules/system-manage'
 import NProgress from '@/utils/nprogress'
@@ -33,7 +33,7 @@ NProgress.configure({ showSpinner: false })
 const modules = reactive([
     ...System,
     ...Dashboard,
-    ...Pages,
+    ...Table,
     ...Menu,
     ...SystemManage,
 ])

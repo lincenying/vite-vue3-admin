@@ -1,6 +1,6 @@
 <template>
     <div class="system-table-box">
-        <ElTable v-bind="$attrs" ref="tableRef" class="system-table" border height="100%" :data="data" @selection-change="handleSelectionChange">
+        <el-table v-bind="$attrs" ref="tableRef" class="system-table" border height="100%" :data="data" @selection-change="onSelectionChange">
             <el-table-column v-if="showSelection" type="selection" align="center" width="50" />
             <el-table-column v-if="showIndex" label="序号" width="60" align="center">
                 <template #default="scope">
@@ -8,7 +8,7 @@
                 </template>
             </el-table-column>
             <slot />
-        </ElTable>
+        </el-table>
         <el-pagination
             v-if="showPage"
             v-model:current-page="page.index"
@@ -39,7 +39,7 @@ const props = withDefaults(defineProps<LayoutTableProps>(), {
     pageSizes: () => [10, 20, 50, 100],
 })
 
-const emit = defineEmits(['getTableData', 'selectionChange', 'updateProps'])
+const emit = defineEmits(['getTableData', 'selectionChange', 'updatePage'])
 
 defineOptions({
     name: 'LayoutTable',
@@ -51,25 +51,23 @@ const tableRef = ref<TableInstance>()
 let timer: Nullable<string> = null
 // 分页相关：监听页码切换事件
 function handleCurrentChange(val: number) {
-    if (timer) {
-        emit('updateProps', { key: 'index', value: 1 })
-    }
-    else {
-        emit('updateProps', { key: 'index', value: val })
-        emit('getTableData')
-    }
+    if (timer)
+        emit('updatePage', { key: 'index', value: 1 })
+
+    else
+        emit('updatePage', { key: 'index', value: val })
 }
 // 分页相关：监听单页显示数量切换事件
 function handleSizeChange(val: number) {
+    console.log(val)
     timer = 'work'
     setTimeout(() => {
         timer = null
     }, 100)
-    emit('updateProps', { key: 'index', value: val })
-    emit('getTableData', true)
+    emit('updatePage', [{ key: 'size', value: val }, { key: 'index', value: 1 }])
 }
 // 选择监听器
-function handleSelectionChange(val: []) {
+function onSelectionChange(val: []) {
     emit('selectionChange', val)
 }
 // 解决BUG：keep-alive组件使用时，表格浮层高度不对的问题

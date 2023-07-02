@@ -29,16 +29,15 @@
                 :total="page.total"
                 :page-size="page.size"
                 :page-sizes="[10, 20, 50, 100]"
-                @current-change="handleCurrentChange"
-                @size-change="handleSizeChange"
+                @current-change="onCurrentChange"
+                @size-change="onSizeChange"
             />
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
-import type { Ref } from 'vue'
-import { onMounted, reactive, ref } from 'vue'
+import type { CardListType } from '@/types'
 import type { LayoutTablePage } from '@/components/components.types'
 
 defineOptions({
@@ -46,41 +45,44 @@ defineOptions({
     inheritAttrs: true,
 })
 
-const loading = ref(true)
-const list = ref<{ id: string; image: string; title: string; time: string }[]>([])
-const box: Ref<HTMLDivElement> = ref() as any
-const page: LayoutTablePage = reactive({
+const [loading, toggleLoading] = useToggle(false)
+
+const list = ref<CardListType[]>([])
+const box = ref<HTMLDivElement>()
+
+const page = reactive<LayoutTablePage>({
     index: 1,
     size: 20,
     total: 0,
 })
+
 async function getListData() {
-    loading.value = true
+    const { stop } = useTimeoutFn(() => toggleLoading(true), 200)
     const params = {
         page: page.index,
         pageSize: page.size,
     }
-    const { code, data } = await $api.post<ResponseDataLists<any[]>>('/card/list', params)
+    const { code, data } = await $api.post<ResponseDataLists<CardListType[]>>('/card/list', params)
+    stop()
+    toggleLoading(false)
     if (code === 200) {
         page.total = data.pager.total
         list.value = data.list
     }
-
-    loading.value = false
 }
 // 分页相关：监听页码切换事件
-function handleCurrentChange(val: number) {
+function onCurrentChange(val: number) {
     page.index = val
     getListData()
 }
 // 分页相关：监听单页显示数量切换事件
-function handleSizeChange(val: number) {
+function onSizeChange(val: number) {
     page.size = val
     page.index = 1
     getListData()
 }
 onMounted(() => {
-    box.value.addEventListener('resize', () => {
+    box.value?.addEventListener('resize', () => {
         console.log(12)
     })
 })
@@ -95,12 +97,19 @@ getListData()
 .el-col {
     margin-bottom: 20px;
 }
+.layout-container-table {
+    padding-right: 5px !important;
+}
 .box {
     height: calc(100% - 50px);
 
     margin-bottom: 15px;
-    :deep(.is-horizontal) {
-        display: none;
+    // :deep(.is-horizontal) {
+    //     display: none;
+    // }
+
+    :deep(.el-scrollbar__view) {
+        margin-right: 10px;
     }
 }
 .time {

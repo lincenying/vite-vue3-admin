@@ -3,8 +3,8 @@ import { createNameComponent } from '../createNode'
 
 const route: Route[] = [
     {
-        path: '/pages',
-        redirect: '/pages/crudTable',
+        path: '/page',
+        redirect: '/table/crudTable',
         level: 1,
         meta: { title: '页面', icon: 'iconfont icon-yemianpeizhi' },
         children: [],
@@ -12,29 +12,29 @@ const route: Route[] = [
     },
     {
         parentPath: '/pages',
-        path: '/pages/crudTable',
-        component: createNameComponent(() => import('@/views/pages/crud-table.vue')),
+        path: '/table/crudTable',
+        component: createNameComponent(() => import('@/views/table/crud-table.vue')),
         meta: { title: '业务表格', icon: 'iconfont icon-yemian', cache: true, roles: ['admin', 'editor'] },
         children: [],
     },
     {
         parentPath: '/pages',
-        path: '/pages/categoryTable',
-        component: createNameComponent(() => import('@/views/pages/category-table.vue')),
+        path: '/table/categoryTable',
+        component: createNameComponent(() => import('@/views/table/category-table.vue')),
         meta: { title: '分类联动表格', icon: 'iconfont icon-yemian', cache: true, roles: ['admin'] },
         children: [],
     },
     {
         parentPath: '/pages',
-        path: '/pages/treeTable',
-        component: createNameComponent(() => import('@/views/pages/tree-table.vue')),
+        path: '/table/treeTable',
+        component: createNameComponent(() => import('@/views/table/tree-table.vue')),
         meta: { title: '树联动表格', icon: 'iconfont icon-yemian', cache: true },
         children: [],
     },
     {
         parentPath: '/pages',
-        path: '/pages/card',
-        component: createNameComponent(() => import('@/views/pages/card.vue')),
+        path: '/table/card',
+        component: createNameComponent(() => import('@/views/table/card.vue')),
         meta: { title: '卡片列表', icon: 'iconfont icon-yemian', cache: true },
         children: [],
     },

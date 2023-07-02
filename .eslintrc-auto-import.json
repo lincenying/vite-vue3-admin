@@ -312,6 +312,10 @@
     "closeAllTab": true,
     "closeCurrentTab": true,
     "closeOtherTab": true,
-    "refreshCurrentTab": true
+    "refreshCurrentTab": true,
+    "activeCategoryKey": true,
+    "updateActiveCategoryKey": true,
+    "activeTreeKey": true,
+    "updateActiveTreeKey": true
   }
 }

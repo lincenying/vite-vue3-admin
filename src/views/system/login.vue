@@ -26,7 +26,7 @@
                         </template>
                     </el-input>
 
-                    <el-button type="primary" :loading="form.loading" style="width: 100%" size="default" @click="submit">登录</el-button>
+                    <el-button type="primary" :loading="form.loading" style="width: 100%" size="default" @click="handleSubmit">登录</el-button>
                 </el-form>
                 <div class="fixed-top-right" />
             </div>
@@ -51,9 +51,11 @@ const form = reactive({
     loading: false,
 })
 const passwordType = ref('password')
+
 function passwordTypeChange() {
     passwordType.value === '' ? (passwordType.value = 'password') : (passwordType.value = '')
 }
+
 function checkForm() {
     return new Promise((resolve) => {
         if (form.name === '') {
@@ -73,7 +75,7 @@ function checkForm() {
         resolve(true)
     })
 }
-function submit() {
+function handleSubmit() {
     checkForm().then(() => {
         form.loading = true
         const params = {

@@ -1,5 +1,5 @@
 <template>
-    <layoutDialog ref="layerDom" :layer="layer" @update="onUpdate" @confirm="submit">
+    <layoutDialog ref="layerDom" :layer="layer" @update="onUpdate" @confirm="onSubmit">
         <el-form ref="ruleForm" :model="form" :rules="rules" label-width="120px" style="margin-right:30px;">
             <el-form-item label="名称：" prop="name">
                 <el-input v-model="form.name" placeholder="请输入名称" />
@@ -48,8 +48,9 @@ defineOptions({
     name: 'DialogUserModify',
 })
 
-const ruleForm: Ref<FormInstance | null> = ref(null)
-const layerDom: Ref<LayerType | null> = ref(null)
+const ruleForm = ref<FormInstance>()
+const layerDom = ref<LayerType>()
+
 const form = reactive({
     name: '',
     sort: '',
@@ -68,7 +69,7 @@ const options = [
     { value: 3, label: '跑酷' },
     { value: 4, label: '街舞' },
 ]
-function submit() {
+function onSubmit() {
     if (ruleForm.value) {
         ruleForm.value.validate((valid) => {
             if (valid) {
@@ -93,7 +94,7 @@ async function addForm(params: object) {
             message: '新增成功',
         })
         emit('getTableData', true)
-        layerDom.value && layerDom.value.close()
+        layerDom.value?.close()
     }
 }
 // 编辑提交事件
@@ -105,7 +106,7 @@ async function updateForm(params: object) {
             message: '编辑成功',
         })
         emit('getTableData', false)
-        layerDom.value && layerDom.value.close()
+        layerDom.value?.close()
     }
 }
 function onUpdate(payload: boolean) {

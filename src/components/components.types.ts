@@ -1,7 +1,8 @@
-export interface LayoutDialogLayer {
+export interface LayoutDialogLayer<T = Obj> {
     show: boolean
     title: string
     showButton?: boolean
+    row?: T
     width?: string
     [propName: string]: any
 }

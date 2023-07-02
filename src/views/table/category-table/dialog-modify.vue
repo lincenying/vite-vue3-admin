@@ -1,5 +1,5 @@
 <template>
-    <layoutDialog ref="layerDom" :layer="layer" @update="onUpdate" @confirm="submit">
+    <layout-dialog ref="layerDom" :layer="layer" @update="onUpdate" @confirm="onSubmit">
         <el-form ref="ruleForm" :model="form" :rules="rules" label-width="120px" style="margin-right:30px;">
             <el-form-item label="名称：" prop="name">
                 <el-input v-model="form.name" placeholder="请输入名称" />
@@ -18,12 +18,10 @@
                 </el-radio-group>
             </el-form-item>
         </el-form>
-    </layoutDialog>
+    </layout-dialog>
 </template>
 
 <script lang="ts" setup>
-import type { Ref } from 'vue'
-import { ref } from 'vue'
 import type { FormInstance } from 'element-plus'
 import { radioData, selectData } from './enum'
 import { ElMessage } from '@/config/element'
@@ -45,6 +43,7 @@ defineOptions({
 
 const ruleForm: Ref<FormInstance | null> = ref(null)
 const layerDom: Ref<LayerType | null> = ref(null)
+
 const form = ref({
     name: '',
     number: '',
@@ -57,12 +56,7 @@ const rules = {
     choose: [{ required: true, message: '请选择', trigger: 'blur' }],
     radio: [{ required: true, message: '请选择', trigger: 'blur' }],
 }
-function init() { // 用于判断新增还是编辑功能
-    if (props.layer.row)
-        form.value = JSON.parse(JSON.stringify(props.layer.row)) // 数量量少的直接使用这个转
-}
-init()
-function submit() {
+function onSubmit() {
     if (ruleForm.value) {
         ruleForm.value.validate((valid) => {
             if (valid) {
@@ -87,7 +81,7 @@ async function addForm(params: object) {
             message: '新增成功',
         })
         emit('getTableData', true)
-        layerDom.value && layerDom.value.close()
+        onUpdate(false)
     }
 }
 // 编辑提交事件
@@ -99,12 +93,18 @@ async function updateForm(params: object) {
             message: '编辑成功',
         })
         emit('getTableData', false)
-        layerDom.value && layerDom.value.close()
+        onUpdate(false)
     }
 }
 function onUpdate(payload: boolean) {
     emit('update', payload)
 }
+
+function init() { // 用于判断新增还是编辑功能
+    if (props.layer.row)
+        form.value = JSON.parse(JSON.stringify(props.layer.row)) // 数量量少的直接使用这个转
+}
+init()
 </script>
 
 <style lang="scss" scoped>

@@ -4,22 +4,27 @@
             <Category />
         </div>
         <div class="content">
-            <MyTable />
+            <comp-category-table />
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
 import Category from './category-table/category.vue'
-import MyTable from './category-table/my-table.vue'
+import compCategoryTable from './category-table/comp-category-table.vue'
+
+import type { CategoryType } from '@/types'
 
 defineOptions({
     name: 'CategoryTable',
     inheritAttrs: true,
 })
 
-const active: any = ref({})
-provide('active', active)
+const activeCateogy = ref({} as CategoryType)
+provide(activeCategoryKey, activeCateogy)
+provide(updateActiveCategoryKey, (payload: CategoryType) => {
+    activeCateogy.value = payload
+})
 </script>
 
 <style lang="scss" scoped>

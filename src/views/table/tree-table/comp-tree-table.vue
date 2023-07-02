@@ -15,14 +15,15 @@
             </div>
         </div>
         <div class="layout-container-table">
-            <layoutTable
+            <layout-table
                 v-model:page="page"
                 v-loading="loading"
                 :show-index="true"
                 :show-selection="true"
                 :data="tableData"
                 @get-table-data="getTableData"
-                @selection-change="handleSelectionChange"
+                @selection-change="onSelectionChange"
+                @update-page="onUpdatePage"
             >
                 <el-table-column prop="name" label="名称" align="center" />
                 <el-table-column prop="number" label="数字" align="center" />
@@ -38,22 +39,22 @@
                         </el-popconfirm>
                     </template>
                 </el-table-column>
-            </layoutTable>
-            <dialogModify v-if="layer.show" :layer="layer" @update="(payload: boolean) => layer.show = payload" @get-table-data="getTableData" />
+            </layout-table>
+            <dialog-modify v-if="layer.show" :layer="layer" @update="(payload) => (layer.show = payload)" @get-table-data="getTableData" />
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
 import { Delete, Plus, Search } from '@element-plus/icons'
-import dialogModify from './crud-table/dialog-modify.vue'
-import { radioData, selectData } from './crud-table/enum'
+import { radioData, selectData } from './enum'
+import dialogModify from './dialog-modify.vue'
+import type { TableListType, TreeType, UpdatePageType } from '@/types'
 import { ElMessage } from '@/config/element'
-import layoutTable from '@/components/layout-table.vue'
 import type { LayoutDialogLayer, LayoutTablePage } from '@/components/components.types'
 
 defineOptions({
-    name: 'CrudTable',
+    name: 'MyTable',
     inheritAttrs: true,
 })
 
@@ -73,49 +74,64 @@ const page: LayoutTablePage = reactive({
     size: 20,
     total: 0,
 })
-const loading = ref(true)
-const tableData = ref<any[]>([])
-const chooseData = ref([])
-function handleSelectionChange(val: []) {
+const activeTree = inject(activeTreeKey, ref({} as TreeType))
+
+const [loading, toggleLoading] = useToggle(false)
+const tableData = ref<TableListType[]>([])
+const chooseData = ref<TableListType[]>([])
+
+// 更新选中
+function onSelectionChange(val: []) {
     chooseData.value = val
+}
+
+// 更新分页参数
+function onUpdatePage(payload: UpdatePageType | UpdatePageType[]) {
+    if (Array.isArray(payload)) {
+        payload.forEach((item) => {
+            page[item.key] = item.value
+        })
+    }
+    else {
+        page[payload.key] = payload.value
+    }
+    getTableData(false)
 }
 // 获取表格数据
 // params <init> Boolean ，默认为false，用于判断是否需要初始化分页
 async function getTableData(init: boolean) {
-    loading.value = true
+    const { stop } = useTimeoutFn(() => toggleLoading(true), 200)
     if (init)
         page.index = 1
 
     const params = {
+        category: activeTree.value.id,
         page: page.index,
         pageSize: page.size,
         ...query,
     }
-    const { code, data } = await $api.post<ResponseDataLists<any[]>>('/table/list', params)
+    const { code, data } = await $api.post<ResponseDataLists<TableListType[]>>('/table/list', params)
     if (code === 200) {
         if (Array.isArray(data.list)) {
             data.list.forEach((d) => {
                 const select = selectData.find(select => select.value === d.choose)
-                select ? d.chooseName = select.label : d.chooseName = d.choose
+                select ? (d.chooseName = select.label) : (d.chooseName = d.choose)
                 const radio = radioData.find(select => select.value === d.radio)
                 if (radio)
                     d.radioName = radio.label
-                else
-                    d.radioName = d.radio
+                else d.radioName = d.radio
             })
         }
         tableData.value = data.list
         page.total = Number(data.pager.total)
     }
-
-    loading.value = false
+    stop()
+    toggleLoading(false)
 }
 // 删除功能
 async function handleDel(data: object[]) {
     const params = {
-        ids: data.map((e: any) => {
-            return e.id
-        }).join(','),
+        ids: data.map((e: any) => { return e.id }).join(','),
     }
     const { code } = await $api.post<void>('/table/del', params)
     if (code === 200) {
@@ -123,24 +139,32 @@ async function handleDel(data: object[]) {
             type: 'success',
             message: '删除成功',
         })
-        getTableData(tableData.value.length === 1)
+        getTableData(tableData.value.length < 3)
     }
 }
 // 新增弹窗功能
 function handleAdd() {
     layer.title = '新增数据'
     layer.show = true
-    delete layer.row
+    layer.row = undefined
 }
 // 编辑弹窗功能
-function handleEdit(row: Obj) {
+function handleEdit(row: object) {
     layer.title = '编辑数据'
     layer.row = row
     layer.show = true
 }
-getTableData(true)
+
+watch(activeTree, () => {
+    getTableData(true)
+})
+// getTableData(true)
 </script>
 
 <style lang="scss" scoped>
-
+.layout-container {
+    width: calc(100% - 10px);
+    height: 100%;
+    margin: 0 0 0 10px;
+}
 </style>

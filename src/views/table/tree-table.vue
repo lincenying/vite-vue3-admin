@@ -4,22 +4,26 @@
             <Tree />
         </div>
         <div class="content">
-            <myTable />
+            <comp-tree-table />
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
 import Tree from './tree-table/tree.vue'
-import myTable from './tree-table/my-table.vue'
+import compTreeTable from './tree-table/comp-tree-table.vue'
+import type { TreeType } from '@/types'
 
 defineOptions({
     name: 'TreeTable',
     inheritAttrs: true,
 })
 
-const active: any = ref({})
-provide('active', active)
+const activeTree = ref({} as TreeType)
+provide(activeTreeKey, activeTree)
+provide(updateActiveTreeKey, (payload: TreeType) => {
+    activeTree.value = payload
+})
 </script>
 
 <style lang="scss" scoped>

@@ -129,13 +129,13 @@ function addMenu(menu: TabsType) {
 }
 
 // 删除菜单项
-function delMenu(menu: any, nextPath?: string | null) {
+function delMenu(menu: TabsType, nextPath?: string | null) {
     let index = 0
     if (!menu.meta.hideClose) {
         if (menu.meta.cache && menu.name)
             keepAliveStore.delKeepAliveComponentsName(menu.name)
 
-        index = tabsStorage.value.findIndex((item: any) => item.path === menu.path)
+        index = tabsStorage.value.findIndex(item => item.path === menu.path)
         tabsStorage.value.splice(index, 1)
     }
     if (nextPath) {
@@ -190,12 +190,12 @@ function setKeepAliveData() {
 }
 
 /** 监听鼠标滚动事件 */
-function handleWhellScroll(e: any) {
+function handleWhellScroll(e: WheelEvent) {
     let distance = 0
     const speed = 5
-    if (e.wheelDelta > 30)
+    if (-e.deltaY > 30)
         distance = -10
-    else if (e.wheelDelta < -30)
+    else if (-e.deltaY < -30)
         distance = 10
 
     // console.log(scrollLeft.value + eventDelta / 4)

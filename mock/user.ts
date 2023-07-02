@@ -1,6 +1,7 @@
 import type { MockMethod } from 'vite-plugin-mock'
+import type { UserListType } from '@/types'
 
-const users: any[] = [
+const users: UserListType[] = [
     {
         name: 'admin',
         password: '123456',
@@ -59,7 +60,7 @@ export default [
             const { token } = body
             const info = users.find((user) => {
                 return user.token === token
-            }).info
+            })?.info
             if (info) {
                 return {
                     code: 200,
