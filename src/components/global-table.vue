@@ -26,9 +26,20 @@
 
 <script lang="ts" setup>
 import type { TableInstance } from 'element-plus'
-import type { GlobalTableProps } from './components.types'
+import type { GlobalTablePage } from './components.types'
 
-const props = withDefaults(defineProps<GlobalTableProps>(), {
+interface Props {
+    data: any[]
+    select?: any[]
+    showIndex?: boolean
+    showSelection?: boolean
+    showPage?: boolean
+    page: GlobalTablePage
+    pageLayout?: string
+    pageSizes?: number[]
+}
+
+const props = withDefaults(defineProps<Props>(), {
     data: () => [],
     select: () => [],
     showIndex: false,

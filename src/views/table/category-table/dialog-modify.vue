@@ -25,9 +25,11 @@
 import type { FormInstance } from 'element-plus'
 import { radioData, selectData } from './enum'
 import { ElMessage } from '@/config/element'
-import type { GlobalDialogProps, LayerType } from '@/components/components.types'
+import type { GlobalDialogLayer, LayerType } from '@/components/components.types'
 
-const props = defineProps<GlobalDialogProps>()
+const props = defineProps<{
+    layer: GlobalDialogLayer<Obj>
+}>()
 
 const emit = defineEmits(['getTableData', 'update'])
 

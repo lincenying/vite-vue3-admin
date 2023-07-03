@@ -74,6 +74,7 @@ const layer = reactive<GlobalDialogLayer<TableListType>>({
     title: '新增',
     showButton: true,
     row: undefined,
+    width: '500px',
 })
 // 分页参数, 供table使用
 const page = reactive<GlobalTablePage>({

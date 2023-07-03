@@ -32,9 +32,11 @@
 import type { FormInstance } from 'element-plus'
 import { ElMessage } from '@/config/element'
 import GlobalDialog from '@/components/global-dialog.vue'
-import type { GlobalDialogProps, LayerType } from '@/components/components.types'
+import type { GlobalDialogLayer, LayerType } from '@/components/components.types'
 
-const props = defineProps<GlobalDialogProps>()
+const props = defineProps<{
+    layer: GlobalDialogLayer<Obj>
+}>()
 
 const emit = defineEmits(['getTableData', 'update'])
 

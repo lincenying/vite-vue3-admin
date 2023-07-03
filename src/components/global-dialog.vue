@@ -13,9 +13,11 @@
 </template>
 
 <script lang="ts" setup>
-import type { GlobalDialogProps } from './components.types'
+import type { GlobalDialogLayer } from './components.types'
 
-const props = defineProps<GlobalDialogProps>()
+const props = defineProps<{
+    layer: GlobalDialogLayer<Obj>
+}>()
 
 const emit = defineEmits(['confirm', 'update'])
 

@@ -1,6 +1,6 @@
 import type { AnyFn } from '@vueuse/core'
 
-export interface GlobalDialogLayer<T = Obj> {
+export interface GlobalDialogLayer<T> {
     show: boolean
     title: string
     showButton?: boolean
@@ -8,9 +8,7 @@ export interface GlobalDialogLayer<T = Obj> {
     width?: string
     [propName: string]: any
 }
-export interface GlobalDialogProps {
-    layer: GlobalDialogLayer
-}
+
 export interface LayerType {
     close: AnyFn
 }

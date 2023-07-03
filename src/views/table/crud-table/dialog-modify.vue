@@ -1,6 +1,6 @@
 <template>
     <global-dialog ref="layerDom" :layer="layer" @update="onUpdate" @confirm="onSubmit">
-        <el-form ref="ruleForm" :model="form" :rules="rules" label-width="120px" style="margin-right:30px;">
+        <el-form ref="ruleForm" :model="form" :rules="rules" label-width="100px" class="mr-30px">
             <el-form-item label="名称：" prop="name">
                 <el-input v-model="form.name" placeholder="请输入名称" />
             </el-form-item>
@@ -25,9 +25,11 @@
 import type { FormInstance } from 'element-plus'
 import { radioData, selectData } from './enum'
 import { ElMessage } from '@/config/element'
-import type { GlobalDialogProps, LayerType } from '@/components/components.types'
+import type { GlobalDialogLayer, LayerType } from '@/components/components.types'
 
-const props = defineProps<GlobalDialogProps>()
+const props = defineProps<{
+    layer: GlobalDialogLayer<Obj>
+}>()
 
 const emit = defineEmits(['getTableData', 'update'])
 
