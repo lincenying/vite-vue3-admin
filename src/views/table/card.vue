@@ -1,17 +1,17 @@
 <template>
-    <div class="layout-container">
-        <div v-loading="loading" class="layout-container-table">
-            <div ref="box" class="box">
+    <div class="global-box table-card">
+        <div v-loading="loading" class="global-box-table pr-5px!">
+            <div ref="box" class="box mb-15px h-[calc(100%-50px)]">
                 <el-scrollbar height="100%">
                     <el-row :gutter="20">
                         <el-col v-for="row in list" :key="row.id" :lg="4" :md="8" :sm="12" :xs="24">
                             <el-card :body-style="{ padding: '0px' }" shadow="hover">
-                                <img :src="row.image" class="image">
-                                <div style="padding: 14px">
+                                <img :src="row.image" class="block w-[100%]">
+                                <div p-14px text-left>
                                     <span>{{ row.title }}</span>
-                                    <div class="bottom clearfix">
-                                        <time class="time">{{ row.time }}</time>
-                                        <el-text type="primary" class="edit-button" @click="showEditor">编辑</el-text>
+                                    <div class="mt-13px flex-bc lh-12px">
+                                        <time class="text-13px text-[#999]">{{ row.time }}</time>
+                                        <el-text type="primary" class="p-0" @click="showEditor">编辑</el-text>
                                     </div>
                                 </div>
                             </el-card>
@@ -89,56 +89,3 @@ onMounted(() => {
 function showEditor() {}
 getListData()
 </script>
-
-<style lang="scss" scoped>
-* {
-    text-align: left;
-}
-.el-col {
-    margin-bottom: 20px;
-}
-.layout-container-table {
-    padding-right: 5px !important;
-}
-.box {
-    height: calc(100% - 50px);
-
-    margin-bottom: 15px;
-    // :deep(.is-horizontal) {
-    //     display: none;
-    // }
-
-    :deep(.el-scrollbar__view) {
-        margin-right: 10px;
-    }
-}
-.time {
-    font-size: 13px;
-    color: #999;
-}
-
-.bottom {
-    margin-top: 13px;
-    line-height: 12px;
-}
-
-.edit-button {
-    padding: 0;
-    float: right;
-}
-
-.image {
-    width: 100%;
-    display: block;
-}
-
-.clearfix:before,
-.clearfix:after {
-    display: table;
-    content: '';
-}
-
-.clearfix:after {
-    clear: both;
-}
-</style>

@@ -81,7 +81,3 @@ function onUpdate(payload: boolean) {
     emit('update', payload)
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

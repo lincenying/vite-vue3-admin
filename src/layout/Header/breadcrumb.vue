@@ -1,5 +1,5 @@
 <template>
-    <el-breadcrumb class="hidden-sm-and-down app-breadcrumb" separator="/">
+    <el-breadcrumb class="layout-header-breadcrumb" separator="/">
         <transition-group appear name="breadcrumb">
             <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
                 <span v-if="item.redirect === 'noRedirect' || index === levelList.length - 1" class="no-redirect">{{ item.meta.title }}</span>
@@ -56,18 +56,3 @@ function handleLink(item: RouteLocationMatched) {
     router.push(path)
 }
 </script>
-
-<style lang="scss" scoped>
-.app-breadcrumb.el-breadcrumb {
-    display: inline-block;
-    font-size: 14px;
-    line-height: 50px;
-    .no-redirect {
-        color: var(--system-header-breadcrumb-text-color);
-        cursor: text;
-    }
-    a {
-        color: var(--system-header-text-color);
-    }
-}
-</style>

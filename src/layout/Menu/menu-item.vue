@@ -54,16 +54,3 @@ const showMenuType = computed(() => {
     return 0
 })
 </script>
-
-<style lang="scss" scoped>
-.el-sub-menu {
-    text-align: left;
-}
-.el-menu-item {
-    text-align: left;
-}
-.el-menu-item i,
-.el-sub-menu__title i {
-    padding-right: 8px;
-}
-</style>

@@ -1,7 +1,7 @@
 <template>
-    <el-scrollbar>
+    <el-scrollbar class="layout-menu">
         <el-menu
-            class="layout-menu system-scrollbar"
+            class="layout-menu-wrap system-scrollbar"
             background-color="var(--system-menu-background)"
             text-color="var(--system-menu-text-color)"
             active-text-color="var(--system-primary-color)"
@@ -53,77 +53,3 @@ const activeMenu = computed(() => {
 })
 onMounted(() => {})
 </script>
-
-<style lang="scss" scoped>
-.el-scrollbar {
-    background-color: var(--system-menu-background);
-}
-.layout-menu {
-    width: 100%;
-    border: none;
-    &.collapse {
-        margin-left: 0px;
-    }
-    :deep() {
-        .el-menu-item,
-        .el-sub-menu {
-            background-color: var(--system-menu-background) !important;
-        }
-        .el-menu-item i {
-            line-height: 1;
-        }
-        .el-menu-item i,
-        .el-menu-item-group__title,
-        .el-sub-menu__title i {
-            color: var(--system-menu-text-color);
-        }
-        .el-menu-item,
-        .el-sub-menu__title {
-            &.is-active {
-                background-color: var(--system-primary-color) !important;
-                color: var(--system-primary-text-color) !important;
-                i {
-                    color: var(--system-primary-text-color) !important;
-                }
-                &:hover {
-                    background-color: var(--system-primary-color) !important;
-                    color: var(--system-primary-text-color) !important;
-                }
-            }
-            &:hover {
-                background-color: var(--system-menu-hover-background) !important;
-            }
-        }
-        .el-sub-menu {
-            &.is-active {
-                > .el-sub-menu__title,
-                > .el-sub-menu__title i {
-                    color: var(--system-menu-submenu-active-color) !important;
-                }
-            }
-            .el-menu-item {
-                background-color: var(--system-menu-children-background) !important;
-                &.is-active {
-                    background-color: var(--system-primary-color) !important;
-                    color: var(--system-primary-text-color) !important;
-                    &:hover {
-                        background-color: var(--system-primary-color) !important;
-                        color: var(--system-primary-text-color) !important;
-                    }
-                }
-                &:hover {
-                    background-color: var(--system-menu-hover-background) !important;
-                }
-            }
-            .el-sub-menu {
-                .el-sub-menu__title {
-                    background-color: var(--system-menu-children-background) !important;
-                    &:hover {
-                        background-color: var(--system-menu-hover-background) !important;
-                    }
-                }
-            }
-        }
-    }
-}
-</style>

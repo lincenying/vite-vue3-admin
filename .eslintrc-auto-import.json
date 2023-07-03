@@ -316,6 +316,9 @@
     "activeCategoryKey": true,
     "updateActiveCategoryKey": true,
     "activeTreeKey": true,
-    "updateActiveTreeKey": true
+    "updateActiveTreeKey": true,
+    "false": true,
+    "else": true,
+    "window": true
   }
 }

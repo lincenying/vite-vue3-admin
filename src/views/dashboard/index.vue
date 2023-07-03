@@ -1,5 +1,5 @@
 <template>
-    <div class="box">
+    <div class="dashboard-index">
         <el-scrollbar height="100%">
             <BasicTemplate />
             <CardIndex />
@@ -25,14 +25,3 @@ defineOptions({
     name: 'DashboardIndex',
 })
 </script>
-
-<style lang="scss" scoped>
-.box {
-    padding: 15px 5px 15px 15px;
-    height: 100%;
-    overflow: hidden;
-    :deep(.el-scrollbar__view) {
-        margin-right: 10px;
-    }
-}
-</style>

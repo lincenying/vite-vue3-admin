@@ -29,7 +29,7 @@ axios.interceptors.response.use(
     error => Promise.resolve(error.response || error),
 )
 
-function checkStatus(response: AxiosResponse): ResponseData<any> {
+function checkStatus(response: AxiosResponse<ResponseData<any>>): ResponseData<any> {
     if (response && (response.status === 200 || response.status === 304))
         return response.data
 

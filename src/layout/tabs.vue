@@ -1,5 +1,5 @@
 <template>
-    <div class="tabs">
+    <div class="layout-tabs">
         <el-scrollbar ref="scrollbarDom" class="scroll-container tags-view-container" @wheel.passive="handleWhellScroll" @scroll="handleScroll">
             <tabsItem v-for="menu in tabsStorage" :key="menu.meta.title" :menu="menu" :active="activeMenu.path === menu.path" @close="delMenu(menu)" @reload="handlePageReload" />
         </el-scrollbar>
@@ -10,26 +10,25 @@
             <div id="vueAdminBoxTabCloseAll" @click="handleCloseAllRoute" />
             <el-dropdown placement="bottom">
                 <div class="el-dropdown-link">
-                    <el-icon><ArrowDown /></el-icon>
+                    <el-icon><i-ep-arrow-down /></el-icon>
                 </div>
                 <template #dropdown>
                     <el-dropdown-menu>
-                        <el-dropdown-item class="tab-ddropdown-item" :icon="RefreshLeft" @click="handlePageReload">重新加载</el-dropdown-item>
-                        <el-dropdown-item class="tab-ddropdown-item" :icon="CircleClose" :disabled="currentDisabled" @click="handleCloseCurrentRoute">关闭当前标签</el-dropdown-item>
-                        <el-dropdown-item class="tab-ddropdown-item" :icon="CircleClose" :disabled="tabsStorage.length < 3" @click="handleCloseOtherRoute">关闭其他标签</el-dropdown-item>
-                        <el-dropdown-item class="tab-ddropdown-item" :icon="CircleClose" :disabled="tabsStorage.length <= 1" @click="handleCloseAllRoute">关闭所有标签</el-dropdown-item>
+                        <el-dropdown-item class="tab-ddropdown-item" @click="handlePageReload"><el-icon slots="icon" class="mr-5px"><i-ad-reload-outlined /></el-icon>重新加载</el-dropdown-item>
+                        <el-dropdown-item class="tab-ddropdown-item" :disabled="currentDisabled" @click="handleCloseCurrentRoute"><el-icon slots="icon" class="mr-5px"><i-ep-CircleClose /></el-icon>关闭当前标签</el-dropdown-item>
+                        <el-dropdown-item class="tab-ddropdown-item" :disabled="tabsStorage.length < 3" @click="handleCloseOtherRoute"><el-icon slots="icon" class="mr-5px"><i-ep-CircleClose /></el-icon>关闭其他标签</el-dropdown-item>
+                        <el-dropdown-item class="tab-ddropdown-item" :disabled="tabsStorage.length <= 1" @click="handleCloseAllRoute"><el-icon slots="icon" class="mr-5px"><i-ep-CircleClose /></el-icon>关闭所有标签</el-dropdown-item>
                     </el-dropdown-menu>
                 </template>
             </el-dropdown>
             <el-tooltip class="item" effect="dark" :content="contentFullScreen ? '退出全屏' : '全屏'" placement="bottom">
-                <el-icon @click="handleFullscreen"><FullScreen /></el-icon>
+                <el-icon @click="handleFullscreen"><i-ep-full-screen /></el-icon>
             </el-tooltip>
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
-import { ArrowDown, CircleClose, FullScreen, RefreshLeft } from '@element-plus/icons'
 import type { AnyFn } from '@vueuse/core'
 import type { ScrollbarInstance } from 'element-plus'
 import type { RouteRecordName } from 'vue-router'
@@ -211,65 +210,3 @@ function handleScroll({ scrollLeft: left }: { scrollLeft: number }) {
 addMenu(route)
 initMenu(route)
 </script>
-
-<style lang="scss" scoped>
-.tabs {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 40px;
-    background: var(--system-header-background);
-    border-bottom: 1px solid var(--system-header-border-color);
-    border-top: 1px solid var(--system-header-border-color);
-    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
-    .handle {
-        min-width: 95px;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        .el-dropdown-link {
-            margin-top: 5px;
-            border-left: 1px solid var(--system-header-border-color);
-            height: 25px;
-            width: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        i {
-            color: var(--system-header-text-color);
-        }
-    }
-}
-.scroll-container {
-    white-space: nowrap;
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    :deep(.el-scrollbar__bar) {
-        bottom: 0px;
-    }
-    :deep(.el-scrollbar__wrap) {
-        height: 49px;
-    }
-}
-.tags-view-container {
-    height: 34px;
-    flex: 1;
-    width: 100%;
-    display: flex;
-}
-.el-icon-full-screen {
-    cursor: pointer;
-    &:hover {
-        background: rgba(0, 0, 0, 0.025);
-    }
-    &:focus {
-        outline: none;
-    }
-}
-.tab-ddropdown-item {
-    display: flex;
-    align-items: center;
-}
-</style>

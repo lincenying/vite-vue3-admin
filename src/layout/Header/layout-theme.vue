@@ -1,8 +1,8 @@
 <template>
     <div title="系统设置" @click="handleDrawerChange(true)">
-        <i class="iconfont icon-shezhi" />
+        <i class="iconfont icon-shezhi cursor-pointer" />
     </div>
-    <el-drawer v-model="drawer" title="系统设置" size="300px" :show-close="false" direction="rtl">
+    <el-drawer v-model="drawer" class="layout-theme" title="系统设置" size="300px" :show-close="false" direction="rtl">
         <h3>整体风格设置</h3>
         <div class="theme-box">
             <ThemeIcon
@@ -43,10 +43,10 @@
 <script lang="ts" setup>
 import ThemeIcon from './theme-icon.vue'
 import ThemeColor from './theme-color.vue'
-import type { Colors } from '@/theme/index'
 import { style } from '@/theme/index'
-import type { ThemeState } from '@/pinia/use-global-store'
 import type { SettingOption } from '@/types'
+import type { ThemeState } from '@/pinia/store.types'
+import type { Colors } from '@/theme/theme.types'
 
 defineOptions({
     name: 'LayoutTheme',
@@ -111,41 +111,3 @@ function onChange(option: SettingOption) {
 }
 setTheme()
 </script>
-
-<style lang="scss" scoped>
-i {
-    cursor: pointer;
-    &:focus {
-        outline: none;
-    }
-}
-
-.list {
-    padding: 0 20px;
-    &-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 15px;
-        span {
-            font-size: 16px;
-        }
-    }
-}
-h3 {
-    margin-top: 40px;
-    margin-bottom: 20px;
-    color: rgba(0, 0, 0, 0.85);
-    font-size: 14px;
-    line-height: 22px;
-    text-align: left;
-    padding: 0 20px;
-    &:first-child {
-        margin-top: 0;
-    }
-}
-.theme-box {
-    text-align: left;
-    padding-left: 20px;
-}
-</style>

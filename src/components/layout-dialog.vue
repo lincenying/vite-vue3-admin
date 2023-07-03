@@ -35,8 +35,3 @@ watch(show, () => {
     emit('update', show.value)
 })
 </script>
-
-<style lang="scss" scoped>
-
-</style>
-./components.types

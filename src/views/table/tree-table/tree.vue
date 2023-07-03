@@ -1,5 +1,5 @@
 <template>
-    <div class="category">
+    <div class="table-tree-left">
         <div class="header-box">
             <h2>组织管理</h2>
             <!-- <el-input
@@ -50,50 +50,3 @@ function handleNodeClick(row: TreeType) {
 
 getTreeData()
 </script>
-
-<style lang="scss" scoped>
-.category {
-    background: #fff;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    .header-box {
-        padding: 10px;
-        display: flex;
-        align-items: center;
-        border-bottom: 1px solid #eee;
-        h2 {
-            padding: 0;
-            margin: 0;
-            margin-right: 20px;
-            font-size: 14px;
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            height: 30px;
-            line-height: 30px;
-        }
-        .el-input {
-            flex: 1;
-        }
-    }
-    .list {
-        flex: 1;
-        overflow: auto;
-        line-height: 1.15;
-    }
-    .my-tree {
-        :deep(.el-tree-node__content) {
-            height: 36px;
-        }
-        :deep(.el-tree-node.is-current > .el-tree-node__content) {
-            background-color: rgba(64, 158, 255, 0.4);
-        }
-        :deep(.el-tree-node > .el-tree-node__content) {
-            transition: 0.2s;
-        }
-    }
-}
-</style>

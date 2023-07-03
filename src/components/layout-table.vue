@@ -1,5 +1,5 @@
 <template>
-    <div class="system-table-box">
+    <div class="global-table">
         <el-table v-bind="$attrs" ref="tableRef" class="system-table" border height="100%" :data="data" @selection-change="onSelectionChange">
             <el-table-column v-if="showSelection" type="selection" align="center" width="50" />
             <el-table-column v-if="showIndex" label="序号" width="60" align="center">
@@ -75,22 +75,3 @@ onActivated(() => {
     tableRef.value?.doLayout()
 })
 </script>
-
-<style lang="scss" scoped>
-.system-table-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    height: 100%;
-    .system-table {
-        flex: 1;
-        height: 100%;
-    }
-
-    .system-page {
-        margin-top: 20px;
-    }
-}
-</style>
-./components.types

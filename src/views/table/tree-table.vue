@@ -1,9 +1,9 @@
 <template>
-    <div class="full">
-        <div class="left">
+    <div class="table-tree" w="[100%]" h="[100%]" box-border flex p-15px>
+        <div class="w-250px">
             <Tree />
         </div>
-        <div class="content">
+        <div class="h-[100%] w-[calc(100%-250px)] flex-1">
             <comp-tree-table />
         </div>
     </div>
@@ -25,21 +25,3 @@ provide(updateActiveTreeKey, (payload: TreeType) => {
     activeTree.value = payload
 })
 </script>
-
-<style lang="scss" scoped>
-.full {
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-    padding: 15px;
-    display: flex;
-    .left {
-        width: 250px;
-    }
-    .content {
-        flex: 1;
-        width: calc(100% - 250px);
-        height: 100%;
-    }
-}
-</style>

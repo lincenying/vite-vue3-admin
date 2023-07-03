@@ -1,0 +1,540 @@
+
+// system/login.vue
+.system-login {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    cursor: pointer;
+    background: #fff url('@/assets/login/bg.png') no-repeat center;
+    background-size: cover;
+    user-select: none;
+
+    .box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: flex;
+        width: 1160px;
+        height: 440px;
+        overflow: hidden;
+        background: white;
+        border-radius: 8px;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 6px 20px 5px rgba(152, 152, 152, 0.1), 0 16px 24px 2px rgba(117, 117, 117, 0.14);
+
+        .login-content-left {
+            position: relative;
+
+            img {
+                height: 440px;
+            }
+
+            .login-content-left-mask {
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                width: 100%;
+                height: 100%;
+                font-size: 1.8rem;
+                letter-spacing: 2px;
+                color: #fff;
+                text-align: center;
+                background-image: linear-gradient(rgba(0, 204, 222, 0.8), rgba(51, 132, 224, 0.8));
+
+                div:nth-child(1) {
+                    margin-bottom: 1em;
+                    font-size: 3.5rem;
+                }
+            }
+        }
+
+        .box-inner {
+            width: 500px;
+
+            h1 {
+                margin-top: 80px;
+                text-align: center;
+            }
+
+            .form {
+                width: 80%;
+                margin: 50px auto 15px;
+
+                .el-input {
+                    margin-bottom: 20px;
+                }
+
+                .password-icon {
+                    color: #409eff;
+                    cursor: pointer;
+                }
+            }
+
+            .fixed-top-right {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+            }
+        }
+    }
+}
+
+@media screen and (width <= 1260px) {
+    .login-container {
+        .login-content-left {
+            display: none;
+        }
+
+        .box {
+            width: 500px !important;
+        }
+    }
+}
+
+@media screen and (width <= 750px) {
+    .login-container .box,
+    .login-container .box-inner {
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100vw !important;
+        height: 100vh;
+        transform: none;
+        box-shadow: none;
+
+        h1 {
+            margin-top: 0;
+        }
+    }
+}
+
+// system/401.vue
+.system-401 {
+    position: relative;
+    overflow: hidden;
+
+    .pic-401 {
+        position: relative;
+        float: left;
+        width: 600px;
+        overflow: hidden;
+
+        &__parent {
+            width: 313px;
+        }
+
+        &__child {
+            position: absolute;
+
+            &.left {
+                top: 17px;
+                left: 220px;
+                width: 80px;
+                opacity: 0;
+                animation-name: cloud-left;
+                animation-duration: 2s;
+                animation-timing-function: linear;
+                animation-fill-mode: forwards;
+                animation-delay: 1s;
+            }
+
+            &.mid {
+                top: 10px;
+                left: 420px;
+                width: 46px;
+                opacity: 0;
+                animation-name: cloud-mid;
+                animation-duration: 2s;
+                animation-timing-function: linear;
+                animation-fill-mode: forwards;
+                animation-delay: 1.2s;
+            }
+
+            &.right {
+                top: 100px;
+                left: 500px;
+                width: 62px;
+                opacity: 0;
+                animation-name: cloud-right;
+                animation-duration: 2s;
+                animation-timing-function: linear;
+                animation-fill-mode: forwards;
+                animation-delay: 1s;
+            }
+
+            @keyframes cloud-left {
+                0% {
+                    top: 17px;
+                    left: 220px;
+                    opacity: 0;
+                }
+
+                20% {
+                    top: 33px;
+                    left: 188px;
+                    opacity: 1;
+                }
+
+                80% {
+                    top: 81px;
+                    left: 92px;
+                    opacity: 1;
+                }
+
+                100% {
+                    top: 97px;
+                    left: 60px;
+                    opacity: 0;
+                }
+            }
+
+            @keyframes cloud-mid {
+                0% {
+                    top: 10px;
+                    left: 420px;
+                    opacity: 0;
+                }
+
+                20% {
+                    top: 40px;
+                    left: 360px;
+                    opacity: 1;
+                }
+
+                70% {
+                    top: 130px;
+                    left: 180px;
+                    opacity: 1;
+                }
+
+                100% {
+                    top: 160px;
+                    left: 120px;
+                    opacity: 0;
+                }
+            }
+
+            @keyframes cloud-right {
+                0% {
+                    top: 100px;
+                    left: 500px;
+                    opacity: 0;
+                }
+
+                20% {
+                    top: 120px;
+                    left: 460px;
+                    opacity: 1;
+                }
+
+                80% {
+                    top: 180px;
+                    left: 340px;
+                    opacity: 1;
+                }
+
+                100% {
+                    top: 200px;
+                    left: 300px;
+                    opacity: 0;
+                }
+            }
+        }
+    }
+
+    .bullshit {
+        position: relative;
+        float: left;
+        width: 190px;
+        padding: 30px 0;
+        overflow: hidden;
+
+        .bullshit__oops {
+            margin-bottom: 20px;
+            font-size: 32px;
+            font-weight: bold;
+            line-height: 40px;
+            color: #1482f0;
+            opacity: 0;
+            animation-name: slide-up;
+            animation-duration: 0.5s;
+            animation-fill-mode: forwards;
+        }
+
+        .bullshit__headline {
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 24px;
+            color: #222;
+            opacity: 0;
+            animation-name: slide-up;
+            animation-duration: 0.5s;
+            animation-delay: 0.1s;
+            animation-fill-mode: forwards;
+        }
+
+        .bullshit__info {
+            margin-bottom: 30px;
+            font-size: 13px;
+            line-height: 21px;
+            color: grey;
+            opacity: 0;
+            animation-name: slide-up;
+            animation-duration: 0.5s;
+            animation-delay: 0.2s;
+            animation-fill-mode: forwards;
+        }
+
+        .bullshit__return-home {
+            display: block;
+            float: left;
+            width: 110px;
+            height: 36px;
+            font-size: 14px;
+            line-height: 36px;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+            background: #1482f0;
+            border-radius: 100px;
+            opacity: 0;
+            animation-name: slide-up;
+            animation-duration: 0.5s;
+            animation-delay: 0.3s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes slide-up {
+            0% {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    }
+}
+
+
+// system/404.vue
+.system-404 {
+    position: relative;
+    overflow: hidden;
+
+    .pic-404 {
+        position: relative;
+        float: left;
+        width: 600px;
+        overflow: hidden;
+
+        .pic-404__parent {
+            width: 100%;
+        }
+
+        .pic-404__child {
+            position: absolute;
+
+            &.left {
+                top: 17px;
+                left: 220px;
+                width: 80px;
+                opacity: 0;
+                animation-name: cloud-left;
+                animation-duration: 2s;
+                animation-timing-function: linear;
+                animation-fill-mode: forwards;
+                animation-delay: 1s;
+            }
+
+            &.mid {
+                top: 10px;
+                left: 420px;
+                width: 46px;
+                opacity: 0;
+                animation-name: cloud-mid;
+                animation-duration: 2s;
+                animation-timing-function: linear;
+                animation-fill-mode: forwards;
+                animation-delay: 1.2s;
+            }
+
+            &.right {
+                top: 100px;
+                left: 500px;
+                width: 62px;
+                opacity: 0;
+                animation-name: cloud-right;
+                animation-duration: 2s;
+                animation-timing-function: linear;
+                animation-fill-mode: forwards;
+                animation-delay: 1s;
+            }
+
+            @keyframes cloud-left {
+                0% {
+                    top: 17px;
+                    left: 220px;
+                    opacity: 0;
+                }
+
+                20% {
+                    top: 33px;
+                    left: 188px;
+                    opacity: 1;
+                }
+
+                80% {
+                    top: 81px;
+                    left: 92px;
+                    opacity: 1;
+                }
+
+                100% {
+                    top: 97px;
+                    left: 60px;
+                    opacity: 0;
+                }
+            }
+
+            @keyframes cloud-mid {
+                0% {
+                    top: 10px;
+                    left: 420px;
+                    opacity: 0;
+                }
+
+                20% {
+                    top: 40px;
+                    left: 360px;
+                    opacity: 1;
+                }
+
+                70% {
+                    top: 130px;
+                    left: 180px;
+                    opacity: 1;
+                }
+
+                100% {
+                    top: 160px;
+                    left: 120px;
+                    opacity: 0;
+                }
+            }
+
+            @keyframes cloud-right {
+                0% {
+                    top: 100px;
+                    left: 500px;
+                    opacity: 0;
+                }
+
+                20% {
+                    top: 120px;
+                    left: 460px;
+                    opacity: 1;
+                }
+
+                80% {
+                    top: 180px;
+                    left: 340px;
+                    opacity: 1;
+                }
+
+                100% {
+                    top: 200px;
+                    left: 300px;
+                    opacity: 0;
+                }
+            }
+        }
+    }
+
+    .bullshit {
+        position: relative;
+        float: left;
+        width: 190px;
+        padding: 30px 0;
+        overflow: hidden;
+
+        .bullshit__oops {
+            margin-bottom: 20px;
+            font-size: 32px;
+            font-weight: bold;
+            line-height: 40px;
+            color: #1482f0;
+            opacity: 0;
+            animation-name: slide-up;
+            animation-duration: 0.5s;
+            animation-fill-mode: forwards;
+        }
+
+        .bullshit__headline {
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 24px;
+            color: #222;
+            opacity: 0;
+            animation-name: slide-up;
+            animation-duration: 0.5s;
+            animation-delay: 0.1s;
+            animation-fill-mode: forwards;
+        }
+
+        .bullshit__info {
+            margin-bottom: 30px;
+            font-size: 13px;
+            line-height: 21px;
+            color: grey;
+            opacity: 0;
+            animation-name: slide-up;
+            animation-duration: 0.5s;
+            animation-delay: 0.2s;
+            animation-fill-mode: forwards;
+        }
+
+        .bullshit__return-home {
+            display: block;
+            float: left;
+            width: 110px;
+            height: 36px;
+            font-size: 14px;
+            line-height: 36px;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+            background: #1482f0;
+            border-radius: 100px;
+            opacity: 0;
+            animation-name: slide-up;
+            animation-duration: 0.5s;
+            animation-delay: 0.3s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes slide-up {
+            0% {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    }
+}

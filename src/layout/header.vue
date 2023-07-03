@@ -1,5 +1,5 @@
 <template>
-    <header>
+    <header class="layout-header">
         <div class="left-box">
             <!-- 收缩按钮 -->
             <div class="menu-icon" @click="opendStateChange">
@@ -71,63 +71,3 @@ function handleModifyPass() {
     layer.show = true
 }
 </script>
-
-<style lang="scss" scoped>
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 60px;
-    background-color: var(--system-header-background);
-    padding-right: 22px;
-}
-.left-box {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    .menu-icon {
-        width: 60px;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 25px;
-        font-weight: 100;
-        cursor: pointer;
-        margin-right: 10px;
-        &:hover {
-            background-color: var(--system-header-item-hover-color);
-        }
-        i {
-            color: var(--system-header-text-color);
-        }
-    }
-}
-.right-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .function-list {
-        display: flex;
-        .function-list-item {
-            width: 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            :deep(i) {
-                color: var(--system-header-text-color);
-            }
-        }
-    }
-    .user-info {
-        display: flex;
-        margin-left: 20px;
-        .el-dropdown-link {
-            color: var(--system-header-breadcrumb-text-color);
-        }
-    }
-}
-.head-fold {
-    font-size: 20px;
-}
-</style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="card-list">
+    <div class="flex flex-wrap justify-between">
         <CardRow v-for="row in list" :key="row.id" :row="row" />
     </div>
 </template>
@@ -19,13 +19,3 @@ const list = ref<IndexCardType[]>([
     { id: 4, name: '当月营收', data: '20,000', color: '#f6c23e', icon: 'iconfont icon-shuliang' },
 ])
 </script>
-
-<style lang="scss" scoped>
-.card-list {
-    // width: calc(100% + 20px);
-    // margin-left: -10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-</style>

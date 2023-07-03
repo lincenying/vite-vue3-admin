@@ -1,20 +1,26 @@
 <template>
-    <div class="layout-container">
-        <div class="layout-container-form space-between flex">
-            <div class="layout-container-form-handle">
-                <el-button type="primary" :icon="Plus" @click="handleAdd">{{ '新增' }}</el-button>
+    <div class="global-box table-tree-right">
+        <div class="global-box-form flex">
+            <div class="global-box-form-handle">
+                <el-button type="primary" @click="handleAdd">
+                    新增 <el-icon slots="icon" class="ml-5px"><i-ep-plus /></el-icon>
+                </el-button>
                 <el-popconfirm title="确定删除选中的数据吗？" @confirm="handleDel(chooseData)">
                     <template #reference>
-                        <el-button type="danger" :icon="Delete" :disabled="chooseData.length === 0">{{ '批量删除' }}</el-button>
+                        <el-button type="danger" :disabled="chooseData.length === 0">
+                            批量删除 <el-icon slots="icon" class="ml-5px"><i-ep-delete /></el-icon>
+                        </el-button>
                     </template>
                 </el-popconfirm>
             </div>
-            <div class="layout-container-form-search">
-                <el-input v-model="query.input" placeholder="请输入关键词进行检索" @change="getTableData(true)" />
-                <el-button type="primary" :icon="Search" class="search-btn" @click="getTableData(true)">{{ '搜索' }}</el-button>
+            <div class="global-box-form-search">
+                <el-input v-model="query.input" placeholder="请输入关键词进行检索" />
+                <el-button type="primary" class="search-btn" @click="handleSubmit">
+                    搜索 <el-icon slots="icon" class="ml-5px"><i-ep-search /></el-icon>
+                </el-button>
             </div>
         </div>
-        <div class="layout-container-table">
+        <div class="global-box-table">
             <layout-table
                 v-model:page="page"
                 v-loading="loading"
@@ -46,7 +52,6 @@
 </template>
 
 <script lang="ts" setup>
-import { Delete, Plus, Search } from '@element-plus/icons'
 import { radioData, selectData } from './enum'
 import dialogModify from './dialog-modify.vue'
 import type { TableListType, TreeType, UpdatePageType } from '@/types'
@@ -131,7 +136,11 @@ async function getTableData(init: boolean) {
 // 删除功能
 async function handleDel(data: object[]) {
     const params = {
-        ids: data.map((e: any) => { return e.id }).join(','),
+        ids: data
+            .map((e: any) => {
+                return e.id
+            })
+            .join(','),
     }
     const { code } = await $api.post<void>('/table/del', params)
     if (code === 200) {
@@ -154,17 +163,13 @@ function handleEdit(row: object) {
     layer.row = row
     layer.show = true
 }
+// 搜索
+function handleSubmit() {
+    getTableData(true)
+}
 
 watch(activeTree, () => {
     getTableData(true)
 })
 // getTableData(true)
 </script>
-
-<style lang="scss" scoped>
-.layout-container {
-    width: calc(100% - 10px);
-    height: 100%;
-    margin: 0 0 0 10px;
-}
-</style>

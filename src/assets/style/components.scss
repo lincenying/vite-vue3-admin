@@ -1,0 +1,118 @@
+.global-table {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    height: 100%;
+
+    .system-table {
+        flex: 1;
+        height: 100%;
+    }
+
+    .system-page {
+        margin-top: 20px;
+    }
+}
+
+
+.ok-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% - 30px);
+    height: calc(100% - 30px);
+    margin: 15px;
+    background-color: var(--system-page-background);
+
+    &.close {
+        animation: close 1s;
+        animation-fill-mode: forwards;
+    }
+
+    .ball-loader > span,
+    .signal-loader > span {
+        display: inline-block;
+        background-color: var(--system-primary-color);
+    }
+
+    .ball-loader > span:nth-child(1),
+    .ball-loader.sm > span:nth-child(1),
+    .signal-loader > span:nth-child(1),
+    .signal-loader.sm > span:nth-child(1) {
+        animation-delay: 0s;
+    }
+
+    .ball-loader > span:nth-child(2),
+    .ball-loader.sm > span:nth-child(2),
+    .signal-loader > span:nth-child(2),
+    .signal-loader.sm > span:nth-child(2) {
+        animation-delay: 0.1s;
+    }
+
+    .ball-loader > span:nth-child(3),
+    .ball-loader.sm > span:nth-child(3),
+    .signal-loader > span:nth-child(3),
+    .signal-loader.sm > span:nth-child(3) {
+        animation-delay: 0.15s;
+    }
+
+    .ball-loader > span:nth-child(4),
+    .ball-loader.sm > span:nth-child(4),
+    .signal-loader > span:nth-child(4),
+    .signal-loader.sm > span:nth-child(4) {
+        animation-delay: 0.2s;
+    }
+
+    .ball-loader > span {
+        width: 20px;
+        height: 20px;
+        margin: 0 3px;
+        border-radius: 50%;
+        transform: scale(0);
+        animation: 1s ball-load ease-in-out infinite;
+        animation: ball-load 1s ease-in-out infinite;
+    }
+}
+
+@keyframes ball-load {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0);
+    }
+}
+
+@keyframes ball-load {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0);
+    }
+}
+
+@keyframes close {
+    0% {
+        opacity: 1;
+
+        /* display: block; */
+    }
+
+    100% {
+        opacity: 0;
+
+        /* display: none; */
+    }
+}

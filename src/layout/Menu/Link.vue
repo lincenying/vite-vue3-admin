@@ -30,7 +30,3 @@ function hideMenu() {
         globalStore.isCollapseChange(true)
 }
 </script>
-
-<style lang="">
-
-</style>
