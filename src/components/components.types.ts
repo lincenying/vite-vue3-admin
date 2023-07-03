@@ -1,6 +1,6 @@
 import type { AnyFn } from '@vueuse/core'
 
-export interface LayoutDialogLayer<T = Obj> {
+export interface GlobalDialogLayer<T = Obj> {
     show: boolean
     title: string
     showButton?: boolean
@@ -8,26 +8,26 @@ export interface LayoutDialogLayer<T = Obj> {
     width?: string
     [propName: string]: any
 }
-export interface LayoutDialogProps {
-    layer: LayoutDialogLayer
+export interface GlobalDialogProps {
+    layer: GlobalDialogLayer
 }
 export interface LayerType {
     close: AnyFn
 }
 
-export interface LayoutTablePage {
+export interface GlobalTablePage {
     index: number
     size: number
     total: number
 }
 
-export interface LayoutTableProps {
+export interface GlobalTableProps {
     data: any[]
     select?: any[]
     showIndex?: boolean
-    showSelection: boolean
+    showSelection?: boolean
     showPage?: boolean
-    page: LayoutTablePage
+    page: GlobalTablePage
     pageLayout?: string
     pageSizes?: number[]
 }

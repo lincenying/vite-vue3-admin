@@ -1,5 +1,5 @@
 <template>
-    <div class="layout-table-item" :class="active ? 'active' : ''">
+    <div class="global-table-item" :class="active ? 'active' : ''">
         <router-link v-if="menu.meta.title" :to="menu.path">
             {{ menu.meta.title }}
         </router-link>

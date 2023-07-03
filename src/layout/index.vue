@@ -25,7 +25,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useEventListener } from '@vueuse/core'
 import LayoutMenu from './menu.vue'
 import LayoutLogo from './logo.vue'
 import LayoutHeader from './header.vue'

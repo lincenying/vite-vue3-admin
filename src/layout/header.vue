@@ -40,7 +40,7 @@ import dialogPassword from './header/dialog-password.vue'
 import FullScreen from './header/fullscreen.vue'
 import LayoutTheme from './header/layout-theme.vue'
 import Github from './header/github.vue'
-import type { LayoutDialogLayer } from '@/components/components.types'
+import type { GlobalDialogLayer } from '@/components/components.types'
 
 defineOptions({
     name: 'LayoutHeader',
@@ -52,7 +52,7 @@ const globalStore = useGlobalStore()
 const { isCollapse } = $(storeToRefs(globalStore))
 // const router = useRouter()
 // const route = useRoute()
-const layer = reactive<LayoutDialogLayer>({
+const layer = reactive<GlobalDialogLayer>({
     show: false,
     title: '',
     showButton: true,

@@ -1,10 +1,10 @@
 import type { ElTree } from 'element-plus'
-import type { LayoutTablePage } from './components/components.types'
+import type { GlobalTablePage } from './components/components.types'
 
 export type TreeInstance = InstanceType<typeof ElTree>
 
 export interface UpdatePageType {
-    key: keyof LayoutTablePage
+    key: keyof GlobalTablePage
     value: any
 }
 

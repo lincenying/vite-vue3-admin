@@ -1,5 +1,5 @@
 <template>
-    <layoutDialog ref="layerDom" :layer="layer" @update="onUpdate" @confirm="onSubmit">
+    <GlobalDialog ref="layerDom" :layer="layer" @update="onUpdate" @confirm="onSubmit">
         <el-form ref="ruleForm" :model="form" :rules="rules" label-width="120px" style="margin-right:30px;">
             <el-form-item label="名称：" prop="name">
                 <el-input v-model="form.name" placeholder="请输入名称" />
@@ -25,22 +25,16 @@
                 </el-radio-group>
             </el-form-item>
         </el-form>
-    </layoutDialog>
+    </GlobalDialog>
 </template>
 
 <script lang="ts" setup>
 import type { FormInstance } from 'element-plus'
 import { ElMessage } from '@/config/element'
-import layoutDialog from '@/components/layout-dialog.vue'
-import type { LayerType, LayoutDialogProps } from '@/components/components.types'
+import GlobalDialog from '@/components/global-dialog.vue'
+import type { GlobalDialogProps, LayerType } from '@/components/components.types'
 
-const props = withDefaults(defineProps<LayoutDialogProps>(), {
-    layer: () => ({
-        show: false,
-        title: '',
-        showButton: false,
-    }),
-})
+const props = defineProps<GlobalDialogProps>()
 
 const emit = defineEmits(['getTableData', 'update'])
 

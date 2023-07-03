@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="global-box-table">
-            <LayoutTable
+            <GlobalTable
                 v-model:page="page"
                 v-loading="loading"
                 :show-selection="true"
@@ -63,7 +63,7 @@
                         </el-popconfirm>
                     </template>
                 </el-table-column>
-            </LayoutTable>
+            </GlobalTable>
             <UserDialogModify v-if="layer.show" :layer="layer" @update="(payload: boolean) => layer.show = payload" @get-table-data="getTableData" />
         </div>
     </div>
@@ -73,8 +73,8 @@
 import UserDialogModify from './components/dialog-user-modify.vue'
 import type { UpdatePageType, UserListType } from '@/types'
 import { ElMessage } from '@/config/element'
-import LayoutTable from '@/components/layout-table.vue'
-import type { LayoutDialogLayer, LayoutTablePage } from '@/components/components.types'
+import GlobalTable from '@/components/global-table.vue'
+import type { GlobalDialogLayer, GlobalTablePage } from '@/components/components.types'
 
 defineOptions({
     name: 'Users',
@@ -86,13 +86,13 @@ const query = reactive({
     input: '',
 })
 // 弹窗控制器
-const layer = reactive<LayoutDialogLayer>({
+const layer = reactive<GlobalDialogLayer>({
     show: false,
     title: '新增',
     showButton: true,
 })
 // 分页参数, 供table使用
-const page = reactive<LayoutTablePage>({
+const page = reactive<GlobalTablePage>({
     index: 1,
     size: 20,
     total: 0,

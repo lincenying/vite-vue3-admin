@@ -13,20 +13,14 @@
 </template>
 
 <script lang="ts" setup>
-import type { LayoutDialogProps } from './components.types'
+import type { GlobalDialogProps } from './components.types'
 
-const props = withDefaults(defineProps<LayoutDialogProps>(), {
-    layer: () => ({
-        show: false,
-        title: '',
-        showButton: false,
-    }),
-})
+const props = defineProps<GlobalDialogProps>()
 
 const emit = defineEmits(['confirm', 'update'])
 
 defineOptions({
-    name: 'LayoutDialog',
+    name: 'GlobalDialog',
 })
 
 const show = ref<boolean>(props.layer.show)

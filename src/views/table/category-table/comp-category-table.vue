@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="global-box-table">
-            <layout-table
+            <global-table
                 v-model:page="page"
                 v-loading="loading"
                 :show-index="true"
@@ -45,7 +45,7 @@
                         </el-popconfirm>
                     </template>
                 </el-table-column>
-            </layout-table>
+            </global-table>
             <dialog-modify v-if="layer.show" :layer="layer" @update="(payload: boolean) => (layer.show = payload)" @get-table-data="getTableData" />
         </div>
     </div>
@@ -56,7 +56,7 @@ import { radioData, selectData } from './enum'
 import dialogModify from './dialog-modify.vue'
 import type { CategoryType, TableListType, UpdatePageType } from '@/types'
 import { ElMessage } from '@/config/element'
-import type { LayoutDialogLayer, LayoutTablePage } from '@/components/components.types'
+import type { GlobalDialogLayer, GlobalTablePage } from '@/components/components.types'
 import { activeCategoryKey } from '@/composables/provide'
 
 defineOptions({
@@ -69,13 +69,13 @@ const query = reactive({
     input: '',
 })
 // 弹窗控制器
-const layer = reactive<LayoutDialogLayer>({
+const layer = reactive<GlobalDialogLayer>({
     show: false,
     title: '新增',
     showButton: true,
 })
 // 分页参数, 供table使用
-const page = reactive<LayoutTablePage>({
+const page = reactive<GlobalTablePage>({
     index: 1,
     size: 20,
     total: 0,

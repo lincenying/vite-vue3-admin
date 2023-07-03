@@ -26,9 +26,9 @@
 
 <script lang="ts" setup>
 import type { TableInstance } from 'element-plus'
-import type { LayoutTableProps } from './components.types'
+import type { GlobalTableProps } from './components.types'
 
-const props = withDefaults(defineProps<LayoutTableProps>(), {
+const props = withDefaults(defineProps<GlobalTableProps>(), {
     data: () => [],
     select: () => [],
     showIndex: false,
@@ -41,8 +41,10 @@ const props = withDefaults(defineProps<LayoutTableProps>(), {
 
 const emit = defineEmits(['getTableData', 'selectionChange', 'updatePage'])
 
+console.log(JSON.parse(JSON.stringify(props)))
+
 defineOptions({
-    name: 'LayoutTable',
+    name: 'GlobalTable',
 })
 
 const { data, showIndex, showSelection, showPage, page, pageLayout, pageSizes } = $(toRefs(props))

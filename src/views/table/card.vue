@@ -38,7 +38,7 @@
 
 <script lang="ts" setup>
 import type { CardListType } from '@/types'
-import type { LayoutTablePage } from '@/components/components.types'
+import type { GlobalTablePage } from '@/components/components.types'
 
 defineOptions({
     name: 'Card',
@@ -50,7 +50,7 @@ const [loading, toggleLoading] = useToggle(false)
 const list = ref<CardListType[]>([])
 const box = ref<HTMLDivElement>()
 
-const page = reactive<LayoutTablePage>({
+const page = reactive<GlobalTablePage>({
     index: 1,
     size: 20,
     total: 0,
