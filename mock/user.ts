@@ -1,4 +1,4 @@
-import type { MockMethod } from 'vite-plugin-mock'
+import type { MockMethod } from '@lincy/vite-plugin-mock'
 import type { UserListType } from '@/types'
 
 const users: UserListType[] = [
@@ -31,7 +31,7 @@ export default [
     {
         url: '/mock/user/login',
         method: 'post',
-        response: ({ body }: any) => {
+        response: ({ body }) => {
             const user = users.find((user) => {
                 return body.name === user.name && body.password === user.password
             })

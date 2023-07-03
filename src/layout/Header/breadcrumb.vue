@@ -26,7 +26,7 @@ const router = useRouter()
 
 const allRoutes = router.options.routes as Route[]
 
-function getParentsRoute(arr: RouteLocationMatched[] = [], key: string) {
+function getParentsRoute(arr: RouteLocationMatched[] = [], key: string): RouteLocationMatched[] {
     const obj = allRoutes.find(item => item.path === key)
     arr.unshift(obj as RouteLocationMatched)
     if (obj && obj.parentPath)

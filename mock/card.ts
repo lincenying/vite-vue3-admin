@@ -1,10 +1,10 @@
-import type { MockMethod } from 'vite-plugin-mock'
+import type { MockMethod } from '@lincy/vite-plugin-mock'
 
 export default [
     {
         url: '/mock/card/list',
         method: 'post',
-        response: (opt: { body: { page: any; pageSize: any } }) => {
+        response: (opt) => {
             const { page, pageSize } = opt.body
             return {
                 code: 200,

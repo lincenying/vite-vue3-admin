@@ -1,11 +1,11 @@
-import type { MockMethod } from 'vite-plugin-mock'
+import type { MockMethod } from '@lincy/vite-plugin-mock'
 
 const roles = ['系统管理员', '平台管理员', '数据统计人员', '信息录入人员', '普通人员']
 export default [
     {
         url: '/mock/system/user/list',
         method: 'post',
-        response: (opt: { body: { page: number; pageSize: number } }) => {
+        response: (opt) => {
             const { page, pageSize } = opt.body
             return {
                 code: 200,
