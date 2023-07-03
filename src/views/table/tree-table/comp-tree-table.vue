@@ -68,7 +68,7 @@ const query = reactive({
     input: '',
 })
 // 弹窗控制器
-const layer: GlobalDialogLayer = reactive({
+const layer = reactive<GlobalDialogLayer>({
     show: false,
     title: '新增',
     showButton: true,
