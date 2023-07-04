@@ -26,7 +26,7 @@
                         </template>
                     </el-input>
 
-                    <el-button type="primary" :loading="form.loading" style="width: 100%" size="default" @click="handleSubmit">登录</el-button>
+                    <el-button type="primary" :loading="form.loading" class="w-full" size="default" @click="handleSubmit">登录</el-button>
                 </el-form>
                 <div class="fixed-top-right" />
             </div>

@@ -4,10 +4,10 @@
             <tabsItem v-for="menu in tabsStorage" :key="menu.meta.title" :menu="menu" :active="activeMenu.path === menu.path" @close="delMenu(menu)" @reload="handlePageReload" />
         </el-scrollbar>
         <div class="handle">
-            <div id="vueAdminBoxTabRefresh" @click="handlePageReload" />
-            <div id="vueAdminBoxTabCloseSelf" @click="handleCloseCurrentRoute" />
-            <div id="vueAdminBoxTabCloseOther" @click="handleCloseOtherRoute" />
-            <div id="vueAdminBoxTabCloseAll" @click="handleCloseAllRoute" />
+            <div id="boxTabRefresh" @click="handlePageReload" />
+            <div id="boxTabCloseSelf" @click="handleCloseCurrentRoute" />
+            <div id="boxTabCloseOther" @click="handleCloseOtherRoute" />
+            <div id="boxTabCloseAll" @click="handleCloseAllRoute" />
             <el-dropdown placement="bottom">
                 <div class="el-dropdown-link">
                     <el-icon><i-ep-arrow-down /></el-icon>
@@ -88,7 +88,7 @@ function handlePageReload() {
 // 关闭当前标签，首页不关闭
 function handleCloseCurrentRoute() {
     if (route.path !== defaultMenu.path) {
-        const tabElement = document.getElementById('vueAdminBoxTabCloseSelf')
+        const tabElement = document.getElementById('boxTabCloseSelf')
         const nextPath = tabElement?.getAttribute('nextPath')
         delMenu(route, nextPath)
     }
@@ -197,7 +197,6 @@ function handleWhellScroll(e: WheelEvent) {
     else if (-e.deltaY < -30)
         distance = 10
 
-    // console.log(scrollLeft.value + eventDelta / 4)
     scrollbarDom.value?.setScrollLeft(scrollLeft.value + distance * speed)
 }
 

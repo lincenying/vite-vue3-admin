@@ -1,0 +1,23 @@
+import type { CSSOptions } from 'vite'
+
+const config: {
+    css: CSSOptions
+} = {
+    css: {
+        postcss: {
+            plugins: [
+                {
+                    postcssPlugin: 'internal:charset-removal',
+                    AtRule: {
+                        charset: (atRule) => {
+                            if (atRule.name === 'charset')
+                                atRule.remove()
+                        },
+                    },
+                },
+            ],
+        },
+    },
+}
+
+export default config

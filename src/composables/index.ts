@@ -5,7 +5,7 @@ export function changeTitle(name: string) {
 /** 关闭当前标签 */
 export function closeCurrentTab(nextPath?: string) {
     /** 拿到tab组件 */
-    const tab = document.getElementById('vueAdminBoxTabCloseSelf')
+    const tab = document.getElementById('boxTabCloseSelf')
     if (nextPath) {
     /** 设置下一个tab的路径 */
         tab?.setAttribute('nextpath', nextPath)
@@ -23,7 +23,7 @@ export function closeCurrentTab(nextPath?: string) {
 /** 关闭其他标签 */
 export function closeOtherTab() {
     /** 拿到tab组件 */
-    const tab = document.getElementById('vueAdminBoxTabCloseOther')
+    const tab = document.getElementById('boxTabCloseOther')
     /** 触发tab事件点击 */
     tab?.click()
 }
@@ -31,7 +31,7 @@ export function closeOtherTab() {
 /** 关闭所有标签 */
 export function closeAllTab() {
     /** 拿到tab组件 */
-    const tab = document.getElementById('vueAdminBoxTabCloseAll')
+    const tab = document.getElementById('boxTabCloseAll')
     /** 触发tab事件点击 */
     tab?.click()
 }
@@ -39,7 +39,7 @@ export function closeAllTab() {
 /** 刷新当前标签 */
 export function refreshCurrentTab() {
     /** 拿到tab组件 */
-    const tab = document.getElementById('vueAdminBoxTabRefresh')
+    const tab = document.getElementById('boxTabRefresh')
     /** 触发tab事件点击 */
     tab?.click()
 }

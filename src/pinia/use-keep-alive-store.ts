@@ -16,10 +16,8 @@ const useKeepAliveStore = defineStore('keepAliveStore', () => {
     }
     function delKeepAliveComponentsName(name: RouteRecordName) {
         const key = state.keepAliveComponentsName.indexOf(name)
-        if (key !== -1) {
+        if (key !== -1)
             state.keepAliveComponentsName.splice(key, 1)
-            console.log(state.keepAliveComponentsName)
-        }
     }
 
     return {

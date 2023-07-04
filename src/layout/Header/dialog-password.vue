@@ -1,6 +1,6 @@
 <template>
-    <global-dialog ref="layerDom" :layer="layer" @update="onUpdate" @confirm="submit">
-        <ElForm ref="ruleForm" :model="form" :rules="rules" label-width="120px" style="margin-right:30px;">
+    <global-dialog ref="layerDom" :layer="layer" @update="onUpdate" @confirm="onSubmit">
+        <ElForm ref="ruleForm" :model="form" :rules="rules" label-width="120px" class="mr-30px">
             <el-form-item label="用户名：" prop="name">
                 管理员
             </el-form-item>
@@ -48,7 +48,7 @@ const rules = {
     old: [{ required: true, message: '请输入原密码', trigger: 'blur' }],
     new: [{ required: true, message: '请输入新密码', trigger: 'blur' }],
 }
-function submit() {
+function onSubmit() {
     if (ruleForm.value) {
         ruleForm.value.validate(async (valid) => {
             if (valid) {

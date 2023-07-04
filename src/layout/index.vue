@@ -1,5 +1,5 @@
 <template>
-    <el-container class="layout-box" style="height: 100vh">
+    <el-container class="layout-box" h-100vh>
         <div v-show="!isCollapse && !contentFullScreen" class="mask" @click="hideMenu" />
         <el-aside v-show="!contentFullScreen" :width="isCollapse ? '60px' : '250px'" :class="isCollapse ? 'hide-aside' : 'show-side'">
             <LayoutLogo v-if="showLogo" />

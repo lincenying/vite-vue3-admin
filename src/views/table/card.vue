@@ -17,7 +17,7 @@
                             </el-card>
                         </el-col>
                     </el-row>
-                    <el-empty v-show="list.length === 0" description="空空如也~" style="height: 500px" />
+                    <el-empty v-show="list.length === 0" description="空空如也~" class="h-500px" />
                 </el-scrollbar>
             </div>
 
@@ -83,7 +83,6 @@ function onSizeChange(val: number) {
 }
 onMounted(() => {
     box.value?.addEventListener('resize', () => {
-        console.log(12)
     })
 })
 function showEditor() {}

@@ -8,12 +8,12 @@ export function createNameComponent(component: () => Promise<any>): () => Promis
     return () => {
         return new Promise((resolve) => {
             component().then((comm: DefineComponent<{}, {}, any>) => {
-                const name = `${comm.default.name || 'vueAdminBox'}$${Date.now()}`
+                const name = `${comm.default.name || 'vue3Admin'}$${Date.now()}`
                 const tempComm = defineComponent({
                     name,
                     setup() {
                         const isReload = ref(false)
-                        let timeOut: any = null
+                        let timeOut: Nullable<NodeJS.Timeout> = null
                         const handleReload = () => {
                             isReload.value = true
                             timeOut && clearTimeout(timeOut)

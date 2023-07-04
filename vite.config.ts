@@ -8,6 +8,8 @@ import UnoCSS from 'unocss/vite'
 import { warmup } from 'vite-plugin-warmup'
 
 import Components from './vite.config.components'
+import Build from './vite.config.build'
+import Css from './vite.config.css'
 
 function pathResolve(dir: string): any {
     return path.resolve(__dirname, '.', dir)
@@ -23,41 +25,8 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
         resolve: {
             alias,
         },
-        server: {
-            port: 3001,
-            host: '0.0.0.0',
-            open: true,
-            proxy: { // 代理配置
-                '/api': {
-                    target: 'http://127.0.0.1:3001',
-                    changeOrigin: true,
-                    rewrite: (path: string) => path.replace(/^\/api/, '/mock'),
-                },
-            },
-        },
-        build: {
-            target: 'es2018',
-            cssTarget: 'chrome79',
-            minify: true,
-            assetsInlineLimit: 4096,
-            chunkSizeWarningLimit: 1000,
-            outDir: 'dist',
-            rollupOptions: {
-                input: {
-                    main: path.resolve(__dirname, 'index.html'),
-                },
-                external: /\.\/assets.*/,
-                output: {
-                    manualChunks(id: string) {
-                        if (id.includes('node_modules')) {
-                            if (id.includes('echarts') || id.includes('zrender'))
-                                return 'echarts'
-                            return 'vendor'
-                        }
-                    },
-                },
-            },
-        },
+        ...Build,
+        ...Css,
         plugins: [
             VueMacros.vite({
                 plugins: {
@@ -83,20 +52,6 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
                 clientFiles: ['./src/main.ts', './src/views/**/*.vue'],
             }),
         ],
-        css: {
-            postcss: {
-                plugins: [
-                    {
-                        postcssPlugin: 'internal:charset-removal',
-                        AtRule: {
-                            charset: (atRule) => {
-                                if (atRule.name === 'charset')
-                                    atRule.remove()
-                            },
-                        },
-                    },
-                ],
-            },
-        },
+
     }
 }

@@ -52,8 +52,6 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits(['getTableData', 'selectionChange', 'updatePage'])
 
-console.log(JSON.parse(JSON.stringify(props)))
-
 defineOptions({
     name: 'GlobalTable',
 })
@@ -64,15 +62,10 @@ const tableRef = ref<TableInstance>()
 let timer: Nullable<string> = null
 // 分页相关：监听页码切换事件
 function handleCurrentChange(val: number) {
-    if (timer)
-        emit('updatePage', { key: 'index', value: 1 })
-
-    else
-        emit('updatePage', { key: 'index', value: val })
+    emit('updatePage', { key: 'index', value: timer ? 1 : val })
 }
 // 分页相关：监听单页显示数量切换事件
 function handleSizeChange(val: number) {
-    console.log(val)
     timer = 'work'
     setTimeout(() => {
         timer = null

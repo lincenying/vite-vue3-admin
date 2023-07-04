@@ -1,6 +1,6 @@
 <template>
     <global-dialog ref="layerDom" :layer="layer" @update="onUpdate" @confirm="onSubmit">
-        <el-form ref="ruleForm" :model="form" :rules="rules" label-width="120px" style="margin-right:30px;">
+        <el-form ref="ruleForm" :model="form" :rules="rules" label-width="120px" class="mr-30px">
             <el-form-item label="名称：" prop="name">
                 <el-input v-model="form.name" placeholder="请输入名称" />
             </el-form-item>

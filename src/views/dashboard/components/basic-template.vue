@@ -3,7 +3,7 @@
         <template #header>
             <div class="text-left">
                 <span>基础模板</span>
-                <el-link type="primary" href="https://github.com/lincenying/vue3-admin" target="_blank" style="margin-left: 20px">github地址</el-link>
+                <el-link type="primary" href="https://github.com/lincenying/vue3-admin" target="_blank" class="ml-20px">github地址</el-link>
             </div>
         </template>
         <div class="box">
