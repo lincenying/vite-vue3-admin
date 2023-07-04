@@ -4,45 +4,17 @@ import { createNameComponent } from '../createNode'
 const route: Route[] = [
     {
         path: '/system',
-        redirect: '/404',
-        hideMenu: true,
-        meta: { title: '系统目录' },
+        redirect: '/system/user',
+        level: 1,
+        meta: { title: '系统管理', icon: 'iconfont icon-xitong' },
         children: [],
+        alwayShow: true,
     },
     {
-        path: '/404',
-        component: createNameComponent(() => import('@/views/system/404.vue')),
-        hideMenu: true,
-        meta: { title: '404', hideTabs: true },
-        children: [],
-    },
-    {
-        path: '/401',
-        component: createNameComponent(() => import('@/views/system/401.vue')),
-        hideMenu: true,
-        meta: { title: '401', hideTabs: true },
-        children: [],
-    },
-    {
-        path: '/redirect/:path(.*)',
-        component: createNameComponent(() => import('@/views/system/redirect.vue')),
-        hideMenu: true,
-        meta: { title: '重定向页面', hideTabs: true },
-        children: [],
-    },
-    {
-        path: '/login',
-        component: createNameComponent(() => import('@/views/system/login.vue')),
-        hideMenu: true,
-        meta: { title: '登录', hideTabs: true },
-        children: [],
-    },
-    // 找不到路由重定向到首页
-    {
-        path: '/:pathMatch(.*)',
-        redirect: '/',
-        hideMenu: true,
-        meta: { title: '' },
+        parentPath: '/system',
+        path: '/system/user',
+        component: createNameComponent(() => import('@/views/system/users.vue')),
+        meta: { title: '用户', icon: 'iconfont icon-yemian' },
         children: [],
     },
 ]

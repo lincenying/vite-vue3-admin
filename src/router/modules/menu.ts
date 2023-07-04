@@ -7,7 +7,7 @@ const route: Route[] = [
         redirect: '/menu/menu-1',
         alwayShow: true,
         level: 1,
-        meta: { title: '多级嵌套菜单', icon: 'iconfont icon-caidan' },
+        meta: { title: '嵌套菜单', icon: 'iconfont icon-caidan' },
         children: [],
     },
     {

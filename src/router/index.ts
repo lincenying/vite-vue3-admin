@@ -5,11 +5,11 @@
  */
 import { createRouter, createWebHashHistory } from 'vue-router'
 
-import System from './modules/system'
+import Feature from './modules/feature'
 import Dashboard from './modules/dashboard'
 import Table from './modules/table'
 import Menu from './modules/menu'
-import SystemManage from './modules/system-manage'
+import System from './modules/system'
 import NProgress from '@/utils/nprogress'
 
 // 引入不需要权限的modules
@@ -23,11 +23,11 @@ NProgress.configure({ showSpinner: false })
  **/
 
 const modules = reactive([
-    ...System,
+    ...Feature,
     ...Dashboard,
     ...Table,
     ...Menu,
-    ...SystemManage,
+    ...System,
 ])
 
 const router = createRouter({

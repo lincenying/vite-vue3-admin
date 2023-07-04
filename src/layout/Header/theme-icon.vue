@@ -18,9 +18,18 @@
 </template>
 
 <script lang="ts" setup>
-import type { ThemeIconProps } from '../layout.types'
+interface Props {
+    name: string
+    active: string
+    menu: string
+    logo: string
+    header: string
+    main: string
+    tip: string
+    activeColor: string
+}
 
-const props = withDefaults(defineProps<ThemeIconProps>(), {
+const props = withDefaults(defineProps<Props>(), {
     name: 'default',
     active: '',
     menu: '',

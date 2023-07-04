@@ -9,9 +9,12 @@
 </template>
 
 <script lang="ts" setup>
-import type { MenuItemProps } from '../layout.types'
+import type { TabsType } from '@/composables/storage'
 
-const props = defineProps<MenuItemProps>()
+const props = defineProps<{
+    menu: TabsType
+    active: boolean
+}>()
 
 const emit = defineEmits(['close', 'reload'])
 

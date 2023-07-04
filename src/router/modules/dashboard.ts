@@ -18,7 +18,7 @@ const route: Route[] = [
         parentPath: '/',
         path: '/dashboard',
         component: createNameComponent(() => import('@/views/dashboard/index.vue')),
-        meta: { title: 'Dashboard', icon: 'iconfont icon-dashboard', hideClose: true },
+        meta: { title: '仪表盘', icon: 'iconfont icon-dashboard', hideClose: true },
         children: [],
     },
 ]

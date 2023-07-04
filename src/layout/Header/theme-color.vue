@@ -9,9 +9,15 @@
 </template>
 
 <script lang="ts" setup>
-import type { ThemeColorProps } from '../layout.types'
+interface Props {
+    active: string
+    activeTextColor: string
+    tip: string
+    color: string
+    textColor: string
+}
 
-const props = withDefaults(defineProps<ThemeColorProps>(), {
+const props = withDefaults(defineProps<Props>(), {
     active: '',
     activeTextColor: '',
     tip: '默认蓝',
