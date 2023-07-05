@@ -35,12 +35,12 @@
                 <el-table-column prop="nickName" label="昵称" align="center" />
                 <el-table-column prop="role" label="角色" align="center" />
                 <el-table-column prop="isAdmin" label="超级管理员" align="center">
-                    <template #default="{ row }: { row: UserListType }">
+                    <template #default="{ row }: ScopeRow">
                         <span class="mr-10px">{{ row.isAdmin === 1 ? "是" : "否" }}</span>
                     </template>
                 </el-table-column>
                 <el-table-column prop="status" label="状态" align="center">
-                    <template #default="{ row }: { row: UserListType }">
+                    <template #default="{ row }: ScopeRow">
                         <span class="mr-10px">{{ row.status === 1 ? "启用" : "禁用" }}</span>
                         <el-switch
                             v-model="row.status"
@@ -54,7 +54,7 @@
                     </template>
                 </el-table-column>
                 <el-table-column label="操作" align="center" fixed="right" width="200">
-                    <template #default="{ row }: { row: UserListType }">
+                    <template #default="{ row }: ScopeRow">
                         <el-button @click="handleEdit(row)">编辑</el-button>
                         <el-popconfirm title="确定删除选中的数据吗？" @confirm="handleDel([row])">
                             <template #reference>
@@ -75,6 +75,8 @@ import type { UpdatePageType, UserListType } from '@/types'
 import { ElMessage } from '@/config/element'
 import globalTable from '@/components/global-table.vue'
 import type { GlobalDialogLayer, GlobalTablePage } from '@/components/components.types'
+
+interface ScopeRow { row: UserListType }
 
 defineOptions({
     name: 'Users',

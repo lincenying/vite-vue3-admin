@@ -36,7 +36,7 @@
                 <el-table-column prop="chooseName" label="选择器" align="center" />
                 <el-table-column prop="radioName" label="单选框" align="center" />
                 <el-table-column label="操作" align="center" fixed="right" width="200">
-                    <template #default="{ row }: { row: TableListType }">
+                    <template #default="{ row }: ScopeRow">
                         <el-button @click="handleEdit(row)">{{ '编辑' }}</el-button>
                         <el-popconfirm title="确定删除选中的数据吗？" @confirm="handleDel([row])">
                             <template #reference>
@@ -58,6 +58,8 @@ import type { CategoryType, TableListType, UpdatePageType } from '@/types'
 import { ElMessage } from '@/config/element'
 import type { GlobalDialogLayer, GlobalTablePage } from '@/components/components.types'
 import { activeCategoryKey } from '@/composables/provide'
+
+interface ScopeRow { row: TableListType }
 
 defineOptions({
     name: 'MyTable',

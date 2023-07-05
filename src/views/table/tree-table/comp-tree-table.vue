@@ -36,9 +36,9 @@
                 <el-table-column prop="chooseName" label="选择器" align="center" />
                 <el-table-column prop="radioName" label="单选框" align="center" />
                 <el-table-column label="操作" align="center" fixed="right" width="200">
-                    <template #default="scope">
-                        <el-button @click="handleEdit(scope.row)">{{ '编辑' }}</el-button>
-                        <el-popconfirm title="确定删除选中的数据吗？" @confirm="handleDel([scope.row])">
+                    <template #default="{ row }: ScopeRow">
+                        <el-button @click="handleEdit(row)">{{ '编辑' }}</el-button>
+                        <el-popconfirm title="确定删除选中的数据吗？" @confirm="handleDel([row])">
                             <template #reference>
                                 <el-button type="danger">{{ '删除' }}</el-button>
                             </template>
@@ -57,6 +57,8 @@ import dialogModify from './dialog-modify.vue'
 import type { TableListType, TreeType, UpdatePageType } from '@/types'
 import { ElMessage } from '@/config/element'
 import type { GlobalDialogLayer, GlobalTablePage } from '@/components/components.types'
+
+interface ScopeRow { row: TableListType }
 
 defineOptions({
     name: 'MyTable',
