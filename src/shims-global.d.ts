@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 /** Null 或者 T */
 declare type Nullable<T> = T | null
 /** 非 Null 类型 */
@@ -36,22 +34,19 @@ declare interface ResponseData<T> {
     code: number
     message: string
     info?: string
+    [propName: string]: any
 }
+
+type Methods = 'get' | 'post' | 'delete' | 'put'
 
 declare interface ApiType {
     get<T>(url: string, params?: Obj, header?: Obj, checkCode?: boolean): Promise<ResponseData<T>>
     post<T>(url: string, data?: Obj, header?: Obj, checkCode?: boolean): Promise<ResponseData<T>>
     put<T>(url: string, data?: Obj, header?: Obj, checkCode?: boolean): Promise<ResponseData<T>>
     delete<T>(url: string, data?: Obj, header?: Obj, checkCode?: boolean): Promise<ResponseData<T>>
-    downFile(url: string, method: 'get' | 'post', data?: Obj): Promise<any>
-    RESTful<T>(
-        url: string,
-        method: 'get' | 'post' | 'delete' | 'put',
-        data?: Obj,
-        header?: Obj,
-        checkCode?: boolean
-    ): Promise<ResponseData<T>>
-    $RESTful<T>(url: string, method: 'get' | 'post' | 'delete' | 'put', data?: Obj, header?: Obj): Promise<ResponseData<T>>
+    downFile(url: string, method: Methods, data?: Obj): Promise<any>
+    RESTful<T>(url: string, method: Methods, data?: Obj, header?: Obj, checkCode?: boolean): Promise<ResponseData<T>>
+    $RESTful<T>(url: string, method: Methods, data?: Obj, header?: Obj): Promise<ResponseData<T>>
 }
 
 declare interface Window {

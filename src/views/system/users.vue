@@ -86,7 +86,7 @@ const query = reactive({
     input: '',
 })
 // 弹窗控制器
-const layer = reactive<GlobalDialogLayer<Obj>>({
+const layer = reactive<GlobalDialogLayer>({
     show: false,
     title: '新增',
     showButton: true,
@@ -133,10 +133,10 @@ async function getTableData(init?: Boolean) {
     }
     const { code, data } = await $api.post<ResponseDataLists<UserListType[]>>('/system/user/list', params)
     if (code === 200) {
-        data.list.forEach((d) => {
-            d.loading = false
-        })
-        tableData.value = data.list
+        tableData.value = data.list.map(item => ({
+            ...item,
+            loading: false,
+        }))
         page.total = Number(data.pager.total)
     }
     stop()

@@ -119,17 +119,16 @@ async function getTableData(init: boolean) {
     const { code, data } = await $api.post<ResponseDataLists<TableListType[]>>('/table/list', params)
     if (code === 200) {
         if (Array.isArray(data.list)) {
-            data.list.forEach((d) => {
-                const select = selectData.find(select => select.value === d.choose)
-                select ? d.chooseName = select.label : d.chooseName = d.choose
-                const radio = radioData.find(select => select.value === d.radio)
-                if (radio)
-                    d.radioName = radio.label
-                else
-                    d.radioName = d.radio
+            tableData.value = data.list.map((item) => {
+                const select = selectData.find(select => select.value === item.choose)
+                const radio = radioData.find(select => select.value === item.radio)
+                return {
+                    ...item,
+                    chooseName: select ? select.label : item.choose,
+                    radioName: radio ? radio.label : item.radio,
+                }
             })
         }
-        tableData.value = data.list
         page.total = Number(data.pager.total)
     }
     stop()
