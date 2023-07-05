@@ -37,7 +37,7 @@
 <script lang="ts" setup>
 import breadcrumb from './header/breadcrumb.vue'
 import dialogPassword from './header/dialog-password.vue'
-import fullScreen from './header/fullscreen.vue'
+import fullScreen from './header/full-screen.vue'
 import layoutTheme from './header/layout-theme.vue'
 import github from './header/github.vue'
 import type { GlobalDialogLayer } from '@/components/components.types'
