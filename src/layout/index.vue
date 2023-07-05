@@ -2,14 +2,14 @@
     <el-container class="layout-box" h-100vh>
         <div v-show="!isCollapse && !contentFullScreen" class="mask" @click="hideMenu" />
         <el-aside v-show="!contentFullScreen" :width="isCollapse ? '60px' : '250px'" :class="isCollapse ? 'hide-aside' : 'show-side'">
-            <LayoutLogo v-if="showLogo" />
-            <LayoutMenu />
+            <layout-logo v-if="showLogo" />
+            <layout-menu />
         </el-aside>
         <el-container>
             <el-header v-show="!contentFullScreen">
-                <LayoutHeader />
+                <layout-header />
             </el-header>
-            <LayoutTabs v-show="showTabs" />
+            <layout-tabs v-show="showTabs" />
             <el-main>
                 <router-view v-slot="{ Component, route }">
                     <transition :name="route.meta.transition || 'fade-transform'" mode="out-in">
@@ -25,10 +25,10 @@
 </template>
 
 <script lang="ts" setup>
-import LayoutMenu from './menu.vue'
-import LayoutLogo from './logo.vue'
-import LayoutHeader from './header.vue'
-import LayoutTabs from './tabs.vue'
+import layoutMenu from './menu.vue'
+import layoutLogo from './logo.vue'
+import layoutHeader from './header.vue'
+import layoutTabs from './tabs.vue'
 
 defineOptions({
     name: 'LayoutIndex',

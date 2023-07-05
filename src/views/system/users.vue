@@ -21,9 +21,9 @@
             </div>
         </div>
         <div class="global-box-table">
-            <GlobalTable
-                v-model:page="page"
+            <global-table
                 v-loading="loading"
+                :page="page"
                 :show-selection="true"
                 :data="tableData"
                 @get-table-data="getTableData"
@@ -49,7 +49,7 @@
                             :active-value="1"
                             :inactive-value="0"
                             :loading="row.loading"
-                            @change="handleUpdateStatus(row)"
+                            @change="onUpdateStatus(row)"
                         />
                     </template>
                 </el-table-column>
@@ -63,17 +63,17 @@
                         </el-popconfirm>
                     </template>
                 </el-table-column>
-            </GlobalTable>
-            <UserDialogModify v-if="layer.show" :layer="layer" @update="(payload: boolean) => layer.show = payload" @get-table-data="getTableData" />
+            </global-table>
+            <dialog-user-modify v-if="layer.show" :layer="layer" @update="(payload: boolean) => layer.show = payload" @get-table-data="getTableData" />
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
-import UserDialogModify from './components/dialog-user-modify.vue'
+import dialogUserModify from './components/dialog-user-modify.vue'
 import type { UpdatePageType, UserListType } from '@/types'
 import { ElMessage } from '@/config/element'
-import GlobalTable from '@/components/global-table.vue'
+import globalTable from '@/components/global-table.vue'
 import type { GlobalDialogLayer, GlobalTablePage } from '@/components/components.types'
 
 defineOptions({
@@ -90,6 +90,7 @@ const layer = reactive<GlobalDialogLayer>({
     show: false,
     title: '新增',
     showButton: true,
+    width: '500px',
 })
 // 分页参数, 供table使用
 const page = reactive<GlobalTablePage>({
@@ -121,7 +122,7 @@ function onUpdatePage(payload: UpdatePageType | UpdatePageType[]) {
 }
 // 获取表格数据
 // params <init> Boolean ，默认为false，用于判断是否需要初始化分页
-async function getTableData(init?: Boolean) {
+async function getTableData(init?: boolean) {
     const { stop } = useTimeoutFn(() => toggleLoading(true), 200)
     if (init)
         page.index = 1
@@ -169,7 +170,7 @@ function handleEdit(row: UserListType) {
     layer.show = true
 }
 // 状态编辑功能
-async function handleUpdateStatus(row: UserListType) {
+async function onUpdateStatus(row: UserListType) {
     if (!row.id)
         return
 

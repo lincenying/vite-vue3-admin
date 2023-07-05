@@ -7,7 +7,7 @@
             </template>
             <menu-item v-for="(item, key) in menu.children" :key="key" :menu="item" :base-path="menu.path" />
         </el-sub-menu>
-        <AppLink v-else-if="showMenuType === 1" :to="menu.path">
+        <app-link v-else-if="showMenuType === 1" :to="menu.path">
             <el-menu-item v-if="!menu.children[0].children || menu.children[0].children.length === 0" :index="menu.path">
                 <i v-if="menu.children[0].meta.icon || menu.meta.icon" :class="menu.children[0].meta.icon || menu.meta.icon" />
                 <template #title>{{ menu.children[0].meta.title }}</template>
@@ -19,18 +19,18 @@
                 </template>
                 <menu-item v-for="(item, key) in menu.children[0].children" :key="key" :menu="item" :base-path="menu.path" />
             </el-sub-menu>
-        </AppLink>
-        <AppLink v-else :to="menu.path">
+        </app-link>
+        <app-link v-else :to="menu.path">
             <el-menu-item :index="menu.path">
                 <i v-if="menu.meta.icon" :class="menu.meta.icon" />
                 <template #title>{{ menu.meta.title }}</template>
             </el-menu-item>
-        </AppLink>
+        </app-link>
     </template>
 </template>
 
 <script lang="ts" setup>
-import AppLink from './link.vue'
+import appLink from './link.vue'
 import type { Route } from '@/router/index.type'
 
 const props = defineProps<{

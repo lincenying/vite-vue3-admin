@@ -1,11 +1,11 @@
 <template>
     <div class="flex flex-wrap justify-between">
-        <CardRow v-for="row in list" :key="row.id" :row="row" />
+        <card-row v-for="row in list" :key="row.id" :row="row" />
     </div>
 </template>
 
 <script lang="ts" setup>
-import CardRow from './card-row.vue'
+import cardRow from './card-row.vue'
 import type { IndexCardType } from '@/types'
 
 defineOptions({

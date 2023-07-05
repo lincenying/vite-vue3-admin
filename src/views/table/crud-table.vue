@@ -22,8 +22,8 @@
         </div>
         <div class="global-box-table">
             <global-table
-                v-model:page="page"
                 v-loading="loading"
+                :page="page"
                 :show-index="true"
                 :show-selection="true"
                 :data="tableData"

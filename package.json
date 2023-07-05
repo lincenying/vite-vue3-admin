@@ -59,7 +59,7 @@
     "sass": "^1.63.6",
     "typescript": "^5.0.4",
     "unocss": "^0.53.4",
-    "unplugin-auto-import": "^0.16.5",
+    "unplugin-auto-import": "^0.16.4",
     "unplugin-icons": "^0.16.3",
     "unplugin-vue-components": "^0.25.1",
     "unplugin-vue-macros": "^2.3.0",

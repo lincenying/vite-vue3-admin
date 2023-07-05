@@ -5,7 +5,7 @@
     <el-drawer v-model="drawer" class="layout-theme" title="系统设置" size="300px" :show-close="false" direction="rtl">
         <h3>整体风格设置</h3>
         <div class="theme-box">
-            <ThemeIcon
+            <theme-icon
                 v-for="(row, index) in style"
                 :key="index"
                 v-model:active="state.style"
@@ -20,7 +20,7 @@
         </div>
         <h3>主题色</h3>
         <div class="theme-box">
-            <ThemeColor
+            <theme-color
                 v-for="(item, key) in themeColorArr"
                 :key="key"
                 v-model:active="state.primaryColor"
@@ -41,8 +41,8 @@
 </template>
 
 <script lang="ts" setup>
-import ThemeIcon from './theme-icon.vue'
-import ThemeColor from './theme-color.vue'
+import themeIcon from './theme-icon.vue'
+import themeColor from './theme-color.vue'
 import { style } from '@/theme/index'
 import type { SettingOption } from '@/types'
 import type { ThemeState } from '@/pinia/store.types'

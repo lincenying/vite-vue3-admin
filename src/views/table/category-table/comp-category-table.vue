@@ -22,8 +22,8 @@
         </div>
         <div class="global-box-table">
             <global-table
-                v-model:page="page"
                 v-loading="loading"
+                :page="page"
                 :show-index="true"
                 :show-selection="true"
                 :data="tableData"
@@ -73,6 +73,7 @@ const layer = reactive<GlobalDialogLayer<Obj>>({
     show: false,
     title: '新增',
     showButton: true,
+    width: '500px',
 })
 // 分页参数, 供table使用
 const page = reactive<GlobalTablePage>({

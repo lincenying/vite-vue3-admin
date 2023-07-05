@@ -1,25 +1,25 @@
 <template>
     <div class="dashboard-index">
         <el-scrollbar height="100%">
-            <BasicTemplate />
-            <CardIndex />
-            <Communication />
-            <Communication />
-            <Communication />
-            <Communication />
-            <Communication />
-            <Communication />
-            <Communication />
-            <Communication />
+            <basic-template />
+            <card-index />
+            <communication />
+            <communication />
+            <communication />
+            <communication />
+            <communication />
+            <communication />
+            <communication />
+            <communication />
         </el-scrollbar>
     </div>
 </template>
 
 <script lang="ts" setup>
-import BasicTemplate from './components/basic-template.vue'
-import Communication from './components/communication.vue'
+import basicTemplate from './components/basic-template.vue'
+import communication from './components/communication.vue'
 
-import CardIndex from './components/card-index.vue'
+import cardIndex from './components/card-index.vue'
 
 defineOptions({
     name: 'DashboardIndex',

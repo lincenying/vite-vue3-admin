@@ -5,14 +5,14 @@
             <div class="menu-icon" @click="opendStateChange">
                 <i class="iconfont head-fold" :class="isCollapse ? 'icon-s-unfold' : 'icon-s-fold'" />
             </div>
-            <Breadcrumb />
+            <breadcrumb />
         </div>
         <div class="right-box">
             <!-- 快捷功能按钮 -->
             <div class="function-list">
-                <div class="function-list-item hidden-sm-and-down"><FullScreen /></div>
-                <div class="function-list-item hidden-sm-and-down"><LayoutTheme /></div>
-                <div class="function-list-item hidden-sm-and-down"><Github /></div>
+                <div class="function-list-item hidden-sm-and-down"><full-screen /></div>
+                <div class="function-list-item hidden-sm-and-down"><layout-theme /></div>
+                <div class="function-list-item hidden-sm-and-down"><github /></div>
             </div>
             <!-- 用户信息 -->
             <div class="user-info">
@@ -35,11 +35,11 @@
 </template>
 
 <script lang="ts" setup>
-import Breadcrumb from './header/breadcrumb.vue'
+import breadcrumb from './header/breadcrumb.vue'
 import dialogPassword from './header/dialog-password.vue'
-import FullScreen from './header/fullscreen.vue'
-import LayoutTheme from './header/layout-theme.vue'
-import Github from './header/github.vue'
+import fullScreen from './header/fullscreen.vue'
+import layoutTheme from './header/layout-theme.vue'
+import github from './header/github.vue'
 import type { GlobalDialogLayer } from '@/components/components.types'
 
 defineOptions({

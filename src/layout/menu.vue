@@ -11,13 +11,13 @@
             :collapse-transition="false"
             :unique-opened="expandOneMenu"
         >
-            <MenuItem v-for="(menu, key) in routes" :key="key" :menu="menu" />
+            <menu-item v-for="(menu, key) in routes" :key="key" :menu="menu" />
         </el-menu>
     </el-scrollbar>
 </template>
 
 <script lang="ts" setup>
-import MenuItem from './menu/menu-item.vue'
+import menuItem from './menu/menu-item.vue'
 import type { Route } from '@/router/index.type'
 
 defineOptions({

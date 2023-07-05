@@ -1,7 +1,7 @@
 <template>
     <div class="table-tree" w="[100%]" h="[100%]" box-border flex p-15px>
         <div class="w-250px">
-            <Tree />
+            <tree />
         </div>
         <div class="h-[100%] w-[calc(100%-250px)] flex-1">
             <comp-tree-table />
@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-import Tree from './tree-table/tree.vue'
+import tree from './tree-table/tree.vue'
 import compTreeTable from './tree-table/comp-tree-table.vue'
 import type { TreeType } from '@/types'
 
