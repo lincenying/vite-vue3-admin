@@ -36,6 +36,10 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
                                 isCustomElement: (tag: string) => ['def'].includes(tag),
                             },
                         },
+                        script: {
+                            defineModel: true,
+                            propsDestructure: true, // 解构 props
+                        },
                     }),
                     vueJsx: vueJsx(),
                 },

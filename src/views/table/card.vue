@@ -62,7 +62,7 @@ async function getListData() {
         page: page.index,
         pageSize: page.size,
     }
-    const { code, data } = await $api.post<ResponseDataLists<CardListType[]>>('/card/list', params)
+    const { code, data } = await $api.post<ResDataLists<CardListType[]>>('/card/list', params)
     stop()
     toggleLoading(false)
     if (code === 200) {

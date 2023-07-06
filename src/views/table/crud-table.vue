@@ -23,6 +23,7 @@
         <div class="global-box-table">
             <global-table
                 v-loading="loading"
+                prop-key="table"
                 :page="page"
                 :show-index="true"
                 :show-selection="true"
@@ -118,7 +119,7 @@ async function getTableData(init: boolean) {
         pageSize: page.size,
         ...query,
     }
-    const { code, data } = await $api.post<ResponseDataLists<TableListType[]>>('/table/list', params)
+    const { code, data } = await $api.post<ResDataLists<TableListType[]>>('/table/list', params)
     if (code === 200) {
         if (Array.isArray(data.list)) {
             tableData.value = data.list.map((item) => {

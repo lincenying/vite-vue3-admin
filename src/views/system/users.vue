@@ -25,6 +25,7 @@
                 v-loading="loading"
                 :page="page"
                 :show-selection="true"
+                prop-key="user"
                 :data="tableData"
                 @get-table-data="getTableData"
                 @selection-change="onSelectionChange"
@@ -134,7 +135,7 @@ async function getTableData(init?: boolean) {
         pageSize: page.size,
         ...query,
     }
-    const { code, data } = await $api.post<ResponseDataLists<UserListType[]>>('/system/user/list', params)
+    const { code, data } = await $api.post<ResDataLists<UserListType[]>>('/system/user/list', params)
     if (code === 200) {
         tableData.value = data.list.map(item => ({
             ...item,

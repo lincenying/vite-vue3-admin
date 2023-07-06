@@ -9,7 +9,7 @@ declare type Obj = Record<string, any>
 /** 键为字符串, 值为 T 的对象 */
 declare type ObjT<T> = Record<string, T>
 
-declare interface ResponseDataLists<T> {
+declare interface ResDataLists<T> {
     list: T
     pager: {
         page: number

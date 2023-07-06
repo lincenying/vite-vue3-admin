@@ -24,12 +24,16 @@
     </div>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts" setup generic="T extends string">
 import type { TableInstance } from 'element-plus'
 import type { GlobalTablePage } from './components.types'
+import type { TableListType, UserListType } from '@/types'
+
+type DataType<Key> = Key extends 'user' ? UserListType : TableListType
 
 interface Props {
-    data: any[]
+    propKey?: T
+    data: DataType<T>[]
     select?: any[]
     showIndex?: boolean
     showSelection?: boolean
