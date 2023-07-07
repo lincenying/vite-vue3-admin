@@ -319,6 +319,8 @@
     "updateActiveTreeKey": true,
     "false": true,
     "else": true,
-    "window": true
+    "window": true,
+    "aoaToSheetXlsx": true,
+    "jsonToSheetXlsx": true
   }
 }

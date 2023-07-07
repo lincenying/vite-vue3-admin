@@ -1,5 +1,5 @@
 <template>
-    <div class="dashboard-index">
+    <div class="dashboard-index scroll-box">
         <el-scrollbar height="100%">
             <basic-template />
             <card-index />

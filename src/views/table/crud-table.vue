@@ -12,6 +12,9 @@
                         </el-button>
                     </template>
                 </el-popconfirm>
+                <el-button type="primary" @click="handleExportExcel">
+                    导出 <el-icon slots="icon" class="ml-5px"><i-mdi-calendar-export-outline /></el-icon>
+                </el-button>
             </div>
             <div class="global-box-form-search">
                 <el-input v-model="query.input" placeholder="请输入关键词进行检索" />
@@ -162,6 +165,18 @@ function handleEdit(row: TableListType) {
     layer.title = '编辑数据'
     layer.row = row
     layer.show = true
+}
+
+// 导出Excel表格
+function handleExportExcel() {
+    const exportData = unref(tableData)
+    const header = ['ID', '姓名', '数字']
+    const data = exportData.map(item => [item.id, item.name, item.number])
+    aoaToSheetXlsx({
+        data,
+        header,
+        filename: 'export-excel.xlsx',
+    })
 }
 
 // 搜索

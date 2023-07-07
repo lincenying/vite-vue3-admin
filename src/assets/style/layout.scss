@@ -259,17 +259,17 @@
 }
 
 .layout-theme {
-    .list {
+    .other-setting {
         padding: 0 20px;
 
-        &-item {
+        .list-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 15px;
 
             span {
-                font-size: 16px;
+                font-size: 14px;
             }
         }
     }
@@ -392,7 +392,7 @@
     }
 }
 
-.global-table-item {
+.global-tab-item {
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -463,7 +463,7 @@
     border-top: 1px solid var(--system-header-border-color);
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
 
-    .handle {
+    .layout-tabs-handle {
         display: flex;
         align-items: center;
         height: 100%;

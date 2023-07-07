@@ -32,8 +32,6 @@ export interface GlobalState {
     theme: {
         state: ThemeState
     }
-    menuList: Array<unknown>
-    [key: string]: unknown
 }
 
 export interface KeepAliveState {

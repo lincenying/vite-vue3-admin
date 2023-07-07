@@ -62,6 +62,6 @@ export interface UserListType {
 
 export interface SettingOption {
     name: string
-    value: any
-    store: string
+    value: boolean
+    store: 'showLogo' | 'showTabs' | 'expandOneMenu'
 }

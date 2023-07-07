@@ -9,6 +9,7 @@ declare global {
   const EffectScope: typeof import('vue')['EffectScope']
   const activeCategoryKey: typeof import('./composables/provide')['activeCategoryKey']
   const activeTreeKey: typeof import('./composables/provide')['activeTreeKey']
+  const aoaToSheetXlsx: typeof import('./composables/export-excel')['aoaToSheetXlsx']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
   const autoResetRef: typeof import('@vueuse/core')['autoResetRef']
   const changeTitle: typeof import('./composables/index')['changeTitle']
@@ -57,6 +58,7 @@ declare global {
   const isReactive: typeof import('vue')['isReactive']
   const isReadonly: typeof import('vue')['isReadonly']
   const isRef: typeof import('vue')['isRef']
+  const jsonToSheetXlsx: typeof import('./composables/export-excel')['jsonToSheetXlsx']
   const keepAliveStorage: typeof import('./composables/storage')['keepAliveStorage']
   const keepAliveStoreWithout: typeof import('./pinia/use-keep-alive-store')['keepAliveStoreWithout']
   const loginMsgBox: typeof import('./composables/message')['loginMsgBox']
@@ -327,6 +329,7 @@ declare module 'vue' {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly activeCategoryKey: UnwrapRef<typeof import('./composables/provide')['activeCategoryKey']>
     readonly activeTreeKey: UnwrapRef<typeof import('./composables/provide')['activeTreeKey']>
+    readonly aoaToSheetXlsx: UnwrapRef<typeof import('./composables/export-excel')['aoaToSheetXlsx']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
     readonly changeTitle: UnwrapRef<typeof import('./composables/index')['changeTitle']>
@@ -375,6 +378,7 @@ declare module 'vue' {
     readonly isReactive: UnwrapRef<typeof import('vue')['isReactive']>
     readonly isReadonly: UnwrapRef<typeof import('vue')['isReadonly']>
     readonly isRef: UnwrapRef<typeof import('vue')['isRef']>
+    readonly jsonToSheetXlsx: UnwrapRef<typeof import('./composables/export-excel')['jsonToSheetXlsx']>
     readonly keepAliveStorage: UnwrapRef<typeof import('./composables/storage')['keepAliveStorage']>
     readonly keepAliveStoreWithout: UnwrapRef<typeof import('./pinia/use-keep-alive-store')['keepAliveStoreWithout']>
     readonly loginMsgBox: UnwrapRef<typeof import('./composables/message')['loginMsgBox']>
@@ -639,6 +643,7 @@ declare module '@vue/runtime-core' {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly activeCategoryKey: UnwrapRef<typeof import('./composables/provide')['activeCategoryKey']>
     readonly activeTreeKey: UnwrapRef<typeof import('./composables/provide')['activeTreeKey']>
+    readonly aoaToSheetXlsx: UnwrapRef<typeof import('./composables/export-excel')['aoaToSheetXlsx']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
     readonly changeTitle: UnwrapRef<typeof import('./composables/index')['changeTitle']>
@@ -687,6 +692,7 @@ declare module '@vue/runtime-core' {
     readonly isReactive: UnwrapRef<typeof import('vue')['isReactive']>
     readonly isReadonly: UnwrapRef<typeof import('vue')['isReadonly']>
     readonly isRef: UnwrapRef<typeof import('vue')['isRef']>
+    readonly jsonToSheetXlsx: UnwrapRef<typeof import('./composables/export-excel')['jsonToSheetXlsx']>
     readonly keepAliveStorage: UnwrapRef<typeof import('./composables/storage')['keepAliveStorage']>
     readonly keepAliveStoreWithout: UnwrapRef<typeof import('./pinia/use-keep-alive-store')['keepAliveStoreWithout']>
     readonly loginMsgBox: UnwrapRef<typeof import('./composables/message')['loginMsgBox']>

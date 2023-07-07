@@ -58,6 +58,7 @@ declare module 'vue' {
     IEpRefreshLeft: typeof import('~icons/ep/refresh-left')['default']
     IEpRefreshRight: typeof import('~icons/ep/refresh-right')['default']
     IEpSearch: typeof import('~icons/ep/search')['default']
+    IMdiCalendarExportOutline: typeof import('~icons/mdi/calendar-export-outline')['default']
     LayoutDialog: typeof import('./components/layout-dialog.vue')['default']
     LayoutMenu: typeof import('./components/layout-menu.vue')['default']
     LayoutTable: typeof import('./components/layout-table.vue')['default']

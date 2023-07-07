@@ -62,7 +62,7 @@ import type { GlobalDialogLayer, GlobalTablePage } from '@/components/components
 interface ScopeRow { row: TableListType }
 
 defineOptions({
-    name: 'MyTable',
+    name: 'CompTreeTable',
     inheritAttrs: true,
 })
 

@@ -1,5 +1,5 @@
 import { acceptHMRUpdate } from 'pinia'
-import type { GlobalState, GlobalStateOption } from './store.types'
+import type { GlobalState } from './store.types'
 import { globalStorage } from '@/composables/storage'
 
 const useGlobalStore = defineStore('globalStore', () => {
@@ -20,28 +20,10 @@ const useGlobalStore = defineStore('globalStore', () => {
                 menuType: 'side',
             },
         },
-        menuList: [],
     })
-
-    function isCollapseChange(type: boolean) {
-        state.isCollapse = type
-    }
-    function contentFullScreenChange(type: boolean) {
-        state.contentFullScreen = type
-    }
-    function menuListChange(arr: []) {
-        state.menuList = arr
-    }
-    function stateChange(option: GlobalStateOption<GlobalState>) {
-        state[option.name] = option.value
-    }
 
     return {
         ...toRefs(state),
-        isCollapseChange,
-        contentFullScreenChange,
-        menuListChange,
-        stateChange,
     }
 })
 

@@ -59,7 +59,9 @@ const layer = reactive<GlobalDialogLayer<Obj>>({
 })
 // isCollapse change to hide/show the sidebar
 function opendStateChange() {
-    globalStore.isCollapseChange(!isCollapse)
+    globalStore.$patch({
+        isCollapse: !isCollapse,
+    })
 }
 
 // login out the system

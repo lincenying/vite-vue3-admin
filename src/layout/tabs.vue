@@ -3,7 +3,7 @@
         <el-scrollbar ref="scrollbarDom" class="scroll-container tags-view-container" @wheel.passive="handleWhellScroll" @scroll="handleScroll">
             <tabsItem v-for="menu in tabsStorage" :key="menu.meta.title" :menu="menu" :active="activeMenu.path === menu.path" @close="delMenu(menu)" @reload="handlePageReload" />
         </el-scrollbar>
-        <div class="handle">
+        <div class="layout-tabs-handle">
             <div id="boxTabRefresh" @click="handlePageReload" />
             <div id="boxTabCloseSelf" @click="handleCloseCurrentRoute" />
             <div id="boxTabCloseOther" @click="handleCloseOtherRoute" />
@@ -75,7 +75,7 @@ router.afterEach(() => {
 
 // 全屏
 function handleFullscreen() {
-    globalStore.contentFullScreenChange(!contentFullScreen)
+    globalStore.$patch({ contentFullScreen: !contentFullScreen })
 }
 // 当前页面组件重新加载
 function handlePageReload() {

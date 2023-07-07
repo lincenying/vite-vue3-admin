@@ -27,6 +27,6 @@ function linkProps(to: string) {
 }
 function hideMenu() {
     if (document.body.clientWidth <= 1000 && !isCollapse)
-        globalStore.isCollapseChange(true)
+        globalStore.$patch({ isCollapse: true })
 }
 </script>

@@ -63,8 +63,7 @@ import { activeCategoryKey } from '@/composables/provide'
 interface ScopeRow { row: TableListType }
 
 defineOptions({
-    name: 'MyTable',
-    inheritAttrs: true,
+    name: 'CompCategoryTable',
 })
 
 // 存储搜索用的数据

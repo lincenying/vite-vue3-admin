@@ -31,7 +31,7 @@
             />
         </div>
         <h3>其他设置</h3>
-        <div class="list">
+        <div class="other-setting">
             <div v-for="option in options" :key="option.name" class="list-item">
                 <span>{{ option.name }}</span>
                 <el-switch v-model="option.value" active-color="#13ce66" inactive-color="#ff4949" @change="onChange(option)" />
@@ -99,15 +99,17 @@ watch(state, () => {
 })
 const drawer = ref(false)
 const options = reactive<SettingOption[]>([
-    { name: '显示logo', value: showLogo, store: 'showLogo' },
-    { name: '显示面包屑导航', value: showTabs, store: 'showTabs' },
-    { name: '保持一个菜单展开', value: expandOneMenu, store: 'expandOneMenu' },
+    { name: '是否显示Logo', value: showLogo, store: 'showLogo' },
+    { name: '是否显示面包屑导航', value: showTabs, store: 'showTabs' },
+    { name: '是否保持一个菜单展开', value: expandOneMenu, store: 'expandOneMenu' },
 ])
 function handleDrawerChange(value: boolean) {
     drawer.value = value
 }
 function onChange(option: SettingOption) {
-    globalStore.stateChange({ name: option.store, value: option.value })
+    globalStore.$patch({
+        [option.store]: option.value,
+    })
 }
 setTheme()
 </script>

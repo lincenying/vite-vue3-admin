@@ -11,6 +11,14 @@
     text-align: center;
 }
 
+.scroll-box {
+    padding-right: 5px !important;
+
+    .el-scrollbar__view {
+        margin-right: 10px !important;
+    }
+}
+
 .global-box {
     display: flex;
     flex-direction: column;
@@ -56,36 +64,8 @@
     }
 }
 
-.flex-box {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    padding: 15px;
-    box-sizing: border-box;
-}
-
-.center {
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
 a {
     text-decoration: none;
-}
-
-/** element-plus **/
-.el-icon {
-    text-align: center;
-}
-
-/** 用于提示信息 **/
-.my-tip {
-    padding: 5px 10px;
-    text-align: left;
-    background-color: #f1f1f1;
-    border-radius: 4px;
 }
 
 .system-scrollbar {
