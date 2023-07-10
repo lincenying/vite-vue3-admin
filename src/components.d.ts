@@ -55,13 +55,9 @@ declare module 'vue' {
     IEpDelete: typeof import('~icons/ep/delete')['default']
     IEpFullScreen: typeof import('~icons/ep/full-screen')['default']
     IEpPlus: typeof import('~icons/ep/plus')['default']
-    IEpRefreshLeft: typeof import('~icons/ep/refresh-left')['default']
     IEpRefreshRight: typeof import('~icons/ep/refresh-right')['default']
     IEpSearch: typeof import('~icons/ep/search')['default']
     IMdiCalendarExportOutline: typeof import('~icons/mdi/calendar-export-outline')['default']
-    LayoutDialog: typeof import('./components/layout-dialog.vue')['default']
-    LayoutMenu: typeof import('./components/layout-menu.vue')['default']
-    LayoutTable: typeof import('./components/layout-table.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

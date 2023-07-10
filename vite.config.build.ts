@@ -33,13 +33,13 @@ const config: {
             },
             external: /\.\/assets.*/,
             output: {
-                manualChunks(id: string) {
-                    if (id.includes('node_modules')) {
-                        if (id.includes('echarts') || id.includes('zrender'))
-                            return 'echarts'
-                        return 'vendor'
-                    }
-                },
+                // manualChunks(id: string) {
+                //     if (id.includes('node_modules')) {
+                //         if (id.includes('echarts') || id.includes('zrender'))
+                //             return 'echarts'
+                //         return 'vendor'
+                //     }
+                // },
             },
         },
     },
