@@ -27,6 +27,7 @@ declare global {
   const createEventHook: typeof import('@vueuse/core')['createEventHook']
   const createGlobalState: typeof import('@vueuse/core')['createGlobalState']
   const createInjectionState: typeof import('@vueuse/core')['createInjectionState']
+  const createPinia: typeof import('pinia')['createPinia']
   const createReactiveFn: typeof import('@vueuse/core')['createReactiveFn']
   const createReusableTemplate: typeof import('@vueuse/core')['createReusableTemplate']
   const createRouter: typeof import('vue-router')['createRouter']
@@ -35,6 +36,7 @@ declare global {
   const createUnrefFn: typeof import('@vueuse/core')['createUnrefFn']
   const createWebHashHistory: typeof import('vue-router')['createWebHashHistory']
   const customRef: typeof import('vue')['customRef']
+  const dataURLtoBlob: typeof import('./composables/download')['dataURLtoBlob']
   const debouncedRef: typeof import('@vueuse/core')['debouncedRef']
   const debouncedWatch: typeof import('@vueuse/core')['debouncedWatch']
   const deepClone: typeof import('@lincy/utils')['deepClone']
@@ -43,6 +45,10 @@ declare global {
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
   const defineComponent: typeof import('vue')['defineComponent']
   const defineStore: typeof import('pinia')['defineStore']
+  const downloadByBase64: typeof import('./composables/download')['downloadByBase64']
+  const downloadByData: typeof import('./composables/download')['downloadByData']
+  const downloadByOnlineUrl: typeof import('./composables/download')['downloadByOnlineUrl']
+  const downloadByUrl: typeof import('./composables/download')['downloadByUrl']
   const eagerComputed: typeof import('@vueuse/core')['eagerComputed']
   const effectScope: typeof import('vue')['effectScope']
   const extendRef: typeof import('@vueuse/core')['extendRef']
@@ -85,6 +91,7 @@ declare global {
   const onStartTyping: typeof import('@vueuse/core')['onStartTyping']
   const onUnmounted: typeof import('vue')['onUnmounted']
   const onUpdated: typeof import('vue')['onUpdated']
+  const openWindow: typeof import('./composables/download')['openWindow']
   const pausableWatch: typeof import('@vueuse/core')['pausableWatch']
   const piniaInit: typeof import('./pinia/index')['piniaInit']
   const provide: typeof import('vue')['provide']
@@ -133,6 +140,7 @@ declare global {
   const until: typeof import('@vueuse/core')['until']
   const updateActiveCategoryKey: typeof import('./composables/provide')['updateActiveCategoryKey']
   const updateActiveTreeKey: typeof import('./composables/provide')['updateActiveTreeKey']
+  const urlToBase64: typeof import('./composables/download')['urlToBase64']
   const useActiveElement: typeof import('@vueuse/core')['useActiveElement']
   const useAnimate: typeof import('@vueuse/core')['useAnimate']
   const useArrayDifference: typeof import('@vueuse/core')['useArrayDifference']
@@ -356,6 +364,7 @@ declare module 'vue' {
     readonly createUnrefFn: UnwrapRef<typeof import('@vueuse/core')['createUnrefFn']>
     readonly createWebHashHistory: UnwrapRef<typeof import('vue-router')['createWebHashHistory']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
+    readonly dataURLtoBlob: UnwrapRef<typeof import('./composables/download')['dataURLtoBlob']>
     readonly debouncedRef: UnwrapRef<typeof import('@vueuse/core')['debouncedRef']>
     readonly debouncedWatch: UnwrapRef<typeof import('@vueuse/core')['debouncedWatch']>
     readonly deepClone: UnwrapRef<typeof import('@lincy/utils')['deepClone']>
@@ -364,6 +373,10 @@ declare module 'vue' {
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
     readonly defineStore: UnwrapRef<typeof import('pinia')['defineStore']>
+    readonly downloadByBase64: UnwrapRef<typeof import('./composables/download')['downloadByBase64']>
+    readonly downloadByData: UnwrapRef<typeof import('./composables/download')['downloadByData']>
+    readonly downloadByOnlineUrl: UnwrapRef<typeof import('./composables/download')['downloadByOnlineUrl']>
+    readonly downloadByUrl: UnwrapRef<typeof import('./composables/download')['downloadByUrl']>
     readonly eagerComputed: UnwrapRef<typeof import('@vueuse/core')['eagerComputed']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly extendRef: UnwrapRef<typeof import('@vueuse/core')['extendRef']>
@@ -406,6 +419,7 @@ declare module 'vue' {
     readonly onStartTyping: UnwrapRef<typeof import('@vueuse/core')['onStartTyping']>
     readonly onUnmounted: UnwrapRef<typeof import('vue')['onUnmounted']>
     readonly onUpdated: UnwrapRef<typeof import('vue')['onUpdated']>
+    readonly openWindow: UnwrapRef<typeof import('./composables/download')['openWindow']>
     readonly pausableWatch: UnwrapRef<typeof import('@vueuse/core')['pausableWatch']>
     readonly piniaInit: UnwrapRef<typeof import('./pinia/index')['piniaInit']>
     readonly provide: UnwrapRef<typeof import('vue')['provide']>
@@ -454,6 +468,7 @@ declare module 'vue' {
     readonly until: UnwrapRef<typeof import('@vueuse/core')['until']>
     readonly updateActiveCategoryKey: UnwrapRef<typeof import('./composables/provide')['updateActiveCategoryKey']>
     readonly updateActiveTreeKey: UnwrapRef<typeof import('./composables/provide')['updateActiveTreeKey']>
+    readonly urlToBase64: UnwrapRef<typeof import('./composables/download')['urlToBase64']>
     readonly useActiveElement: UnwrapRef<typeof import('@vueuse/core')['useActiveElement']>
     readonly useAnimate: UnwrapRef<typeof import('@vueuse/core')['useAnimate']>
     readonly useArrayDifference: UnwrapRef<typeof import('@vueuse/core')['useArrayDifference']>
@@ -671,6 +686,7 @@ declare module '@vue/runtime-core' {
     readonly createUnrefFn: UnwrapRef<typeof import('@vueuse/core')['createUnrefFn']>
     readonly createWebHashHistory: UnwrapRef<typeof import('vue-router')['createWebHashHistory']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
+    readonly dataURLtoBlob: UnwrapRef<typeof import('./composables/download')['dataURLtoBlob']>
     readonly debouncedRef: UnwrapRef<typeof import('@vueuse/core')['debouncedRef']>
     readonly debouncedWatch: UnwrapRef<typeof import('@vueuse/core')['debouncedWatch']>
     readonly deepClone: UnwrapRef<typeof import('@lincy/utils')['deepClone']>
@@ -679,6 +695,10 @@ declare module '@vue/runtime-core' {
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
     readonly defineStore: UnwrapRef<typeof import('pinia')['defineStore']>
+    readonly downloadByBase64: UnwrapRef<typeof import('./composables/download')['downloadByBase64']>
+    readonly downloadByData: UnwrapRef<typeof import('./composables/download')['downloadByData']>
+    readonly downloadByOnlineUrl: UnwrapRef<typeof import('./composables/download')['downloadByOnlineUrl']>
+    readonly downloadByUrl: UnwrapRef<typeof import('./composables/download')['downloadByUrl']>
     readonly eagerComputed: UnwrapRef<typeof import('@vueuse/core')['eagerComputed']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly extendRef: UnwrapRef<typeof import('@vueuse/core')['extendRef']>
@@ -721,6 +741,7 @@ declare module '@vue/runtime-core' {
     readonly onStartTyping: UnwrapRef<typeof import('@vueuse/core')['onStartTyping']>
     readonly onUnmounted: UnwrapRef<typeof import('vue')['onUnmounted']>
     readonly onUpdated: UnwrapRef<typeof import('vue')['onUpdated']>
+    readonly openWindow: UnwrapRef<typeof import('./composables/download')['openWindow']>
     readonly pausableWatch: UnwrapRef<typeof import('@vueuse/core')['pausableWatch']>
     readonly piniaInit: UnwrapRef<typeof import('./pinia/index')['piniaInit']>
     readonly provide: UnwrapRef<typeof import('vue')['provide']>
@@ -769,6 +790,7 @@ declare module '@vue/runtime-core' {
     readonly until: UnwrapRef<typeof import('@vueuse/core')['until']>
     readonly updateActiveCategoryKey: UnwrapRef<typeof import('./composables/provide')['updateActiveCategoryKey']>
     readonly updateActiveTreeKey: UnwrapRef<typeof import('./composables/provide')['updateActiveTreeKey']>
+    readonly urlToBase64: UnwrapRef<typeof import('./composables/download')['urlToBase64']>
     readonly useActiveElement: UnwrapRef<typeof import('@vueuse/core')['useActiveElement']>
     readonly useAnimate: UnwrapRef<typeof import('@vueuse/core')['useAnimate']>
     readonly useArrayDifference: UnwrapRef<typeof import('@vueuse/core')['useArrayDifference']>

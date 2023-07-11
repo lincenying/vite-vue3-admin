@@ -322,6 +322,14 @@
     "window": true,
     "aoaToSheetXlsx": true,
     "jsonToSheetXlsx": true,
-    "flattenArray": true
+    "flattenArray": true,
+    "dataURLtoBlob": true,
+    "downloadByBase64": true,
+    "downloadByData": true,
+    "downloadByOnlineUrl": true,
+    "downloadByUrl": true,
+    "openWindow": true,
+    "urlToBase64": true,
+    "createPinia": true
   }
 }
