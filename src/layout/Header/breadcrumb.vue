@@ -12,32 +12,49 @@
 </template>
 
 <script lang="ts" setup>
-import type { RouteLocationMatched } from 'vue-router'
 import { useRoute, useRouter } from 'vue-router'
 import type { Route } from '@/router/index.type'
+import { modules } from '@/router/index'
 
 defineOptions({
     name: 'BreadCrumb',
 })
 
-const levelList = ref<RouteLocationMatched[]>([])
+const levelList = ref<Route[]>([])
 const route = useRoute()
 const router = useRouter()
 
-const allRoutes = router.options.routes as Route[]
+function findParentNames(arr: Route[], targetName: string, parentNames: Route[] = []): null | Route[] {
+    for (let i = 0; i < arr.length; i++) {
+        const item = arr[i]
+        // 如果找到目标name，则返回当前的父级names数组
+        if (item.meta.title === targetName) {
+            return parentNames.concat({
+                ...item,
+                children: [],
+            })
+        }
 
-function getParentsRoute(arr: RouteLocationMatched[] = [], key: string): RouteLocationMatched[] {
-    const obj = allRoutes.find(item => item.path === key)
-    arr.unshift(obj as RouteLocationMatched)
-    if (obj && obj.parentPath)
-        return getParentsRoute(arr, obj.parentPath)
-    return arr
+        // 如果存在子数组，则递归调用findParentNames函数继续查找
+        if (item.children && item.children.length > 0) {
+            const newParentNames = parentNames.concat({
+                ...item,
+                children: [],
+            })
+            const foundNames = findParentNames(item.children, targetName, newParentNames)
+            // 如果在子数组中找到了目标name，直接返回父级names数组
+            if (foundNames)
+                return foundNames
+        }
+    }
+    // 如果在当前层级未找到目标name，则返回null
+    return null
 }
 
 function getBreadcrumb(): void {
     const matched = route.matched.filter(item => item.meta && item.meta.title)
     if (matched && matched[0]) {
-        const fullMatched = getParentsRoute([], matched[0].path)
+        const fullMatched = findParentNames(modules, matched[0].meta.title) || []
         levelList.value = fullMatched.filter(item => item.meta && item.meta.title && item.meta.breadcrumb !== false)
     }
 }
@@ -47,7 +64,7 @@ watch(
     () => route.path,
     () => getBreadcrumb(),
 )
-function handleLink(item: RouteLocationMatched) {
+function handleLink(item: Route) {
     const { redirect, path } = item
     if (redirect) {
         router.push(redirect.toString())
