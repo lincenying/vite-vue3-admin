@@ -11,14 +11,14 @@
             :collapse-transition="false"
             :unique-opened="expandOneMenu"
         >
-            <menu-item v-for="(menu, key) in routes" :key="key" :menu="menu" />
+            <menu-item v-for="(menu, key) in modules" :key="key" :menu="menu" />
         </el-menu>
     </el-scrollbar>
 </template>
 
 <script lang="ts" setup>
 import menuItem from './menu/menu-item.vue'
-import type { Route } from '@/router/index.type'
+import { modules } from '@/router/index'
 
 defineOptions({
     name: 'LayoutMenu',
@@ -27,24 +27,6 @@ defineOptions({
 const globalStore = useGlobalStore()
 
 const { isCollapse, expandOneMenu } = $(storeToRefs(globalStore))
-
-const allRoutes = useRouter().options.routes as Route[]
-
-function getChildren(parentPath: string): Route[] {
-    return allRoutes.filter(item => item.parentPath === parentPath && !item.hideMenu).map((item) => {
-        return {
-            ...item,
-            children: getChildren(item.path),
-        }
-    })
-}
-
-const routes = allRoutes.filter(item => item.level === 1 && !item.hideMenu).map((item) => {
-    return {
-        ...item,
-        children: getChildren(item.path),
-    }
-})
 
 const route = useRoute()
 const activeMenu = computed(() => {

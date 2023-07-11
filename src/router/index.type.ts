@@ -6,7 +6,7 @@ export type Route = {
     /** @name 访问路径 */
     path: string
     /** @name 需要使用的组件 @description 两种类型，第一种是默认的Vue文件类型，第二种是通过createNameComponent搞出来的，凡是一个组件需要keep-alive,必须使用createNameComponent来搞定 */
-    component?: DefineComponent<{}, {}, any> | (() => Promise<DefineComponent<{}, {}, any>>)
+    component?: DefineComponent<object, object, any> | (() => Promise<DefineComponent<object, object, any>>)
     /** @name 基础元数据 */
     meta: Meta
     /** @name 路由名称，全局唯一，可以不填 */
@@ -19,8 +19,6 @@ export type Route = {
     hideMenu?: boolean
     /** @name 路由子集，和Route类型一致的数组，可选 */
     children: Route[]
-    level?: number
-    parentPath?: string
 } & RouteRecordRaw
 
 /** @name 基础元数据的类型说明 */

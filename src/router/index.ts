@@ -32,7 +32,7 @@ const modules = reactive([
 
 const router = createRouter({
     history: createWebHashHistory(),
-    routes: modules,
+    routes: flattenArray(modules, 'children'),
 })
 
 // 未授权时可访问的白名单

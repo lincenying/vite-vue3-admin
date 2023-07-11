@@ -321,6 +321,7 @@
     "else": true,
     "window": true,
     "aoaToSheetXlsx": true,
-    "jsonToSheetXlsx": true
+    "jsonToSheetXlsx": true,
+    "flattenArray": true
   }
 }

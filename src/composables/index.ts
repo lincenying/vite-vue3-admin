@@ -43,3 +43,39 @@ export function refreshCurrentTab() {
     /** 触发tab事件点击 */
     tab?.click()
 }
+
+/**
+ * 将多维数组拍平
+ * @param arr 多维数组
+ * @param key 子数组键名
+ * @returns 一维数组
+ * @example
+ * ```js
+ * var a = [{
+    a: 1,
+    children: [{
+        a: 11,
+    }]
+}]
+// ===>
+[{"a":1,"children":[]},{"a":11,"children":[]}]
+```
+ */
+export function flattenArray(arr: any[], key: string) {
+    let result: any[] = []
+    // 使用递归遍历数组的每个元素
+    arr.forEach((item) => {
+        // 将当前元素的属性a添加到结果数组中
+        result.push({
+            ...item,
+            [key]: [],
+        })
+        // 如果当前元素存在子数组，则递归调用flattenArray函数进行处理
+        if (item[key] && item[key].length > 0) {
+            const childrenArray = flattenArray(item[key], key)
+            // 将子数组的结果合并到结果数组中
+            result = result.concat(childrenArray)
+        }
+    })
+    return result
+}
