@@ -52,8 +52,6 @@ declare interface ApiType {
 declare interface Window {
     $$lock?: boolean
     $$api: ApiType
-    randomArray: (lower: number, upper: number, length: number) => number[]
-    $$myChart: any
     $$time: NodeJS.Timeout
-    axios: any
+    axios: import('axios').AxiosStatic
 }
