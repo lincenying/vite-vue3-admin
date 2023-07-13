@@ -30,4 +30,10 @@ const show = ref<boolean>(props.layer.show)
 watch(show, () => {
     emit('update', show.value)
 })
+
+const close = () => show.value = false
+
+defineExpose({
+    close,
+})
 </script>

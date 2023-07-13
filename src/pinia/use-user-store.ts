@@ -20,6 +20,7 @@ const useUserStore = defineStore('userStore', () => {
         const { code, data } = await $api.post<any>('/user/login', params)
         if (code === 200 && data) {
             await getInfo({ token: data.token })
+            tokenChange(data.token)
             return data.token
         }
         return null

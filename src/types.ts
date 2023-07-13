@@ -1,7 +1,12 @@
-import type { ElTree } from 'element-plus'
+import type { ElForm, ElTree } from 'element-plus'
 import type { GlobalTablePage } from './components/components.types'
+import type globalDialog from '@/components/global-dialog.vue'
+
+export type FormInstance = InstanceType<typeof ElForm>
 
 export type TreeInstance = InstanceType<typeof ElTree>
+
+export type GlobalDiaslogInstance = InstanceType<typeof globalDialog>
 
 export interface UpdatePageType {
     key: keyof GlobalTablePage

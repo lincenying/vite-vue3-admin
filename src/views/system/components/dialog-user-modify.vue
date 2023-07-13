@@ -32,7 +32,8 @@
 import type { FormInstance } from 'element-plus'
 import { ElMessage } from '@/config/element'
 import globalDialog from '@/components/global-dialog.vue'
-import type { GlobalDialogLayer, LayerType } from '@/components/components.types'
+import type { GlobalDialogLayer } from '@/components/components.types'
+import type { GlobalDiaslogInstance } from '@/types'
 
 const props = defineProps<{
     layer: GlobalDialogLayer<Obj>
@@ -44,8 +45,8 @@ defineOptions({
     name: 'DialogUserModify',
 })
 
-const ruleForm = ref<FormInstance>()
-const layerDom = ref<LayerType>()
+const ruleForm = ref<Nullable<FormInstance>>(null)
+const layerDom = ref<Nullable<GlobalDiaslogInstance>>(null)
 
 const form = reactive({
     name: '',

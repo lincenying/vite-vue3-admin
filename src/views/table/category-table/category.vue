@@ -4,7 +4,7 @@
             <h2>分类列表</h2>
             <el-input v-model="input" placeholder="请输入内容" @input="searchData(true)" />
         </div>
-        <ul ref="listDom" v-infinite-scroll="getCategoryData" class="list system-scrollbar overflow-auto" :infinite-scroll-immediate="false">
+        <ul ref="listDom" v-infinite-scroll="getCategoryData" class="system-scrollbar list overflow-auto" :infinite-scroll-immediate="false">
             <li v-for="item in list" :key="item.id" :class="{ active: item.id === activeCategory?.id }" @click="changeActive(item)">
                 <span>{{ item.name }}</span>
             </li>

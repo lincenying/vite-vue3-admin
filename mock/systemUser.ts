@@ -10,14 +10,16 @@ export default [
             return {
                 code: 200,
                 data: {
-                    [`list|${pageSize}`]: [{
-                        'id|+1': 0,
-                        'name': '@name',
-                        'nickName': '@cname',
-                        'status|1': [0, 1],
-                        'role|1': roles,
-                        'isAdmin|1': [0, 1],
-                    }],
+                    [`list|${pageSize}`]: [
+                        {
+                            'id|+1': 0,
+                            'name': '@name',
+                            'nickName': '@cname',
+                            'status|1': [0, 1],
+                            'role|1': roles,
+                            'isAdmin|1': [0, 1],
+                        },
+                    ],
                     pager: {
                         page,
                         pageSize,

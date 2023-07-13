@@ -1,5 +1,8 @@
 <template>
-    <el-container class="layout-box" h-100vh>
+    <router-view v-if="Route.path === '/login'" v-slot="{ Component, route }">
+        <component :is="Component" :key="route.fullPath" />
+    </router-view>
+    <el-container v-else class="layout-box" h-100vh>
         <div v-show="!isCollapse && !contentFullScreen" class="mask" @click="hideMenu" />
         <el-aside v-show="!contentFullScreen" :width="isCollapse ? '60px' : '250px'" :class="isCollapse ? 'hide-aside' : 'show-side'">
             <layout-logo v-if="showLogo" />
@@ -36,6 +39,8 @@ defineOptions({
 
 const keepAliveStore = useKeepAliveStore()
 const globalStore = useGlobalStore()
+
+const Route = useRoute()
 
 const { isCollapse, contentFullScreen, showLogo, showTabs } = $(storeToRefs(globalStore))
 const { keepAliveComponentsName } = $(storeToRefs(keepAliveStore))

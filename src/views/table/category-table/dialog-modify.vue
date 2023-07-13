@@ -25,7 +25,8 @@
 import type { FormInstance } from 'element-plus'
 import { radioData, selectData } from './enum'
 import { ElMessage } from '@/config/element'
-import type { GlobalDialogLayer, LayerType } from '@/components/components.types'
+import type { GlobalDialogLayer } from '@/components/components.types'
+import type { GlobalDiaslogInstance } from '@/types'
 
 const props = defineProps<{
     layer: GlobalDialogLayer<Obj>
@@ -37,8 +38,8 @@ defineOptions({
     name: 'DialogModify',
 })
 
-const ruleForm: Ref<FormInstance | null> = ref(null)
-const layerDom: Ref<LayerType | null> = ref(null)
+const ruleForm = ref<Nullable<FormInstance>>(null)
+const layerDom = ref<Nullable<GlobalDiaslogInstance>>(null)
 
 const form = ref({
     name: '',

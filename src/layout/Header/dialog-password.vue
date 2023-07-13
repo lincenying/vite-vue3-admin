@@ -1,6 +1,6 @@
 <template>
     <global-dialog ref="layerDom" :layer="layer" @update="onUpdate" @confirm="onSubmit">
-        <ElForm ref="ruleForm" :model="form" :rules="rules" label-width="120px" class="mr-30px">
+        <el-form ref="ruleForm" :model="form" :rules="rules" label-width="120px" class="mr-30px">
             <el-form-item label="用户名：" prop="name">
                 管理员
             </el-form-item>
@@ -10,16 +10,15 @@
             <el-form-item label="新密码：" prop="new">
                 <el-input v-model="form.new" placeholder="请输入新密码" show-password />
             </el-form-item>
-        </ElForm>
+        </el-form>
     </global-dialog>
 </template>
 
 <script lang="ts" setup>
-import { ElForm } from 'element-plus'
 import { ElMessage } from '@/config/element'
-import type { GlobalDialogLayer, LayerType } from '@/components/components.types'
+import type { GlobalDialogLayer } from '@/components/components.types'
 
-type FormInstance = InstanceType<typeof ElForm>
+import type { FormInstance, GlobalDiaslogInstance } from '@/types'
 
 const props = defineProps<{
     layer: GlobalDialogLayer<Obj>
@@ -36,7 +35,7 @@ const userStore = useUserStore()
 const { layer } = $(toRefs(props))
 
 const ruleForm = ref<Nullable<FormInstance>>(null)
-const layerDom = ref<Nullable<LayerType>>(null)
+const layerDom = ref<Nullable<GlobalDiaslogInstance>>(null)
 
 const form = ref({
     userId: '123465',
