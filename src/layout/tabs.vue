@@ -58,7 +58,7 @@ const defaultMenu: TabsType = {
 
 const currentDisabled = computed(() => route.path === defaultMenu.path)
 
-let activeMenu = reactive<TabsType>({
+let activeMenu: TabsType = reactive({
     path: '',
     meta: { title: '', hideClose: true },
 })

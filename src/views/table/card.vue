@@ -50,7 +50,7 @@ const [loading, toggleLoading] = useToggle(false)
 const list = ref<CardListType[]>([])
 const box = ref<HTMLDivElement>()
 
-const page = reactive<GlobalTablePage>({
+const page: GlobalTablePage = reactive({
     index: 1,
     size: 20,
     total: 0,

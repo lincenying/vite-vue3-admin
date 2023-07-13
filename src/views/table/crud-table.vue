@@ -75,7 +75,7 @@ const query = reactive({
     input: '',
 })
 // 弹窗控制器
-const layer = reactive<GlobalDialogLayer<TableListType>>({
+const layer: GlobalDialogLayer<TableListType> = reactive({
     show: false,
     title: '新增',
     showButton: true,
@@ -83,7 +83,7 @@ const layer = reactive<GlobalDialogLayer<TableListType>>({
     width: '500px',
 })
 // 分页参数, 供table使用
-const page = reactive<GlobalTablePage>({
+const page: GlobalTablePage = reactive({
     index: 1,
     size: 20,
     total: 0,

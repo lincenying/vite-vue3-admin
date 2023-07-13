@@ -52,7 +52,7 @@ const globalStore = useGlobalStore()
 const { isCollapse } = $(storeToRefs(globalStore))
 // const router = useRouter()
 // const route = useRoute()
-const layer = reactive<GlobalDialogLayer<Obj>>({
+const layer: GlobalDialogLayer<Obj> = reactive({
     show: false,
     title: '',
     showButton: true,

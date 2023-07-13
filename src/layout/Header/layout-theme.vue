@@ -56,7 +56,7 @@ const globalStore = useGlobalStore()
 
 const { showLogo, showTabs, expandOneMenu, theme } = $(storeToRefs(globalStore))
 // 只取值，不做computed
-const state = reactive<ThemeState>(theme.state)
+const state: ThemeState = reactive(theme.state)
 
 const themeColorArr = [
     { color: '#409eff', textColor: '#fff', tip: '默认蓝' },
@@ -98,7 +98,7 @@ watch(state, () => {
     setTheme()
 })
 const drawer = ref(false)
-const options = reactive<SettingOption[]>([
+const options: SettingOption[] = reactive([
     { name: '是否显示Logo', value: showLogo, store: 'showLogo' },
     { name: '是否显示面包屑导航', value: showTabs, store: 'showTabs' },
     { name: '是否保持一个菜单展开', value: expandOneMenu, store: 'expandOneMenu' },
