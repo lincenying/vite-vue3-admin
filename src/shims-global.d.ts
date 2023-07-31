@@ -40,10 +40,14 @@ declare interface ResponseData<T> {
 type Methods = 'get' | 'post' | 'delete' | 'put'
 
 declare interface ApiType {
-    get<T>(url: string, params?: Obj, header?: Obj, checkCode?: boolean): Promise<ResponseData<T>>
+    get<T>(url: string, data?: Obj, header?: Obj, checkCode?: boolean): Promise<ResponseData<T>>
+    get<T, U = ObjT>(url: string, data?: Obj, header?: Obj, checkCode?: boolean): Promise<ResponseData<T> & U>
     post<T>(url: string, data?: Obj, header?: Obj, checkCode?: boolean): Promise<ResponseData<T>>
+    post<T, U = ObjT>(url: string, data?: Obj, header?: Obj, checkCode?: boolean): Promise<ResponseData<T> & U>
     put<T>(url: string, data?: Obj, header?: Obj, checkCode?: boolean): Promise<ResponseData<T>>
+    put<T, U = ObjT>(url: string, data?: Obj, header?: Obj, checkCode?: boolean): Promise<ResponseData<T> & U>
     delete<T>(url: string, data?: Obj, header?: Obj, checkCode?: boolean): Promise<ResponseData<T>>
+    delete<T, U = ObjT>(url: string, data?: Obj, header?: Obj, checkCode?: boolean): Promise<ResponseData<T> & U>
     downFile(url: string, method: Methods, data?: Obj): Promise<any>
     RESTful<T>(url: string, method: Methods, data?: Obj, header?: Obj, checkCode?: boolean): Promise<ResponseData<T>>
     $RESTful<T>(url: string, method: Methods, data?: Obj, header?: Obj): Promise<ResponseData<T>>
