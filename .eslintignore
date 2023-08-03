@@ -7,3 +7,4 @@ components.d.ts
 auto-imports.d.ts
 src/polyfill/index.js
 node_modules
+*.code-snippets
