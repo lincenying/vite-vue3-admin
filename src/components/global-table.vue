@@ -27,9 +27,9 @@
 <script lang="ts" setup generic="T extends string">
 import type { TableInstance } from 'element-plus'
 import type { GlobalTablePage } from './components.types'
-import type { TableListType, UserListType } from '@/types'
+import type { TableListType, UpdatePageType, UserListType } from '@/types'
 
-type DataType<Key> = Key extends 'user' ? UserListType : TableListType
+type DataType<Key> = Key extends 'user' ? UserListType : (Key extends 'table' ? TableListType : unknown)
 
 interface Props {
     propKey?: T
@@ -54,7 +54,12 @@ const props = withDefaults(defineProps<Props>(), {
     pageSizes: () => [10, 20, 50, 100],
 })
 
-const emit = defineEmits(['getTableData', 'selectionChange', 'updatePage'])
+const emit = defineEmits<{
+    (event: 'updatePage', palyload: UpdatePageType | UpdatePageType[]): void
+    (event: 'selectionChange', palyload: any[]): void
+}>()
+
+// ['getTableData', 'selectionChange', 'updatePage']
 
 defineOptions({
     name: 'GlobalTable',
