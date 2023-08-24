@@ -43,6 +43,7 @@ interface Props {
     pageSizes?: number[]
 }
 
+/** 使用 withDefaults 后, 不能直接解构 */
 const props = withDefaults(defineProps<Props>(), {
     data: () => [],
     select: () => [],

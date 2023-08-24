@@ -45,6 +45,7 @@ declare module 'vue' {
     ElText: typeof import('element-plus/es')['ElText']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     ElTree: typeof import('element-plus/es')['ElTree']
+    EmptyComponents: typeof import('./components/empty-components.vue')['default']
     GlobalDialog: typeof import('./components/global-dialog.vue')['default']
     GlobalMenu: typeof import('./components/global-menu.vue')['default']
     GlobalTable: typeof import('./components/global-table.vue')['default']

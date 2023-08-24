@@ -28,7 +28,7 @@ import { ElMessage } from '@/config/element'
 import type { GlobalDialogLayer } from '@/components/components.types'
 import type { GlobalDiaslogInstance } from '@/types'
 
-const props = defineProps<{
+const { layer } = defineProps<{
     layer: GlobalDialogLayer<Obj>
 }>()
 
@@ -59,7 +59,7 @@ function onSubmit() {
         ruleForm.value.validate((valid) => {
             if (valid) {
                 const params = form
-                if (props.layer.row)
+                if (layer.row)
                     updateForm(params)
                 else
                     addForm(params)
@@ -99,8 +99,8 @@ function onUpdate(payload: boolean) {
 }
 
 function init() { // 用于判断新增还是编辑功能
-    if (props.layer.row)
-        form.value = JSON.parse(JSON.stringify(props.layer.row)) // 数量量少的直接使用这个转
+    if (layer.row)
+        form.value = JSON.parse(JSON.stringify(layer.row)) // 数量量少的直接使用这个转
 }
 init()
 </script>

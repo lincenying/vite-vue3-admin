@@ -35,7 +35,7 @@ import globalDialog from '@/components/global-dialog.vue'
 import type { GlobalDialogLayer } from '@/components/components.types'
 import type { GlobalDiaslogInstance } from '@/types'
 
-const props = defineProps<{
+const { layer } = defineProps<{
     layer: GlobalDialogLayer<Obj>
 }>()
 
@@ -71,7 +71,7 @@ function onSubmit() {
         ruleForm.value.validate((valid) => {
             if (valid) {
                 const params = form
-                if (props.layer.row)
+                if (layer.row)
                     updateForm(params)
                 else
                     addForm(params)

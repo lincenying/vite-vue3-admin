@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-const props = defineProps<{
+const { to } = defineProps<{
     to: string
 }>()
 
@@ -13,16 +13,14 @@ defineOptions({
     name: 'MenuLink',
 })
 
-const { to } = $(toRefs(props))
-
 const globalStore = useGlobalStore()
 const { isCollapse } = $(storeToRefs(globalStore))
 
 const type = ref('router-link')
 
-function linkProps(to: string) {
+function linkProps(payload: string) {
     return {
-        to,
+        to: payload,
     }
 }
 function hideMenu() {

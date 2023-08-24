@@ -29,6 +29,7 @@ interface Props {
     activeColor: string
 }
 
+/** 使用 withDefaults 后, 不能直接解构 */
 const props = withDefaults(defineProps<Props>(), {
     name: 'default',
     active: '',
@@ -42,12 +43,14 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits(['update:active'])
 
+const { name } = $(toRefs(props))
+
 defineOptions({
     name: 'ThemeIcon',
 })
 
 // 点击事件，触发v-model修改active值
 function handleClick() {
-    emit('update:active', props.name)
+    emit('update:active', name)
 }
 </script>
