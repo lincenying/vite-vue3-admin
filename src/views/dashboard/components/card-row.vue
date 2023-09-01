@@ -13,11 +13,9 @@
 <script lang="ts" setup>
 import type { IndexCardType } from '@/types'
 
-const props = defineProps<{
+const { row } = defineProps<{
     row: IndexCardType
 }>()
-
-const { row } = $(toRefs(props))
 
 defineOptions({
     name: 'CardRow',

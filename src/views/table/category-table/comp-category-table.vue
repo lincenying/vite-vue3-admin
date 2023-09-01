@@ -106,11 +106,14 @@ function onUpdatePage(payload: UpdatePageType | UpdatePageType[]) {
     }
     getTableData(false)
 }
-// 获取表格数据
-// params <init> Boolean ，默认为false，用于判断是否需要初始化分页
-async function getTableData(init: boolean) {
+
+/**
+ * 获取表格数据
+ * @param isInit Boolean ，默认为false，用于判断是否需要初始化分页
+ */
+async function getTableData(isInit: boolean) {
     const { stop } = useTimeoutFn(() => toggleLoading(true), 200)
-    if (init)
+    if (isInit)
         page.index = 1
 
     const params = {

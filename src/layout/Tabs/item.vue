@@ -11,7 +11,7 @@
 <script lang="ts" setup>
 import type { TabsType } from '@/composables/storage'
 
-const props = defineProps<{
+const { menu, active } = defineProps<{
     menu: TabsType
     active: boolean
 }>()
@@ -21,6 +21,4 @@ const emit = defineEmits(['close', 'reload'])
 defineOptions({
     name: 'TabsItem',
 })
-
-const { menu, active } = $(toRefs(props))
 </script>

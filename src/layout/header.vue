@@ -56,6 +56,7 @@ const layer: GlobalDialogLayer<Obj> = reactive({
     show: false,
     title: '',
     showButton: true,
+    width: '500px'
 })
 // isCollapse change to hide/show the sidebar
 function opendStateChange() {

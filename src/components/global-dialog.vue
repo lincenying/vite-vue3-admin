@@ -15,7 +15,7 @@
 <script lang="ts" setup>
 import type { GlobalDialogLayer } from './components.types'
 
-const props = defineProps<{
+const { layer } = defineProps<{
     layer: GlobalDialogLayer<Obj>
 }>()
 
@@ -25,7 +25,7 @@ defineOptions({
     name: 'GlobalDialog',
 })
 
-const show = ref<boolean>(props.layer.show)
+const show = ref<boolean>(layer.show)
 
 watch(show, () => {
     emit('update', show.value)

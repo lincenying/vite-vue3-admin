@@ -20,10 +20,9 @@ import type { GlobalDialogLayer } from '@/components/components.types'
 
 import type { FormInstance, GlobalDiaslogInstance } from '@/types'
 
-const props = defineProps<{
+const { layer } = defineProps<{
     layer: GlobalDialogLayer<Obj>
 }>()
-
 const emit = defineEmits(['update'])
 
 defineOptions({
@@ -31,8 +30,6 @@ defineOptions({
 })
 
 const userStore = useUserStore()
-
-const { layer } = $(toRefs(props))
 
 const ruleForm = ref<Nullable<FormInstance>>(null)
 const layerDom = ref<Nullable<GlobalDiaslogInstance>>(null)

@@ -33,7 +33,7 @@
 import appLink from './link.vue'
 import type { Route } from '@/router/index.type'
 
-const props = defineProps<{
+const { menu } = defineProps<{
     menu: Route
     basePath?: string
 }>()
@@ -41,8 +41,6 @@ const props = defineProps<{
 defineOptions({
     name: 'MenuItem',
 })
-
-const { menu } = $(toRefs(props))
 
 // todo: 优化if结构
 const showMenuType = computed(() => {
