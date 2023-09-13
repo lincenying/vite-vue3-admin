@@ -44,7 +44,7 @@
     "@iconify-json/fa": "^1.1.5",
     "@iconify-json/mdi": "^1.1.54",
     "@lincy/base-config": "^0.0.2",
-    "@lincy/eslint-config": "^2.2.0",
+    "@lincy/eslint-config": "^2.3.0",
     "@lincy/stylelint-config": "^1.15.10",
     "@lincy/vite-plugin-mock": "^3.0.0",
     "@types/node": "^20.6.0",
@@ -69,6 +69,6 @@
     "vite-plugin-inspect": "^0.7.38",
     "vite-plugin-progress": "^0.0.7",
     "vite-plugin-warmup": "^0.1.0",
-    "vue-tsc": "^1.8.10"
+    "vue-tsc": "^1.8.11"
   }
 }
