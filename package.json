@@ -7,7 +7,7 @@
   "author": "lincenying <lincenying@qq.com>",
   "sideEffects": false,
   "scripts": {
-    "prepare": "simple-git-hooks",
+    "prepare": "sh simple-git-hooks.sh",
     "serve": "cross-env DEBUG=vite:transform vite",
     "build": "vite build --mode=production",
     "build:stag": "vite build --mode=staging",
@@ -34,7 +34,7 @@
     "throttle-debounce": "^5.0.0",
     "v-contextmenu": "^3.0.0",
     "vue": "^3.3.4",
-    "vue-router": "^4.2.4",
+    "vue-router": "^4.2.5",
     "vuex": "^4.1.0",
     "xlsx": "^0.18.5"
   },
@@ -45,7 +45,7 @@
     "@iconify-json/fa": "^1.1.5",
     "@iconify-json/mdi": "^1.1.54",
     "@lincy/base-config": "^0.0.2",
-    "@lincy/eslint-config": "^3.0.5",
+    "@lincy/eslint-config": "^3.0.8",
     "@lincy/stylelint-config": "^1.15.10",
     "@lincy/vite-plugin-mock": "^3.0.0",
     "@types/node": "^20.6.3",
