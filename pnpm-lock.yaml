@@ -86,8 +86,8 @@ devDependencies:
     specifier: ^0.0.2
     version: 0.0.2(postcss@8.4.30)(vite@4.4.9)
   '@lincy/eslint-config':
-    specifier: ^3.0.8
-    version: 3.0.8(eslint@8.49.0)(typescript@5.2.2)
+    specifier: ^3.0.10
+    version: 3.0.10(eslint@8.49.0)(typescript@5.2.2)
   '@lincy/stylelint-config':
     specifier: ^1.15.10
     version: 1.15.10(postcss@8.4.30)(stylelint@15.10.3)
@@ -335,7 +335,7 @@ packages:
       '@babel/helper-module-imports': 7.22.5
       '@babel/helper-simple-access': 7.22.5
       '@babel/helper-split-export-declaration': 7.22.6
-      '@babel/helper-validator-identifier': 7.22.15
+      '@babel/helper-validator-identifier': 7.22.20
     dev: true
 
   /@babel/helper-optimise-call-expression@7.22.5:
@@ -387,14 +387,9 @@ packages:
     resolution: {integrity: sha512-mM4COjgZox8U+JcXQwPijIZLElkgEpO5rsERVDJTc2qfCDfERyob6k5WegS14SX18IIjv+XD+GrqNumY5JRCDw==}
     engines: {node: '>=6.9.0'}
 
-  /@babel/helper-validator-identifier@7.22.15:
-    resolution: {integrity: sha512-4E/F9IIEi8WR94324mbDUMo074YTheJmd7eZF5vITTeYchqAi6sYXRLHUVsmkdmY4QjfKTcB2jB7dVP3NaBElQ==}
-    engines: {node: '>=6.9.0'}
-
   /@babel/helper-validator-identifier@7.22.20:
     resolution: {integrity: sha512-Y4OZ+ytlatR8AI+8KZfKuL5urKp7qey08ha31L8b3BwewJAoJamTzyvxPR/5D+KkdJCGPq/+8TukHBlY10FX9A==}
     engines: {node: '>=6.9.0'}
-    dev: true
 
   /@babel/helper-validator-option@7.22.5:
     resolution: {integrity: sha512-R3oB6xlIVKUnxNUxbmgq7pKjxpru24zlimpE8WK47fACIlM0II/Hm1RS8IaOI7NgCr6LNS+jl5l75m20npAziw==}
@@ -416,7 +411,7 @@ packages:
     resolution: {integrity: sha512-78aUtVcT7MUscr0K5mIEnkwxPE0MaxkR5RxRwuHaQ+JuU5AmTPhY+do2mdzVTnIJJpyBglql2pehuBIWHug+WQ==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/helper-validator-identifier': 7.22.15
+      '@babel/helper-validator-identifier': 7.22.20
       chalk: 2.4.2
       js-tokens: 4.0.0
     dev: true
@@ -532,7 +527,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/helper-string-parser': 7.22.5
-      '@babel/helper-validator-identifier': 7.22.15
+      '@babel/helper-validator-identifier': 7.22.20
       to-fast-properties: 2.0.0
     dev: true
 
@@ -541,7 +536,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/helper-string-parser': 7.22.5
-      '@babel/helper-validator-identifier': 7.22.15
+      '@babel/helper-validator-identifier': 7.22.20
       to-fast-properties: 2.0.0
 
   /@babel/types@7.22.17:
@@ -549,7 +544,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/helper-string-parser': 7.22.5
-      '@babel/helper-validator-identifier': 7.22.15
+      '@babel/helper-validator-identifier': 7.22.20
       to-fast-properties: 2.0.0
     dev: true
 
@@ -558,7 +553,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/helper-string-parser': 7.22.5
-      '@babel/helper-validator-identifier': 7.22.15
+      '@babel/helper-validator-identifier': 7.22.20
       to-fast-properties: 2.0.0
 
   /@braintree/sanitize-url@3.1.0:
@@ -1307,8 +1302,8 @@ packages:
       - vite
     dev: true
 
-  /@lincy/eslint-config@3.0.8(eslint@8.49.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-27k4g19UNUWTCPZr2/ZTJ10d9+XphohwxuSWF05YgmLmbFBuyPnYwoWCA6er5XdS1dt/VJDI7OkI3i2IT5A7fw==}
+  /@lincy/eslint-config@3.0.10(eslint@8.49.0)(typescript@5.2.2):
+    resolution: {integrity: sha512-lckXZ8JQ9KJ8Qf74NU9SKd4+IzZDMWRxtMajvJL6TrMNxWqBl1bc5bnm5+FDGBmWki0kYoD/eoHY2jy2wJL11Q==}
     peerDependencies:
       eslint: '>=8.0.0'
     dependencies:
