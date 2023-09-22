@@ -7,13 +7,13 @@
   "author": "lincenying <lincenying@qq.com>",
   "sideEffects": false,
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "simple-git-hooks",
     "serve": "cross-env DEBUG=vite:transform vite",
     "build": "vite build --mode=production",
     "build:stag": "vite build --mode=staging",
     "start": "vite preview",
-    "lint": "eslint ./src --ext .vue,.ts,.tsx",
-    "lint:fix": "eslint ./src --ext .vue,.ts,.tsx --fix",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix",
     "lint:ts": "vue-tsc --noEmit"
   },
   "dependencies": {
@@ -45,7 +45,7 @@
     "@iconify-json/fa": "^1.1.5",
     "@iconify-json/mdi": "^1.1.54",
     "@lincy/base-config": "^0.0.2",
-    "@lincy/eslint-config": "^3.0.2",
+    "@lincy/eslint-config": "^3.0.5",
     "@lincy/stylelint-config": "^1.15.10",
     "@lincy/vite-plugin-mock": "^3.0.0",
     "@types/node": "^20.6.3",
@@ -59,9 +59,9 @@
     "@webxrd/vite-plugin-svg": "^1.0.7",
     "cross-env": "^7.0.3",
     "eslint": "^8.49.0",
-    "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "sass": "^1.68.0",
+    "simple-git-hooks": "^2.9.0",
     "typescript": "^5.2.2",
     "unocss": "^0.56.1",
     "unplugin-auto-import": "^0.16.6",
@@ -74,8 +74,11 @@
     "vite-plugin-warmup": "^0.1.0",
     "vue-tsc": "^1.8.13"
   },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
   "lint-staged": {
-    "*.{ts,tsx,vue}": [
+    "*.{js,ts,tsx,vue}": [
       "eslint --fix"
     ]
   }

@@ -86,8 +86,8 @@ devDependencies:
     specifier: ^0.0.2
     version: 0.0.2(postcss@8.4.30)(vite@4.4.9)
   '@lincy/eslint-config':
-    specifier: ^3.0.2
-    version: 3.0.2(eslint@8.49.0)(typescript@5.2.2)
+    specifier: ^3.0.5
+    version: 3.0.5(eslint@8.49.0)(typescript@5.2.2)
   '@lincy/stylelint-config':
     specifier: ^1.15.10
     version: 1.15.10(postcss@8.4.30)(stylelint@15.10.3)
@@ -127,15 +127,15 @@ devDependencies:
   eslint:
     specifier: ^8.49.0
     version: 8.49.0
-  husky:
-    specifier: ^8.0.3
-    version: 8.0.3
   lint-staged:
     specifier: ^14.0.1
     version: 14.0.1
   sass:
     specifier: ^1.68.0
     version: 1.68.0
+  simple-git-hooks:
+    specifier: ^2.9.0
+    version: 2.9.0
   typescript:
     specifier: ^5.2.2
     version: 5.2.2
@@ -1307,8 +1307,8 @@ packages:
       - vite
     dev: true
 
-  /@lincy/eslint-config@3.0.2(eslint@8.49.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-CkBi5zKMZk/O7wH5mVGZDr+EgMl+GUkrPK5xqt9HM4w0+4cYaAAUC7l0rzSe0VTh/lXpIZwIXK3XgY8zHWA11g==}
+  /@lincy/eslint-config@3.0.5(eslint@8.49.0)(typescript@5.2.2):
+    resolution: {integrity: sha512-ZCISROsizUCZDWgz+SrLTplOADZ1lTF/+avRe/5V+Vr4f/AqygTTRslChhwYFZiKlcoEbwAfmkdaQLVfYl7G/g==}
     peerDependencies:
       eslint: '>=8.0.0'
     dependencies:
@@ -1320,7 +1320,7 @@ packages:
       '@typescript-eslint/parser': 6.7.2(eslint@8.49.0)(typescript@5.2.2)
       eslint: 8.49.0
       eslint-define-config: 1.23.0
-      eslint-plugin-antfu: 1.0.0-beta.2(eslint@8.49.0)(typescript@5.2.2)
+      eslint-plugin-antfu: 1.0.0-beta.3(eslint@8.49.0)(typescript@5.2.2)
       eslint-plugin-eslint-comments: 3.2.0(eslint@8.49.0)
       eslint-plugin-i: 2.28.1(@typescript-eslint/parser@6.7.2)(eslint@8.49.0)
       eslint-plugin-jsdoc: 46.8.2(eslint@8.49.0)
@@ -4320,8 +4320,8 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-plugin-antfu@1.0.0-beta.2(eslint@8.49.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-jrgUzJ/R+mFCX8f3x2HUQZfF4vMRFyGT/MQNKKFO1DcEGnVVq3zmYife+uYpLQUd4sfySo5wVOY3a/pvnfSYIg==}
+  /eslint-plugin-antfu@1.0.0-beta.3(eslint@8.49.0)(typescript@5.2.2):
+    resolution: {integrity: sha512-jP9wSGmfWbAUVqzZAdq314kNFTnKjZpiqdQhCbKDVdSL9m6aGuG94FOK5nbpwQJA5vKdYc3PSPiZy1yFjWDPwg==}
     dependencies:
       '@typescript-eslint/utils': 6.7.2(eslint@8.49.0)(typescript@5.2.2)
     transitivePeerDependencies:
@@ -4363,7 +4363,7 @@ packages:
       eslint: 8.49.0
       eslint-import-resolver-node: 0.3.9
       eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.7.2)(eslint-import-resolver-node@0.3.9)(eslint@8.49.0)
-      get-tsconfig: 4.7.1
+      get-tsconfig: 4.7.2
       is-glob: 4.0.3
       minimatch: 3.1.2
       resolve: 1.22.6
@@ -4429,7 +4429,7 @@ packages:
       builtins: 5.0.1
       eslint: 8.49.0
       eslint-plugin-es-x: 7.2.0(eslint@8.49.0)
-      get-tsconfig: 4.7.1
+      get-tsconfig: 4.7.2
       ignore: 5.2.4
       is-core-module: 2.13.0
       minimatch: 3.1.2
@@ -4911,8 +4911,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /get-tsconfig@4.7.1:
-    resolution: {integrity: sha512-sLtd6Bcwbi9IrAow/raCOTE9pmhvo5ksQo5v2lApUGJMzja64MUYhBp0G6X1S+f7IrBPn1HP+XkS2w2meoGcjg==}
+  /get-tsconfig@4.7.2:
+    resolution: {integrity: sha512-wuMsz4leaj5hbGgg4IvDU0bqJagpftG5l5cXIAvo8uZrqn0NJqwtfupTN00VnkQJPcIRrxYrm1Ue24btpCha2A==}
     dependencies:
       resolve-pkg-maps: 1.0.0
     dev: true
@@ -5143,12 +5143,6 @@ packages:
   /human-signals@4.3.1:
     resolution: {integrity: sha512-nZXjEF2nbo7lIw3mgYjItAfgQXog3OjJogSbKa2CQIIvSGWcKgeJnQlNXip6NglNzYH45nSRiEVimMvYL8DDqQ==}
     engines: {node: '>=14.18.0'}
-    dev: true
-
-  /husky@8.0.3:
-    resolution: {integrity: sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==}
-    engines: {node: '>=14'}
-    hasBin: true
     dev: true
 
   /iconv-lite@0.4.24:
@@ -6826,6 +6820,12 @@ packages:
   /signal-exit@4.1.0:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
+    dev: true
+
+  /simple-git-hooks@2.9.0:
+    resolution: {integrity: sha512-waSQ5paUQtyGC0ZxlHmcMmD9I1rRXauikBwX31bX58l5vTOhCEcBC5Bi+ZDkPXTjDnZAF8TbCqKBY+9+sVPScw==}
+    hasBin: true
+    requiresBuild: true
     dev: true
 
   /sirv@2.0.3:
