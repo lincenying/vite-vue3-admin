@@ -35,15 +35,15 @@ import globalDialog from '@/components/global-dialog.vue'
 import type { GlobalDialogLayer } from '@/components/components.types'
 import type { GlobalDiaslogInstance } from '@/types'
 
+defineOptions({
+    name: 'DialogUserModify',
+})
+
 const { layer } = defineProps<{
     layer: GlobalDialogLayer<Obj>
 }>()
 
 const emit = defineEmits(['getTableData', 'update'])
-
-defineOptions({
-    name: 'DialogUserModify',
-})
 
 const ruleForm = ref<Nullable<FormInstance>>(null)
 const layerDom = ref<Nullable<GlobalDiaslogInstance>>(null)

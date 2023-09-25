@@ -28,15 +28,15 @@ import { ElMessage } from '@/config/element'
 import type { GlobalDialogLayer } from '@/components/components.types'
 import type { GlobalDiaslogInstance } from '@/types'
 
+defineOptions({
+    name: 'DialogModify',
+})
+
 const { layer } = defineProps<{
     layer: GlobalDialogLayer<Obj>
 }>()
 
 const emit = defineEmits(['getTableData', 'update'])
-
-defineOptions({
-    name: 'DialogModify',
-})
 
 const ruleForm = ref<Nullable<FormInstance>>(null)
 const layerDom = ref<Nullable<GlobalDiaslogInstance>>(null)

@@ -17,6 +17,10 @@ interface Props {
     textColor: string
 }
 
+defineOptions({
+    name: 'ThemeColor',
+})
+
 /** 使用 withDefaults 后, 不能直接解构 */
 const props = withDefaults(defineProps<Props>(), {
     active: '',
@@ -29,10 +33,6 @@ const props = withDefaults(defineProps<Props>(), {
 const emit = defineEmits(['update:active', 'update:activeTextColor'])
 
 const { color, textColor } = $(toRefs(props))
-
-defineOptions({
-    name: 'ThemeColor',
-})
 
 function handleClick() {
     emit('update:active', color)

@@ -15,9 +15,9 @@ export function dataURLtoBlob(base64Buf: string): Blob {
 }
 
 /**
-   * img url to base64
-   * @param url
-   */
+ * img url to base64
+ * @param url
+ */
 export function urlToBase64(url: string, mineType?: string): Promise<string> {
     return new Promise((resolve, reject) => {
         let canvas = document.createElement('CANVAS') as Nullable<HTMLCanvasElement>
@@ -78,10 +78,10 @@ export function downloadByBase64(buf: string, filename: string, mime?: string, b
 
 /**
  * 根据后端Api下载文件流
- * @param {*} data
- * @param {*} filename
- * @param {*} mime
- * @param {*} bom
+ * @param data
+ * @param filename
+ * @param mime
+ * @param bom
  */
 export function downloadByData(data: BlobPart, filename: string, mime?: string, bom?: BlobPart) {
     const blobData = typeof bom !== 'undefined' ? [bom, data] : [data]
@@ -109,7 +109,10 @@ interface DownloadByUrlType {
 
 /**
  * 根据文件地址下载文件
- * @param {*} sUrl
+ * @param sUrl
+ * @param sUrl.url 文件下载地址
+ * @param sUrl.target 打开地址目标
+ * @param sUrl.fileName 保存文件名
  */
 export function downloadByUrl({ url, target = '_blank', fileName }: DownloadByUrlType): boolean {
     const isChrome = window.navigator.userAgent.toLowerCase().includes('chrome')

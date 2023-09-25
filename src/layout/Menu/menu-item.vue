@@ -33,14 +33,14 @@
 import appLink from './link.vue'
 import type { Route } from '@/router/index.type'
 
+defineOptions({
+    name: 'MenuItem',
+})
+
 const { menu } = defineProps<{
     menu: Route
     basePath?: string
 }>()
-
-defineOptions({
-    name: 'MenuItem',
-})
 
 // todo: 优化if结构
 const showMenuType = computed(() => {

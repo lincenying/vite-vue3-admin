@@ -20,14 +20,14 @@ import type { GlobalDialogLayer } from '@/components/components.types'
 
 import type { FormInstance, GlobalDiaslogInstance } from '@/types'
 
+defineOptions({
+    name: 'DialogPassword',
+})
+
 const { layer } = defineProps<{
     layer: GlobalDialogLayer<Obj>
 }>()
 const emit = defineEmits(['update'])
-
-defineOptions({
-    name: 'DialogPassword',
-})
 
 const userStore = useUserStore()
 

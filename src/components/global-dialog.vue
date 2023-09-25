@@ -15,15 +15,15 @@
 <script lang="ts" setup>
 import type { GlobalDialogLayer } from './components.types'
 
+defineOptions({
+    name: 'GlobalDialog',
+})
+
 const { layer } = defineProps<{
     layer: GlobalDialogLayer<Obj>
 }>()
 
 const emit = defineEmits(['confirm', 'update'])
-
-defineOptions({
-    name: 'GlobalDialog',
-})
 
 const show = ref<boolean>(layer.show)
 

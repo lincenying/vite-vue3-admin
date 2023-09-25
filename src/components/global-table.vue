@@ -43,6 +43,12 @@ interface Props {
     pageSizes?: number[]
 }
 
+// ['getTableData', 'selectionChange', 'updatePage']
+
+defineOptions({
+    name: 'GlobalTable',
+})
+
 /** 使用 withDefaults 后, 不能直接解构 */
 const props = withDefaults(defineProps<Props>(), {
     data: () => [],
@@ -59,12 +65,6 @@ const emit = defineEmits<{
     (event: 'updatePage', palyload: UpdatePageType | UpdatePageType[]): void
     (event: 'selectionChange', palyload: any[]): void
 }>()
-
-// ['getTableData', 'selectionChange', 'updatePage']
-
-defineOptions({
-    name: 'GlobalTable',
-})
 
 const { data, showIndex, showSelection, showPage, page, pageLayout, pageSizes } = $(toRefs(props))
 

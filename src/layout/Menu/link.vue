@@ -5,13 +5,13 @@
 </template>
 
 <script lang="ts" setup>
-const { to } = defineProps<{
-    to: string
-}>()
-
 defineOptions({
     name: 'MenuLink',
 })
+
+const { to } = defineProps<{
+    to: string
+}>()
 
 const globalStore = useGlobalStore()
 const { isCollapse } = $(storeToRefs(globalStore))

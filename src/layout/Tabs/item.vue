@@ -11,14 +11,14 @@
 <script lang="ts" setup>
 import type { TabsType } from '@/composables/storage'
 
+defineOptions({
+    name: 'TabsItem',
+})
+
 const { menu, active } = defineProps<{
     menu: TabsType
     active: boolean
 }>()
 
 const emit = defineEmits(['close', 'reload'])
-
-defineOptions({
-    name: 'TabsItem',
-})
 </script>

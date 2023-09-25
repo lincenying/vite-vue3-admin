@@ -13,11 +13,11 @@
 <script lang="ts" setup>
 import type { IndexCardType } from '@/types'
 
-const { row } = defineProps<{
-    row: IndexCardType
-}>()
-
 defineOptions({
     name: 'CardRow',
 })
+
+const { row } = defineProps<{
+    row: IndexCardType
+}>()
 </script>

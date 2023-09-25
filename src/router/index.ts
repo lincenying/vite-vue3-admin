@@ -20,7 +20,7 @@ NProgress.configure({ showSpinner: false })
  * @name 初始化必须要的路由
  * @description 使用reactive属性使得modules可以在路由菜单里面实时响应，搞定菜单回显的问题
  * @detail 针对modules的任何修改，均会同步至菜单级别，记住，是针对变量名为：moduels的修改
- **/
+ */
 
 const modules = reactive([
     ...Feature,
