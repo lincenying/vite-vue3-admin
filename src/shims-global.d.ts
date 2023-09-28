@@ -26,6 +26,8 @@ declare type Fn<T = void> = () => T
  * 任意函数
  */
 declare type AnyFn<T = any> = (...args: any[]) => T
+
+declare type PromiseFn<T> = (...args: any[]) => Promise<T>
 /**
  * Promise, or maybe not
  */
