@@ -1,32 +1,28 @@
 import type { MockMethod } from '@lincy/vite-plugin-mock'
 import type { UserListType } from '@/types'
 
-const users: UserListType[] = [
-    {
-        name: 'admin',
-        password: '123456',
-        token: 'admin',
-        info: {
-            name: '系统管理员',
-        },
+const users: UserListType[] = [{
+    name: 'admin',
+    password: '123456',
+    token: 'admin',
+    info: {
+        name: '系统管理员',
     },
-    {
-        name: 'editor',
-        password: '123456',
-        token: 'editor',
-        info: {
-            name: '编辑人员',
-        },
+}, {
+    name: 'editor',
+    password: '123456',
+    token: 'editor',
+    info: {
+        name: '编辑人员',
     },
-    {
-        name: 'test',
-        password: '123456',
-        token: 'test',
-        info: {
-            name: '测试人员',
-        },
+}, {
+    name: 'test',
+    password: '123456',
+    token: 'test',
+    info: {
+        name: '测试人员',
     },
-]
+}]
 export default [
     {
         url: '/mock/user/login',
