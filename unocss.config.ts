@@ -1,3 +1,3 @@
-import unoConfig from '@lincy/base-config/src/uno.admin.config'
+import { adminConfig } from '@lincy/base-config'
 
-export default unoConfig()
+export default adminConfig()
