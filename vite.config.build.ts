@@ -28,16 +28,16 @@ const config: { server: ServerOptions; build: BuildOptions } = {
             input: {
                 main: path.resolve(__dirname, 'index.html'),
             },
-            external: /\.\/assets.*/,
-            output: {
-                // manualChunks(id: string) {
-                //     if (id.includes('node_modules')) {
-                //         if (id.includes('echarts') || id.includes('zrender'))
-                //             return 'echarts'
-                //         return 'vendor'
-                //     }
-                // },
-            },
+            // external: /\.\/assets.*/,
+            // output: {
+            //     manualChunks(id: string) {
+            //         if (id.includes('node_modules')) {
+            //             if (id.includes('echarts') || id.includes('zrender'))
+            //                 return 'echarts'
+            //             return 'vendor'
+            //         }
+            //     },
+            // },
         },
     },
 }

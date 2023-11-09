@@ -4,15 +4,13 @@
  */
 import { createApp } from 'vue'
 
-import '@unocss/reset/tailwind.css'
-import 'uno.css'
-import 'element-plus/theme-chalk/display.css'
-import './assets/style/index.scss'
-import './theme/modules/chinese/index.scss'
-
 import App from './App.vue'
 import router from './router'
 import globalPlugin from '@/plugin/global'
+
+import 'element-plus/theme-chalk/display.css'
+import './assets/style/index.scss'
+import './theme/modules/chinese/index.scss'
 
 /** 权限路由处理主方法 */
 const app = createApp(App)

@@ -330,6 +330,12 @@
     "downloadByUrl": true,
     "openWindow": true,
     "urlToBase64": true,
-    "createPinia": true
+    "createPinia": true,
+    "injectLocal": true,
+    "provideLocal": true,
+    "ExtractDefaultPropTypes": true,
+    "ExtractPropTypes": true,
+    "ExtractPublicPropTypes": true,
+    "WritableComputedRef": true
   }
 }
