@@ -8,9 +8,7 @@ import App from './App.vue'
 import router from './router'
 import globalPlugin from '@/plugin/global'
 
-import '@unocss/reset/tailwind-compat.css'
 import 'uno.css'
-
 import 'element-plus/theme-chalk/display.css'
 import './assets/style/index.scss'
 import './theme/modules/chinese/index.scss'

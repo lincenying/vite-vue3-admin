@@ -1,155 +1,155 @@
 @font-face {
-  font-family: "iconfont"; /* Project id 4146438 */
-  src: url('iconfont.woff2?t=1688141704263') format('woff2'),
-       url('iconfont.woff?t=1688141704263') format('woff'),
-       url('iconfont.ttf?t=1688141704263') format('truetype');
+    font-family: iconfont; /* Project id 4146438 */
+    src: url('iconfont.woff2?t=1688141704263') format('woff2'),
+        url('iconfont.woff?t=1688141704263') format('woff'),
+        url('iconfont.ttf?t=1688141704263') format('truetype');
 }
 
 .iconfont {
-  font-family: "iconfont" !important;
-  font-size: 16px;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    font-family: iconfont !important;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-style: normal;
 }
 
-.icon-yemian:before {
-  content: "\e7cc";
+.icon-yemian::before {
+    content: "\e7cc";
 }
 
-.icon-yanjing_yincang:before {
-  content: "\eb45";
+.icon-yanjing_yincang::before {
+    content: "\eb45";
 }
 
-.icon-yanjing_xianshi:before {
-  content: "\eb46";
+.icon-yanjing_xianshi::before {
+    content: "\eb46";
 }
 
-.icon-user:before {
-  content: "\e776";
+.icon-user::before {
+    content: "\e776";
 }
 
-.icon-mima:before {
-  content: "\e615";
+.icon-mima::before {
+    content: "\e615";
 }
 
-.icon-shuliang:before {
-  content: "\e61d";
+.icon-shuliang::before {
+    content: "\e61d";
 }
 
-.icon-yingshou:before {
-  content: "\e640";
+.icon-yingshou::before {
+    content: "\e640";
 }
 
-.icon-xiaoxi:before {
-  content: "\e65b";
+.icon-xiaoxi::before {
+    content: "\e65b";
 }
 
-.icon-xitong:before {
-  content: "\e66e";
+.icon-xitong::before {
+    content: "\e66e";
 }
 
-.icon-yemianpeizhi:before {
-  content: "\e61f";
+.icon-yemianpeizhi::before {
+    content: "\e61f";
 }
 
-.icon-caidan:before {
-  content: "\e652";
+.icon-caidan::before {
+    content: "\e652";
 }
 
-.icon-dashboard:before {
-  content: "\e78b";
+.icon-dashboard::before {
+    content: "\e78b";
 }
 
-.icon-shouye:before {
-  content: "\e628";
+.icon-shouye::before {
+    content: "\e628";
 }
 
-.icon-chenggong:before {
-  content: "\e666";
+.icon-chenggong::before {
+    content: "\e666";
 }
 
-.icon-shezhi:before {
-  content: "\e6ee";
+.icon-shezhi::before {
+    content: "\e6ee";
 }
 
-.icon-github:before {
-  content: "\e85a";
+.icon-github::before {
+    content: "\e85a";
 }
 
-.icon-unFullScreen:before {
-  content: "\e633";
+.icon-unFullScreen::before {
+    content: "\e633";
 }
 
-.icon-fullScreen:before {
-  content: "\e627";
+.icon-fullScreen::before {
+    content: "\e627";
 }
 
-.icon-down:before {
-  content: "\e651";
+.icon-down::before {
+    content: "\e651";
 }
 
-.icon-s-unfold:before {
-  content: "\e687";
+.icon-s-unfold::before {
+    content: "\e687";
 }
 
-.icon-s-fold:before {
-  content: "\e60a";
+.icon-s-fold::before {
+    content: "\e60a";
 }
 
-.icon-wodefensi:before {
-  content: "\e7d3";
+.icon-wodefensi::before {
+    content: "\e7d3";
 }
 
-.icon-weibo:before {
-  content: "\e645";
+.icon-weibo::before {
+    content: "\e645";
 }
 
-.icon-change_1:before {
-  content: "\e647";
+.icon-change_1::before {
+    content: "\e647";
 }
 
-.icon-good:before {
-  content: "\e62a";
+.icon-good::before {
+    content: "\e62a";
 }
 
-.icon-renjijiaohu:before {
-  content: "\e62b";
+.icon-renjijiaohu::before {
+    content: "\e62b";
 }
 
-.icon-fensiguanli:before {
-  content: "\e622";
+.icon-fensiguanli::before {
+    content: "\e622";
 }
 
-.icon-weixin:before {
-  content: "\e638";
+.icon-weixin::before {
+    content: "\e638";
 }
 
-.icon-exchange_2:before {
-  content: "\e6ad";
+.icon-exchange_2::before {
+    content: "\e6ad";
 }
 
-.icon-pinglun:before {
-  content: "\e60d";
+.icon-pinglun::before {
+    content: "\e60d";
 }
 
-.icon-exchange_3:before {
-  content: "\e63e";
+.icon-exchange_3::before {
+    content: "\e63e";
 }
 
-.icon-haoyou:before {
-  content: "\e60e";
+.icon-haoyou::before {
+    content: "\e60e";
 }
 
-.icon-dianzan:before {
-  content: "\e617";
+.icon-dianzan::before {
+    content: "\e617";
 }
 
-.icon-zhuanfa:before {
-  content: "\e604";
+.icon-zhuanfa::before {
+    content: "\e604";
 }
 
-.icon-people:before {
-  content: "\e600";
+.icon-people::before {
+    content: "\e600";
 }
 
