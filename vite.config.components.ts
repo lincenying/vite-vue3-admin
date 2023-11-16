@@ -54,7 +54,9 @@ export default (): PluginOption[] => ([
             /\.md$/, // .md
         ],
         extensions: ['vue', 'tsx', 'jsx'],
-        resolvers: [ElementPlusResolver(), IconsResolver({
+        resolvers: [ElementPlusResolver({
+            importStyle: 'sass',
+        }), IconsResolver({
             // 图标库合集别名
             alias: {
                 ad: 'ant-design',
