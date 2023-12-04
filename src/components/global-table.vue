@@ -11,7 +11,7 @@
         </el-table>
         <el-pagination
             v-if="showPage"
-            v-model:current-page="page.index"
+            v-model:current-page="currPage"
             class="system-page"
             background
             :layout="pageLayout"
@@ -31,7 +31,22 @@ import type { TableListType, UpdatePageType, UserListType } from '@/types'
 
 type DataType<Key> = Key extends 'user' ? UserListType : (Key extends 'table' ? TableListType : unknown)
 
-interface Props {
+// ['getTableData', 'selectionChange', 'updatePage']
+
+defineOptions({
+    name: 'GlobalTable',
+})
+
+/** 使用 withDefaults 后, 不能直接解构 */
+const {
+    data = [],
+    showIndex = false,
+    showSelection = false,
+    showPage = false,
+    page = { index: 1, size: 20, total: 0 },
+    pageLayout = 'total, sizes, prev, pager, next, jumper',
+    pageSizes = [10, 20, 50, 100],
+} = defineProps<{
     propKey?: T
     data: DataType<T>[]
     select?: any[]
@@ -41,32 +56,14 @@ interface Props {
     page: GlobalTablePage
     pageLayout?: string
     pageSizes?: number[]
-}
-
-// ['getTableData', 'selectionChange', 'updatePage']
-
-defineOptions({
-    name: 'GlobalTable',
-})
-
-/** 使用 withDefaults 后, 不能直接解构 */
-const props = withDefaults(defineProps<Props>(), {
-    data: () => [],
-    select: () => [],
-    showIndex: false,
-    showSelection: false,
-    showPage: true,
-    page: () => ({ index: 1, size: 20, total: 0 }),
-    pageLayout: 'total, sizes, prev, pager, next, jumper',
-    pageSizes: () => [10, 20, 50, 100],
-})
+}>()
 
 const emit = defineEmits<{
     (event: 'updatePage', palyload: UpdatePageType | UpdatePageType[]): void
     (event: 'selectionChange', palyload: any[]): void
 }>()
 
-const { data, showIndex, showSelection, showPage, page, pageLayout, pageSizes } = $(toRefs(props))
+const currPage = ref<number>(1)
 
 const tableRef = ref<TableInstance>()
 let timer: Nullable<string> = null

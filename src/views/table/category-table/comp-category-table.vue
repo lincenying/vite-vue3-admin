@@ -90,7 +90,7 @@ const tableData = ref<TableListType[]>([])
 const chooseData = ref<TableListType[]>([])
 
 // 更新选中
-function onSelectionChange(val: []) {
+function onSelectionChange(val: any[]) {
     chooseData.value = val
 }
 

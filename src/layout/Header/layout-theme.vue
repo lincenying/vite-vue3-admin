@@ -41,8 +41,8 @@
 </template>
 
 <script lang="ts" setup>
-import themeIcon from './theme-icon.vue'
-import themeColor from './theme-color.vue'
+import themeIcon from '@/layout/header/theme-icon.vue'
+import themeColor from '@/layout/header/theme-color.vue'
 import { style } from '@/theme/index'
 import type { SettingOption } from '@/types'
 import type { ThemeState } from '@/pinia/store.types'

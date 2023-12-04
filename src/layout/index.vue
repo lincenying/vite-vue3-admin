@@ -28,10 +28,10 @@
 </template>
 
 <script lang="ts" setup>
-import layoutMenu from './menu.vue'
-import layoutLogo from './logo.vue'
-import layoutHeader from './header.vue'
-import layoutTabs from './tabs.vue'
+import layoutMenu from '@/layout/menu.vue'
+import layoutLogo from '@/layout/logo.vue'
+import layoutHeader from '@/layout/header.vue'
+import layoutTabs from '@/layout/tabs.vue'
 
 defineOptions({
     name: 'LayoutIndex',

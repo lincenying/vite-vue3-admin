@@ -30,7 +30,7 @@
 </template>
 
 <script lang="ts" setup>
-import appLink from './link.vue'
+import appLink from '@/layout/menu/link.vue'
 import type { Route } from '@/router/index.type'
 
 defineOptions({

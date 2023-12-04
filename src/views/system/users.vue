@@ -71,7 +71,7 @@
 </template>
 
 <script lang="ts" setup>
-import dialogUserModify from './components/dialog-user-modify.vue'
+import dialogUserModify from '@/views/system/components/dialog-user-modify.vue'
 import type { UpdatePageType, UserListType } from '@/types'
 import { ElMessage } from '@/config/element'
 import globalTable from '@/components/global-table.vue'
@@ -107,7 +107,7 @@ const tableData = ref<UserListType[]>([])
 const chooseData = ref<UserListType[]>([])
 
 // 更新选中
-function onSelectionChange(val: []) {
+function onSelectionChange(val: any[]): any {
     chooseData.value = val
 }
 

@@ -16,10 +16,10 @@
 </template>
 
 <script lang="ts" setup>
-import basicTemplate from './components/basic-template.vue'
-import communication from './components/communication.vue'
+import basicTemplate from '@/views/dashboard/components/basic-template.vue'
+import communication from '@/views/dashboard/components/communication.vue'
 
-import cardIndex from './components/card-index.vue'
+import cardIndex from '@/views/dashboard/components/card-index.vue'
 
 defineOptions({
     name: 'DashboardIndex',
