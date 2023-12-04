@@ -35,11 +35,11 @@
 </template>
 
 <script lang="ts" setup>
-import breadcrumb from './header/breadcrumb.vue'
-import dialogPassword from './header/dialog-password.vue'
-import fullScreen from './header/full-screen.vue'
-import layoutTheme from './header/layout-theme.vue'
-import github from './header/github.vue'
+import breadcrumb from '@/layout/header/breadcrumb.vue'
+import dialogPassword from '@/layout/header/dialog-password.vue'
+import fullScreen from '@/layout/header/full-screen.vue'
+import layoutTheme from '@/layout/header/layout-theme.vue'
+import github from '@/layout/header/github.vue'
 import type { GlobalDialogLayer } from '@/components/components.types'
 
 defineOptions({
