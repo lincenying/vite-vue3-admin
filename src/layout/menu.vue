@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts" setup>
-import menuItem from './menu/menu-item.vue'
+import menuItem from '@/layout/menu/menu-item.vue'
 import { modules } from '@/router/index'
 
 defineOptions({
