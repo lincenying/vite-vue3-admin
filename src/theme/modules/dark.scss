@@ -1,6 +1,13 @@
 [data-theme="dark"] {
     // 通用
-    p, h1, h2, h3, h4, h5, h6, article {
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    article {
         color: var(--system-page-color);
     }
 
@@ -25,5 +32,4 @@
     }
 
     // 页面内部样式修改
-
 }

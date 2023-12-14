@@ -54,7 +54,6 @@
     }
 }
 
-
 .layout-header {
     display: flex;
     justify-content: space-between;
@@ -153,7 +152,6 @@
             margin-left: 0;
         }
 
-
         .el-menu-item,
         .el-sub-menu {
             background-color: var(--system-menu-background) !important;
@@ -226,7 +224,6 @@
                 }
             }
         }
-
     }
 
     .el-sub-menu {
@@ -387,7 +384,7 @@
         }
     }
 
-    &  + .theme-icon {
+    & + .theme-icon {
         margin-left: 12px;
     }
 }

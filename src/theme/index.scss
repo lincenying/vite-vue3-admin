@@ -1,4 +1,4 @@
-@import './modules/dark';
+@import "./modules/dark";
 
 :root {
     // 主题色
@@ -20,7 +20,7 @@
     --system-header-background: #fff;
     --system-header-text-color: #303133;
     --system-header-breadcrumb-text-color: #606266;
-    --system-header-item-hover-color: rgba(0,0,0,.06);
+    --system-header-item-hover-color: rgba(0, 0, 0, 0.06);
     --system-header-border-color: #d8dce5;
     --system-header-tab-background: #fff;
 
@@ -51,5 +51,3 @@ body #nprogress .spinner-icon {
     border-top-color: var(--system-primary-color);
     border-left-color: var(--system-primary-color);
 }
-
-
