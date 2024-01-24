@@ -42,7 +42,7 @@ const {
     data = [],
     showIndex = false,
     showSelection = false,
-    showPage = false,
+    showPage = true,
     page = { index: 1, size: 20, total: 0 },
     pageLayout = 'total, sizes, prev, pager, next, jumper',
     pageSizes = [10, 20, 50, 100],
@@ -67,11 +67,18 @@ const currPage = ref<number>(1)
 
 const tableRef = ref<TableInstance>()
 let timer: Nullable<string> = null
-// 分页相关：监听页码切换事件
+
+/** 重置表格滚动条位置 */
+function resetScroll(top: number = 0) {
+    tableRef.value?.setScrollTop(top)
+}
+
+/** 分页相关：监听页码切换事件 */
 function handleCurrentChange(val: number) {
     emit('updatePage', { key: 'index', value: timer ? 1 : val })
 }
-// 分页相关：监听单页显示数量切换事件
+
+/** 分页相关：监听单页显示数量切换事件 */
 function handleSizeChange(val: number) {
     timer = 'work'
     setTimeout(() => {
@@ -79,12 +86,18 @@ function handleSizeChange(val: number) {
     }, 100)
     emit('updatePage', [{ key: 'size', value: val }, { key: 'index', value: 1 }])
 }
-// 选择监听器
+
+/** 选择监听器 */
 function onSelectionChange(val: []) {
     emit('selectionChange', val)
 }
-// 解决BUG：keep-alive组件使用时，表格浮层高度不对的问题
+
+/** 解决BUG：keep-alive组件使用时，表格浮层高度不对的问题 */
 onActivated(() => {
     tableRef.value?.doLayout()
+})
+
+defineExpose({
+    resetScroll,
 })
 </script>

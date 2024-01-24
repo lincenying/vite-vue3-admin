@@ -25,11 +25,13 @@
         </div>
         <div class="global-box-table">
             <global-table
+                ref="globalTableRef"
                 v-loading="loading"
                 prop-key="table"
                 :page="page"
                 :show-index="true"
                 :show-selection="true"
+                :show-page="true"
                 :data="tableData"
                 @get-table-data="getTableData"
                 @selection-change="onSelectionChange"
@@ -88,6 +90,8 @@ const page: GlobalTablePage = reactive({
     size: 20,
     total: 0,
 })
+
+const globalTableRef = ref<any>()
 
 const [loading, toggleLoading] = useToggle(false)
 const tableData = ref<TableListType[]>([])

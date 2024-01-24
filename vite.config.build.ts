@@ -16,6 +16,9 @@ const config: { server: ServerOptions; build: BuildOptions } = {
                 rewrite: (path: string) => path.replace(/^\/api/, '/mock'),
             },
         },
+        warmup: {
+            clientFiles: ['./src/main.ts', './src/views/**/*.vue'],
+        },
     },
     build: {
         target: 'es2018',

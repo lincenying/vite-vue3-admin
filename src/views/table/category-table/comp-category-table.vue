@@ -22,6 +22,7 @@
         </div>
         <div class="global-box-table">
             <global-table
+                ref="globalTableRef"
                 v-loading="loading"
                 prop-key="table"
                 :page="page"
@@ -89,6 +90,8 @@ const [loading, toggleLoading] = useToggle(false)
 const tableData = ref<TableListType[]>([])
 const chooseData = ref<TableListType[]>([])
 
+const globalTableRef = ref<any>()
+
 // 更新选中
 function onSelectionChange(val: any[]) {
     chooseData.value = val
@@ -139,6 +142,7 @@ async function getTableData(isInit: boolean) {
     }
     stop()
     toggleLoading(false)
+    globalTableRef.value.resetScroll()
 }
 // 删除功能
 async function handleDel(data: TableListType[]) {
