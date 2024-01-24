@@ -33,7 +33,7 @@ export default (): PluginOption[] => ([
             },
         ],
         dts: 'src/auto-imports.d.ts',
-        dirs: ['src/components', 'src/composables', 'src/pinia', 'src/echarts'],
+        dirs: ['src/components', 'src/composables', 'src/pinia'],
 
         resolvers: [
             ElementPlusResolver(),
@@ -54,14 +54,17 @@ export default (): PluginOption[] => ([
             /\.md$/, // .md
         ],
         extensions: ['vue', 'tsx', 'jsx'],
-        resolvers: [ElementPlusResolver({
-            importStyle: 'sass',
-        }), IconsResolver({
-            // 图标库合集别名
-            alias: {
-                ad: 'ant-design',
-            },
-        })],
+        resolvers: [
+            ElementPlusResolver({
+                importStyle: 'sass',
+            }),
+            IconsResolver({
+                // 图标库合集别名
+                alias: {
+                    ad: 'ant-design',
+                },
+            }),
+        ],
         dts: 'src/components.d.ts',
         directoryAsNamespace: true,
     }),
