@@ -20,8 +20,8 @@
   "dependencies": {
     "@lincy/utils": "^0.5.3",
     "@vueuse/core": "^10.7.2",
-    "axios": "^1.6.5",
-    "element-plus": "^2.5.3",
+    "axios": "^1.6.7",
+    "element-plus": "^2.5.5",
     "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
     "pinia": "^2.1.7",
@@ -32,7 +32,7 @@
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
-    "@iconify-json/ant-design": "^1.1.13",
+    "@iconify-json/ant-design": "^1.1.15",
     "@iconify-json/el": "^1.1.8",
     "@iconify-json/ep": "^1.1.14",
     "@iconify-json/fa": "^1.1.8",
@@ -41,9 +41,9 @@
     "@lincy/eslint-config": "^4.2.5",
     "@lincy/stylelint-config": "^1.17.4",
     "@lincy/vite-plugin-mock": "^3.0.0",
-    "@types/node": "^20.11.5",
+    "@types/node": "^20.11.16",
     "@types/nprogress": "^0.2.3",
-    "@unocss/eslint-plugin": "^0.58.3",
+    "@unocss/eslint-plugin": "^0.58.4",
     "@vitejs/plugin-vue": "^5.0.3",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
     "@vue-macros/volar": "^0.18.11",
@@ -51,17 +51,17 @@
     "cross-env": "^7.0.3",
     "eslint": "^8.56.0",
     "eslint-plugin-format": "^0.1.0",
-    "lint-staged": "^15.2.0",
+    "lint-staged": "^15.2.1",
     "sass": "^1.70.0",
     "simple-git-hooks": "^2.9.0",
     "typescript": "^5.3.3",
-    "unocss": "^0.58.3",
-    "unplugin-auto-import": "^0.17.3",
-    "unplugin-icons": "^0.18.2",
+    "unocss": "^0.58.4",
+    "unplugin-auto-import": "^0.17.5",
+    "unplugin-icons": "^0.18.3",
     "unplugin-vue-components": "^0.26.0",
     "unplugin-vue-macros": "^2.7.10",
     "vite": "^5.0.12",
-    "vite-plugin-inspect": "^0.8.2",
+    "vite-plugin-inspect": "^0.8.3",
     "vite-plugin-progress": "^0.0.7",
     "vue-tsc": "^1.8.27"
   },
@@ -71,6 +71,7 @@
   "lint-staged": {
     "*.{[jt]s?(x),vue,md}": [
       "eslint --fix"
-    ]
+    ],
+    "*.{css,scss}": "stylelint --fix"
   }
 }
