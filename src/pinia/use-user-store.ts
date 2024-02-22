@@ -11,13 +11,13 @@ const useUserStore = defineStore('userStore', () => {
     function tokenChange(token: string) {
         state.token = token
     }
-    function infoChange(info: Obj) {
+    function infoChange(info: Objable) {
         state.info = info
     }
 
     // login by login.vue
     async function login(params: { name: string; password: string }) {
-        const { code, data } = await $api.post<any>('/user/login', params)
+        const { code, data } = await $api.post<{ token: string }>('/user/login', params)
         if (code === 200 && data) {
             await getInfo({ token: data.token })
             tokenChange(data.token)

@@ -84,14 +84,16 @@ function handleSubmit() {
         }
         userStore
             .login(params)
-            .then(async () => {
-                ElMessage.success({
-                    message: '登录成功',
-                    type: 'success',
-                    showClose: true,
-                    duration: 1000,
-                })
-                location.reload()
+            .then(async (status) => {
+                if (status) {
+                    ElMessage.success({
+                        message: '登录成功',
+                        type: 'success',
+                        showClose: true,
+                        duration: 1000,
+                    })
+                    location.reload()
+                }
                 // await getAuthRoutes()
                 // await router.push(route.query.redirect as RouteLocationRaw || '/')
             })

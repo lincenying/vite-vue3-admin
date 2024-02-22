@@ -40,7 +40,7 @@ defineOptions({
 })
 
 const { layer } = defineProps<{
-    layer: GlobalDialogLayer<Obj>
+    layer: GlobalDialogLayer<Objable>
 }>()
 
 const emit = defineEmits(['getTableData', 'update'])

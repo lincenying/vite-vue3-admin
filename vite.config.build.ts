@@ -6,12 +6,12 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const config: { server: ServerOptions; build: BuildOptions } = {
     server: {
-        port: 3001,
+        port: 3101,
         host: '0.0.0.0',
         open: true,
         proxy: { // 代理配置
             '/api': {
-                target: 'http://127.0.0.1:3001',
+                target: 'http://127.0.0.1:3101',
                 changeOrigin: true,
                 rewrite: (path: string) => path.replace(/^\/api/, '/mock'),
             },

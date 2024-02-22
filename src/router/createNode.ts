@@ -4,10 +4,10 @@ import { type DefineComponent, createVNode } from 'vue'
 import reload from './reload.vue'
 import NProgress from '@/utils/nprogress'
 
-export function createNameComponent(component: () => Promise<any>): () => Promise<DefineComponent<Obj, Obj, any>> {
+export function createNameComponent(component: () => Promise<any>): () => Promise<DefineComponent<Objable, Objable, any>> {
     return () => {
         return new Promise((resolve) => {
-            component().then((comm: DefineComponent<Obj, Obj, any>) => {
+            component().then((comm: DefineComponent<Objable, Objable, any>) => {
                 const name = `${comm.default.name || 'vue3Admin'}$${Date.now()}`
                 const tempComm = defineComponent({
                     name,

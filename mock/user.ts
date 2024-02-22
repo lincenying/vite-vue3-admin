@@ -23,7 +23,7 @@ const users: UserListType[] = [{
         name: '测试人员',
     },
 }]
-export default [
+const mockList: MockMethod[] = [
     {
         url: '/mock/user/login',
         method: 'post',
@@ -43,7 +43,7 @@ export default [
             else {
                 return {
                     code: 401,
-                    data: {},
+                    data: null,
                     message: '用户名或密码错误',
                 }
             }
@@ -97,4 +97,6 @@ export default [
             }
         },
     },
-] as MockMethod[]
+]
+
+export default mockList

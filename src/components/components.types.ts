@@ -1,6 +1,6 @@
 import type { AnyFn } from '@vueuse/core'
 
-export interface GlobalDialogLayer<T = Obj> {
+export interface GlobalDialogLayer<T = Objable> {
     show: boolean
     title: string
     showButton?: boolean

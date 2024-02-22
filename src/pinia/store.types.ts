@@ -40,5 +40,5 @@ export interface KeepAliveState {
 
 export interface UserState {
     token: string
-    info: Obj
+    info: Objable
 }
