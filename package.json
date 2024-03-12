@@ -7,7 +7,7 @@
   "author": "lincenying <lincenying@qq.com>",
   "sideEffects": false,
   "scripts": {
-    "prepare": "sh simple-git-hooks.sh",
+    "prepare": "npx simple-git-hooks",
     "serve": "cross-env DEBUG=vite:transform vite",
     "build": "vite build --mode=production",
     "build:stag": "vite build --mode=staging",
@@ -18,15 +18,15 @@
     "lint:css": "stylelint '**/*.{css,scss}' --fix"
   },
   "dependencies": {
-    "@lincy/utils": "^0.5.3",
-    "@vueuse/core": "^10.8.0",
+    "@lincy/utils": "^0.5.4",
+    "@vueuse/core": "^10.9.0",
     "axios": "^1.6.7",
-    "element-plus": "^2.5.6",
+    "element-plus": "^2.6.1",
     "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
     "pinia": "^2.1.7",
     "throttle-debounce": "^5.0.0",
-    "vue": "^3.4.19",
+    "vue": "^3.4.21",
     "vue-router": "^4.3.0",
     "vuex": "^4.1.0",
     "xlsx": "^0.18.5"
@@ -34,37 +34,37 @@
   "devDependencies": {
     "@iconify-json/ant-design": "^1.1.15",
     "@iconify-json/el": "^1.1.8",
-    "@iconify-json/ep": "^1.1.14",
+    "@iconify-json/ep": "^1.1.15",
     "@iconify-json/fa": "^1.1.8",
     "@iconify-json/mdi": "^1.1.64",
     "@lincy/base-config": "^1.1.0",
-    "@lincy/eslint-config": "^4.2.5",
+    "@lincy/eslint-config": "^4.2.6",
     "@lincy/stylelint-config": "^1.17.4",
     "@lincy/vite-plugin-mock": "^3.0.0",
-    "@types/node": "^20.11.19",
+    "@types/node": "^20.11.26",
     "@types/nprogress": "^0.2.3",
     "@types/throttle-debounce": "^5.0.2",
     "@unocss/eslint-plugin": "^0.58.5",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
     "@vue-macros/volar": "^0.18.11",
-    "@vue/compiler-sfc": "^3.4.19",
+    "@vue/compiler-sfc": "^3.4.21",
     "cross-env": "^7.0.3",
-    "eslint": "^8.56.0",
+    "eslint": "^8.57.0",
     "eslint-plugin-format": "^0.1.0",
     "lint-staged": "^15.2.2",
     "sass": "^1.71.1",
-    "simple-git-hooks": "^2.9.0",
-    "typescript": "^5.3.3",
+    "simple-git-hooks": "^2.10.0",
+    "typescript": "^5.4.2",
     "unocss": "^0.58.5",
     "unplugin-auto-import": "^0.17.5",
     "unplugin-icons": "^0.18.5",
     "unplugin-vue-components": "^0.26.0",
     "unplugin-vue-macros": "^2.7.10",
-    "vite": "^5.1.4",
+    "vite": "^5.1.6",
     "vite-plugin-inspect": "^0.8.3",
     "vite-plugin-progress": "^0.0.7",
-    "vue-tsc": "^1.8.27"
+    "vue-tsc": "^2.0.6"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
@@ -73,6 +73,6 @@
     "*.{[jt]s?(x),vue,md}": [
       "eslint --fix"
     ],
-    "*.{css,scss}": "stylelint --fix"
+    "*.{css,scss}": "stylelint --fix --allow-empty-input"
   }
 }
