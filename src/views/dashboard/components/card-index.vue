@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-wrap justify-between -mx-10px">
+    <div flex="~ flex-wrap justify-between" mx--10px>
         <card-row v-for="row in list" :key="row.id" :row="row" />
     </div>
 </template>

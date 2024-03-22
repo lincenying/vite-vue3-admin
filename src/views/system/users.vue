@@ -1,14 +1,14 @@
 <template>
     <div class="global-box system-manage-user">
-        <div class="global-box-form flex">
+        <div class="global-box-form" flex>
             <div class="global-box-form-handle">
                 <el-button type="primary" @click="handleAdd">
-                    新增 <el-icon slots="icon" class="ml-5px"><i-ep-plus /></el-icon>
+                    新增 <el-icon slots="icon" ml-5px><i-ep-plus /></el-icon>
                 </el-button>
                 <el-popconfirm title="确定删除选中的数据吗？" @confirm="handleDel(chooseData)">
                     <template #reference>
                         <el-button type="danger" :disabled="chooseData.length === 0">
-                            批量删除 <el-icon slots="icon" class="ml-5px"><i-ep-delete /></el-icon>
+                            批量删除 <el-icon slots="icon" ml-5px><i-ep-delete /></el-icon>
                         </el-button>
                     </template>
                 </el-popconfirm>
@@ -16,7 +16,7 @@
             <div class="global-box-form-search">
                 <el-input v-model="query.input" placeholder="请输入关键词进行检索" />
                 <el-button type="primary" class="search-btn" @click="handleSubmit">
-                    搜索 <el-icon slots="icon" class="ml-5px"><i-ep-search /></el-icon>
+                    搜索 <el-icon slots="icon" ml-5px><i-ep-search /></el-icon>
                 </el-button>
             </div>
         </div>

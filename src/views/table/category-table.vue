@@ -1,9 +1,9 @@
 <template>
-    <div class="table-category box-border h-[100%] w-[100%] flex p-15px">
+    <div class="table-category box-border h-full w-full flex p-15px">
         <div class="w-250px">
             <category />
         </div>
-        <div class="h-[100%] w-[calc(100%-250px)] flex-1">
+        <div class="h-full w-calc(100%-250px) flex-1">
             <comp-category-table />
         </div>
     </div>

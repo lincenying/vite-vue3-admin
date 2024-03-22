@@ -1,9 +1,9 @@
 <template>
-    <div class="table-tree" w="[100%]" h="[100%]" box-border flex p-15px>
-        <div class="w-250px">
+    <div class="table-tree" box-border h-full w-full flex p-15px>
+        <div w-250px>
             <tree />
         </div>
-        <div class="h-[100%] w-[calc(100%-250px)] flex-1">
+        <div h-full flex-1 w="[calc(100%-250px)]">
             <comp-tree-table />
         </div>
     </div>

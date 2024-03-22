@@ -1,17 +1,17 @@
 <template>
     <div class="global-box table-card">
-        <div v-loading="loading" class="global-box-table pr-5px!">
-            <div ref="box" class="box mb-15px h-[calc(100%-50px)]">
+        <div v-loading="loading" class="global-box-table" pr-5px>
+            <div ref="box" class="box" mb-15px h="[calc(100%-50px)]">
                 <ElScrollbar ref="scrollBarRef" height="100%">
                     <el-row :gutter="20">
                         <el-col v-for="row in list" :key="row.id" :lg="4" :md="8" :sm="12" :xs="24">
                             <el-card :body-style="{ padding: '0px' }" shadow="hover">
-                                <img :src="row.image" class="block w-[100%]">
+                                <img :src="row.image" block w-full>
                                 <div p-14px text-left>
                                     <span>{{ row.title }}</span>
-                                    <div class="mt-13px flex-bc lh-12px">
-                                        <time class="text-13px text-[#999]">{{ row.time }}</time>
-                                        <el-text type="primary" class="p-0" @click="showEditor">编辑</el-text>
+                                    <div mt-13px flex-bc lh-12px>
+                                        <time text="13px hex-999">{{ row.time }}</time>
+                                        <el-text type="primary" p-0 @click="showEditor">编辑</el-text>
                                     </div>
                                 </div>
                             </el-card>
