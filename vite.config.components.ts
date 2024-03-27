@@ -26,14 +26,13 @@ export default (): PluginOption[] => ([
             '@vueuse/core',
             '@vueuse/head',
             {
-                '@/api': ['$api'],
                 '@lincy/utils': ['deepClone', 'deepMerge', 'deepEqual'],
                 'pinia': ['defineStore', 'storeToRefs'],
                 'vue-router': ['createRouter', 'createWebHashHistory'],
             },
         ],
         dts: 'src/auto-imports.d.ts',
-        dirs: ['src/components', 'src/composables', 'src/pinia'],
+        dirs: ['src/components', 'src/composables', 'src/stores'],
 
         resolvers: [
             ElementPlusResolver(),
