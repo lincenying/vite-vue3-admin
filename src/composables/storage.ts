@@ -1,6 +1,6 @@
 import { StorageSerializers } from '@vueuse/core'
 import type { RouteRecordName } from 'vue-router'
-import type { GlobalState, KeepAliveState, UserState } from '@/pinia/store.types'
+import type { GlobalState, KeepAliveState, UserState } from '@/stores/store.types'
 
 export interface TabsType {
     path: string
