@@ -45,10 +45,12 @@ const { menu } = defineProps<{
 // todo: 优化if结构
 const showMenuType = computed(() => {
     // 0: 无子菜单， 1：有1个子菜单， 2：显示上下级子菜单
-    if (menu.children && (menu.children.length > 1 || (menu.children.length === 1 && menu.alwayShow)))
+    if (menu.children && (menu.children.length > 1 || (menu.children.length === 1 && menu.alwayShow))) {
         return 2
-    else if (menu.children && menu.children.length === 1 && !menu.alwayShow)
+    }
+    else if (menu.children && menu.children.length === 1 && !menu.alwayShow) {
         return 1
+    }
     return 0
 })
 </script>

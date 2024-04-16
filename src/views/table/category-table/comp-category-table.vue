@@ -116,8 +116,9 @@ function onUpdatePage(payload: UpdatePageType | UpdatePageType[]) {
  */
 async function getTableData(isInit: boolean) {
     const { stop } = useTimeoutFn(() => toggleLoading(true), 200)
-    if (isInit)
+    if (isInit) {
         page.index = 1
+    }
 
     const params = {
         category: activeCategory.value.id,

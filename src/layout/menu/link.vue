@@ -24,7 +24,8 @@ function linkProps(payload: string) {
     }
 }
 function hideMenu() {
-    if (document.body.clientWidth <= 1000 && !isCollapse)
+    if (document.body.clientWidth <= 1000 && !isCollapse) {
         globalStore.$patch({ isCollapse: true })
+    }
 }
 </script>

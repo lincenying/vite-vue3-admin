@@ -71,10 +71,12 @@ function onSubmit() {
         ruleForm.value.validate((valid) => {
             if (valid) {
                 const params = form
-                if (layer.row)
+                if (layer.row) {
                     updateForm(params)
-                else
+                }
+                else {
                     addForm(params)
+                }
             }
             else {
                 return false

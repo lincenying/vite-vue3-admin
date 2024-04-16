@@ -45,7 +45,7 @@ import themeIcon from '@/layout/header/theme-icon.vue'
 import themeColor from '@/layout/header/theme-color.vue'
 import { style } from '@/theme/index'
 import type { SettingOption } from '@/types'
-import type { ThemeState } from '@/pinia/store.types'
+import type { ThemeState } from '@/stores/store.types'
 import type { Colors } from '@/theme/theme.types'
 
 defineOptions({
@@ -75,8 +75,9 @@ function setTheme() {
     // 设置主题色
     body.style.setProperty('--system-primary-color', state.primaryColor)
     for (const i in userTheme) {
-        if (i === 'name')
+        if (i === 'name') {
             continue
+        }
 
         const item: any = userTheme[i as keyof Colors]
         for (const y in item) {

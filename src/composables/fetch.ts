@@ -16,8 +16,9 @@ const baseConfig = {
     withCredentials: false,
 }
 
-if (import.meta.env.VITE_APP_ENV === 'production')
+if (import.meta.env.VITE_APP_ENV === 'production') {
     baseConfig.timeout = 300000
+}
 
 axios.interceptors.request.use(
     config => config,
@@ -30,8 +31,9 @@ axios.interceptors.response.use(
 )
 
 function checkStatus(response: AxiosResponse<ResponseData<any>>): ResponseData<any> {
-    if (response && (response.status === 200 || response.status === 304))
+    if (response && (response.status === 200 || response.status === 304)) {
         return response.data
+    }
 
     return {
         code: -404,
@@ -89,21 +91,25 @@ const api: ApiType = {
             method,
             url: import.meta.env.VITE_APP_API + url,
         }
-        if (method === 'get')
+        if (method === 'get') {
             config.params = data
-        else
+        }
+        else {
             config.data = data
+        }
 
-        if (url.includes('NoTimeout'))
+        if (url.includes('NoTimeout')) {
             config.timeout = 9999999
+        }
         const response = await axios(config)
         return response
     },
 
     async RESTful(url, method = 'get', data, header, checkCode) {
         const xhr = await this.$RESTful(url, method, data, header)
-        if (checkCode)
+        if (checkCode) {
             return checkCodeFn(xhr)
+        }
         return xhr
     },
     async $RESTful(url, method = 'get', data, header) {
@@ -120,16 +126,20 @@ const api: ApiType = {
             method,
             url,
         }
-        if (userStorage.value && userStorage.value.token)
+        if (userStorage.value && userStorage.value.token) {
             (config.headers as AxiosHeaders).Authorization = `Bearer ${userStorage.value.token}`
+        }
 
-        if (method === 'get')
+        if (method === 'get') {
             config.params = data
-        else
+        }
+        else {
             config.data = data
+        }
 
-        if (url.includes('NoTimeout'))
+        if (url.includes('NoTimeout')) {
             config.timeout = 9999999
+        }
         const response = await axios(config)
         return checkStatus(response)
     },

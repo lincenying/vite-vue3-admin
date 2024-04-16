@@ -47,10 +47,12 @@ const { keepAliveComponentsName } = $(storeToRefs(keepAliveStore))
 
 // 页面宽度变化监听后执行的方法
 function resizeHandler() {
-    if (document.body.clientWidth <= 1000 && !isCollapse)
+    if (document.body.clientWidth <= 1000 && !isCollapse) {
         globalStore.$patch({ isCollapse: true })
-    else if (document.body.clientWidth > 1000 && isCollapse)
+    }
+    else if (document.body.clientWidth > 1000 && isCollapse) {
         globalStore.$patch({ isCollapse: false })
+    }
 }
 // 初始化调用
 resizeHandler()

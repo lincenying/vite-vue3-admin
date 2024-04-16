@@ -58,10 +58,12 @@ function onSubmit() {
         ruleForm.value.validate((valid) => {
             if (valid) {
                 const params = form
-                if (layer.row)
+                if (layer.row) {
                     updateForm(params)
-                else
+                }
+                else {
                     addForm(params)
+                }
             }
             else {
                 return false
@@ -97,9 +99,11 @@ function onUpdate(payload: boolean) {
     emit('update', payload)
 }
 
-function init() { // 用于判断新增还是编辑功能
-    if (layer.row)
-        form.value = JSON.parse(JSON.stringify(layer.row)) // 数量量少的直接使用这个转
+function init() {
+// 用于判断新增还是编辑功能
+    if (layer.row) {
+        form.value = JSON.parse(JSON.stringify(layer.row))
+    } // 数量量少的直接使用这个转
 }
 init()
 </script>

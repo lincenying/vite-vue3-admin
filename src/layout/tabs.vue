@@ -96,8 +96,9 @@ function handleCloseCurrentRoute() {
 // 关闭除了当前标签之外的所有标签
 function handleCloseOtherRoute() {
     tabsStorage.value = [defaultMenu]
-    if (route.path !== defaultMenu.path)
+    if (route.path !== defaultMenu.path) {
         addMenu(route)
+    }
 
     setKeepAliveData()
 }
@@ -112,8 +113,9 @@ function handleCloseAllRoute() {
 // 添加新的菜单项
 function addMenu(menu: TabsType) {
     const { path, meta, name } = menu
-    if (meta.hideTabs || !meta.title)
+    if (meta.hideTabs || !meta.title) {
         return
+    }
 
     const hasMenu = tabsStorage.value.some((obj) => {
         return obj.path === path
@@ -131,8 +133,9 @@ function addMenu(menu: TabsType) {
 function delMenu(menu: TabsType, nextPath?: string | null) {
     let index = 0
     if (!menu.meta.hideClose) {
-        if (menu.meta.cache && menu.name)
+        if (menu.meta.cache && menu.name) {
             keepAliveStore.delKeepAliveComponentsName(menu.name)
+        }
 
         index = tabsStorage.value.findIndex(item => item.path === menu.path)
         tabsStorage.value.splice(index, 1)
@@ -141,8 +144,9 @@ function delMenu(menu: TabsType, nextPath?: string | null) {
         router.push(nextPath)
         return
     }
-    if (menu.path === activeMenu.path)
+    if (menu.path === activeMenu.path) {
         index - 1 > 0 ? router.push(tabsStorage.value[index - 1].path) : router.push(defaultMenu.path)
+    }
 }
 
 // 初始化activeMenu
@@ -162,11 +166,13 @@ function setPosition() {
         }
         let hasDoms = true
         Object.keys(domBox).forEach((dom) => {
-            if (!domBox[dom as 'scrollbar' | 'activeDom' | 'activeFather'])
+            if (!domBox[dom as 'scrollbar' | 'activeDom' | 'activeFather']) {
                 hasDoms = false
+            }
         })
-        if (!hasDoms)
+        if (!hasDoms) {
             return
+        }
 
         const domData = {
             scrollbar: domBox.scrollbar.getBoundingClientRect(),
@@ -182,8 +188,9 @@ function setPosition() {
 function setKeepAliveData() {
     const keepAliveNames: RouteRecordName[] = []
     tabsStorage.value.forEach((menu) => {
-        if (menu.meta && menu.meta.cache && menu.name)
+        if (menu.meta && menu.meta.cache && menu.name) {
             keepAliveNames.push(menu.name)
+        }
     })
     keepAliveStore.setKeepAliveComponentsName(keepAliveNames)
 }
@@ -192,10 +199,12 @@ function setKeepAliveData() {
 function handleWhellScroll(e: WheelEvent) {
     let distance = 0
     const speed = 5
-    if (-e.deltaY > 30)
+    if (-e.deltaY > 30) {
         distance = -10
-    else if (-e.deltaY < -30)
+    }
+    else if (-e.deltaY < -30) {
         distance = 10
+    }
 
     scrollbarDom.value?.setScrollLeft(scrollLeft.value + distance * speed)
 }

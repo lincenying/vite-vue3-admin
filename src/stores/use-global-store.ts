@@ -34,5 +34,6 @@ useGlobalStore(piniaInit).$subscribe((_mutation, state) => {
 export default useGlobalStore
 export const globalStoreWithout = () => useGlobalStore(piniaInit)
 
-if (import.meta.hot)
+if (import.meta.hot) {
     import.meta.hot.accept(acceptHMRUpdate(useGlobalStore, import.meta.hot))
+}

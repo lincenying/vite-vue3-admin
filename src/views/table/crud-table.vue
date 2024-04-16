@@ -118,8 +118,9 @@ function onUpdatePage(payload: UpdatePageType | UpdatePageType[]) {
 // params <init> Boolean ，默认为false，用于判断是否需要初始化分页
 async function getTableData(init: boolean) {
     const { stop } = useTimeoutFn(() => toggleLoading(true), 200)
-    if (init)
+    if (init) {
         page.index = 1
+    }
 
     const params = {
         page: page.index,

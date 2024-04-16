@@ -43,8 +43,9 @@ function findParentNames(arr: Route[], targetName: string, parentNames: Route[] 
             })
             const foundNames = findParentNames(item.children, targetName, newParentNames)
             // 如果在子数组中找到了目标name，直接返回父级names数组
-            if (foundNames)
+            if (foundNames) {
                 return foundNames
+            }
         }
     }
     // 如果在当前层级未找到目标name，则返回null

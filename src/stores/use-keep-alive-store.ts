@@ -16,8 +16,9 @@ const useKeepAliveStore = defineStore('keepAliveStore', () => {
     }
     function delKeepAliveComponentsName(name: RouteRecordName) {
         const key = state.keepAliveComponentsName.indexOf(name)
-        if (key !== -1)
+        if (key !== -1) {
             state.keepAliveComponentsName.splice(key, 1)
+        }
     }
 
     return {
@@ -31,5 +32,6 @@ const useKeepAliveStore = defineStore('keepAliveStore', () => {
 export default useKeepAliveStore
 export const keepAliveStoreWithout = () => useKeepAliveStore(piniaInit)
 
-if (import.meta.hot)
+if (import.meta.hot) {
     import.meta.hot.accept(acceptHMRUpdate(useKeepAliveStore, import.meta.hot))
+}

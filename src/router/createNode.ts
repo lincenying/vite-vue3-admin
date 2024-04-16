@@ -31,10 +31,12 @@ export function createNameComponent(component: () => Promise<any>): () => Promis
                         }
                     },
                     render() {
-                        if (this.isReload)
+                        if (this.isReload) {
                             return h('div', { class: 'el-main-box' }, [h(reload)])
-                        else
+                        }
+                        else {
                             return h('div', { class: 'el-main-box' }, [createVNode(comm.default)])
+                        }
                     },
                 })
                 resolve(tempComm)

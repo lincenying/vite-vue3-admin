@@ -8,8 +8,9 @@ export function dataURLtoBlob(base64Buf: string): Blob {
     const bstr = window.atob(arr[1])
     let n = bstr.length
     const u8arr = new Uint8Array(n)
-    while (n--)
+    while (n--) {
         u8arr[n] = bstr.charCodeAt(n)
+    }
 
     return new Blob([u8arr], { type: mime })
 }
@@ -26,8 +27,9 @@ export function urlToBase64(url: string, mineType?: string): Promise<string> {
         const img = new Image()
         img.crossOrigin = ''
         img.onload = function () {
-            if (!canvas || !ctx)
+            if (!canvas || !ctx) {
                 return reject(new Error('当前浏览器不支持'))
+            }
 
             canvas.height = img.height
             canvas.width = img.width
@@ -92,8 +94,9 @@ export function downloadByData(data: BlobPart, filename: string, mime?: string, 
     tempLink.style.display = 'none'
     tempLink.href = blobURL
     tempLink.setAttribute('download', filename)
-    if (typeof tempLink.download === 'undefined')
+    if (typeof tempLink.download === 'undefined') {
         tempLink.setAttribute('target', '_blank')
+    }
 
     document.body.appendChild(tempLink)
     tempLink.click()
@@ -127,8 +130,9 @@ export function downloadByUrl({ url, target = '_blank', fileName }: DownloadByUr
         link.href = url
         link.target = target
 
-        if (link.download !== undefined)
+        if (link.download !== undefined) {
             link.download = fileName || url.substring(url.lastIndexOf('/') + 1, url.length)
+        }
 
         // if (document.createEvent) {
         //     const e = document.createEvent('MouseEvents')
@@ -139,8 +143,9 @@ export function downloadByUrl({ url, target = '_blank', fileName }: DownloadByUr
         const event = new Event('click', { bubbles: true, cancelable: true })
         link.dispatchEvent(event)
     }
-    if (!url.includes('?'))
+    if (!url.includes('?')) {
         url += '?download'
+    }
 
     openWindow(url, { target })
     return true

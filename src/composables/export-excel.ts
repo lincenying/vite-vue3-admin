@@ -39,8 +39,9 @@ export function aoaToSheetXlsx<T = any>({
     write2excelOpts = { bookType: 'xlsx' },
 }: AoAToSheet<T>) {
     const arrData = [...data]
-    if (header)
+    if (header) {
         arrData.unshift(header)
+    }
 
     const worksheet = utils.aoa_to_sheet(arrData)
 
