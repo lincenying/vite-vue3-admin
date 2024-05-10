@@ -27,6 +27,8 @@ const config = await lincy(
         ignores: [
             '**/assets',
             '**/static',
+            '**/public',
+            '**/polyfill',
         ],
     },
 )
