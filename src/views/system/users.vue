@@ -71,13 +71,16 @@
 </template>
 
 <script lang="ts" setup>
-import dialogUserModify from '@/views/system/components/dialog-user-modify.vue'
-import type { UpdatePageType, UserListType } from '@/types'
-import { ElMessage } from '@/config/element'
-import globalTable from '@/components/global-table.vue'
-import type { GlobalDialogLayer, GlobalTablePage } from '@/components/components.types'
+import type { GlobalDialogLayer, GlobalTablePage } from '~/components/components.types'
+import type { UpdatePageType, UserListType } from '~/types'
 
-interface ScopeRow { row: UserListType }
+import globalTable from '~/components/global-table.vue'
+import { ElMessage } from '~/config/element'
+import dialogUserModify from '~/views/system/components/dialog-user-modify.vue'
+
+interface ScopeRow {
+    row: UserListType
+}
 
 defineOptions({
     name: 'Users',
@@ -150,7 +153,9 @@ async function getTableData(init?: boolean) {
 // 删除功能
 async function handleDel(data: UserListType[]) {
     const params = {
-        ids: data.map((e) => { return e.id }).join(','),
+        ids: data.map((e) => {
+            return e.id
+        }).join(','),
     }
     const { code } = await $api.post<void>('/system/user/del', params)
     if (code === 200) {

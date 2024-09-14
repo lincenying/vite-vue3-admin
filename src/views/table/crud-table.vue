@@ -58,14 +58,19 @@
 </template>
 
 <script lang="ts" setup>
+import type { GlobalDialogLayer, GlobalTablePage } from '~/components/components.types'
+import type { TableListType, UpdatePageType } from '~/types'
+
+import globalTable from '~/components/global-table.vue'
+import { ElMessage } from '~/config/element'
+
 import dialogModify from './crud-table/dialog-modify.vue'
 import { radioData, selectData } from './crud-table/enum'
-import type { TableListType, UpdatePageType } from '@/types'
-import { ElMessage } from '@/config/element'
-import globalTable from '@/components/global-table.vue'
-import type { GlobalDialogLayer, GlobalTablePage } from '@/components/components.types'
 
-interface ScopeRow { row: TableListType; $index: number }
+interface ScopeRow {
+    row: TableListType
+    $index: number
+}
 
 defineOptions({
     name: 'CrudTable',

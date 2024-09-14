@@ -1,4 +1,5 @@
 import type { Route } from '../index.type'
+
 import { createNameComponent } from '../createNode'
 
 const route: Route[] = [

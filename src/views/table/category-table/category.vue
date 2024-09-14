@@ -15,9 +15,10 @@
 </template>
 
 <script lang="ts" setup>
+import type { CategoryType } from '~/types'
+
 import { debounce } from 'throttle-debounce'
-import type { CategoryType } from '@/types'
-import { activeCategoryKey, updateActiveCategoryKey } from '@/composables/provide'
+import { activeCategoryKey, updateActiveCategoryKey } from '~/composables/provide'
 
 defineOptions({
     name: 'Category',
@@ -45,7 +46,8 @@ async function getCategoryData(init?: boolean) {
     if (init || isFirst.value) {
         toggleisFirst(false)
         page.index = 1
-        listDom.value && (listDom.value.scrollTop = 0)
+        if (listDom.value)
+            (listDom.value.scrollTop = 0)
     }
     else {
         if (page.index * page.size >= page.total) {

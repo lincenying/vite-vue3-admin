@@ -1,4 +1,5 @@
 import { readFile } from 'node:fs/promises'
+
 import lincy from '@lincy/eslint-config'
 
 const autoImport = JSON.parse(
@@ -14,6 +15,11 @@ const config = await lincy(
             html: true,
             markdown: true,
             toml: false,
+        },
+        overrides: {
+            perfectionist: {
+
+            },
         },
     },
     {

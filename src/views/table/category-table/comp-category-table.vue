@@ -54,14 +54,18 @@
 </template>
 
 <script lang="ts" setup>
-import { radioData, selectData } from './enum'
-import dialogModify from './dialog-modify.vue'
-import type { CategoryType, TableListType, UpdatePageType } from '@/types'
-import { ElMessage } from '@/config/element'
-import type { GlobalDialogLayer, GlobalTablePage } from '@/components/components.types'
-import { activeCategoryKey } from '@/composables/provide'
+import type { GlobalDialogLayer, GlobalTablePage } from '~/components/components.types'
+import type { CategoryType, TableListType, UpdatePageType } from '~/types'
 
-interface ScopeRow { row: TableListType }
+import { activeCategoryKey } from '~/composables/provide'
+import { ElMessage } from '~/config/element'
+
+import dialogModify from './dialog-modify.vue'
+import { radioData, selectData } from './enum'
+
+interface ScopeRow {
+    row: TableListType
+}
 
 defineOptions({
     name: 'CompCategoryTable',
@@ -148,7 +152,9 @@ async function getTableData(isInit: boolean) {
 // 删除功能
 async function handleDel(data: TableListType[]) {
     const params = {
-        ids: data.map((e) => { return e.id }).join(','),
+        ids: data.map((e) => {
+            return e.id
+        }).join(','),
     }
     const { code } = await $api.post('/table/del', params)
     if (code === 200) {

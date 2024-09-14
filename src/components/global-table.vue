@@ -27,7 +27,7 @@
 <script lang="ts" setup generic="T extends string">
 import type { TableInstance } from 'element-plus'
 import type { GlobalTablePage } from './components.types'
-import type { TableListType, UpdatePageType, UserListType } from '@/types'
+import type { TableListType, UpdatePageType, UserListType } from '~/types'
 
 type DataType<Key> = Key extends 'user' ? UserListType : (Key extends 'table' ? TableListType : unknown)
 

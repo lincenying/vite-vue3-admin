@@ -17,8 +17,8 @@
 </template>
 
 <script lang="ts" setup>
-import four from '@/assets/images/404.png'
-import four_cloud from '@/assets/images/404_cloud.png'
+import four from '~/assets/images/404.png'
+import four_cloud from '~/assets/images/404_cloud.png'
 
 defineOptions({
     name: '404',

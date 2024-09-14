@@ -1,6 +1,7 @@
-import { acceptHMRUpdate } from 'pinia'
 import type { GlobalState } from './store.types'
-import { globalStorage } from '@/composables/storage'
+
+import { acceptHMRUpdate } from 'pinia'
+import { globalStorage } from '~/composables/storage'
 
 const useGlobalStore = defineStore('globalStore', () => {
     const state: GlobalState = reactive(globalStorage.value || {

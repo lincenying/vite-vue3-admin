@@ -37,9 +37,10 @@
 </template>
 
 <script lang="ts" setup>
+import type { GlobalTablePage } from '~/components/components.types'
+import type { CardListType } from '~/types'
+
 import { ElScrollbar } from 'element-plus'
-import type { CardListType } from '@/types'
-import type { GlobalTablePage } from '@/components/components.types'
 
 defineOptions({
     name: 'Card',

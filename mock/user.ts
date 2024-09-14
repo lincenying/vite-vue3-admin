@@ -1,5 +1,5 @@
 import type { MockMethod } from '@lincy/vite-plugin-mock'
-import type { UserListType } from '@/types'
+import type { UserListType } from '~/types'
 
 const users: UserListType[] = [{
     name: 'admin',

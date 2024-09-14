@@ -1,4 +1,4 @@
-import { ElMessage, ElMessageBox } from '@/config/element'
+import { ElMessage, ElMessageBox } from '~/config/element'
 
 type MessageType = 'success' | 'warning' | 'info' | 'error'
 type ConfigType = string | { content: string; type: MessageType }

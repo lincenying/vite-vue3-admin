@@ -1,7 +1,7 @@
 import type { AxiosHeaders, AxiosRequestConfig, AxiosResponse } from 'axios'
-import axios from 'axios'
 
-import { userStorage } from '@/composables/storage'
+import axios from 'axios'
+import { userStorage } from '~/composables/storage'
 
 window.axios = axios
 

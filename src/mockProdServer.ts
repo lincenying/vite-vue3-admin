@@ -1,10 +1,10 @@
 import { createProdMockServer } from '@lincy/vite-plugin-mock/client'
 
-import userModule from '../mock/user'
-import tableModule from '../mock/table'
 import cardModule from '../mock/card'
-import workModule from '../mock/work'
 import UserMoudle from '../mock/systemUser'
+import tableModule from '../mock/table'
+import userModule from '../mock/user'
+import workModule from '../mock/work'
 
 export function setupProdMockServer() {
     createProdMockServer([

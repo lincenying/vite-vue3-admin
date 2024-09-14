@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { IndexCardType } from '@/types'
+import type { IndexCardType } from '~/types'
 
 defineOptions({
     name: 'CardRow',

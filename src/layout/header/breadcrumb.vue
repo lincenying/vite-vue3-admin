@@ -12,9 +12,10 @@
 </template>
 
 <script lang="ts" setup>
+import type { Route } from '~/router/index.type'
+
 import { useRoute, useRouter } from 'vue-router'
-import type { Route } from '@/router/index.type'
-import { modules } from '@/router/index'
+import { modules } from '~/router/index'
 
 defineOptions({
     name: 'BreadCrumb',

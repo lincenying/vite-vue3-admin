@@ -10,9 +10,10 @@
 </template>
 
 <script lang="ts" setup>
-import tree from './tree-table/tree.vue'
+import type { TreeType } from '~/types'
+
 import compTreeTable from './tree-table/comp-tree-table.vue'
-import type { TreeType } from '@/types'
+import tree from './tree-table/tree.vue'
 
 defineOptions({
     name: 'TreeTable',

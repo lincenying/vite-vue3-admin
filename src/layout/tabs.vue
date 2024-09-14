@@ -32,10 +32,10 @@
 import type { AnyFn } from '@vueuse/core'
 import type { ScrollbarInstance } from 'element-plus'
 import type { RouteRecordName } from 'vue-router'
-import tabsItem from '@/layout/tabs/item.vue'
-import type { TabsType } from '@/composables/storage'
+import type { TabsType } from '~/composables/storage'
 
-import { tabsStorage } from '@/composables/storage'
+import { tabsStorage } from '~/composables/storage'
+import tabsItem from '~/layout/tabs/item.vue'
 
 defineOptions({
     name: 'LayoutTabs',

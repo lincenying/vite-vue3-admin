@@ -2,11 +2,13 @@
  * @Date: 2022-05-22 20:44:25
  * @Description:
  */
+
 import { createApp } from 'vue'
+
+import globalPlugin from '~/plugin/global'
 
 import App from './App.vue'
 import router from './router'
-import globalPlugin from '@/plugin/global'
 
 import 'uno.css'
 import 'element-plus/theme-chalk/display.css'

@@ -1,6 +1,7 @@
-import { acceptHMRUpdate } from 'pinia'
 import type { UserState } from './store.types'
-import { userStorage } from '@/composables/storage'
+
+import { acceptHMRUpdate } from 'pinia'
+import { userStorage } from '~/composables/storage'
 
 const useUserStore = defineStore('userStore', () => {
     const state: UserState = reactive(userStorage.value || {

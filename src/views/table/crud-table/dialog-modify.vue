@@ -23,10 +23,12 @@
 
 <script lang="ts" setup>
 import type { FormInstance } from 'element-plus'
+import type { GlobalDialogLayer } from '~/components/components.types'
+import type { GlobalDiaslogInstance } from '~/types'
+
+import { ElMessage } from '~/config/element'
+
 import { radioData, selectData } from './enum'
-import { ElMessage } from '@/config/element'
-import type { GlobalDialogLayer } from '@/components/components.types'
-import type { GlobalDiaslogInstance } from '@/types'
 
 defineOptions({
     name: 'DialogModify',
@@ -65,9 +67,6 @@ function onSubmit() {
                 else {
                     addForm(params)
                 }
-            }
-            else {
-                return false
             }
         })
     }

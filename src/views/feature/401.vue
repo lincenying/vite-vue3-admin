@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts" setup>
-import first from '@/assets/images/401.gif'
+import first from '~/assets/images/401.gif'
 
 defineOptions({
     name: '401',

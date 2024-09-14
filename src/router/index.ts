@@ -5,12 +5,13 @@
  */
 import { createRouter, createWebHashHistory } from 'vue-router'
 
-import Feature from './modules/feature'
+import NProgress from '~/utils/nprogress'
+
 import Dashboard from './modules/dashboard'
-import Table from './modules/table'
+import Feature from './modules/feature'
 import Menu from './modules/menu'
 import System from './modules/system'
-import NProgress from '@/utils/nprogress'
+import Table from './modules/table'
 
 // 引入不需要权限的modules
 

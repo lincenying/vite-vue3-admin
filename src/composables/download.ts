@@ -121,7 +121,7 @@ export function downloadByUrl({ url, target = '_blank', fileName }: DownloadByUr
     const isChrome = window.navigator.userAgent.toLowerCase().includes('chrome')
     const isSafari = window.navigator.userAgent.toLowerCase().includes('safari')
 
-    if (/(iP)/g.test(window.navigator.userAgent)) {
+    if (/iP/.test(window.navigator.userAgent)) {
         console.error('您的浏览器不支持下载!')
         return false
     }

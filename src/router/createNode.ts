@@ -1,8 +1,10 @@
+import type { DefineComponent } from 'vue'
+
 // 1. 用于解决keep-alive需要name的问题，动态生成随机name供keep-alive使用
 // 2. 用于解决transition动画内部结点只能为根元素的问题，单文件可写多结点
-import { type DefineComponent, createVNode } from 'vue'
+import { createVNode } from 'vue'
+import NProgress from '~/utils/nprogress'
 import reload from './reload.vue'
-import NProgress from '@/utils/nprogress'
 
 export function createNameComponent(component: () => Promise<any>): () => Promise<DefineComponent<Objable, Objable, any>> {
     return () => {

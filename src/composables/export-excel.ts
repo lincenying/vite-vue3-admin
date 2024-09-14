@@ -1,6 +1,7 @@
-import * as xlsx from 'xlsx'
 import type { WorkBook } from 'xlsx'
 import type { AoAToSheet, JsonToSheet } from './types'
+
+import * as xlsx from 'xlsx'
 
 const { utils, writeFile } = xlsx
 

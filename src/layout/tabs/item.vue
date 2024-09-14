@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { TabsType } from '@/composables/storage'
+import type { TabsType } from '~/composables/storage'
 
 defineOptions({
     name: 'TabsItem',

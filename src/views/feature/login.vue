@@ -35,8 +35,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ElMessage } from '@/config/element'
-import loginLeftPng from '@/assets/login/left.jpg'
+import loginLeftPng from '~/assets/login/left.jpg'
+import { ElMessage } from '~/config/element'
 
 defineOptions({
     name: 'Login',

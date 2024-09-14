@@ -1,6 +1,7 @@
-import { acceptHMRUpdate } from 'pinia'
 import type { RouteRecordName } from 'vue-router'
 import type { KeepAliveState } from './store.types'
+
+import { acceptHMRUpdate } from 'pinia'
 
 const useKeepAliveStore = defineStore('keepAliveStore', () => {
     const state: KeepAliveState = reactive({

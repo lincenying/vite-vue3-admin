@@ -48,19 +48,23 @@
                     </template>
                 </el-table-column>
             </global-table>
-            <dialog-modify v-if="layer.show" :layer="layer" @update="(payload) => (layer.show = payload)" @get-table-data="getTableData" />
+            <dialog-modify v-if="layer.show" :layer="layer" @update="(payload: boolean) => (layer.show = payload)" @get-table-data="getTableData" />
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
-import { radioData, selectData } from './enum'
-import dialogModify from './dialog-modify.vue'
-import type { TableListType, TreeType, UpdatePageType } from '@/types'
-import { ElMessage } from '@/config/element'
-import type { GlobalDialogLayer, GlobalTablePage } from '@/components/components.types'
+import type { GlobalDialogLayer, GlobalTablePage } from '~/components/components.types'
+import type { TableListType, TreeType, UpdatePageType } from '~/types'
 
-interface ScopeRow { row: TableListType }
+import { ElMessage } from '~/config/element'
+
+import dialogModify from './dialog-modify.vue'
+import { radioData, selectData } from './enum'
+
+interface ScopeRow {
+    row: TableListType
+}
 
 defineOptions({
     name: 'CompTreeTable',

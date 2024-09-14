@@ -10,10 +10,10 @@
 </template>
 
 <script lang="ts" setup>
+import type { CategoryType } from '~/types'
+
 import category from './category-table/category.vue'
 import compCategoryTable from './category-table/comp-category-table.vue'
-
-import type { CategoryType } from '@/types'
 
 defineOptions({
     name: 'CategoryTable',

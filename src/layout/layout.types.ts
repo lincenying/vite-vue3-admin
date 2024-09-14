@@ -1,4 +1,4 @@
-import type { TabsType } from '@/composables/storage'
+import type { TabsType } from '~/composables/storage'
 
 export interface ThemeColorProps {
     active: string

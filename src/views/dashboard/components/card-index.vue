@@ -5,8 +5,9 @@
 </template>
 
 <script lang="ts" setup>
-import cardRow from '@/views/dashboard/components/card-row.vue'
-import type { IndexCardType } from '@/types'
+import type { IndexCardType } from '~/types'
+
+import cardRow from '~/views/dashboard/components/card-row.vue'
 
 defineOptions({
     name: 'CardIndex',

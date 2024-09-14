@@ -119,7 +119,7 @@
             "\t",
             "<script lang='ts'>",
             "import { defineComponent, onMounted, ref, toRefs } from 'vue'",
-            "import { usePagination } from '@/hooks/usePagination'",
+            "import { usePagination } from '~/hooks/usePagination'",
             "\t",
             "export default defineComponent({",
             "setup() {",

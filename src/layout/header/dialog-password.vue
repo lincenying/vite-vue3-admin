@@ -15,10 +15,10 @@
 </template>
 
 <script lang="ts" setup>
-import { ElMessage } from '@/config/element'
-import type { GlobalDialogLayer } from '@/components/components.types'
+import type { GlobalDialogLayer } from '~/components/components.types'
+import type { FormInstance, GlobalDiaslogInstance } from '~/types'
 
-import type { FormInstance, GlobalDiaslogInstance } from '@/types'
+import { ElMessage } from '~/config/element'
 
 defineOptions({
     name: 'DialogPassword',
@@ -64,9 +64,6 @@ function onSubmit() {
                         userStore.logout()
                     }, 2000)
                 }
-            }
-            else {
-                return false
             }
         })
     }

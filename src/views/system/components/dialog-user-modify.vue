@@ -30,10 +30,11 @@
 
 <script lang="ts" setup>
 import type { FormInstance } from 'element-plus'
-import { ElMessage } from '@/config/element'
-import globalDialog from '@/components/global-dialog.vue'
-import type { GlobalDialogLayer } from '@/components/components.types'
-import type { GlobalDiaslogInstance } from '@/types'
+import type { GlobalDialogLayer } from '~/components/components.types'
+import type { GlobalDiaslogInstance } from '~/types'
+
+import globalDialog from '~/components/global-dialog.vue'
+import { ElMessage } from '~/config/element'
 
 defineOptions({
     name: 'DialogUserModify',
@@ -77,9 +78,6 @@ function onSubmit() {
                 else {
                     addForm(params)
                 }
-            }
-            else {
-                return false
             }
         })
     }

@@ -24,7 +24,7 @@
                 v-for="(item, key) in themeColorArr"
                 :key="key"
                 v-model:active="state.primaryColor"
-                v-model:activeTextColor="state.primaryTextColor"
+                v-model:active-text-color="state.primaryTextColor"
                 :color="item.color"
                 :text-color="item.textColor"
                 :tip="item.tip"
@@ -41,12 +41,13 @@
 </template>
 
 <script lang="ts" setup>
-import themeIcon from '@/layout/header/theme-icon.vue'
-import themeColor from '@/layout/header/theme-color.vue'
-import { style } from '@/theme/index'
-import type { SettingOption } from '@/types'
-import type { ThemeState } from '@/stores/store.types'
-import type { Colors } from '@/theme/theme.types'
+import type { ThemeState } from '~/stores/store.types'
+import type { Colors } from '~/theme/theme.types'
+import type { SettingOption } from '~/types'
+
+import themeColor from '~/layout/header/theme-color.vue'
+import themeIcon from '~/layout/header/theme-icon.vue'
+import { style } from '~/theme/index'
 
 defineOptions({
     name: 'LayoutTheme',

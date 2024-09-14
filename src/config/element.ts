@@ -1,8 +1,9 @@
-import { ElLoading, ElMessage as _ElMessage, ElMessageBox as _ElMessageBox } from 'element-plus'
+import type { App } from 'vue'
+
+import { ElMessage as _ElMessage, ElMessageBox as _ElMessageBox, ElLoading } from 'element-plus'
 
 import 'element-plus/es/components/message/style/css'
 import 'element-plus/es/components/message-box/style/css'
-import type { App } from 'vue'
 
 function install(app: App) {
     app.use(ElLoading)

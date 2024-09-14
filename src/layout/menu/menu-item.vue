@@ -30,8 +30,9 @@
 </template>
 
 <script lang="ts" setup>
-import appLink from '@/layout/menu/link.vue'
-import type { Route } from '@/router/index.type'
+import type { Route } from '~/router/index.type'
+
+import appLink from '~/layout/menu/link.vue'
 
 defineOptions({
     name: 'MenuItem',
