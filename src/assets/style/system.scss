@@ -5,7 +5,7 @@
     height: 100vh;
     overflow: hidden;
     cursor: pointer;
-    background: #fff url("@/assets/login/bg.png") no-repeat center;
+    background: #fff url('@/assets/login/bg.png') no-repeat center;
     background-size: cover;
     user-select: none;
 
@@ -94,7 +94,6 @@
         }
     }
 }
-
 @media screen and (width <= 750px) {
     .login-container .box,
     .login-container .box-inner {
@@ -194,7 +193,6 @@
                     opacity: 0;
                 }
             }
-
             @keyframes cloud-mid {
                 0% {
                     top: 10px;
@@ -220,7 +218,6 @@
                     opacity: 0;
                 }
             }
-
             @keyframes cloud-right {
                 0% {
                     top: 100px;
@@ -405,7 +402,6 @@
                     opacity: 0;
                 }
             }
-
             @keyframes cloud-mid {
                 0% {
                     top: 10px;
@@ -431,7 +427,6 @@
                     opacity: 0;
                 }
             }
-
             @keyframes cloud-right {
                 0% {
                     top: 100px;

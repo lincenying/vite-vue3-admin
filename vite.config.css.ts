@@ -15,6 +15,11 @@ const config: CSSOptions = {
             },
         ],
     },
+    preprocessorOptions: {
+        scss: {
+            api: 'modern-compiler',
+        },
+    },
 }
 
 export default config

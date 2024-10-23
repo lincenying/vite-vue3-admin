@@ -337,6 +337,14 @@
     "ExtractPropTypes": true,
     "ExtractPublicPropTypes": true,
     "WritableComputedRef": true,
-    "useClipboardItems": true
+    "useClipboardItems": true,
+    "DirectiveBinding": true,
+    "MaybeRef": true,
+    "MaybeRefOrGetter": true,
+    "onWatcherCleanup": true,
+    "useId": true,
+    "useLockFn": true,
+    "useModel": true,
+    "useTemplateRef": true
   }
 }

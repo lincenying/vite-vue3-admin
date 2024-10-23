@@ -52,6 +52,7 @@ export default defineConfig(({ mode, command }: ConfigEnv) => {
         ],
         resolve: {
             alias: {
+                '~': path.join(__dirname, './src'),
                 '@': path.join(__dirname, './src'),
             },
         },

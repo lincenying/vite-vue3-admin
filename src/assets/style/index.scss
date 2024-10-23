@@ -1,7 +1,7 @@
-@import "./global";
-@import "./element";
-@import "./layout";
-@import "./components";
-@import "./dashboard";
-@import "./system";
-@import "./table";
+@use './global';
+@use './element';
+@use './layout';
+@use './components';
+@use './dashboard';
+@use './system';
+@use './table';

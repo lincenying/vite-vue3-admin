@@ -1,5 +1,5 @@
-@import "./transition";
-@import "@/theme/index";
+@use './transition';
+@use '@/theme/index';
 
 #app {
     width: 100%;
