@@ -29,7 +29,7 @@
                     </template>
                 </el-dropdown>
             </div>
-            <dialog-password v-if="layer.show" :layer="layer" @update="(payload: boolean) => layer.show = payload" />
+            <dialogPassword v-if="layer.show" :layer="layer" @update="(payload: boolean) => layer.show = payload" />
         </div>
     </header>
 </template>

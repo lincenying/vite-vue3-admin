@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="global-box-table">
-            <global-table
+            <globalTable
                 v-loading="loading"
                 :page="page"
                 :show-selection="true"
@@ -64,8 +64,8 @@
                         </el-popconfirm>
                     </template>
                 </el-table-column>
-            </global-table>
-            <dialog-user-modify v-if="layer.show" :layer="layer" @update="(payload: boolean) => layer.show = payload" @get-table-data="getTableData" />
+            </globalTable>
+            <dialogUserModify v-if="layer.show" :layer="layer" @update="(payload: boolean) => layer.show = payload" @get-table-data="getTableData" />
         </div>
     </div>
 </template>
@@ -74,9 +74,7 @@
 import type { GlobalDialogLayer, GlobalTablePage } from '~/components/components.types'
 import type { UpdatePageType, UserListType } from '~/types'
 
-import globalTable from '~/components/global-table.vue'
-import { ElMessage } from '~/config/element'
-import dialogUserModify from '~/views/system/components/dialog-user-modify.vue'
+import { ElMessage } from '@/config/element'
 
 interface ScopeRow {
     row: UserListType

@@ -38,14 +38,12 @@ defineOptions({
 })
 
 const {
-    // eslint-disable-next-line vue/require-valid-default-prop
     data = [],
     showIndex = false,
     showSelection = false,
     showPage = true,
     page = { index: 1, size: 20, total: 0 },
     pageLayout = 'total, sizes, prev, pager, next, jumper',
-    // eslint-disable-next-line vue/require-valid-default-prop
     pageSizes = [10, 20, 50, 100],
 } = defineProps<{
     propKey?: T

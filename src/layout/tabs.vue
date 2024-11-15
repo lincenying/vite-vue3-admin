@@ -1,7 +1,11 @@
 <template>
     <div class="layout-tabs">
         <el-scrollbar ref="scrollbarDom" class="scroll-container tags-view-container" @wheel.passive="handleWhellScroll" @scroll="handleScroll">
-            <tabsItem v-for="menu in tabsStorage" :key="menu.meta.title" :menu="menu" :active="activeMenu.path === menu.path" @close="delMenu(menu)" @reload="handlePageReload" />
+            <tabsItem
+                v-for="menu in tabsStorage" :key="menu.meta.title"
+                :menu="menu" :active="activeMenu.path === menu.path"
+                @close="delMenu(menu)" @reload="handlePageReload"
+            />
         </el-scrollbar>
         <div class="layout-tabs-handle">
             <div id="boxTabRefresh" @click="handlePageReload" />

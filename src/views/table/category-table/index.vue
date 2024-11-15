@@ -1,7 +1,7 @@
 <template>
     <div class="table-category box-border h-full w-full flex p-15px">
         <div class="w-250px">
-            <category />
+            <comp-category />
         </div>
         <div class="h-full w-calc(100%-250px) flex-1">
             <comp-category-table />
@@ -11,9 +11,6 @@
 
 <script lang="ts" setup>
 import type { CategoryType } from '~/types'
-
-import category from './category-table/category.vue'
-import compCategoryTable from './category-table/comp-category-table.vue'
 
 defineOptions({
     name: 'CategoryTable',

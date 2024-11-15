@@ -7,6 +7,18 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    BasicTemplate: typeof import('./views/dashboard/components/basic-template.vue')['default']
+    CardIndex: typeof import('./views/dashboard/components/card-index.vue')['default']
+    CardRow: typeof import('./views/dashboard/components/card-row.vue')['default']
+    Communication: typeof import('./views/dashboard/components/communication.vue')['default']
+    CompCategory: typeof import('./views/table/category-table/components/comp-category.vue')['default']
+    CompCategoryTable: typeof import('./views/table/category-table/components/comp-category-table.vue')['default']
+    CompTree: typeof import('./views/table/tree-table/components/comp-tree.vue')['default']
+    CompTreeTable: typeof import('./views/table/tree-table/components/comp-tree-table.vue')['default']
+    DialogCategoryModify: typeof import('./views/table/category-table/components/dialog-category-modify.vue')['default']
+    DialogCrudModify: typeof import('./views/table/crud-table/components/dialog-crud-modify.vue')['default']
+    DialogTreeModify: typeof import('./views/table/tree-table/components/dialog-tree-modify.vue')['default']
+    DialogUserModify: typeof import('./views/system/components/dialog-user-modify.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
     ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
@@ -67,6 +79,7 @@ declare module 'vue' {
     IMdiCalendarExportOutline: typeof import('~icons/mdi/calendar-export-outline')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SystemUserModify: typeof import('./components/system/user-modify.vue')['default']
   }
   export interface ComponentCustomProperties {
     vInfiniteScroll: typeof import('element-plus/es')['ElInfiniteScroll']

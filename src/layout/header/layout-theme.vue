@@ -5,7 +5,7 @@
     <el-drawer v-model="drawer" class="layout-theme" title="系统设置" size="300px" :show-close="false" direction="rtl">
         <h3>整体风格设置</h3>
         <div class="theme-box">
-            <theme-icon
+            <themeIcon
                 v-for="(row, index) in style"
                 :key="index"
                 v-model:active="state.style"
@@ -20,7 +20,7 @@
         </div>
         <h3>主题色</h3>
         <div class="theme-box">
-            <theme-color
+            <themeColor
                 v-for="(item, key) in themeColorArr"
                 :key="key"
                 v-model:active="state.primaryColor"

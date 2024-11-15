@@ -52,7 +52,7 @@
                     </template>
                 </el-table-column>
             </global-table>
-            <dialog-modify v-if="layer.show" :layer="layer" @update="(payload: boolean) => layer.show = payload" @get-table-data="getTableData" />
+            <dialog-crud-modify v-if="layer.show" :layer="layer" @update="(payload: boolean) => layer.show = payload" @get-table-data="getTableData" />
         </div>
     </div>
 </template>
@@ -64,8 +64,7 @@ import type { TableListType, UpdatePageType } from '~/types'
 import globalTable from '~/components/global-table.vue'
 import { ElMessage } from '~/config/element'
 
-import dialogModify from './crud-table/dialog-modify.vue'
-import { radioData, selectData } from './crud-table/enum'
+import { radioData, selectData } from './components/enum'
 
 interface ScopeRow {
     row: TableListType

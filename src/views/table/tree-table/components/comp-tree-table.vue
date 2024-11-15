@@ -1,14 +1,14 @@
 <template>
-    <div class="global-box table-category-right">
+    <div class="global-box table-tree-right">
         <div class="global-box-form flex">
             <div class="global-box-form-handle">
                 <el-button type="primary" @click="handleAdd">
-                    新增<el-icon slots="icon" class="ml-5px"><i-ep-plus /></el-icon>
+                    新增 <el-icon slots="icon" class="ml-5px"><i-ep-plus /></el-icon>
                 </el-button>
                 <el-popconfirm title="确定删除选中的数据吗？" @confirm="handleDel(chooseData)">
                     <template #reference>
                         <el-button type="danger" :disabled="chooseData.length === 0">
-                            批量删除<el-icon slots="icon" class="ml-5px"><i-ep-delete /></el-icon>
+                            批量删除 <el-icon slots="icon" class="ml-5px"><i-ep-delete /></el-icon>
                         </el-button>
                     </template>
                 </el-popconfirm>
@@ -16,7 +16,7 @@
             <div class="global-box-form-search">
                 <el-input v-model="query.input" placeholder="请输入关键词进行检索" />
                 <el-button type="primary" class="search-btn" @click="handleSubmit">
-                    搜索<el-icon slots="icon" class="ml-5px"><i-ep-search /></el-icon>
+                    搜索 <el-icon slots="icon" class="ml-5px"><i-ep-search /></el-icon>
                 </el-button>
             </div>
         </div>
@@ -48,19 +48,17 @@
                     </template>
                 </el-table-column>
             </global-table>
-            <dialog-modify v-if="layer.show" :layer="layer" @update="(payload: boolean) => (layer.show = payload)" @get-table-data="getTableData" />
+            <dialog-tree-modify v-if="layer.show" :layer="layer" @update="(payload: boolean) => (layer.show = payload)" @get-table-data="getTableData" />
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
 import type { GlobalDialogLayer, GlobalTablePage } from '~/components/components.types'
-import type { CategoryType, TableListType, UpdatePageType } from '~/types'
+import type { TableListType, TreeType, UpdatePageType } from '~/types'
 
-import { activeCategoryKey } from '~/composables/provide'
 import { ElMessage } from '~/config/element'
 
-import dialogModify from './dialog-modify.vue'
 import { radioData, selectData } from './enum'
 
 interface ScopeRow {
@@ -68,7 +66,8 @@ interface ScopeRow {
 }
 
 defineOptions({
-    name: 'CompCategoryTable',
+    name: 'CompTreeTable',
+    inheritAttrs: true,
 })
 
 // 存储搜索用的数据
@@ -76,7 +75,7 @@ const query = reactive({
     input: '',
 })
 // 弹窗控制器
-const layer: GlobalDialogLayer<Objable> = reactive({
+const layer: GlobalDialogLayer = reactive({
     show: false,
     title: '新增',
     showButton: true,
@@ -88,7 +87,7 @@ const page: GlobalTablePage = reactive({
     size: 20,
     total: 0,
 })
-const activeCategory = inject(activeCategoryKey, ref({} as CategoryType))
+const activeTree = inject(activeTreeKey, ref({} as TreeType))
 
 const [loading, toggleLoading] = useToggle(false)
 const tableData = ref<TableListType[]>([])
@@ -113,19 +112,16 @@ function onUpdatePage(payload: UpdatePageType | UpdatePageType[]) {
     }
     getTableData(false)
 }
-
-/**
- * 获取表格数据
- * @param isInit Boolean ，默认为false，用于判断是否需要初始化分页
- */
-async function getTableData(isInit: boolean) {
+// 获取表格数据
+// params <init> Boolean ，默认为false，用于判断是否需要初始化分页
+async function getTableData(init: boolean) {
     const { stop } = useTimeoutFn(() => toggleLoading(true), 200)
-    if (isInit) {
+    if (init) {
         page.index = 1
     }
 
     const params = {
-        category: activeCategory.value.id,
+        category: activeTree.value.id,
         page: page.index,
         pageSize: page.size,
         ...query,
@@ -150,26 +146,28 @@ async function getTableData(isInit: boolean) {
     globalTableRef.value.resetScroll()
 }
 // 删除功能
-async function handleDel(data: TableListType[]) {
+async function handleDel(data: object[]) {
     const params = {
-        ids: data.map((e) => {
-            return e.id
-        }).join(','),
+        ids: data
+            .map((e: any) => {
+                return e.id
+            })
+            .join(','),
     }
-    const { code } = await $api.post('/table/del', params)
+    const { code } = await $api.post<void>('/table/del', params)
     if (code === 200) {
         ElMessage({
             type: 'success',
             message: '删除成功',
         })
-        getTableData(tableData.value.length === 1)
+        getTableData(tableData.value.length < 3)
     }
 }
 // 新增弹窗功能
 function handleAdd() {
     layer.title = '新增数据'
-    layer.row = undefined
     layer.show = true
+    layer.row = undefined
 }
 // 编辑弹窗功能
 function handleEdit(row: object) {
@@ -182,7 +180,8 @@ function handleSubmit() {
     getTableData(true)
 }
 
-watch(activeCategory, () => {
+watch(activeTree, () => {
     getTableData(true)
 })
+// getTableData(true)
 </script>
