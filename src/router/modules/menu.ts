@@ -44,7 +44,7 @@ const route: Route[] = [
             {
                 path: '/menu/menu-2',
                 component: createNameComponent(() => import('@/views/menu/menu-2.vue')),
-                meta: { title: '二级菜单2', icon: 'iconfont icon-yemian' },
+                meta: { title: '添加活动', icon: 'iconfont icon-yemian' },
                 children: [],
             },
             {
