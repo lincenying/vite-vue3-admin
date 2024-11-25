@@ -1,7 +1,7 @@
 import { ElMessage, ElMessageBox } from '~/config/element'
 
 type MessageType = 'success' | 'warning' | 'info' | 'error'
-type ConfigType = string | { content: string; type: MessageType }
+type ConfigType = string | { content: string, type: MessageType }
 
 /**
  * 显式提示信息

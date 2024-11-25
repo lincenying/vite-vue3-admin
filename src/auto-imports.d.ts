@@ -98,6 +98,7 @@ declare global {
   const piniaInit: typeof import('./stores/index')['piniaInit']
   const provide: typeof import('vue')['provide']
   const provideLocal: typeof import('@vueuse/core')['provideLocal']
+  const radioData: typeof import('./views/table/tree-table/components/enum')['radioData']
   const reactify: typeof import('@vueuse/core')['reactify']
   const reactifyObject: typeof import('@vueuse/core')['reactifyObject']
   const reactive: typeof import('vue')['reactive']
@@ -115,6 +116,7 @@ declare global {
   const resolveComponent: typeof import('vue')['resolveComponent']
   const resolveRef: typeof import('@vueuse/core')['resolveRef']
   const resolveUnref: typeof import('@vueuse/core')['resolveUnref']
+  const selectData: typeof import('./views/table/tree-table/components/enum')['selectData']
   const setupPinia: typeof import('./stores/index')['setupPinia']
   const shallowReactive: typeof import('vue')['shallowReactive']
   const shallowReadonly: typeof import('vue')['shallowReadonly']
@@ -437,6 +439,7 @@ declare module 'vue' {
     readonly piniaInit: UnwrapRef<typeof import('./stores/index')['piniaInit']>
     readonly provide: UnwrapRef<typeof import('vue')['provide']>
     readonly provideLocal: UnwrapRef<typeof import('@vueuse/core')['provideLocal']>
+    readonly radioData: UnwrapRef<typeof import('./views/table/tree-table/components/enum')['radioData']>
     readonly reactify: UnwrapRef<typeof import('@vueuse/core')['reactify']>
     readonly reactifyObject: UnwrapRef<typeof import('@vueuse/core')['reactifyObject']>
     readonly reactive: UnwrapRef<typeof import('vue')['reactive']>
@@ -454,6 +457,7 @@ declare module 'vue' {
     readonly resolveComponent: UnwrapRef<typeof import('vue')['resolveComponent']>
     readonly resolveRef: UnwrapRef<typeof import('@vueuse/core')['resolveRef']>
     readonly resolveUnref: UnwrapRef<typeof import('@vueuse/core')['resolveUnref']>
+    readonly selectData: UnwrapRef<typeof import('./views/table/tree-table/components/enum')['selectData']>
     readonly setupPinia: UnwrapRef<typeof import('./stores/index')['setupPinia']>
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>

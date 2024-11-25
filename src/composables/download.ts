@@ -43,7 +43,7 @@ export function urlToBase64(url: string, mineType?: string): Promise<string> {
 }
 
 type TargetContext = '_self' | '_blank'
-export function openWindow(url: string, opt?: { target?: TargetContext | string; noopener?: boolean; noreferrer?: boolean }) {
+export function openWindow(url: string, opt?: { target?: TargetContext | string, noopener?: boolean, noreferrer?: boolean }) {
     const { target = '__blank', noopener = true, noreferrer = true } = opt || {}
     const feature: string[] = []
 

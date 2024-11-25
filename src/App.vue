@@ -17,3 +17,7 @@ defineOptions({
 const globalStore = useGlobalStore()
 const { elementSize } = $(storeToRefs(globalStore))
 </script>
+
+<style lang="scss" scoped>
+
+</style>

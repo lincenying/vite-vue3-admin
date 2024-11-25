@@ -17,7 +17,7 @@ const useUserStore = defineStore('userStore', () => {
     }
 
     // login by login.vue
-    async function login(params: { name: string; password: string }) {
+    async function login(params: { name: string, password: string }) {
         const { code, data } = await $api.post<{ token: string }>('/user/login', params)
         if (code === 200 && data) {
             await getInfo({ token: data.token })

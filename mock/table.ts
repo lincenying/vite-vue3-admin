@@ -2,7 +2,7 @@ export default [
     {
         url: '/mock/table/list',
         method: 'post',
-        response: (opt: { body: { page: number; pageSize: number } }) => {
+        response: (opt: { body: { page: number, pageSize: number } }) => {
             const { page, pageSize } = opt.body
             return {
                 code: 200,
@@ -27,7 +27,7 @@ export default [
     {
         url: '/mock/table/category',
         method: 'post',
-        response: (opt: { body: { page: number; pageSize: number } }) => {
+        response: (opt: { body: { page: number, pageSize: number } }) => {
             const { page, pageSize } = opt.body
             return {
                 code: 200,
