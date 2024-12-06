@@ -59,7 +59,7 @@ import type { TableListType, TreeType, UpdatePageType } from '~/types'
 
 import { ElMessage } from '~/config/element'
 
-import { radioData, selectData } from './enum'
+import { radioData, selectData } from '~/views/table/enum'
 
 interface ScopeRow {
     row: TableListType

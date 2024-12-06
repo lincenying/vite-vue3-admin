@@ -28,7 +28,7 @@ import type { GlobalDiaslogInstance } from '~/types'
 
 import { ElMessage } from '~/config/element'
 
-import { radioData, selectData } from './enum'
+import { radioData, selectData } from '~/views/table/enum'
 
 defineOptions({
     name: 'DialogModify',

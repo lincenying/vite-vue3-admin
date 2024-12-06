@@ -64,7 +64,7 @@ import type { TableListType, UpdatePageType } from '~/types'
 import globalTable from '~/components/global-table.vue'
 import { ElMessage } from '~/config/element'
 
-import { radioData, selectData } from './components/enum'
+import { radioData, selectData } from '~/views/table/enum'
 
 interface ScopeRow {
     row: TableListType

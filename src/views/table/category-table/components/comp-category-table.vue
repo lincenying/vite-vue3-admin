@@ -60,7 +60,7 @@ import type { CategoryType, TableListType, UpdatePageType } from '~/types'
 import { activeCategoryKey } from '~/composables/provide'
 import { ElMessage } from '~/config/element'
 
-import { radioData, selectData } from './enum'
+import { radioData, selectData } from '~/views/table/enum'
 
 interface ScopeRow {
     row: TableListType
