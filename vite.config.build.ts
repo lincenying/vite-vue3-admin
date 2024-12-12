@@ -34,20 +34,21 @@ const config: { server: ServerOptions, build: BuildOptions } = {
             },
             external: /static\/.*?\.[cm]*js/,
             output: {
-                // manualChunks(id: string) {
-                //     // 处理css分块
-                //     if (id.includes('.css') || id.includes('.scss') || id.includes('.sass') || id.includes('.less')) {
-                //         if (id.includes('node_modules'))
-                //             return 'vendor'
-                //         return 'main'
-                //     }
+                manualChunks(id: string) {
+                    // 处理css分块
+                    if (id.includes('node_modules')) {
+                        return 'vendor'
+                    }
+                    if (id.includes('__uno.css')) {
+                        return 'unocss'
+                    }
                 //     // 处理js分块
                 //     if (id.includes('.js') || id.includes('.mjs') || id.includes('.cjs')) {
                 //         if (id.includes('node_modules'))
                 //             return 'vendor'
                 //         return 'main'
                 //     }
-                // },
+                },
             },
         },
     },
