@@ -20,7 +20,7 @@ defineOptions({
 })
 
 const { layer } = defineProps<{
-    layer: GlobalDialogLayer<Objable>
+    layer: GlobalDialogLayer<Nullable<Objable>>
 }>()
 
 const emit = defineEmits(['confirm', 'update'])

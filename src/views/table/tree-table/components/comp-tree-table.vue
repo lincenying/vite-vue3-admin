@@ -143,7 +143,6 @@ async function getTableData(init: boolean) {
     }
     stop()
     toggleLoading(false)
-    globalTableRef.value.resetScroll()
 }
 // 删除功能
 async function handleDel(data: object[]) {

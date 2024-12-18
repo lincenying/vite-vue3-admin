@@ -11,7 +11,7 @@ export default [
                 code: 200,
                 data: {
                     [`list|${pageSize}`]: [{
-                        'id|+1': 0,
+                        'id|+1': (page - 1) * pageSize + 1,
                         'name': '@name',
                         'nickName': '@cname',
                         'status|1': [0, 1],

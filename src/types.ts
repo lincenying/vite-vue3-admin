@@ -56,11 +56,13 @@ export interface CardListType {
 export interface UserListType {
     id?: string
     name: string
-    password: string
-    token: string
-    status?: number
-    isAdmin?: number
-    info: {
+    password?: string
+    nickName: string
+    role: string
+    isAdmin: number | string
+    status?: number | string
+    token?: string
+    info?: {
         name: string
     }
     loading?: boolean

@@ -73,7 +73,6 @@ async function getListData() {
         page.total = data.pager.total
         list.value = data.list
     }
-    scrollBarRef.value?.setScrollTop(0)
 }
 
 // 分页相关：监听页码切换事件

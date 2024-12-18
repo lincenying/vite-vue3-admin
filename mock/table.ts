@@ -8,7 +8,7 @@ export default [
                 code: 200,
                 data: {
                     [`list|${pageSize}`]: [{
-                        'id|+1': 0,
+                        'id|+1': (page - 1) * pageSize + 1,
                         'name': '@cname',
                         'number|+1': 500,
                         'choose|1': [1, 2, 3, 4],
@@ -33,7 +33,7 @@ export default [
                 code: 200,
                 data: {
                     [`list|${pageSize}`]: [{
-                        'id|+1': 100 * page,
+                        'id|+1': (page - 1) * pageSize + 1,
                         'name': '@ctitle',
                     }],
                     pager: {

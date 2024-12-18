@@ -90,11 +90,12 @@ const query = reactive({
     input: '',
 })
 // 弹窗控制器
-const layer: GlobalDialogLayer = reactive({
+const layer: GlobalDialogLayer<Nullable<UserListType>> = reactive({
     show: false,
     title: '新增',
     showButton: true,
     width: '500px',
+    row: null,
 })
 // 分页参数, 供table使用
 const page: GlobalTablePage = reactive({

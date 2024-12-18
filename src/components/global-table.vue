@@ -74,6 +74,7 @@ function resetScroll(top: number = 0) {
 
 /** 分页相关：监听页码切换事件 */
 function handleCurrentChange(val: number) {
+    tableRef.value?.setScrollTop(0)
     emit('updatePage', { key: 'index', value: timer ? 1 : val })
 }
 
@@ -83,6 +84,7 @@ function handleSizeChange(val: number) {
     setTimeout(() => {
         timer = null
     }, 100)
+    tableRef.value?.setScrollTop(0)
     emit('updatePage', [{ key: 'size', value: val }, { key: 'index', value: 1 }])
 }
 
