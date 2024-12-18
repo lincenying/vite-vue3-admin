@@ -56,8 +56,8 @@ const { layer } = defineProps<{
 
 const emit = defineEmits(['getTableData', 'update'])
 
-const ruleForm = ref<Nullable<FormInstance>>(null)
-const layerDom = ref<Nullable<GlobalDiaslogInstance>>(null)
+const ruleForm = $ref<Nullable<FormInstance>>(null)
+const layerDom = $ref<Nullable<GlobalDiaslogInstance>>(null)
 
 const form: UserListType = reactive({
     id: '',
@@ -82,8 +82,8 @@ if (layer.row) {
     form.isAdmin = layer.row.isAdmin
 }
 function onSubmit() {
-    if (ruleForm.value) {
-        ruleForm.value.validate((valid) => {
+    if (ruleForm) {
+        ruleForm.validate((valid) => {
             if (valid) {
                 const params = form
                 if (layer.row) {
@@ -105,7 +105,7 @@ async function addForm(params: object) {
             message: '新增成功',
         })
         emit('getTableData', true)
-        layerDom.value?.close()
+        layerDom?.close()
     }
 }
 // 编辑提交事件
@@ -117,7 +117,7 @@ async function updateForm(params: object) {
             message: '编辑成功',
         })
         emit('getTableData', false)
-        layerDom.value?.close()
+        layerDom?.close()
     }
 }
 function onUpdate(payload: boolean) {

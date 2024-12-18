@@ -37,11 +37,11 @@ export interface IndexCardType {
 }
 
 export interface TableListType {
-    id: number
-    name: string
-    number: number
-    choose: number
-    radio: number
+    id?: number
+    name?: string
+    number?: number
+    choose?: number
+    radio?: number
     chooseName?: string | number
     radioName?: string | number
 }

@@ -22,9 +22,11 @@
 </template>
 
 <script lang="ts" setup>
-import type { FormInstance } from 'element-plus'
+import type { FormInstance, FormItemRule } from 'element-plus'
 import type { GlobalDialogLayer } from '~/components/components.types'
-import type { GlobalDiaslogInstance } from '~/types'
+import type { GlobalDiaslogInstance, TableListType } from '~/types'
+
+import Rules from '@lincy/async-validation'
 
 import { ElMessage } from '~/config/element'
 
@@ -35,44 +37,44 @@ defineOptions({
 })
 
 const { layer } = defineProps<{
-    layer: GlobalDialogLayer<Objable>
+    layer: GlobalDialogLayer<Nullable<TableListType>>
 }>()
 
 const emit = defineEmits(['getTableData', 'update'])
 
-const ruleForm = ref<Nullable<FormInstance>>(null)
-const layerDom = ref<Nullable<GlobalDiaslogInstance>>(null)
+const ruleForm = $ref<Nullable<FormInstance>>(null)
+const layerDom = $ref<Nullable<GlobalDiaslogInstance>>(null)
 
-const form = ref({
-    name: '',
-    number: '',
-    choose: '',
-    radio: '',
+let form = $ref<TableListType>({
+    id: undefined,
+    name: undefined,
+    number: undefined,
+    choose: undefined,
+    radio: undefined,
 })
 const rules = {
-    name: [{ required: true, message: '请输入姓名', trigger: 'blur' }],
-    number: [{ required: true, message: '请输入数字', trigger: 'blur' }],
-    choose: [{ required: true, message: '请选择', trigger: 'blur' }],
-    radio: [{ required: true, message: '请选择', trigger: 'blur' }],
+    name: Rules.string('姓名') as FormItemRule[],
+    number: Rules.integer('数字') as FormItemRule[],
+    choose: Rules.select('选择器') as FormItemRule[],
+    radio: Rules.select('单选框') as FormItemRule[],
 }
 
 function onSubmit() {
-    if (ruleForm.value) {
-        ruleForm.value.validate((valid) => {
+    if (ruleForm) {
+        ruleForm.validate((valid) => {
             if (valid) {
-                const params = form
                 if (layer.row) {
-                    updateForm(params)
+                    updateForm(form)
                 }
                 else {
-                    addForm(params)
+                    addForm(form)
                 }
             }
         })
     }
 }
 // 新增提交事件
-async function addForm(params: object) {
+async function addForm(params: TableListType) {
     const { code } = await $api.post('/table/add', params)
     if (code === 200) {
         ElMessage({
@@ -84,7 +86,7 @@ async function addForm(params: object) {
     }
 }
 // 编辑提交事件
-async function updateForm(params: object) {
+async function updateForm(params: TableListType) {
     const { code } = await $api.post('/table/update', params)
     if (code === 200) {
         ElMessage({
@@ -99,11 +101,9 @@ function onUpdate(payload: boolean) {
     emit('update', payload)
 }
 
-function init() {
-// 用于判断新增还是编辑功能
+watchEffect(() => {
     if (layer.row) {
-        form.value = JSON.parse(JSON.stringify(layer.row))
-    } // 数量量少的直接使用这个转
-}
-init()
+        form = deepClone(layer.row)
+    }
+})
 </script>
