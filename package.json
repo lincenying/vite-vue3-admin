@@ -41,7 +41,6 @@
     "@lincy/eslint-config": "^5.3.1",
     "@lincy/stylelint-config": "^2.0.1",
     "@lincy/unocss-base-config": "^2.0.0",
-    "@lincy/vite-plugin-mock": "^3.0.0",
     "@types/node": "^22.10.1",
     "@types/nprogress": "^0.2.3",
     "@types/throttle-debounce": "^5.0.2",
@@ -65,6 +64,7 @@
     "unplugin-vue-macros": "^2.13.5",
     "vite": "^6.0.3",
     "vite-plugin-inspect": "^0.10.3",
+    "vite-plugin-mock": "^3.0.2",
     "vite-plugin-progress": "^0.0.7",
     "vue-tsc": "^2.1.10"
   },

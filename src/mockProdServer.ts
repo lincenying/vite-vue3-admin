@@ -1,4 +1,4 @@
-import { createProdMockServer } from '@lincy/vite-plugin-mock/client'
+import { createProdMockServer } from 'vite-plugin-mock/client'
 
 import cardModule from '../mock/card'
 import UserMoudle from '../mock/systemUser'

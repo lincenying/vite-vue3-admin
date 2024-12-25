@@ -1,9 +1,11 @@
-export default [
+import type { MockMethod } from './_mock.types'
+
+const rules: MockMethod[] = [
     {
         url: '/mock/table/list',
         method: 'post',
-        response: (opt: { body: { page: number, pageSize: number } }) => {
-            const { page, pageSize } = opt.body
+        response: (opt) => {
+            const { page, pageSize } = opt.body as { page: number, pageSize: number }
             return {
                 code: 200,
                 data: {
@@ -27,8 +29,8 @@ export default [
     {
         url: '/mock/table/category',
         method: 'post',
-        response: (opt: { body: { page: number, pageSize: number } }) => {
-            const { page, pageSize } = opt.body
+        response: (opt) => {
+            const { page, pageSize } = opt.body as { page: number, pageSize: number }
             return {
                 code: 200,
                 data: {
@@ -134,3 +136,5 @@ export default [
         },
     },
 ]
+
+export default rules

@@ -1,7 +1,8 @@
-import type { MockMethod } from '@lincy/vite-plugin-mock'
+import type { MockMethod } from './_mock.types'
 
 const roles = ['系统管理员', '平台管理员', '数据统计人员', '信息录入人员', '普通人员']
-export default [
+
+const rules: MockMethod[] = [
     {
         url: '/mock/system/user/list',
         method: 'post',
@@ -72,4 +73,6 @@ export default [
             }
         },
     },
-] as MockMethod[]
+]
+
+export default rules

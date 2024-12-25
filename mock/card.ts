@@ -1,6 +1,6 @@
-import type { MockMethod } from '@lincy/vite-plugin-mock'
+import type { MockMethod } from './_mock.types'
 
-export default [
+const rules: MockMethod[] = [
     {
         url: '/mock/card/list',
         method: 'post',
@@ -25,4 +25,6 @@ export default [
             }
         },
     },
-] as MockMethod[]
+]
+
+export default rules
