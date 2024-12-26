@@ -1,6 +1,6 @@
 import type { MockMethod } from './_mock.types'
 
-const rules: MockMethod[] = [
+const rules: MockMethod<any, { page: number, pageSize: number }>[] = [
     {
         url: '/mock/card/list',
         method: 'post',

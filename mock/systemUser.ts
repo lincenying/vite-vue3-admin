@@ -28,7 +28,7 @@ const rules: MockMethod[] = [
                 message: 'success',
             }
         },
-    },
+    } as MockMethod<any, { page: number, pageSize: number }>,
     {
         url: '/mock/system/user/add',
         method: 'post',

@@ -5,7 +5,7 @@ const rules: MockMethod[] = [
         url: '/mock/table/list',
         method: 'post',
         response: (opt) => {
-            const { page, pageSize } = opt.body as { page: number, pageSize: number }
+            const { page, pageSize } = opt.body
             return {
                 code: 200,
                 data: {
@@ -25,12 +25,12 @@ const rules: MockMethod[] = [
                 message: 'success',
             }
         },
-    },
+    } as MockMethod<any, { page: number, pageSize: number }>,
     {
         url: '/mock/table/category',
         method: 'post',
         response: (opt) => {
-            const { page, pageSize } = opt.body as { page: number, pageSize: number }
+            const { page, pageSize } = opt.body
             return {
                 code: 200,
                 data: {
@@ -47,7 +47,7 @@ const rules: MockMethod[] = [
                 message: 'success',
             }
         },
-    },
+    } as MockMethod<any, { page: number, pageSize: number }>,
     {
         url: '/mock/table/tree',
         method: 'post',

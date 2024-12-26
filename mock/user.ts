@@ -1,4 +1,4 @@
-import type { MockMethod } from 'vite-plugin-mock'
+import type { MockMethod } from './_mock.types'
 import type { UserListType } from '~/types'
 
 const users: UserListType[] = [{
@@ -57,11 +57,11 @@ const mockList: MockMethod[] = [
                 }
             }
         },
-    },
+    } as MockMethod<any, { name: string, password: string }>,
     {
         url: '/mock/user/info',
         method: 'post',
-        response: ({ body }: any) => {
+        response: ({ body }) => {
             const { token } = body
             const info = users.find((user) => {
                 return user.token === token
@@ -83,7 +83,7 @@ const mockList: MockMethod[] = [
                 }
             }
         },
-    },
+    } as MockMethod<any, { token: string }>,
     {
         url: '/mock/user/out',
         method: 'post',

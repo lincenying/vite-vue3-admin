@@ -1,4 +1,6 @@
-export default [
+import type { MockMethod } from './_mock.types'
+
+const mockList: MockMethod[] = [
     {
         url: '/mock/work/list',
         method: 'post',
@@ -326,3 +328,5 @@ export default [
         },
     },
 ]
+
+export default mockList

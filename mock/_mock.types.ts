@@ -16,15 +16,15 @@ export interface RespThisType {
 }
 type MethodType = 'get' | 'post' | 'put' | 'delete' | 'patch'
 type Recordable<T = any> = Record<string, T>
-export interface MockMethod {
+export interface MockMethod<Q = any, B = any> {
     url: string
     method?: MethodType
     timeout?: number
     statusCode?: number
     response?: ((this: RespThisType, opt: {
         url: Recordable
-        body: Recordable
-        query: Recordable
+        body: B
+        query: Q
         headers: Recordable
     }) => any)
     rawResponse?: (this: RespThisType, req: IncomingMessage, res: ServerResponse) => void
