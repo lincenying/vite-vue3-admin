@@ -29,6 +29,13 @@ declare type PromiseFn<T> = (...args: any[]) => Promise<T>
  */
 declare type Awaitable<T> = T | PromiseLike<T>
 
+/** 根据指定的键将对象的部分属性变为可选 */
+type PartialByKeys<T, K extends keyof T> = {
+    [P in Exclude<keyof T, K>]-?: T[P];
+} & {
+    [P in K]?: T[P];
+}
+
 declare interface ResDataLists<T> {
     list: T
     pager: {
