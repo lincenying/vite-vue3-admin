@@ -347,6 +347,24 @@
     "useModel": true,
     "useTemplateRef": true,
     "radioData": true,
-    "selectData": true
+    "selectData": true,
+    "AoAToSheet": true,
+    "ExcelData": true,
+    "ExportModalResult": true,
+    "GlobalDialogLayer": true,
+    "GlobalState": true,
+    "GlobalStateOption": true,
+    "GlobalStateOptionKey": true,
+    "GlobalStateOptionValue": true,
+    "GlobalTablePage": true,
+    "GlobalTableProps": true,
+    "JsonToSheet": true,
+    "KeepAliveState": true,
+    "LayerType": true,
+    "TabsType": true,
+    "ThemeState": true,
+    "UserState": true,
+    "usePreferredReducedTransparency": true,
+    "useSSRWidth": true
   }
 }
