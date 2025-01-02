@@ -1,11 +1,11 @@
 import type { App } from 'vue'
 
-import { ElMessage as _ElMessage, ElMessageBox as _ElMessageBox, ElNotification as _ElNotification, ElLoading } from 'element-plus'
+import { ElLoading as _ElLoading, ElMessage as _ElMessage, ElMessageBox as _ElMessageBox, ElNotification as _ElNotification } from 'element-plus'
 import 'element-plus/es/components/message/style/css'
 import 'element-plus/es/components/message-box/style/css'
 
 function install(app: App) {
-    app.use(ElLoading)
+    app.use(_ElLoading)
     app.config.globalProperties.$msgbox = _ElMessageBox
     app.config.globalProperties.$alert = _ElMessageBox.alert
     app.config.globalProperties.$confirm = _ElMessageBox.confirm
@@ -15,6 +15,7 @@ function install(app: App) {
     return app
 }
 export default install
+export const ElLoading = _ElLoading
 export const ElMessage = _ElMessage
 export const ElMessageBox = _ElMessageBox
 export const ElNotification = _ElNotification
