@@ -9,8 +9,9 @@
   "scripts": {
     "prepare": "npx simple-git-hooks",
     "serve": "cross-env DEBUG=vite:transform vite",
-    "build": "vite build --mode=production",
-    "build:stag": "vite build --mode=staging",
+    "build_test": "vite build --mode test --emptyOutDir",
+    "build_pre": "vite build --mode staging --emptyOutDir",
+    "build_prod": "vite build --emptyOutDir",
     "start": "vite preview",
     "lint": "eslint . --flag unstable_ts_config",
     "lint:fix": "eslint . --flag unstable_ts_config --fix",

@@ -346,11 +346,11 @@ declare global {
   export type { GlobalDialogLayer, LayerType, GlobalTablePage, GlobalTableProps } from './components/components.types'
   import('./components/components.types')
   // @ts-ignore
+  export type { ExcelData, JsonToSheet, AoAToSheet, ExportModalResult } from './composables/export-excel.types'
+  import('./composables/export-excel.types')
+  // @ts-ignore
   export type { TabsType } from './composables/storage'
   import('./composables/storage')
-  // @ts-ignore
-  export type { ExcelData, JsonToSheet, AoAToSheet, ExportModalResult } from './composables/types'
-  import('./composables/types')
   // @ts-ignore
   export type { GlobalStateOption, GlobalStateOptionKey, GlobalStateOptionValue, ThemeState, GlobalState, KeepAliveState, UserState } from './stores/store.types'
   import('./stores/store.types')

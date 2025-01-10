@@ -15,13 +15,17 @@ import 'element-plus/theme-chalk/display.css'
 import './assets/style/index.scss'
 import './theme/modules/chinese/index.scss'
 
+// test mock server
+if (import.meta.env.VITE_APP_ENV === 'pre-release') {
+    (async () => {
+        const { setupProdMockServer } = await import('./mockProdServer')
+        setupProdMockServer()
+    })()
+    // import('./mockProdServer').then(({ setupProdMockServer }) => {
+    //     setupProdMockServer()
+    // })
+}
+
 /** 权限路由处理主方法 */
 const app = createApp(App)
 setupPinia(app).use(router).use(globalPlugin).mount('#app')
-
-// production mock server
-if (import.meta.env.VITE_APP_ENV === 'pre-release') {
-    import('./mockProdServer').then(({ setupProdMockServer }) => {
-        setupProdMockServer()
-    })
-}
