@@ -16,6 +16,7 @@ const config = await lincy(
             markdown: true,
         },
         toml: false,
+        pnpm: true,
         overrides: {
             perfectionist: {
 

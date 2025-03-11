@@ -365,6 +365,9 @@
     "ThemeState": true,
     "UserState": true,
     "usePreferredReducedTransparency": true,
-    "useSSRWidth": true
+    "useSSRWidth": true,
+    "onElementRemoval": true,
+    "createRef": true,
+    "useCountdown": true
   }
 }
