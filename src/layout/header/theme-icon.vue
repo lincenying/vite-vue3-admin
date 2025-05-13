@@ -19,14 +19,14 @@
 
 <script lang="ts" setup>
 interface Props {
-    name: string
-    active: string
-    menu: string
-    logo: string
-    header: string
-    main: string
-    tip: string
-    activeColor: string
+    name?: string
+    active?: string
+    menu?: string
+    logo?: string
+    header?: string
+    main?: string
+    tip?: string
+    activeColor?: string
 }
 
 defineOptions({

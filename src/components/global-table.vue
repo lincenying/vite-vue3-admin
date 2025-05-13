@@ -47,12 +47,12 @@ const {
     pageSizes = [10, 20, 50, 100],
 } = defineProps<{
     propKey?: T
-    data: DataType<T>[]
+    data?: DataType<T>[]
     select?: any[]
     showIndex?: boolean
     showSelection?: boolean
     showPage?: boolean
-    page: GlobalTablePage
+    page?: GlobalTablePage
     pageLayout?: string
     pageSizes?: number[]
 }>()

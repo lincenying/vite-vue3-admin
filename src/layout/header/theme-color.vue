@@ -10,11 +10,11 @@
 
 <script lang="ts" setup>
 interface Props {
-    active: string
-    activeTextColor: string
-    tip: string
-    color: string
-    textColor: string
+    active?: string
+    activeTextColor?: string
+    tip?: string
+    color?: string
+    textColor?: string
 }
 
 defineOptions({

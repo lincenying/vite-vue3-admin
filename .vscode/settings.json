@@ -8,8 +8,7 @@
   // Disable the default formatter
   "editor.formatOnSave": false,
   "eslint.options": {
-    "flags": [
-    ]
+    "flags": []
   },
   // Silent the stylistic rules in you IDE, but still auto fix them
   "eslint.rules.customizations": [
