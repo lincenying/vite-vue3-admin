@@ -1,6 +1,6 @@
 <template>
     <div class="menu-menu">
-        <el-card class="m-15px">
+        <el-card class="m-15px px-30px">
             <el-form
                 ref="ruleFormRef"
                 style="max-width: 600px"
@@ -84,6 +84,9 @@
                 <el-form-item label="活动形式" prop="desc">
                     <el-input v-model="ruleForm.desc" type="textarea" />
                 </el-form-item>
+                <el-form-item label="联系电话" prop="phone">
+                    <el-input v-model="ruleForm.phone" />
+                </el-form-item>
                 <el-form-item label=" ">
                     <el-button type="primary" @click="submitForm(ruleFormRef)">创建</el-button>
                     <el-button @click="resetForm(ruleFormRef)">重置</el-button>
@@ -112,6 +115,7 @@ interface RuleForm {
     type: string[]
     resource: string
     desc: string
+    phone: string
 }
 
 const formSize = ref<ComponentSize>('default')
@@ -127,6 +131,7 @@ const ruleForm = reactive<RuleForm>({
     type: [],
     resource: '',
     desc: '',
+    phone: '',
 })
 
 const locationOptions = ['家', '公司', '学校']
@@ -141,6 +146,7 @@ const rulesObj = reactive<FormRules<RuleForm>>({
     type: rules.select('活动类型', true) as FormItemRule[],
     resource: rules.select('活动资源') as FormItemRule[],
     desc: rules.string('活动形式') as FormItemRule[],
+    phone: rules.phone('联系电话') as FormItemRule[],
 })
 
 async function submitForm(formEl: FormInstance | undefined) {
