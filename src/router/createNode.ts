@@ -6,7 +6,9 @@ import { createVNode } from 'vue'
 import NProgress from '~/utils/nprogress'
 import reload from './reload.vue'
 
-export function createNameComponent(component: () => Promise<any>): () => Promise<DefineComponent<Objable, Objable, any>> {
+export function createNameComponent(
+    component: () => Promise<any>,
+): () => Promise<DefineComponent<Objable, Objable, any>> {
     return () => {
         return new Promise((resolve) => {
             component().then((comm: DefineComponent<Objable, Objable, any>) => {
@@ -34,10 +36,14 @@ export function createNameComponent(component: () => Promise<any>): () => Promis
                     },
                     render() {
                         if (this.isReload) {
-                            return h('div', { class: 'el-main-box' }, [h(reload)])
+                            return h('div', { class: 'el-main-box' }, [
+                                h(reload),
+                            ])
                         }
                         else {
-                            return h('div', { class: 'el-main-box' }, [createVNode(comm.default)])
+                            return h('div', { class: 'el-main-box' }, [
+                                createVNode(comm.default),
+                            ])
                         }
                     },
                 })

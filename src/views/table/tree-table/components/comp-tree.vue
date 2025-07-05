@@ -9,7 +9,17 @@
             ></el-input> -->
         </div>
         <div class="list system-scrollbar">
-            <el-tree ref="tree" class="my-tree" :data="treeData" :props="defaultProps" :expand-on-click-node="false" node-key="id" highlight-current default-expand-all @node-click="handleNodeClick" />
+            <el-tree
+                ref="tree"
+                class="my-tree"
+                :data="treeData"
+                :props="defaultProps"
+                :expand-on-click-node="false"
+                node-key="id"
+                highlight-current
+                default-expand-all
+                @node-click="handleNodeClick"
+            />
         </div>
     </div>
 </template>

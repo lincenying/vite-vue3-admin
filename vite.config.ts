@@ -36,7 +36,9 @@ export default defineConfig(({ mode, command }: ConfigEnv) => {
              */
             viteMockServe({
                 mockPath: 'mock',
-                enable: command === 'serve' || process.env.VITE_APP_ENV === 'pre-release',
+                enable:
+                    command === 'serve'
+                    || process.env.VITE_APP_ENV === 'pre-release',
                 logger: true,
             }),
             /**

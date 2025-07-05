@@ -18,6 +18,4 @@ const globalStore = useGlobalStore()
 const { elementSize } = $(storeToRefs(globalStore))
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

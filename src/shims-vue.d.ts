@@ -5,7 +5,7 @@ declare module '*.vue' {
     export default component
 }
 
-export { }
+export {}
 
 declare module 'vue-router' {
     interface RouteMeta {

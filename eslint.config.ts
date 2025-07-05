@@ -3,7 +3,9 @@ import { readFile } from 'node:fs/promises'
 import lincy from '@lincy/eslint-config'
 
 const autoImport = JSON.parse(
-    (await readFile(new URL('./.eslintrc-auto-import.json', import.meta.url))).toString(),
+    (
+        await readFile(new URL('./.eslintrc-auto-import.json', import.meta.url))
+    ).toString(),
 )
 
 const config = await lincy(
@@ -18,9 +20,7 @@ const config = await lincy(
         toml: false,
         pnpm: false,
         overrides: {
-            perfectionist: {
-
-            },
+            perfectionist: {},
         },
     },
     {
@@ -31,12 +31,7 @@ const config = await lincy(
         },
     },
     {
-        ignores: [
-            '**/assets',
-            '**/static',
-            '**/public',
-            '**/polyfill',
-        ],
+        ignores: ['**/assets', '**/static', '**/public', '**/polyfill'],
     },
 )
 

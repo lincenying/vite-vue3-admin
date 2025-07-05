@@ -3,16 +3,25 @@
         <div class="left-box">
             <!-- 收缩按钮 -->
             <div class="menu-icon" @click="opendStateChange">
-                <i class="iconfont head-fold" :class="isCollapse ? 'icon-s-unfold' : 'icon-s-fold'" />
+                <i
+                    class="iconfont head-fold"
+                    :class="isCollapse ? 'icon-s-unfold' : 'icon-s-fold'"
+                />
             </div>
             <breadcrumb />
         </div>
         <div class="right-box">
             <!-- 快捷功能按钮 -->
             <div class="function-list">
-                <div class="function-list-item hidden-sm-and-down"><full-screen /></div>
-                <div class="function-list-item hidden-sm-and-down"><layout-theme /></div>
-                <div class="function-list-item hidden-sm-and-down"><github /></div>
+                <div class="function-list-item hidden-sm-and-down">
+                    <full-screen />
+                </div>
+                <div class="function-list-item hidden-sm-and-down">
+                    <layout-theme />
+                </div>
+                <div class="function-list-item hidden-sm-and-down">
+                    <github />
+                </div>
             </div>
             <!-- 用户信息 -->
             <div class="user-info">
@@ -23,13 +32,21 @@
                     </span>
                     <template #dropdown>
                         <el-dropdown-menu>
-                            <el-dropdown-item @click="handleModifyPass">修改密码</el-dropdown-item>
-                            <el-dropdown-item @click="handleLogout">退出登录</el-dropdown-item>
+                            <el-dropdown-item @click="handleModifyPass">
+                                修改密码
+                            </el-dropdown-item>
+                            <el-dropdown-item @click="handleLogout">
+                                退出登录
+                            </el-dropdown-item>
                         </el-dropdown-menu>
                     </template>
                 </el-dropdown>
             </div>
-            <dialogPassword v-if="layer.show" :layer="layer" @update="(payload: boolean) => layer.show = payload" />
+            <dialogPassword
+                v-if="layer.show"
+                :layer="layer"
+                @update="(payload: boolean) => (layer.show = payload)"
+            />
         </div>
     </header>
 </template>

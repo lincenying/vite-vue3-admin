@@ -1,20 +1,46 @@
 <template>
-    <global-dialog ref="layerDom" :layer="layer" @update="onUpdate" @confirm="onSubmit">
-        <el-form ref="ruleForm" :model="form" :rules="rules" label-width="100px" class="mr-30px">
+    <global-dialog
+        ref="layerDom"
+        :layer="layer"
+        @update="onUpdate"
+        @confirm="onSubmit"
+    >
+        <el-form
+            ref="ruleForm"
+            :model="form"
+            :rules="rules"
+            label-width="100px"
+            class="mr-30px"
+        >
             <el-form-item label="名称：" prop="name">
                 <el-input v-model="form.name" placeholder="请输入名称" />
             </el-form-item>
             <el-form-item label="数字：" prop="number">
-                <el-input v-model="form.number" oninput="value=value.replace(/[^\d]/g,'')" placeholder="只能输入正整数" />
+                <el-input
+                    v-model="form.number"
+                    oninput="value=value.replace(/[^\d]/g,'')"
+                    placeholder="只能输入正整数"
+                />
             </el-form-item>
             <el-form-item label="选择器：" prop="select">
                 <el-select v-model="form.choose" placeholder="请选择" clearable>
-                    <el-option v-for="item in selectData" :key="item.value" :label="item.label" :value="item.value" />
+                    <el-option
+                        v-for="item in selectData"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value"
+                    />
                 </el-select>
             </el-form-item>
             <el-form-item label="单选框：" prop="radio">
                 <el-radio-group v-model="form.radio">
-                    <el-radio v-for="item in radioData" :key="item.value" :label="item.value">{{ item.label }}</el-radio>
+                    <el-radio
+                        v-for="item in radioData"
+                        :key="item.value"
+                        :label="item.value"
+                    >
+                        {{ item.label }}
+                    </el-radio>
                 </el-radio-group>
             </el-form-item>
         </el-form>
@@ -102,7 +128,7 @@ function onUpdate(payload: boolean) {
 }
 
 function init() {
-// 用于判断新增还是编辑功能
+    // 用于判断新增还是编辑功能
     if (layer.row) {
         form = deepClone(layer.row)
     } // 数量量少的直接使用这个转

@@ -2,10 +2,24 @@
     <div class="table-category-left">
         <div class="header-box">
             <h2>分类列表</h2>
-            <el-input v-model="input" placeholder="请输入内容" @input="searchData(true)" />
+            <el-input
+                v-model="input"
+                placeholder="请输入内容"
+                @input="searchData(true)"
+            />
         </div>
-        <ul ref="listDom" v-infinite-scroll="getCategoryData" class="system-scrollbar list overflow-auto" :infinite-scroll-immediate="false">
-            <li v-for="item in list" :key="item.id" :class="{ active: item.id === activeCategory?.id }" @click="changeActive(item)">
+        <ul
+            ref="listDom"
+            v-infinite-scroll="getCategoryData"
+            class="system-scrollbar list overflow-auto"
+            :infinite-scroll-immediate="false"
+        >
+            <li
+                v-for="item in list"
+                :key="item.id"
+                :class="{ active: item.id === activeCategory?.id }"
+                @click="changeActive(item)"
+            >
                 <span>{{ item.name }}</span>
             </li>
             <p v-if="loading" class="load-tip">加载中...</p>
@@ -18,7 +32,10 @@
 import type { CategoryType } from '~/types'
 
 import { debounce } from 'throttle-debounce'
-import { activeCategoryKey, updateActiveCategoryKey } from '~/composables/provide'
+import {
+    activeCategoryKey,
+    updateActiveCategoryKey,
+} from '~/composables/provide'
 
 defineOptions({
     name: 'Category',
@@ -47,7 +64,7 @@ async function getCategoryData(init?: boolean) {
         toggleisFirst(false)
         page.index = 1
         if (listDom.value)
-            (listDom.value.scrollTop = 0)
+            listDom.value.scrollTop = 0
     }
     else {
         if (page.index * page.size >= page.total) {
@@ -61,7 +78,10 @@ async function getCategoryData(init?: boolean) {
         pageSize: page.size,
         keyword: input.value,
     }
-    const { code, data } = await $api.post<ResDataLists<CategoryType[]>>('/table/category', params)
+    const { code, data } = await $api.post<ResDataLists<CategoryType[]>>(
+        '/table/category',
+        params,
+    )
     if (code === 200) {
         if (page.index === 1) {
             list.value = data.list

@@ -1,6 +1,17 @@
 <template>
-    <global-dialog ref="layerDom" :layer="layer" @update="onUpdate" @confirm="onSubmit">
-        <el-form ref="ruleForm" :model="form" :rules="rules" label-width="120px" class="mr-30px">
+    <global-dialog
+        ref="layerDom"
+        :layer="layer"
+        @update="onUpdate"
+        @confirm="onSubmit"
+    >
+        <el-form
+            ref="ruleForm"
+            :model="form"
+            :rules="rules"
+            label-width="120px"
+            class="mr-30px"
+        >
             <el-form-item label="用户名：" prop="name">
                 <el-input v-model="form.name" placeholder="请输入用户名" />
             </el-form-item>
@@ -72,7 +83,13 @@ const rules = {
     role: Rules.select('角色') as FormItemRule[],
     isAdmin: Rules.select('超级管理员') as FormItemRule[],
 }
-const options = ['系统管理员', '平台管理员', '数据统计人员', '信息录入人员', '普通人员']
+const options = [
+    '系统管理员',
+    '平台管理员',
+    '数据统计人员',
+    '信息录入人员',
+    '普通人员',
+]
 
 if (layer.row) {
     form.id = layer.row.id

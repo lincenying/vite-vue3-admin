@@ -11,9 +11,7 @@
       "@/*": ["src/*"]
     },
     "resolveJsonModule": true,
-    "types": [
-
-    ],
+    "types": [],
     "allowJs": true,
     "strict": true,
     "strictNullChecks": true,

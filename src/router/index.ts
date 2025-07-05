@@ -49,7 +49,7 @@ const { keepAliveComponentsName } = $(storeToRefs(keepAliveStore))
 router.beforeEach((to, _from, next) => {
     NProgress.start()
     if (token) {
-        to.meta.title && (changeTitle(to.meta.title)) // 动态title
+        to.meta.title && changeTitle(to.meta.title) // 动态title
         if (to.path === '/login') {
             next('/')
             return
@@ -57,27 +57,30 @@ router.beforeEach((to, _from, next) => {
         next()
     }
     else if (whiteList.includes(to.path)) {
-        to.meta.title && (changeTitle(to.meta.title)) // 动态title
+        to.meta.title && changeTitle(to.meta.title) // 动态title
         next()
     }
     else {
         next('/login') // 全部重定向到登录页
-        to.meta.title && (changeTitle(to.meta.title)) // 动态title
+        to.meta.title && changeTitle(to.meta.title) // 动态title
     }
 })
 
 // 路由跳转后的监听操作
 router.afterEach((to, _from) => {
     const name = to.matched[to.matched.length - 1].components?.default.name
-    if (to.meta && to.meta.cache && name && !keepAliveComponentsName.includes(name)) {
+    if (
+        to.meta
+        && to.meta.cache
+        && name
+        && !keepAliveComponentsName.includes(name)
+    ) {
         keepAliveStore.addKeepAliveComponentsName(name)
     }
 
     NProgress.done()
 })
 
-export {
-    modules,
-}
+export { modules }
 
 export default router

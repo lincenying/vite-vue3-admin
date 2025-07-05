@@ -26,7 +26,10 @@ export function useLockFn(fn: AnyFn, autoUnlock: boolean | 'auto' = 'auto') {
         lock.value = true
         try {
             const $return: any = await fn(...args)
-            if (autoUnlock === true || (autoUnlock === 'auto' && $return !== false)) {
+            if (
+                autoUnlock === true
+                || (autoUnlock === 'auto' && $return !== false)
+            ) {
                 lock.value = false
             }
         }
@@ -46,7 +49,7 @@ export function closeCurrentTab(nextPath?: string) {
     /** 拿到tab组件 */
     const tab = document.getElementById('boxTabCloseSelf')
     if (nextPath) {
-    /** 设置下一个tab的路径 */
+        /** 设置下一个tab的路径 */
         tab?.setAttribute('nextpath', nextPath)
     }
     /** 触发tab事件点击 */

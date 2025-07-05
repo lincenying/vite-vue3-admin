@@ -1,14 +1,31 @@
 <template>
-    <global-dialog ref="layerDom" :layer="layer" @update="onUpdate" @confirm="onSubmit">
-        <el-form ref="ruleForm" :model="form" :rules="rules" label-width="120px" class="mr-30px">
-            <el-form-item label="用户名：" prop="name">
-                管理员
-            </el-form-item>
+    <global-dialog
+        ref="layerDom"
+        :layer="layer"
+        @update="onUpdate"
+        @confirm="onSubmit"
+    >
+        <el-form
+            ref="ruleForm"
+            :model="form"
+            :rules="rules"
+            label-width="120px"
+            class="mr-30px"
+        >
+            <el-form-item label="用户名：" prop="name"> 管理员 </el-form-item>
             <el-form-item label="原密码：" prop="old">
-                <el-input v-model="form.old" placeholder="请输入原密码" show-password />
+                <el-input
+                    v-model="form.old"
+                    placeholder="请输入原密码"
+                    show-password
+                />
             </el-form-item>
             <el-form-item label="新密码：" prop="new">
-                <el-input v-model="form.new" placeholder="请输入新密码" show-password />
+                <el-input
+                    v-model="form.new"
+                    placeholder="请输入新密码"
+                    show-password
+                />
             </el-form-item>
         </el-form>
     </global-dialog>
@@ -53,7 +70,10 @@ function onSubmit() {
                     old: form.value.old,
                     new: form.value.new,
                 }
-                const { code } = await $api.post<void>('/user/passwordChange', params)
+                const { code } = await $api.post<void>(
+                    '/user/passwordChange',
+                    params,
+                )
                 if (code === 200) {
                     ElMessage({
                         type: 'success',

@@ -17,7 +17,7 @@ import './theme/modules/chinese/index.scss'
 
 // test mock server
 if (import.meta.env.VITE_APP_ENV === 'pre-release') {
-    (async () => {
+    ;(async () => {
         const { setupProdMockServer } = await import('./mockProdServer')
         setupProdMockServer()
     })()

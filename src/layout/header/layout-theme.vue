@@ -2,7 +2,14 @@
     <div title="系统设置" @click="handleDrawerChange(true)">
         <i class="iconfont icon-shezhi cursor-pointer" />
     </div>
-    <el-drawer v-model="drawer" class="layout-theme" title="系统设置" size="300px" :show-close="false" direction="rtl">
+    <el-drawer
+        v-model="drawer"
+        class="layout-theme"
+        title="系统设置"
+        size="300px"
+        :show-close="false"
+        direction="rtl"
+    >
         <h3>整体风格设置</h3>
         <div class="theme-box">
             <themeIcon
@@ -34,7 +41,12 @@
         <div class="other-setting">
             <div v-for="option in options" :key="option.name" class="list-item">
                 <span>{{ option.name }}</span>
-                <el-switch v-model="option.value" active-color="#13ce66" inactive-color="#ff4949" @change="onChange(option)" />
+                <el-switch
+                    v-model="option.value"
+                    active-color="#13ce66"
+                    inactive-color="#ff4949"
+                    @change="onChange(option)"
+                />
             </div>
         </div>
     </el-drawer>
@@ -103,7 +115,11 @@ const drawer = ref(false)
 const options: SettingOption[] = reactive([
     { name: '是否显示Logo', value: showLogo, store: 'showLogo' },
     { name: '是否显示面包屑导航', value: showTabs, store: 'showTabs' },
-    { name: '是否保持一个菜单展开', value: expandOneMenu, store: 'expandOneMenu' },
+    {
+        name: '是否保持一个菜单展开',
+        value: expandOneMenu,
+        store: 'expandOneMenu',
+    },
 ])
 function handleDrawerChange(value: boolean) {
     drawer.value = value

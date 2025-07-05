@@ -3,8 +3,16 @@
         <component :is="Component" :key="route.fullPath" />
     </router-view>
     <el-container v-else class="layout-box" h-100vh>
-        <div v-show="!isCollapse && !contentFullScreen" class="mask" @click="hideMenu" />
-        <el-aside v-show="!contentFullScreen" :width="isCollapse ? '60px' : '250px'" :class="isCollapse ? 'hide-aside' : 'show-side'">
+        <div
+            v-show="!isCollapse && !contentFullScreen"
+            class="mask"
+            @click="hideMenu"
+        />
+        <el-aside
+            v-show="!contentFullScreen"
+            :width="isCollapse ? '60px' : '250px'"
+            :class="isCollapse ? 'hide-aside' : 'show-side'"
+        >
             <layout-logo v-if="showLogo" />
             <layout-menu />
         </el-aside>
@@ -15,11 +23,21 @@
             <layout-tabs v-show="showTabs" />
             <el-main>
                 <router-view v-slot="{ Component, route }">
-                    <transition :name="route.meta.transition || 'fade-transform'" mode="out-in">
-                        <keep-alive v-if="keepAliveComponentsName" :include="keepAliveComponentsName as string[]">
+                    <transition
+                        :name="route.meta.transition || 'fade-transform'"
+                        mode="out-in"
+                    >
+                        <keep-alive
+                            v-if="keepAliveComponentsName"
+                            :include="keepAliveComponentsName as string[]"
+                        >
                             <component :is="Component" :key="route.fullPath" />
                         </keep-alive>
-                        <component :is="Component" v-else :key="route.fullPath" />
+                        <component
+                            :is="Component"
+                            v-else
+                            :key="route.fullPath"
+                        />
                     </transition>
                 </router-view>
             </el-main>
@@ -42,7 +60,9 @@ const globalStore = useGlobalStore()
 
 const Route = useRoute()
 
-const { isCollapse, contentFullScreen, showLogo, showTabs } = $(storeToRefs(globalStore))
+const { isCollapse, contentFullScreen, showLogo, showTabs } = $(
+    storeToRefs(globalStore),
+)
 const { keepAliveComponentsName } = $(storeToRefs(keepAliveStore))
 
 // 页面宽度变化监听后执行的方法

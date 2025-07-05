@@ -4,10 +4,12 @@ import { acceptHMRUpdate } from 'pinia'
 import { userStorage } from '~/composables/storage'
 
 const useUserStore = defineStore('userStore', () => {
-    const state: UserState = reactive(userStorage.value || {
-        token: '', // 登录token
-        info: {}, // 用户信息
-    })
+    const state: UserState = reactive(
+        userStorage.value || {
+            token: '', // 登录token
+            info: {}, // 用户信息
+        },
+    )
 
     function tokenChange(token: string) {
         state.token = token
@@ -18,7 +20,10 @@ const useUserStore = defineStore('userStore', () => {
 
     // login by login.vue
     async function login(params: { name: string, password: string }) {
-        const { code, data } = await $api.post<{ token: string }>('/user/login', params)
+        const { code, data } = await $api.post<{ token: string }>(
+            '/user/login',
+            params,
+        )
         if (code === 200 && data) {
             await getInfo({ token: data.token })
             tokenChange(data.token)

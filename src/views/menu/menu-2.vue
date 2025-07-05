@@ -57,7 +57,10 @@
                     <el-switch v-model="ruleForm.delivery" />
                 </el-form-item>
                 <el-form-item label="活动地点" prop="location">
-                    <el-segmented v-model="ruleForm.location" :options="locationOptions" />
+                    <el-segmented
+                        v-model="ruleForm.location"
+                        :options="locationOptions"
+                    />
                 </el-form-item>
                 <el-form-item label="活动类型" prop="type">
                     <el-checkbox-group v-model="ruleForm.type">
@@ -88,7 +91,9 @@
                     <el-input v-model="ruleForm.phone" />
                 </el-form-item>
                 <el-form-item label=" ">
-                    <el-button type="primary" @click="submitForm(ruleFormRef)">创建</el-button>
+                    <el-button type="primary" @click="submitForm(ruleFormRef)">
+                        创建
+                    </el-button>
                     <el-button @click="resetForm(ruleFormRef)">重置</el-button>
                 </el-form-item>
             </el-form>
@@ -97,7 +102,12 @@
 </template>
 
 <script lang="ts" setup>
-import type { ComponentSize, FormInstance, FormItemRule, FormRules } from 'element-plus'
+import type {
+    ComponentSize,
+    FormInstance,
+    FormItemRule,
+    FormRules,
+} from 'element-plus'
 import rules from '@lincy/async-validation'
 
 defineOptions({

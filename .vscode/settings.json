@@ -57,11 +57,6 @@
    * @see https://github.com/tailwindlabs/tailwindcss/discussions/5258#discussioncomment-1979394
    */
   "scss.lint.unknownAtRules": "ignore",
-  "stylelint.validate": [
-    "css",
-    "scss",
-    "postcss",
-    "less"
-  ],
+  "stylelint.validate": ["css", "scss", "postcss", "less"],
   "svn.ignoreMissingSvnWarning": true
 }

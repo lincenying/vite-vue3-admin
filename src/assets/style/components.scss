@@ -1,8 +1,8 @@
 .global-table {
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
     flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
     height: 100%;
 
     .system-table {
@@ -17,8 +17,8 @@
 
 .ok-loading {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     width: calc(100% - 30px);
     height: calc(100% - 30px);
     margin: 15px;

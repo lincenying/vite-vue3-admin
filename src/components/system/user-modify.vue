@@ -1,11 +1,26 @@
 <template>
-    <global-dialog ref="layerDom" :layer="layer" @update="onUpdate" @confirm="onSubmit">
-        <el-form ref="ruleForm" :model="form" :rules="rules" label-width="120px" class="mr-30px">
+    <global-dialog
+        ref="layerDom"
+        :layer="layer"
+        @update="onUpdate"
+        @confirm="onSubmit"
+    >
+        <el-form
+            ref="ruleForm"
+            :model="form"
+            :rules="rules"
+            label-width="120px"
+            class="mr-30px"
+        >
             <el-form-item label="名称：" prop="name">
                 <el-input v-model="form.name" placeholder="请输入名称" />
             </el-form-item>
             <el-form-item label="数字：" prop="sort">
-                <el-input v-model="form.sort" oninput="value=value.replace(/[^\d]/g,'')" placeholder="只能输入正整数" />
+                <el-input
+                    v-model="form.sort"
+                    oninput="value=value.replace(/[^\d]/g,'')"
+                    placeholder="只能输入正整数"
+                />
             </el-form-item>
             <el-form-item label="选择器：" prop="select">
                 <el-select v-model="form.select" placeholder="请选择" clearable>

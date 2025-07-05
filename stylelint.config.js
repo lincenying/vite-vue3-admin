@@ -4,7 +4,14 @@ export default {
         'at-rule-no-unknown': [
             true,
             {
-                ignoreAtRules: ['tailwind', 'apply', 'variants', 'responsive', 'screen', 'use'],
+                ignoreAtRules: [
+                    'tailwind',
+                    'apply',
+                    'variants',
+                    'responsive',
+                    'screen',
+                    'use',
+                ],
             },
         ],
     },

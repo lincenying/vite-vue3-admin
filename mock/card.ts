@@ -9,12 +9,14 @@ const rules: MockMethod<any, { page: number, pageSize: number }>[] = [
             return {
                 code: 200,
                 data: {
-                    [`list|${pageSize}`]: [{
-                        'id|+1': (page - 1) * pageSize + 1,
-                        'title': '@ctitle',
-                        'image': 'http://blog.51weblove.com/wp-content/uploads/2019/03/2019032323331541.jpg',
-                        'time': '@date(yyyy-MM-dd hh:mm:ss)',
-                    }],
+                    [`list|${pageSize}`]: [
+                        {
+                            'id|+1': (page - 1) * pageSize + 1,
+                            'title': '@ctitle',
+                            'image': 'http://blog.51weblove.com/wp-content/uploads/2019/03/2019032323331541.jpg',
+                            'time': '@date(yyyy-MM-dd hh:mm:ss)',
+                        },
+                    ],
                     pager: {
                         page,
                         pageSize,

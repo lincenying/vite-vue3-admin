@@ -7,13 +7,20 @@
 
     "Vue3.2+快速生成模板": {
         "prefix": "Vue3.2+",
-        "body": ["<template>", "    <div>$0</div>", "</template>\n", "<script setup lang=\"ts\">", "$1", "</script>\n"],
-        "description": "Vue3.2+"
+        "body": [
+            "<template>",
+            "    <div>$0</div>",
+            "</template>\n",
+            "<script setup lang=\"ts\">",
+            "$1",
+            "</script>\n",
+        ],
+        "description": "Vue3.2+",
     },
 
     "快速生成 Scss 段落": {
         "prefix": "style",
         "body": ["<style lang=\"scss\" scoped>", "$2", "</style>\n"],
-        "description": "快速生成 scss 段落"
-    }
+        "description": "快速生成 scss 段落",
+    },
 }

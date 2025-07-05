@@ -75,7 +75,7 @@ a {
     }
 
     &::-webkit-scrollbar-thumb {
-        background: rgba(144, 147, 153, 0.3);
+        background: rgb(144, 147, 153, 0.3);
         border-radius: 10px;
     }
 
@@ -85,11 +85,11 @@ a {
         }
 
         &::-webkit-scrollbar-thumb {
-            background: rgba(144, 147, 153, 0.3);
+            background: rgb(144, 147, 153, 0.3);
             border-radius: 10px;
 
             &:hover {
-                background: rgba(144, 147, 153, 0.5);
+                background: rgb(144, 147, 153, 0.5);
             }
         }
     }

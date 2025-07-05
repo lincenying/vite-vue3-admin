@@ -43,7 +43,14 @@ export function urlToBase64(url: string, mineType?: string): Promise<string> {
 }
 
 type TargetContext = '_self' | '_blank'
-export function openWindow(url: string, opt?: { target?: TargetContext | string, noopener?: boolean, noreferrer?: boolean }) {
+export function openWindow(
+    url: string,
+    opt?: {
+        target?: TargetContext | string
+        noopener?: boolean
+        noreferrer?: boolean
+    },
+) {
     const { target = '__blank', noopener = true, noreferrer = true } = opt || {}
     const feature: string[] = []
 
@@ -60,7 +67,12 @@ export function openWindow(url: string, opt?: { target?: TargetContext | string,
  * @param mime
  * @param bom
  */
-export function downloadByOnlineUrl(url: string, filename: string, mime?: string, bom?: BlobPart) {
+export function downloadByOnlineUrl(
+    url: string,
+    filename: string,
+    mime?: string,
+    bom?: BlobPart,
+) {
     urlToBase64(url).then((base64) => {
         downloadByBase64(base64, filename, mime, bom)
     })
@@ -73,7 +85,12 @@ export function downloadByOnlineUrl(url: string, filename: string, mime?: string
  * @param mime
  * @param bom
  */
-export function downloadByBase64(buf: string, filename: string, mime?: string, bom?: BlobPart) {
+export function downloadByBase64(
+    buf: string,
+    filename: string,
+    mime?: string,
+    bom?: BlobPart,
+) {
     const base64Buf = dataURLtoBlob(buf)
     downloadByData(base64Buf, filename, mime, bom)
 }
@@ -85,9 +102,16 @@ export function downloadByBase64(buf: string, filename: string, mime?: string, b
  * @param mime
  * @param bom
  */
-export function downloadByData(data: BlobPart, filename: string, mime?: string, bom?: BlobPart) {
+export function downloadByData(
+    data: BlobPart,
+    filename: string,
+    mime?: string,
+    bom?: BlobPart,
+) {
     const blobData = typeof bom !== 'undefined' ? [bom, data] : [data]
-    const blob = new Blob(blobData, { type: mime || 'application/octet-stream' })
+    const blob = new Blob(blobData, {
+        type: mime || 'application/octet-stream',
+    })
 
     const blobURL = window.URL.createObjectURL(blob)
     const tempLink = document.createElement('a')
@@ -117,7 +141,11 @@ interface DownloadByUrlType {
  * @param sUrl.target 打开地址目标
  * @param sUrl.fileName 保存文件名
  */
-export function downloadByUrl({ url, target = '_blank', fileName }: DownloadByUrlType): boolean {
+export function downloadByUrl({
+    url,
+    target = '_blank',
+    fileName,
+}: DownloadByUrlType): boolean {
     const isChrome = window.navigator.userAgent.toLowerCase().includes('chrome')
     const isSafari = window.navigator.userAgent.toLowerCase().includes('safari')
 
@@ -131,7 +159,8 @@ export function downloadByUrl({ url, target = '_blank', fileName }: DownloadByUr
         link.target = target
 
         if (link.download !== undefined) {
-            link.download = fileName || url.substring(url.lastIndexOf('/') + 1, url.length)
+            link.download
+                = fileName || url.substring(url.lastIndexOf('/') + 1, url.length)
         }
 
         // if (document.createEvent) {

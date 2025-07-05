@@ -10,7 +10,8 @@ const config: { server: ServerOptions, build: BuildOptions } = {
         port: 3101,
         host: '0.0.0.0',
         open: true,
-        proxy: { // 代理配置
+        proxy: {
+            // 代理配置
             '/api': {
                 target: 'http://127.0.0.1:3101',
                 changeOrigin: true,
@@ -45,12 +46,12 @@ const config: { server: ServerOptions, build: BuildOptions } = {
                     if (id.includes('__uno.css')) {
                         return 'unocss'
                     }
-                //     // 处理js分块
-                //     if (id.includes('.js') || id.includes('.mjs') || id.includes('.cjs')) {
-                //         if (id.includes('node_modules'))
-                //             return 'vendor'
-                //         return 'main'
-                //     }
+                    //     // 处理js分块
+                    //     if (id.includes('.js') || id.includes('.mjs') || id.includes('.cjs')) {
+                    //         if (id.includes('node_modules'))
+                    //             return 'vendor'
+                    //         return 'main'
+                    //     }
                 },
             },
         },

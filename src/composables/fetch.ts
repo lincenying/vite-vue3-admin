@@ -39,8 +39,10 @@ axios.interceptors.response.use(
     },
 )
 
-function checkStatus(response: AxiosResponse<ResponseData<any>>): ResponseData<any> {
-    if ((response.status === 200 || response.status === 304)) {
+function checkStatus(
+    response: AxiosResponse<ResponseData<any>>,
+): ResponseData<any> {
+    if (response.status === 200 || response.status === 304) {
         return response.data
     }
     if (response.status === 401) {
@@ -49,7 +51,6 @@ function checkStatus(response: AxiosResponse<ResponseData<any>>): ResponseData<a
             info: response.statusText || response.toString(),
             data: response.statusText || response.toString(),
             message: `您还没有登录, 或者登录超时!`,
-
         }
     }
     return {
@@ -144,7 +145,8 @@ const api: ApiType = {
             url,
         }
         if (userStorage.value && userStorage.value.token) {
-            (config.headers as AxiosHeaders).Authorization = `Bearer ${userStorage.value.token}`
+            ;(config.headers as AxiosHeaders).Authorization
+                = `Bearer ${userStorage.value.token}`
         }
 
         if (method === 'get') {

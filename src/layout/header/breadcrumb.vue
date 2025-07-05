@@ -1,8 +1,14 @@
 <template>
     <el-breadcrumb class="layout-header-breadcrumb" separator="/">
         <transition-group appear name="breadcrumb">
-            <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
-                <span v-if="item.redirect === 'noRedirect' || index === levelList.length - 1" class="no-redirect">{{ item.meta.title }}</span>
+            <el-breadcrumb-item
+                v-for="(item, index) in levelList"
+                :key="item.path"
+            >
+                <span
+                    v-if="item.redirect === 'noRedirect' || index === levelList.length - 1"
+                    class="no-redirect"
+                >{{ item.meta.title }}</span>
                 <a v-else @click.prevent="handleLink(item)">
                     {{ item.meta.title }}
                 </a>
@@ -25,7 +31,11 @@ const levelList = ref<Route[]>([])
 const route = useRoute()
 const router = useRouter()
 
-function findParentNames(arr: Route[], targetName: string, parentNames: Route[] = []): null | Route[] {
+function findParentNames(
+    arr: Route[],
+    targetName: string,
+    parentNames: Route[] = [],
+): null | Route[] {
     for (let i = 0; i < arr.length; i++) {
         const item = arr[i]
         // 如果找到目标name，则返回当前的父级names数组
@@ -42,7 +52,11 @@ function findParentNames(arr: Route[], targetName: string, parentNames: Route[] 
                 ...item,
                 children: [],
             })
-            const foundNames = findParentNames(item.children, targetName, newParentNames)
+            const foundNames = findParentNames(
+                item.children,
+                targetName,
+                newParentNames,
+            )
             // 如果在子数组中找到了目标name，直接返回父级names数组
             if (foundNames) {
                 return foundNames
@@ -56,8 +70,12 @@ function findParentNames(arr: Route[], targetName: string, parentNames: Route[] 
 function getBreadcrumb(): void {
     const matched = route.matched.filter(item => item.meta && item.meta.title)
     if (matched && matched[0]) {
-        const fullMatched = findParentNames(modules, matched[0].meta.title) || []
-        levelList.value = fullMatched.filter(item => item.meta && item.meta.title && item.meta.breadcrumb !== false)
+        const fullMatched
+            = findParentNames(modules, matched[0].meta.title) || []
+        levelList.value = fullMatched.filter(
+            item =>
+                item.meta && item.meta.title && item.meta.breadcrumb !== false,
+        )
     }
 }
 getBreadcrumb()

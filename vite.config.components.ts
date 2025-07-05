@@ -6,7 +6,7 @@ import Icons from 'unplugin-icons/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 
-export default (): PluginOption[] => ([
+export default (): PluginOption[] => [
     /**
      * 按需自动导入API
      * @see https://github.com/antfu/unplugin-auto-import#readme
@@ -33,12 +33,14 @@ export default (): PluginOption[] => ([
             },
         ],
         dts: 'src/auto-imports.d.ts',
-        dirs: ['src/components', 'src/**/components', 'src/composables', 'src/stores'],
-
-        resolvers: [
-            ElementPlusResolver(),
-            IconsResolver(),
+        dirs: [
+            'src/components',
+            'src/**/components',
+            'src/composables',
+            'src/stores',
         ],
+
+        resolvers: [ElementPlusResolver(), IconsResolver()],
         defaultExportByFilename: false,
         vueTemplate: true,
     }),
@@ -77,4 +79,4 @@ export default (): PluginOption[] => ([
     Icons({
         autoInstall: true,
     }),
-])
+]

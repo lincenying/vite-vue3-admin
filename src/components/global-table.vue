@@ -1,8 +1,21 @@
 <template>
     <div class="global-table">
-        <el-table v-bind="$attrs" ref="tableRef" class="system-table" border height="100%" :data="data" @selection-change="onSelectionChange">
-            <el-table-column v-if="showSelection" type="selection" align="center" width="50" />
-            <el-table-column v-if="showIndex" label="序号" width="60" align="center">
+        <el-table
+            v-bind="$attrs"
+            ref="tableRef"
+            class="system-table"
+            border height="100%"
+            :data="data"
+            @selection-change="onSelectionChange"
+        >
+            <el-table-column
+                v-if="showSelection"
+                type="selection" align="center" width="50"
+            />
+            <el-table-column
+                v-if="showIndex"
+                label="序号" width="60" align="center"
+            >
                 <template #default="scope">
                     {{ (page.index - 1) * page.size + scope.$index + 1 }}
                 </template>
@@ -29,7 +42,11 @@ import type { TableInstance } from 'element-plus'
 import type { GlobalTablePage } from './components.types'
 import type { TableListType, UpdatePageType, UserListType } from '~/types'
 
-type DataType<Key> = Key extends 'user' ? UserListType : (Key extends 'table' ? TableListType : unknown)
+type DataType<Key> = Key extends 'user'
+    ? UserListType
+    : Key extends 'table'
+        ? TableListType
+        : unknown
 
 // ['getTableData', 'selectionChange', 'updatePage']
 
@@ -85,7 +102,10 @@ function handleSizeChange(val: number) {
         timer = null
     }, 100)
     tableRef.value?.setScrollTop(0)
-    emit('updatePage', [{ key: 'size', value: val }, { key: 'index', value: 1 }])
+    emit('updatePage', [
+        { key: 'size', value: val },
+        { key: 'index', value: 1 },
+    ])
 }
 
 /** 选择监听器 */

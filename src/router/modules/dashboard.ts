@@ -15,13 +15,18 @@ const route: Route[] = [
         children: [
             {
                 path: '/dashboard',
-                component: createNameComponent(() => import('@/views/dashboard/index.vue')),
-                meta: { title: '仪表盘', icon: 'iconfont icon-dashboard', hideClose: true },
+                component: createNameComponent(
+                    () => import('@/views/dashboard/index.vue'),
+                ),
+                meta: {
+                    title: '仪表盘',
+                    icon: 'iconfont icon-dashboard',
+                    hideClose: true,
+                },
                 children: [],
             },
         ],
     },
-
 ]
 
 export default route

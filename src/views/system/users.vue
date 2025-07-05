@@ -5,17 +5,33 @@
                 <el-button type="primary" @click="handleAdd">
                     新增 <el-icon slots="icon" ml-5px><i-ep-plus /></el-icon>
                 </el-button>
-                <el-popconfirm title="确定删除选中的数据吗？" @confirm="handleDel(chooseData)">
+                <el-popconfirm
+                    title="确定删除选中的数据吗？"
+                    @confirm="handleDel(chooseData)"
+                >
                     <template #reference>
-                        <el-button type="danger" :disabled="chooseData.length === 0">
-                            批量删除 <el-icon slots="icon" ml-5px><i-ep-delete /></el-icon>
+                        <el-button
+                            type="danger"
+                            :disabled="chooseData.length === 0"
+                        >
+                            批量删除
+                            <el-icon slots="icon" ml-5px>
+                                <i-ep-delete />
+                            </el-icon>
                         </el-button>
                     </template>
                 </el-popconfirm>
             </div>
             <div class="global-box-form-search">
-                <el-input v-model="query.input" placeholder="请输入关键词进行检索" />
-                <el-button type="primary" class="search-btn" @click="handleSubmit">
+                <el-input
+                    v-model="query.input"
+                    placeholder="请输入关键词进行检索"
+                />
+                <el-button
+                    type="primary"
+                    class="search-btn"
+                    @click="handleSubmit"
+                >
                     搜索 <el-icon slots="icon" ml-5px><i-ep-search /></el-icon>
                 </el-button>
             </div>
@@ -31,18 +47,31 @@
                 @selection-change="onSelectionChange"
                 @update-page="onUpdatePage"
             >
-                <el-table-column prop="id" label="Id" align="center" width="80" />
+                <el-table-column
+                    prop="id"
+                    label="Id"
+                    align="center"
+                    width="80"
+                />
                 <el-table-column prop="name" label="用户名" align="center" />
                 <el-table-column prop="nickName" label="昵称" align="center" />
                 <el-table-column prop="role" label="角色" align="center" />
-                <el-table-column prop="isAdmin" label="超级管理员" align="center">
+                <el-table-column
+                    prop="isAdmin"
+                    label="超级管理员"
+                    align="center"
+                >
                     <template #default="{ row }: ScopeRow">
-                        <span class="mr-10px">{{ row.isAdmin === 1 ? "是" : "否" }}</span>
+                        <span class="mr-10px">{{
+                            row.isAdmin === 1 ? '是' : '否'
+                        }}</span>
                     </template>
                 </el-table-column>
                 <el-table-column prop="status" label="状态" align="center">
                     <template #default="{ row }: ScopeRow">
-                        <span class="mr-10px">{{ row.status === 1 ? "启用" : "禁用" }}</span>
+                        <span class="mr-10px">{{
+                            row.status === 1 ? '启用' : '禁用'
+                        }}</span>
                         <el-switch
                             v-model="row.status"
                             active-color="#13ce66"
@@ -54,10 +83,18 @@
                         />
                     </template>
                 </el-table-column>
-                <el-table-column label="操作" align="center" fixed="right" width="200">
+                <el-table-column
+                    label="操作"
+                    align="center"
+                    fixed="right"
+                    width="200"
+                >
                     <template #default="{ row }: ScopeRow">
                         <el-button @click="handleEdit(row)">编辑</el-button>
-                        <el-popconfirm title="确定删除选中的数据吗？" @confirm="handleDel([row])">
+                        <el-popconfirm
+                            title="确定删除选中的数据吗？"
+                            @confirm="handleDel([row])"
+                        >
                             <template #reference>
                                 <el-button type="danger">删除</el-button>
                             </template>
@@ -65,13 +102,21 @@
                     </template>
                 </el-table-column>
             </globalTable>
-            <dialogUserModify v-if="layer.show" :layer="layer" @update="(payload: boolean) => layer.show = payload" @get-table-data="getTableData" />
+            <dialogUserModify
+                v-if="layer.show"
+                :layer="layer"
+                @update="(payload: boolean) => (layer.show = payload)"
+                @get-table-data="getTableData"
+            />
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
-import type { GlobalDialogLayer, GlobalTablePage } from '~/components/components.types'
+import type {
+    GlobalDialogLayer,
+    GlobalTablePage,
+} from '~/components/components.types'
 import type { UpdatePageType, UserListType } from '~/types'
 
 import { ElMessage } from '@/config/element'
@@ -138,7 +183,10 @@ async function getTableData(init?: boolean) {
         pageSize: page.size,
         ...query,
     }
-    const { code, data } = await $api.post<ResDataLists<UserListType[]>>('/system/user/list', params)
+    const { code, data } = await $api.post<ResDataLists<UserListType[]>>(
+        '/system/user/list',
+        params,
+    )
     if (code === 200) {
         tableData.value = data.list.map(item => ({
             ...item,
@@ -152,9 +200,11 @@ async function getTableData(init?: boolean) {
 // 删除功能
 async function handleDel(data: UserListType[]) {
     const params = {
-        ids: data.map((e) => {
-            return e.id
-        }).join(','),
+        ids: data
+            .map((e) => {
+                return e.id
+            })
+            .join(','),
     }
     const { code } = await $api.post<void>('/system/user/del', params)
     if (code === 200) {

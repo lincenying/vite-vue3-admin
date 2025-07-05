@@ -4,20 +4,42 @@
             <div ref="box" class="box" mb-15px h="[calc(100%-50px)]">
                 <ElScrollbar ref="scrollBarRef" height="100%">
                     <el-row :gutter="20">
-                        <el-col v-for="row in list" :key="row.id" :lg="4" :md="8" :sm="12" :xs="24">
-                            <el-card :body-style="{ padding: '0px' }" shadow="hover">
+                        <el-col
+                            v-for="row in list"
+                            :key="row.id"
+                            :lg="4"
+                            :md="8"
+                            :sm="12"
+                            :xs="24"
+                        >
+                            <el-card
+                                :body-style="{ padding: '0px' }"
+                                shadow="hover"
+                            >
                                 <img :src="row.image" block w-full>
                                 <div p-14px text-left>
                                     <span>{{ row.title }}</span>
                                     <div mt-13px flex-bc lh-12px>
-                                        <time text="13px hex-999">{{ row.time }}</time>
-                                        <el-text type="primary" p-0 @click="showEditor">编辑</el-text>
+                                        <time text="13px hex-999">{{
+                                            row.time
+                                        }}</time>
+                                        <el-text
+                                            type="primary"
+                                            p-0
+                                            @click="showEditor"
+                                        >
+                                            编辑
+                                        </el-text>
                                     </div>
                                 </div>
                             </el-card>
                         </el-col>
                     </el-row>
-                    <el-empty v-show="list.length === 0" description="空空如也~" class="h-500px" />
+                    <el-empty
+                        v-show="list.length === 0"
+                        description="空空如也~"
+                        class="h-500px"
+                    />
                 </ElScrollbar>
             </div>
 
@@ -66,7 +88,10 @@ async function getListData() {
         page: page.index,
         pageSize: page.size,
     }
-    const { code, data } = await $api.post<ResDataLists<CardListType[]>>('/card/list', params)
+    const { code, data } = await $api.post<ResDataLists<CardListType[]>>(
+        '/card/list',
+        params,
+    )
     stop()
     toggleLoading(false)
     if (code === 200) {
@@ -88,8 +113,7 @@ function onSizeChange(val: number) {
 }
 
 onMounted(() => {
-    box.value?.addEventListener('resize', () => {
-    })
+    box.value?.addEventListener('resize', () => {})
 })
 function showEditor() {}
 getListData()

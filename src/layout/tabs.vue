@@ -1,10 +1,18 @@
 <template>
     <div class="layout-tabs">
-        <el-scrollbar ref="scrollbarDom" class="scroll-container tags-view-container" @wheel.passive="handleWhellScroll" @scroll="handleScroll">
+        <el-scrollbar
+            ref="scrollbarDom"
+            class="scroll-container tags-view-container"
+            @wheel.passive="handleWhellScroll"
+            @scroll="handleScroll"
+        >
             <tabsItem
-                v-for="menu in tabsStorage" :key="menu.meta.title"
-                :menu="menu" :active="activeMenu.path === menu.path"
-                @close="delMenu(menu)" @reload="handlePageReload"
+                v-for="menu in tabsStorage"
+                :key="menu.meta.title"
+                :menu="menu"
+                :active="activeMenu.path === menu.path"
+                @close="delMenu(menu)"
+                @reload="handlePageReload"
             />
         </el-scrollbar>
         <div class="layout-tabs-handle">
@@ -18,23 +26,53 @@
                 </div>
                 <template #dropdown>
                     <el-dropdown-menu>
-                        <el-dropdown-item class="tab-ddropdown-item" @click="handlePageReload">
-                            <el-icon slots="icon" class="mr-5px"><i-ad-reload-outlined /></el-icon>重新加载
+                        <el-dropdown-item
+                            class="tab-ddropdown-item"
+                            @click="handlePageReload"
+                        >
+                            <el-icon slots="icon" class="mr-5px">
+                                <i-ad-reload-outlined />
+                            </el-icon>重新加载
                         </el-dropdown-item>
-                        <el-dropdown-item class="tab-ddropdown-item" :disabled="currentDisabled" @click="handleCloseCurrentRoute">
-                            <el-icon slots="icon" class="mr-5px"><i-ep-CircleClose /></el-icon>关闭当前标签
+                        <el-dropdown-item
+                            class="tab-ddropdown-item"
+                            :disabled="currentDisabled"
+                            @click="handleCloseCurrentRoute"
+                        >
+                            <el-icon slots="icon" class="mr-5px">
+                                <i-ep-CircleClose />
+                            </el-icon>关闭当前标签
                         </el-dropdown-item>
-                        <el-dropdown-item class="tab-ddropdown-item" :disabled="tabsStorage.length < 3" @click="handleCloseOtherRoute">
-                            <el-icon slots="icon" class="mr-5px"><i-ep-CircleClose /></el-icon>关闭其他标签
+                        <el-dropdown-item
+                            class="tab-ddropdown-item"
+                            :disabled="tabsStorage.length < 3"
+                            @click="handleCloseOtherRoute"
+                        >
+                            <el-icon slots="icon" class="mr-5px">
+                                <i-ep-CircleClose />
+                            </el-icon>关闭其他标签
                         </el-dropdown-item>
-                        <el-dropdown-item class="tab-ddropdown-item" :disabled="tabsStorage.length <= 1" @click="handleCloseAllRoute">
-                            <el-icon slots="icon" class="mr-5px"><i-ep-CircleClose /></el-icon>关闭所有标签
+                        <el-dropdown-item
+                            class="tab-ddropdown-item"
+                            :disabled="tabsStorage.length <= 1"
+                            @click="handleCloseAllRoute"
+                        >
+                            <el-icon slots="icon" class="mr-5px">
+                                <i-ep-CircleClose />
+                            </el-icon>关闭所有标签
                         </el-dropdown-item>
                     </el-dropdown-menu>
                 </template>
             </el-dropdown>
-            <el-tooltip class="item" effect="dark" :content="contentFullScreen ? '退出全屏' : '全屏'" placement="bottom">
-                <el-icon @click="handleFullscreen"><i-ep-full-screen /></el-icon>
+            <el-tooltip
+                class="item"
+                effect="dark"
+                :content="contentFullScreen ? '退出全屏' : '全屏'"
+                placement="bottom"
+            >
+                <el-icon @click="handleFullscreen">
+                    <i-ep-full-screen />
+                </el-icon>
             </el-tooltip>
         </div>
     </div>
@@ -91,9 +129,10 @@ function handleFullscreen() {
 }
 // 当前页面组件重新加载
 function handlePageReload() {
-    const self = route.matched[route.matched.length - 1].instances.default as ComponentPublicInstance & {
-        handleReload: AnyFn
-    }
+    const self = route.matched[route.matched.length - 1].instances
+        .default as ComponentPublicInstance & {
+            handleReload: AnyFn
+        }
     self.handleReload()
 }
 
@@ -172,9 +211,15 @@ function initMenu(menu: TabsType) {
 function setPosition() {
     if (scrollbarDom.value) {
         const domBox = {
-            scrollbar: scrollbarDom.value.$el.querySelector('.el-scrollbar__wrap ') as HTMLDivElement,
-            activeDom: scrollbarDom.value.$el.querySelector('.active') as HTMLDivElement,
-            activeFather: scrollbarDom.value.$el.querySelector('.el-scrollbar__view') as HTMLDivElement,
+            scrollbar: scrollbarDom.value.$el.querySelector(
+                '.el-scrollbar__wrap ',
+            ) as HTMLDivElement,
+            activeDom: scrollbarDom.value.$el.querySelector(
+                '.active',
+            ) as HTMLDivElement,
+            activeFather: scrollbarDom.value.$el.querySelector(
+                '.el-scrollbar__view',
+            ) as HTMLDivElement,
         }
         let hasDoms = true
         Object.keys(domBox).forEach((dom) => {
@@ -191,7 +236,11 @@ function setPosition() {
             activeDom: domBox.activeDom.getBoundingClientRect(),
             activeFather: domBox.activeFather.getBoundingClientRect(),
         }
-        const num = domData.activeDom.x - domData.activeFather.x + (1 / 2) * domData.activeDom.width - (1 / 2) * domData.scrollbar.width
+        const num
+            = domData.activeDom.x
+                - domData.activeFather.x
+                + (1 / 2) * domData.activeDom.width
+                - (1 / 2) * domData.scrollbar.width
         domBox.scrollbar.scrollLeft = num
     }
 }

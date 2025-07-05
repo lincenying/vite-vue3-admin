@@ -1,44 +1,50 @@
 import type { MockMethod } from './_mock.types'
 import type { UserListType } from '~/types'
 
-const users: UserListType[] = [{
-    name: 'admin',
-    nickName: 'admin',
-    role: '系统管理员',
-    password: '123456',
-    isAdmin: '1',
-    token: 'admin',
-    info: {
-        name: '系统管理员',
+const users: UserListType[] = [
+    {
+        name: 'admin',
+        nickName: 'admin',
+        role: '系统管理员',
+        password: '123456',
+        isAdmin: '1',
+        token: 'admin',
+        info: {
+            name: '系统管理员',
+        },
     },
-}, {
-    name: 'editor',
-    nickName: 'admin',
-    role: '系统管理员',
-    password: '123456',
-    isAdmin: '1',
-    token: 'editor',
-    info: {
-        name: '编辑人员',
+    {
+        name: 'editor',
+        nickName: 'admin',
+        role: '系统管理员',
+        password: '123456',
+        isAdmin: '1',
+        token: 'editor',
+        info: {
+            name: '编辑人员',
+        },
     },
-}, {
-    name: 'test',
-    nickName: 'admin',
-    role: '系统管理员',
-    password: '123456',
-    isAdmin: '1',
-    token: 'test',
-    info: {
-        name: '测试人员',
+    {
+        name: 'test',
+        nickName: 'admin',
+        role: '系统管理员',
+        password: '123456',
+        isAdmin: '1',
+        token: 'test',
+        info: {
+            name: '测试人员',
+        },
     },
-}]
+]
 const mockList: MockMethod[] = [
     {
         url: '/mock/user/login',
         method: 'post',
         response: ({ body }) => {
             const user = users.find((user) => {
-                return body.name === user.name && body.password === user.password
+                return (
+                    body.name === user.name && body.password === user.password
+                )
             })
             if (user) {
                 return {

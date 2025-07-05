@@ -21,13 +21,20 @@ export interface MockMethod<Q = any, B = any> {
     method?: MethodType
     timeout?: number
     statusCode?: number
-    response?: ((this: RespThisType, opt: {
-        url: Recordable
-        body: B
-        query: Q
-        headers: Recordable
-    }) => any)
-    rawResponse?: (this: RespThisType, req: IncomingMessage, res: ServerResponse) => void
+    response?: (
+        this: RespThisType,
+        opt: {
+            url: Recordable
+            body: B
+            query: Q
+            headers: Recordable
+        },
+    ) => any
+    rawResponse?: (
+        this: RespThisType,
+        req: IncomingMessage,
+        res: ServerResponse,
+    ) => void
 }
 export interface MockConfig {
     env: Record<string, any>

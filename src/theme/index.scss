@@ -20,7 +20,7 @@
     --system-header-background: #fff;
     --system-header-text-color: #303133;
     --system-header-breadcrumb-text-color: #606266;
-    --system-header-item-hover-color: rgba(0, 0, 0, 0.06);
+    --system-header-item-hover-color: rgb(0, 0, 0, 0.06);
     --system-header-border-color: #d8dce5;
     --system-header-tab-background: #fff;
 
@@ -31,7 +31,7 @@
     // 页面区域, 这一块是你在自己写的文件中使用主题，核心需要关注的地方
     --system-page-background: #fff; // 主背景
     --system-page-color: #303133; // 主要的文本颜色
-    --system-page-tip-color: rgba(0, 0, 0, 0.45); // 协助展示的文本颜色
+    --system-page-tip-color: rgb(0, 0, 0, 0.45); // 协助展示的文本颜色
     --system-page-border-color: #ebeef5; // 通用的边框配置色，便于主题扩展
 
     // element主题色修改
@@ -44,7 +44,9 @@ body #nprogress .bar {
 }
 
 body #nprogress .peg {
-    box-shadow: 0 0 10px var(--system-primary-color), 0 0 5px var(--system-primary-color);
+    box-shadow:
+        0 0 10px var(--system-primary-color),
+        0 0 5px var(--system-primary-color);
 }
 
 body #nprogress .spinner-icon {

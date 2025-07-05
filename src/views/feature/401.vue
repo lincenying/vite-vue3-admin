@@ -6,8 +6,12 @@
             </div>
             <div class="bullshit">
                 <div class="bullshit__oops">无权限访问!</div>
-                <div class="bullshit__info">您没有访问权限，如需权限，请联系上级授权！</div>
-                <el-button type="primary" round @click="router.push('/')">跳转首页</el-button>
+                <div class="bullshit__info">
+                    您没有访问权限，如需权限，请联系上级授权！
+                </div>
+                <el-button type="primary" round @click="router.push('/')">
+                    跳转首页
+                </el-button>
             </div>
         </div>
     </div>

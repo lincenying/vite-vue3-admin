@@ -6,7 +6,7 @@ import DefinePropsRefs from '@vue-macros/define-props-refs/vite'
 import DefineProps from '@vue-macros/define-props/vite'
 import ReactivityTransform from '@vue-macros/reactivity-transform/vite'
 
-export default (): PluginOption[] => ([
+export default (): PluginOption[] => [
     vuePlugin({
         template: {
             compilerOptions: {
@@ -33,4 +33,4 @@ export default (): PluginOption[] => ([
      * @see https://vue-macros.sxzz.moe/zh-CN/macros/define-props-refs.html
      */
     DefinePropsRefs(),
-])
+]
