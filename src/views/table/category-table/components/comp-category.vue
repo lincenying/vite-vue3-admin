@@ -2,11 +2,7 @@
     <div class="table-category-left">
         <div class="header-box">
             <h2>分类列表</h2>
-            <el-input
-                v-model="input"
-                placeholder="请输入内容"
-                @input="searchData(true)"
-            />
+            <el-input v-model="input" placeholder="请输入内容" @input="searchData(true)" />
         </div>
         <ul
             ref="listDom"
@@ -29,7 +25,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { CategoryType } from '~/types'
+import type { CategoryType } from '~/types/global.types'
 
 import { debounce } from 'throttle-debounce'
 import {

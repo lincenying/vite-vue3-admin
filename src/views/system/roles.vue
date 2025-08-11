@@ -1,21 +1,13 @@
 <template>
-    <div class="global-box table-category-right">
-        <div class="global-box-form flex">
+    <div class="global-box system-manage-user">
+        <div class="global-box-form" flex>
             <div class="global-box-form-handle">
-                <el-button type="primary" @click="handleAdd">
-                    新增
-                    <el-icon slots="icon" class="ml-5px">
-                        <i-ep-plus />
-                    </el-icon>
-                </el-button>
-                <el-popconfirm
-                    title="确定删除选中的数据吗？"
-                    @confirm="handleDel(chooseData)"
-                >
+                <el-button type="primary" @click="handleAdd"> 新增 <el-icon slots="icon" ml-5px><i-ep-plus /></el-icon> </el-button>
+                <el-popconfirm title="确定删除选中的数据吗？" @confirm="handleDel(chooseData)">
                     <template #reference>
                         <el-button type="danger" :disabled="chooseData.length === 0">
                             批量删除
-                            <el-icon slots="icon" class="ml-5px">
+                            <el-icon slots="icon" ml-5px>
                                 <i-ep-delete />
                             </el-icon>
                         </el-button>
@@ -25,30 +17,25 @@
             <div class="global-box-form-search">
                 <el-input v-model="query.input" placeholder="请输入关键词进行检索" />
                 <el-button type="primary" class="search-btn" @click="handleSubmit">
-                    搜索
-                    <el-icon slots="icon" class="ml-5px">
-                        <i-ep-search />
-                    </el-icon>
+                    搜索 <el-icon slots="icon" ml-5px><i-ep-search /></el-icon>
                 </el-button>
             </div>
         </div>
         <div class="global-box-table">
-            <global-table
-                ref="globalTableRef"
+            <globalTable
                 v-loading="loading"
-                prop-key="table"
                 :page="page"
-                :show-index="true"
                 :show-selection="true"
+                prop-key="role"
                 :data="tableData"
                 @get-table-data="getTableData"
                 @selection-change="onSelectionChange"
                 @update-page="onUpdatePage"
             >
-                <el-table-column prop="name" label="名称" align="center" />
-                <el-table-column prop="number" label="数字" align="center" />
-                <el-table-column prop="chooseName" label="选择器" align="center" />
-                <el-table-column prop="radioName" label="单选框" align="center" />
+                <el-table-column prop="id" label="Id" align="center" width="80" />
+                <el-table-column prop="name" label="角色名称" align="center" width="180" />
+                <el-table-column prop="desc" label="角色描述" />
+                <el-table-column prop="time" label="创建时间" align="center" width="200" />
                 <el-table-column label="操作" align="center" fixed="right" width="200">
                     <template #default="{ row }: ScopeRow">
                         <el-button @click="handleEdit(row)">编辑</el-button>
@@ -59,8 +46,8 @@
                         </el-popconfirm>
                     </template>
                 </el-table-column>
-            </global-table>
-            <dialog-category-modify
+            </globalTable>
+            <dialogRoleModify
                 v-if="layer.show"
                 :layer="layer"
                 @update="(payload: boolean) => (layer.show = payload)"
@@ -71,23 +58,18 @@
 </template>
 
 <script lang="ts" setup>
-import type {
-    GlobalDialogLayer,
-    GlobalTablePage,
-} from '~/types/components.types'
-import type { CategoryType, TableListType, UpdatePageType } from '~/types/global.types'
+import type { GlobalDialogLayer, GlobalTablePage } from '~/types/components.types'
+import type { RoleListType, UpdatePageType } from '~/types/global.types'
 
-import { activeCategoryKey } from '~/composables/provide'
-import { ElMessage } from '~/config/element'
-
-import { radioData, selectData } from '~/views/table/enum'
+import { ElMessage } from '@/config/element'
 
 interface ScopeRow {
-    row: TableListType
+    row: RoleListType
 }
 
 defineOptions({
-    name: 'CompCategoryTable',
+    name: 'Roles',
+    inheritAttrs: true,
 })
 
 // 存储搜索用的数据
@@ -95,11 +77,12 @@ const query = reactive({
     input: '',
 })
 // 弹窗控制器
-const layer: GlobalDialogLayer<Objable> = reactive({
+const layer: GlobalDialogLayer<Nullable<RoleListType>> = reactive({
     show: false,
     title: '新增',
     showButton: true,
     width: '500px',
+    row: null,
 })
 // 分页参数, 供table使用
 const page: GlobalTablePage = reactive({
@@ -107,16 +90,13 @@ const page: GlobalTablePage = reactive({
     size: 20,
     total: 0,
 })
-const activeCategory = inject(activeCategoryKey, ref({} as CategoryType))
 
 const [loading, toggleLoading] = useToggle(false)
-const tableData = ref<TableListType[]>([])
-const chooseData = ref<TableListType[]>([])
-
-const globalTableRef = ref<any>()
+const tableData = ref<RoleListType[]>([])
+const chooseData = ref<RoleListType[]>([])
 
 // 更新选中
-function onSelectionChange(val: any[]) {
+function onSelectionChange(val: any[]): any {
     chooseData.value = val
 }
 
@@ -132,58 +112,39 @@ function onUpdatePage(payload: UpdatePageType | UpdatePageType[]) {
     }
     getTableData(false)
 }
-
-/**
- * 获取表格数据
- * @param isInit Boolean ，默认为false，用于判断是否需要初始化分页
- */
-async function getTableData(isInit: boolean) {
+// 获取表格数据
+// params <init> Boolean ，默认为false，用于判断是否需要初始化分页
+async function getTableData(init?: boolean) {
     const { stop } = useTimeoutFn(() => toggleLoading(true), 200)
-    if (isInit) {
+    if (init) {
         page.index = 1
     }
 
     const params = {
-        category: activeCategory.value.id,
         page: page.index,
         pageSize: page.size,
         ...query,
     }
-    const { code, data } = await $api.post<ResDataLists<TableListType[]>>(
-        '/table/list',
+    const { code, data } = await $api.post<ResDataLists<RoleListType[]>>(
+        '/system/role/list',
         params,
     )
     if (code === 200) {
-        if (Array.isArray(data.list)) {
-            tableData.value = data.list.map((item) => {
-                const select = selectData.find(
-                    select => select.value === item.choose,
-                )
-                const radio = radioData.find(
-                    select => select.value === item.radio,
-                )
-                return {
-                    ...item,
-                    chooseName: select ? select.label : item.choose,
-                    radioName: radio ? radio.label : item.radio,
-                }
-            })
-        }
+        tableData.value = data.list.map(item => ({
+            ...item,
+            loading: false,
+        }))
         page.total = Number(data.pager.total)
     }
     stop()
     toggleLoading(false)
 }
 // 删除功能
-async function handleDel(data: TableListType[]) {
+async function handleDel(data: RoleListType[]) {
     const params = {
-        ids: data
-            .map((e) => {
-                return e.id
-            })
-            .join(','),
+        ids: data.map(e => e.id).join(','),
     }
-    const { code } = await $api.post('/table/del', params)
+    const { code } = await $api.post<void>('/system/role/del', params)
     if (code === 200) {
         ElMessage({
             type: 'success',
@@ -195,11 +156,11 @@ async function handleDel(data: TableListType[]) {
 // 新增弹窗功能
 function handleAdd() {
     layer.title = '新增数据'
-    layer.row = undefined
     layer.show = true
+    layer.row = undefined
 }
 // 编辑弹窗功能
-function handleEdit(row: object) {
+function handleEdit(row: RoleListType) {
     layer.title = '编辑数据'
     layer.row = row
     layer.show = true
@@ -209,7 +170,5 @@ function handleSubmit() {
     getTableData(true)
 }
 
-watch(activeCategory, () => {
-    getTableData(true)
-})
+getTableData(true)
 </script>

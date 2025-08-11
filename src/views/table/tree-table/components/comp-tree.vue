@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { TreeInstance, TreeType } from '~/types'
+import type { TreeInstance, TreeType } from '~/types/global.types'
 
 defineOptions({
     name: 'Tree',

@@ -49,8 +49,8 @@
 
 <script lang="ts" setup>
 import type { FormInstance, FormItemRule } from 'element-plus'
-import type { GlobalDialogLayer } from '~/components/components.types'
-import type { GlobalDiaslogInstance, TableListType } from '~/types'
+import type { GlobalDialogLayer } from '~/types/components.types'
+import type { GlobalDiaslogInstance, TableListType } from '~/types/global.types'
 
 import Rules from '@lincy/async-validation'
 

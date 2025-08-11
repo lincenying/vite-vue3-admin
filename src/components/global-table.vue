@@ -6,16 +6,12 @@
             class="system-table"
             border height="100%"
             :data="data"
+            row-key="id"
+            :default-expand-all="defaultExpandAll"
             @selection-change="onSelectionChange"
         >
-            <el-table-column
-                v-if="showSelection"
-                type="selection" align="center" width="50"
-            />
-            <el-table-column
-                v-if="showIndex"
-                label="序号" width="60" align="center"
-            >
+            <el-table-column v-if="showSelection" type="selection" align="center" width="50" />
+            <el-table-column v-if="showIndex" label="序号" width="60" align="center">
                 <template #default="scope">
                     {{ (page.index - 1) * page.size + scope.$index + 1 }}
                 </template>
@@ -39,14 +35,8 @@
 
 <script lang="ts" setup generic="T extends string">
 import type { TableInstance } from 'element-plus'
-import type { GlobalTablePage } from './components.types'
-import type { TableListType, UpdatePageType, UserListType } from '~/types'
-
-type DataType<Key> = Key extends 'user'
-    ? UserListType
-    : Key extends 'table'
-        ? TableListType
-        : unknown
+import type { DataType, GlobalTablePage } from '../types/components.types'
+import type { UpdatePageType } from '~/types/global.types'
 
 // ['getTableData', 'selectionChange', 'updatePage']
 
@@ -62,6 +52,7 @@ const {
     page = { index: 1, size: 20, total: 0 },
     pageLayout = 'total, sizes, prev, pager, next, jumper',
     pageSizes = [10, 20, 50, 100],
+    defaultExpandAll = false,
 } = defineProps<{
     propKey?: T
     data?: DataType<T>[]
@@ -72,6 +63,7 @@ const {
     page?: GlobalTablePage
     pageLayout?: string
     pageSizes?: number[]
+    defaultExpandAll?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -102,6 +94,7 @@ function handleSizeChange(val: number) {
         timer = null
     }, 100)
     tableRef.value?.setScrollTop(0)
+    currPage.value = 1
     emit('updatePage', [
         { key: 'size', value: val },
         { key: 'index', value: 1 },

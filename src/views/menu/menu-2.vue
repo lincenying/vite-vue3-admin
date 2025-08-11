@@ -21,11 +21,7 @@
                     </el-select>
                 </el-form-item>
                 <el-form-item label="活动计数" prop="count">
-                    <el-select-v2
-                        v-model="ruleForm.count"
-                        placeholder="活动计数"
-                        :options="options"
-                    />
+                    <el-select-v2 v-model="ruleForm.count" placeholder="活动计数" :options="options" />
                 </el-form-item>
                 <el-form-item label="活动时间" required>
                     <el-col :span="11">
@@ -57,25 +53,14 @@
                     <el-switch v-model="ruleForm.delivery" />
                 </el-form-item>
                 <el-form-item label="活动地点" prop="location">
-                    <el-segmented
-                        v-model="ruleForm.location"
-                        :options="locationOptions"
-                    />
+                    <el-segmented v-model="ruleForm.location" :options="locationOptions" />
                 </el-form-item>
                 <el-form-item label="活动类型" prop="type">
                     <el-checkbox-group v-model="ruleForm.type">
-                        <el-checkbox value="线上活动" name="type">
-                            线上活动
-                        </el-checkbox>
-                        <el-checkbox value="推广活动" name="type">
-                            推广活动
-                        </el-checkbox>
-                        <el-checkbox value="线下活动" name="type">
-                            线下活动
-                        </el-checkbox>
-                        <el-checkbox value="简单的品牌曝光" name="type">
-                            简单的品牌曝光
-                        </el-checkbox>
+                        <el-checkbox value="线上活动" name="type">线上活动</el-checkbox>
+                        <el-checkbox value="推广活动" name="type">推广活动</el-checkbox>
+                        <el-checkbox value="线下活动" name="type">线下活动</el-checkbox>
+                        <el-checkbox value="简单的品牌曝光" name="type">简单的品牌曝光</el-checkbox>
                     </el-checkbox-group>
                 </el-form-item>
                 <el-form-item label="活动资源" prop="resource">
@@ -91,9 +76,7 @@
                     <el-input v-model="ruleForm.phone" />
                 </el-form-item>
                 <el-form-item label=" ">
-                    <el-button type="primary" @click="submitForm(ruleFormRef)">
-                        创建
-                    </el-button>
+                    <el-button type="primary" @click="submitForm(ruleFormRef)">创建</el-button>
                     <el-button @click="resetForm(ruleFormRef)">重置</el-button>
                 </el-form-item>
             </el-form>

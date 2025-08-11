@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { IndexCardType } from '~/types'
+import type { IndexCardType } from '~/types/global.types'
 
 import cardRow from '~/views/dashboard/components/card-row.vue'
 

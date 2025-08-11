@@ -1,17 +1,6 @@
 <template>
-    <global-dialog
-        ref="layerDom"
-        :layer="layer"
-        @update="onUpdate"
-        @confirm="onSubmit"
-    >
-        <el-form
-            ref="ruleForm"
-            :model="form"
-            :rules="rules"
-            label-width="120px"
-            class="mr-30px"
-        >
+    <global-dialog ref="layerDom" :layer="layer" @update="onUpdate" @confirm="onSubmit">
+        <el-form ref="ruleForm" :model="form" :rules="rules" label-width="120px" class="mr-30px">
             <el-form-item label="名称：" prop="name">
                 <el-input v-model="form.name" placeholder="请输入名称" />
             </el-form-item>
@@ -24,12 +13,7 @@
             </el-form-item>
             <el-form-item label="选择器：" prop="select">
                 <el-select v-model="form.select" placeholder="请选择" clearable>
-                    <el-option
-                        v-for="item in options"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value"
-                    />
+                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
                 </el-select>
             </el-form-item>
             <el-form-item label="单选框：" prop="radio">
@@ -45,8 +29,8 @@
 
 <script lang="ts" setup>
 import type { FormInstance } from 'element-plus'
-import type { GlobalDialogLayer } from '~/components/components.types'
-import type { GlobalDiaslogInstance } from '~/types'
+import type { GlobalDialogLayer } from '~/types/components.types'
+import type { GlobalDiaslogInstance } from '~/types/global.types'
 
 import globalDialog from '~/components/global-dialog.vue'
 import { ElMessage } from '~/config/element'

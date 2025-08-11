@@ -26,37 +26,22 @@
                 </div>
                 <template #dropdown>
                     <el-dropdown-menu>
-                        <el-dropdown-item
-                            class="tab-ddropdown-item"
-                            @click="handlePageReload"
-                        >
+                        <el-dropdown-item class="tab-ddropdown-item" @click="handlePageReload">
                             <el-icon slots="icon" class="mr-5px">
                                 <i-ad-reload-outlined />
                             </el-icon>重新加载
                         </el-dropdown-item>
-                        <el-dropdown-item
-                            class="tab-ddropdown-item"
-                            :disabled="currentDisabled"
-                            @click="handleCloseCurrentRoute"
-                        >
+                        <el-dropdown-item class="tab-ddropdown-item" :disabled="currentDisabled" @click="handleCloseCurrentRoute">
                             <el-icon slots="icon" class="mr-5px">
                                 <i-ep-CircleClose />
                             </el-icon>关闭当前标签
                         </el-dropdown-item>
-                        <el-dropdown-item
-                            class="tab-ddropdown-item"
-                            :disabled="tabsStorage.length < 3"
-                            @click="handleCloseOtherRoute"
-                        >
+                        <el-dropdown-item class="tab-ddropdown-item" :disabled="tabsStorage.length < 3" @click="handleCloseOtherRoute">
                             <el-icon slots="icon" class="mr-5px">
                                 <i-ep-CircleClose />
                             </el-icon>关闭其他标签
                         </el-dropdown-item>
-                        <el-dropdown-item
-                            class="tab-ddropdown-item"
-                            :disabled="tabsStorage.length <= 1"
-                            @click="handleCloseAllRoute"
-                        >
+                        <el-dropdown-item class="tab-ddropdown-item" :disabled="tabsStorage.length <= 1" @click="handleCloseAllRoute">
                             <el-icon slots="icon" class="mr-5px">
                                 <i-ep-CircleClose />
                             </el-icon>关闭所有标签

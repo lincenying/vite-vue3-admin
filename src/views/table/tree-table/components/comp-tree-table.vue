@@ -6,15 +6,9 @@
                     新增
                     <el-icon slots="icon" class="ml-5px"><i-ep-plus /></el-icon>
                 </el-button>
-                <el-popconfirm
-                    title="确定删除选中的数据吗？"
-                    @confirm="handleDel(chooseData)"
-                >
+                <el-popconfirm title="确定删除选中的数据吗？" @confirm="handleDel(chooseData)">
                     <template #reference>
-                        <el-button
-                            type="danger"
-                            :disabled="chooseData.length === 0"
-                        >
+                        <el-button type="danger" :disabled="chooseData.length === 0">
                             批量删除
                             <el-icon slots="icon" class="ml-5px">
                                 <i-ep-delete />
@@ -24,15 +18,8 @@
                 </el-popconfirm>
             </div>
             <div class="global-box-form-search">
-                <el-input
-                    v-model="query.input"
-                    placeholder="请输入关键词进行检索"
-                />
-                <el-button
-                    type="primary"
-                    class="search-btn"
-                    @click="handleSubmit"
-                >
+                <el-input v-model="query.input" placeholder="请输入关键词进行检索" />
+                <el-button type="primary" class="search-btn" @click="handleSubmit">
                     搜索
                     <el-icon slots="icon" class="ml-5px">
                         <i-ep-search />
@@ -55,38 +42,14 @@
             >
                 <el-table-column prop="name" label="名称" align="center" />
                 <el-table-column prop="number" label="数字" align="center" />
-                <el-table-column
-                    prop="chooseName"
-                    label="选择器"
-                    align="center"
-                />
-                <el-table-column
-                    prop="radioName"
-                    label="单选框"
-                    align="center"
-                />
-                <el-table-column
-                    label="操作"
-                    align="center"
-                    fixed="right"
-                    width="200"
-                >
+                <el-table-column prop="chooseName" label="选择器" align="center" />
+                <el-table-column prop="radioName" label="单选框" align="center" />
+                <el-table-column label="操作" align="center" fixed="right" width="200">
                     <template #default="{ row }: ScopeRow">
-                        <el-button @click="handleEdit(row)">
-                            {{
-                                '编辑'
-                            }}
-                        </el-button>
-                        <el-popconfirm
-                            title="确定删除选中的数据吗？"
-                            @confirm="handleDel([row])"
-                        >
+                        <el-button @click="handleEdit(row)"> {{ '编辑' }} </el-button>
+                        <el-popconfirm title="确定删除选中的数据吗？" @confirm="handleDel([row])">
                             <template #reference>
-                                <el-button type="danger">
-                                    {{
-                                        '删除'
-                                    }}
-                                </el-button>
+                                <el-button type="danger"> {{ '删除' }} </el-button>
                             </template>
                         </el-popconfirm>
                     </template>
@@ -106,8 +69,8 @@
 import type {
     GlobalDialogLayer,
     GlobalTablePage,
-} from '~/components/components.types'
-import type { TableListType, TreeType, UpdatePageType } from '~/types'
+} from '~/types/components.types'
+import type { TableListType, TreeType, UpdatePageType } from '~/types/global.types'
 
 import { ElMessage } from '~/config/element'
 

@@ -26,10 +26,7 @@ export function useLockFn(fn: AnyFn, autoUnlock: boolean | 'auto' = 'auto') {
         lock.value = true
         try {
             const $return: any = await fn(...args)
-            if (
-                autoUnlock === true
-                || (autoUnlock === 'auto' && $return !== false)
-            ) {
+            if (autoUnlock === true || (autoUnlock === 'auto' && $return !== false)) {
                 lock.value = false
             }
         }

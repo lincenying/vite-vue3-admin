@@ -1,4 +1,5 @@
 import type { AnyFn } from '@vueuse/core'
+import type { RoleListType, TableListType, UserListType } from '~/types/global.types'
 
 export interface GlobalDialogLayer<T = Objable> {
     show: boolean
@@ -29,3 +30,11 @@ export interface GlobalTableProps {
     pageLayout?: string
     pageSizes?: number[]
 }
+
+interface TypeMap {
+    user: UserListType
+    table: TableListType
+    role: RoleListType
+}
+
+export type DataType<Key> = Key extends keyof TypeMap ? TypeMap[Key] : unknown

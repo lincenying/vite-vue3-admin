@@ -23,21 +23,11 @@
             <layout-tabs v-show="showTabs" />
             <el-main>
                 <router-view v-slot="{ Component, route }">
-                    <transition
-                        :name="route.meta.transition || 'fade-transform'"
-                        mode="out-in"
-                    >
-                        <keep-alive
-                            v-if="keepAliveComponentsName"
-                            :include="keepAliveComponentsName as string[]"
-                        >
+                    <transition :name="route.meta.transition || 'fade-transform'" mode="out-in">
+                        <keep-alive v-if="keepAliveComponentsName" :include="keepAliveComponentsName as string[]">
                             <component :is="Component" :key="route.fullPath" />
                         </keep-alive>
-                        <component
-                            :is="Component"
-                            v-else
-                            :key="route.fullPath"
-                        />
+                        <component :is="Component" v-else :key="route.fullPath" />
                     </transition>
                 </router-view>
             </el-main>

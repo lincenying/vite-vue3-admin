@@ -1,10 +1,5 @@
 <template>
-    <global-dialog
-        ref="layerDom"
-        :layer="layer"
-        @update="onUpdate"
-        @confirm="onSubmit"
-    >
+    <global-dialog ref="layerDom" :layer="layer" @update="onUpdate" @confirm="onSubmit">
         <el-form
             ref="ruleForm"
             :model="form"
@@ -23,12 +18,7 @@
             </el-form-item> -->
             <el-form-item label="角色：" prop="role">
                 <el-select v-model="form.role" placeholder="请选择" clearable>
-                    <el-option
-                        v-for="item in options"
-                        :key="item"
-                        :label="item"
-                        :value="item"
-                    />
+                    <el-option v-for="item in options" :key="item" :label="item" :value="item" />
                 </el-select>
             </el-form-item>
             <el-form-item label="超级管理员：" prop="isAdmin">
@@ -49,8 +39,8 @@
 
 <script lang="ts" setup>
 import type { FormInstance, FormItemRule } from 'element-plus'
-import type { GlobalDialogLayer } from '~/components/components.types'
-import type { GlobalDiaslogInstance, UserListType } from '~/types'
+import type { GlobalDialogLayer } from '~/types/components.types'
+import type { GlobalDiaslogInstance, UserListType } from '~/types/global.types'
 
 import Rules from '@lincy/async-validation'
 

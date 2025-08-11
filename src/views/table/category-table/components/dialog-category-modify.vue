@@ -34,13 +34,7 @@
             </el-form-item>
             <el-form-item label="单选框：" prop="radio">
                 <el-radio-group v-model="form.radio">
-                    <el-radio
-                        v-for="item in radioData"
-                        :key="item.value"
-                        :label="item.value"
-                    >
-                        {{ item.label }}
-                    </el-radio>
+                    <el-radio v-for="item in radioData" :key="item.value" :label="item.value">{{ item.label }}</el-radio>
                 </el-radio-group>
             </el-form-item>
         </el-form>
@@ -49,8 +43,8 @@
 
 <script lang="ts" setup>
 import type { FormInstance, FormItemRule } from 'element-plus'
-import type { GlobalDialogLayer } from '~/components/components.types'
-import type { GlobalDiaslogInstance, TableListType } from '~/types'
+import type { GlobalDialogLayer } from '~/types/components.types'
+import type { GlobalDiaslogInstance, TableListType } from '~/types/global.types'
 
 import Rules from '@lincy/async-validation'
 

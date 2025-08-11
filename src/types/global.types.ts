@@ -1,5 +1,5 @@
 import type { ElForm, ElTree } from 'element-plus'
-import type { GlobalTablePage } from './components/components.types'
+import type { GlobalTablePage } from './components.types'
 
 import type globalDialog from '~/components/global-dialog.vue'
 
@@ -51,6 +51,7 @@ export interface CardListType {
     image: string
     title: string
     time: string
+    loading?: boolean
 }
 
 export interface UserListType {
@@ -66,6 +67,21 @@ export interface UserListType {
         name: string
     }
     loading?: boolean
+}
+
+export interface RoleListType {
+    id?: string
+    name: string
+    desc: string
+    time?: string
+}
+
+export interface DeptListType {
+    id?: string
+    name: string
+    desc: string
+    time?: string
+    children?: DeptListType[]
 }
 
 export interface SettingOption {

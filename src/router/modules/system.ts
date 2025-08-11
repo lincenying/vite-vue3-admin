@@ -10,10 +10,20 @@ const route: Route[] = [
         children: [
             {
                 path: '/system/user',
-                component: createNameComponent(
-                    () => import('@/views/system/users.vue'),
-                ),
-                meta: { title: '用户', icon: 'iconfont icon-yemian' },
+                component: createNameComponent(() => import('@/views/system/users.vue')),
+                meta: { title: '用户管理', icon: 'iconfont icon-yemian' },
+                children: [],
+            },
+            {
+                path: '/system/role',
+                component: createNameComponent(() => import('@/views/system/roles.vue')),
+                meta: { title: '角色管理', icon: 'iconfont icon-yemian' },
+                children: [],
+            },
+            {
+                path: '/system/dept',
+                component: createNameComponent(() => import('@/views/system/dept.vue')),
+                meta: { title: '部门管理', icon: 'iconfont icon-yemian' },
                 children: [],
             },
         ],

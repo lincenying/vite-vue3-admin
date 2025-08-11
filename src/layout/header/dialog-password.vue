@@ -14,26 +14,18 @@
         >
             <el-form-item label="用户名：" prop="name"> 管理员 </el-form-item>
             <el-form-item label="原密码：" prop="old">
-                <el-input
-                    v-model="form.old"
-                    placeholder="请输入原密码"
-                    show-password
-                />
+                <el-input v-model="form.old" placeholder="请输入原密码" show-password />
             </el-form-item>
             <el-form-item label="新密码：" prop="new">
-                <el-input
-                    v-model="form.new"
-                    placeholder="请输入新密码"
-                    show-password
-                />
+                <el-input v-model="form.new" placeholder="请输入新密码" show-password />
             </el-form-item>
         </el-form>
     </global-dialog>
 </template>
 
 <script lang="ts" setup>
-import type { GlobalDialogLayer } from '~/components/components.types'
-import type { FormInstance, GlobalDiaslogInstance } from '~/types'
+import type { GlobalDialogLayer } from '~/types/components.types'
+import type { FormInstance, GlobalDiaslogInstance } from '~/types/global.types'
 
 import { ElMessage } from '~/config/element'
 

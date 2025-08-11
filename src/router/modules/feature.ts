@@ -26,18 +26,14 @@ const route: Route[] = [
     },
     {
         path: '/redirect/:path(.*)',
-        component: createNameComponent(
-            () => import('@/views/feature/redirect.vue'),
-        ),
+        component: createNameComponent(() => import('@/views/feature/redirect.vue')),
         hideMenu: true,
         meta: { title: '重定向页面', hideTabs: true },
         children: [],
     },
     {
         path: '/login',
-        component: createNameComponent(
-            () => import('@/views/feature/login.vue'),
-        ),
+        component: createNameComponent(() => import('@/views/feature/login.vue')),
         hideMenu: true,
         meta: { title: '登录', hideTabs: true },
         children: [],

@@ -69,12 +69,7 @@ router.beforeEach((to, _from, next) => {
 // 路由跳转后的监听操作
 router.afterEach((to, _from) => {
     const name = to.matched[to.matched.length - 1].components?.default.name
-    if (
-        to.meta
-        && to.meta.cache
-        && name
-        && !keepAliveComponentsName.includes(name)
-    ) {
+    if (to.meta && to.meta.cache && name && !keepAliveComponentsName.includes(name)) {
         keepAliveStore.addKeepAliveComponentsName(name)
     }
 

@@ -24,12 +24,7 @@ const route: Route[] = [
                         children: [
                             {
                                 path: '/menu/menu-1-1-1',
-                                component: createNameComponent(
-                                    () =>
-                                        import(
-                                            '@/views/menu/menu-1/menu-1-1/menu-1-1-1.vue'
-                                        ),
-                                ),
+                                component: createNameComponent(() => import('@/views/menu/menu-1/menu-1-1/menu-1-1-1.vue')),
                                 meta: {
                                     title: '四级菜单1_1_1',
                                     icon: 'iconfont icon-yemian',
@@ -38,12 +33,7 @@ const route: Route[] = [
                             },
                             {
                                 path: '/menu/menu-1-1-2',
-                                component: createNameComponent(
-                                    () =>
-                                        import(
-                                            '@/views/menu/menu-1/menu-1-1/menu-1-1-2.vue'
-                                        ),
-                                ),
+                                component: createNameComponent(() => import('@/views/menu/menu-1/menu-1-1/menu-1-1-2.vue')),
                                 meta: {
                                     title: '四级菜单1_1_2',
                                     icon: 'iconfont icon-yemian',
@@ -54,9 +44,7 @@ const route: Route[] = [
                     },
                     {
                         path: '/menu/menu-1-2',
-                        component: createNameComponent(
-                            () => import('@/views/menu/menu-1/menu-1-2.vue'),
-                        ),
+                        component: createNameComponent(() => import('@/views/menu/menu-1/menu-1-2.vue')),
                         meta: {
                             title: '三级菜单_1_2',
                             icon: 'iconfont icon-yemian',
@@ -67,17 +55,13 @@ const route: Route[] = [
             },
             {
                 path: '/menu/menu-2',
-                component: createNameComponent(
-                    () => import('@/views/menu/menu-2.vue'),
-                ),
+                component: createNameComponent(() => import('@/views/menu/menu-2.vue')),
                 meta: { title: '添加活动', icon: 'iconfont icon-yemian' },
                 children: [],
             },
             {
                 path: '/menu/menu-3',
-                component: createNameComponent(
-                    () => import('@/views/menu/menu-3.vue'),
-                ),
+                component: createNameComponent(() => import('@/views/menu/menu-3.vue')),
                 meta: { title: '二级菜单3', icon: 'iconfont icon-yemian' },
                 children: [],
             },

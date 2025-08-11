@@ -6,10 +6,7 @@
             @click="handleClick"
         >
             <div v-if="active === color" class="active">
-                <i
-                    class="iconfont icon-chenggong"
-                    :style="{ color: textColor }"
-                />
+                <i class="iconfont icon-chenggong" :style="{ color: textColor }" />
             </div>
         </div>
     </el-tooltip>

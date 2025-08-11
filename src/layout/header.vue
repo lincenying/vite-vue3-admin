@@ -3,10 +3,7 @@
         <div class="left-box">
             <!-- 收缩按钮 -->
             <div class="menu-icon" @click="opendStateChange">
-                <i
-                    class="iconfont head-fold"
-                    :class="isCollapse ? 'icon-s-unfold' : 'icon-s-fold'"
-                />
+                <i class="iconfont head-fold" :class="isCollapse ? 'icon-s-unfold' : 'icon-s-fold'" />
             </div>
             <breadcrumb />
         </div>
@@ -52,7 +49,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { GlobalDialogLayer } from '~/components/components.types'
+import type { GlobalDialogLayer } from '~/types/components.types'
 
 import breadcrumb from '~/layout/header/breadcrumb.vue'
 import dialogPassword from '~/layout/header/dialog-password.vue'

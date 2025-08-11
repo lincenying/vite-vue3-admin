@@ -12,50 +12,24 @@
             <div class="box-inner">
                 <h1>欢迎登录</h1>
                 <el-form class="form">
-                    <el-input
-                        v-model="form.name"
-                        size="large"
-                        placeholder="用户名"
-                        type="text"
-                        maxlength="50"
-                    >
+                    <el-input v-model="form.name" size="large" placeholder="用户名" type="text" maxlength="50">
                         <template #prepend>
                             <i class="iconfont icon-user" />
                         </template>
                     </el-input>
-                    <el-input
-                        v-model="form.password"
-                        size="large"
-                        :type="passwordType"
-                        placeholder="密码"
-                        name="password"
-                        maxlength="50"
-                    >
+                    <el-input v-model="form.password" size="large" :type="passwordType" placeholder="密码" name="password" maxlength="50">
                         <template #prepend>
                             <i class="iconfont icon-mima" />
                         </template>
                         <template #append>
                             <i
                                 class="iconfont password-icon"
-                                :class="
-                                    passwordType
-                                        ? 'icon-yanjing_yincang'
-                                        : 'icon-yanjing_xianshi'
-                                "
+                                :class=" passwordType ? 'icon-yanjing_yincang' : 'icon-yanjing_xianshi' "
                                 @click="passwordTypeChange"
                             />
                         </template>
                     </el-input>
-
-                    <el-button
-                        type="primary"
-                        :loading="form.loading"
-                        class="w-full"
-                        size="default"
-                        @click="handleSubmit"
-                    >
-                        登录
-                    </el-button>
+                    <el-button type="primary" :loading="form.loading" class="w-full" size="default" @click="handleSubmit">登录</el-button>
                 </el-form>
                 <div class="fixed-top-right" />
             </div>

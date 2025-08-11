@@ -1,11 +1,6 @@
 <template>
     <div>
-        <el-dialog
-            v-model="show"
-            :title="layer.title"
-            :width="layer.width"
-            center
-        >
+        <el-dialog v-model="show" :title="layer.title" :width="layer.width" center>
             <slot />
             <template v-if="layer.showButton" #footer>
                 <div>
@@ -20,7 +15,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { GlobalDialogLayer } from './components.types'
+import type { GlobalDialogLayer } from '../types/components.types'
 
 defineOptions({
     name: 'GlobalDialog',
