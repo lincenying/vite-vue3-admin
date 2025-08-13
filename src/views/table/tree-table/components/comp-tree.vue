@@ -19,13 +19,22 @@
                 highlight-current
                 default-expand-all
                 @node-click="handleNodeClick"
-            />
+            >
+                <template #default="{ node, data }">
+                    <div flex="~ items-center">
+                        <span>{{ node.label }}</span>
+                        <el-button type="text" class="ml-5px" :icon="Edit" circle @click.stop="handleEdit(data)"></el-button>
+                    </div>
+                </template>
+            </el-tree>
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
 import type { TreeInstance, TreeType } from '~/types/global.types'
+
+import { Edit } from '@element-plus/icons-vue'
 
 defineOptions({
     name: 'Tree',
@@ -56,6 +65,10 @@ async function getTreeData() {
 }
 function handleNodeClick(row: TreeType) {
     updateActiveTree(row)
+}
+
+function handleEdit(row: TreeType) {
+    console.log(row)
 }
 
 getTreeData()

@@ -24,7 +24,7 @@
                 prop-key="role"
                 :data="tableData"
                 :show-page="false"
-                :default-expand-all="false"
+                :other-config="{ stripe: true, defaultExpandAll: false }"
                 @get-table-data="getTableData"
                 @selection-change="onSelectionChange"
             >

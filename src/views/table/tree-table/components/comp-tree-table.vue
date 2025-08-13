@@ -115,7 +115,7 @@ function onSelectionChange(val: any[]) {
     chooseData.value = val
 }
 
-// 更新分页参数
+/** 更新分页参数 */
 function onUpdatePage(payload: UpdatePageType | UpdatePageType[]) {
     if (Array.isArray(payload)) {
         payload.forEach((item) => {
@@ -127,25 +127,37 @@ function onUpdatePage(payload: UpdatePageType | UpdatePageType[]) {
     }
     getTableData(false)
 }
-// 获取表格数据
-// params <init> Boolean ，默认为false，用于判断是否需要初始化分页
+
+/**
+ * 获取表格数据
+ * @param init 是否初始化分页参数
+ *
+ * 该函数用于从服务器获取表格数据，并根据返回结果更新表格和分页信息。
+ * 如果传入的init参数为true，则会重置分页索引为1。
+ * 函数会根据activeTree的id、分页参数和查询条件构造请求参数，
+ * 然后调用API获取数据，并对返回的数据进行处理和映射。
+ */
 async function getTableData(init: boolean) {
+    // 延迟200ms显示loading状态，避免快速请求时的闪烁
     const { stop } = useTimeoutFn(() => toggleLoading(true), 200)
     if (init) {
         page.index = 1
     }
 
+    // 构造请求参数
     const params = {
         category: activeTree.value.id,
         page: page.index,
         pageSize: page.size,
         ...query,
     }
+    // 发送请求获取数据
     const { code, data } = await $api.post<ResDataLists<TableListType[]>>(
         '/table/list',
         params,
     )
     if (code === 200) {
+        // 处理返回的数据，将choose和radio的值转换为对应的标签
         if (Array.isArray(data.list)) {
             tableData.value = data.list.map((item) => {
                 const select = selectData.find(
@@ -161,19 +173,18 @@ async function getTableData(init: boolean) {
                 }
             })
         }
+        // 更新总数据量
         page.total = Number(data.pager.total)
     }
+    // 清除loading延迟并关闭loading状态
     stop()
     toggleLoading(false)
 }
+
 // 删除功能
 async function handleDel(data: object[]) {
     const params = {
-        ids: data
-            .map((e: any) => {
-                return e.id
-            })
-            .join(','),
+        ids: data.map((e: any) => e.id).join(','),
     }
     const { code } = await $api.post<void>('/table/del', params)
     if (code === 200) {
