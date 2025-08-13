@@ -1,13 +1,12 @@
 <template>
     <div class="global-table">
         <el-table
-            v-bind="$attrs"
+            v-bind="{ ...$attrs, ...tableConfig }"
             ref="tableRef"
             class="system-table"
             border height="100%"
             :data="data"
             row-key="id"
-            :default-expand-all="defaultExpandAll"
             @selection-change="onSelectionChange"
         >
             <el-table-column v-if="showSelection" type="selection" align="center" width="50" />
@@ -22,6 +21,7 @@
             v-if="showPage"
             v-model:current-page="currPage"
             class="system-page"
+            v-bind="pageConfig"
             background
             :layout="pageLayout"
             :total="page.total"
@@ -35,7 +35,7 @@
 
 <script lang="ts" setup generic="T extends string">
 import type { TableInstance } from 'element-plus'
-import type { DataType, GlobalTablePage } from '../types/components.types'
+import type { GlobalTableProps } from '../types/components.types'
 import type { UpdatePageType } from '~/types/global.types'
 
 // ['getTableData', 'selectionChange', 'updatePage']
@@ -52,19 +52,9 @@ const {
     page = { index: 1, size: 20, total: 0 },
     pageLayout = 'total, sizes, prev, pager, next, jumper',
     pageSizes = [10, 20, 50, 100],
-    defaultExpandAll = false,
-} = defineProps<{
-    propKey?: T
-    data?: DataType<T>[]
-    select?: any[]
-    showIndex?: boolean
-    showSelection?: boolean
-    showPage?: boolean
-    page?: GlobalTablePage
-    pageLayout?: string
-    pageSizes?: number[]
-    defaultExpandAll?: boolean
-}>()
+    tableConfig = {},
+    pageConfig = {},
+} = defineProps<GlobalTableProps<T>>()
 
 const emit = defineEmits<{
     (event: 'updatePage', palyload: UpdatePageType | UpdatePageType[]): void
