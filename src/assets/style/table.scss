@@ -82,8 +82,15 @@
             }
 
             .load-tip {
+                justify-content: center;
+                padding-left: 0;
                 font-size: 14px;
                 color: #616161;
+                text-align: center;
+
+                &:hover {
+                    background: transparent;
+                }
             }
         }
     }

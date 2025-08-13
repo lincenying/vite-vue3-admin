@@ -70,12 +70,17 @@ a {
 
 .system-scrollbar {
     &::-webkit-scrollbar {
-        display: none;
+        // display: none;
         width: 6px;
     }
 
     &::-webkit-scrollbar-thumb {
         background: rgb(144, 147, 153, 0.3);
+        border-radius: 10px;
+        transition: 0.2s ease-in-out;
+    }
+
+    &::-webkit-scrollbar-track {
         border-radius: 10px;
     }
 

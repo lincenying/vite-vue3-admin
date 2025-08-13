@@ -8,7 +8,8 @@
             ref="listDom"
             v-infinite-scroll="getCategoryData"
             class="system-scrollbar list overflow-auto"
-            :infinite-scroll-immediate="false"
+            :infinite-scroll-immediate="true"
+            :infinite-scroll-distance="10"
         >
             <li
                 v-for="item in list"
@@ -18,8 +19,8 @@
             >
                 <span>{{ item.name }}</span>
             </li>
-            <p v-if="loading" class="load-tip">加载中...</p>
-            <p v-if="nomore" class="load-tip">数据加载完成</p>
+            <li v-if="loading" class="load-tip">==加载中...==</li>
+            <li v-if="nomore" class="load-tip">==数据加载完成==</li>
         </ul>
     </div>
 </template>
@@ -28,10 +29,7 @@
 import type { CategoryType } from '~/types/global.types'
 
 import { debounce } from 'throttle-debounce'
-import {
-    activeCategoryKey,
-    updateActiveCategoryKey,
-} from '~/composables/provide'
+import { activeCategoryKey, updateActiveCategoryKey } from '~/composables/provide'
 
 defineOptions({
     name: 'Category',
@@ -45,7 +43,7 @@ const page = {
     total: 0,
 }
 const [loading, toggleLoading] = useToggle(false)
-const [isFirst, toggleisFirst] = useToggle(false)
+const [isFirst, toggleisFirst] = useToggle(true)
 
 const input = ref('')
 const list = ref<CategoryType[]>([])
@@ -55,7 +53,6 @@ const activeCategory = inject(activeCategoryKey)
 const updateActiveCategory = inject(updateActiveCategoryKey, () => {})
 
 async function getCategoryData(init?: boolean) {
-    const { stop } = useTimeoutFn(() => toggleLoading(true), 200)
     if (init || isFirst.value) {
         toggleisFirst(false)
         page.index = 1
@@ -63,12 +60,13 @@ async function getCategoryData(init?: boolean) {
             listDom.value.scrollTop = 0
     }
     else {
-        if (page.index * page.size >= page.total) {
+        if ((page.index - 1) * page.size >= page.total) {
             toggleLoading(false)
             nomore.value = true
             return
         }
     }
+    const { stop } = useTimeoutFn(() => toggleLoading(true), 200)
     const params = {
         page: page.index,
         pageSize: page.size,
@@ -96,5 +94,5 @@ const searchData = debounce(300, getCategoryData)
 function changeActive(row: CategoryType) {
     updateActiveCategory(row)
 }
-getCategoryData(true)
+// getCategoryData(true)
 </script>
