@@ -1,11 +1,11 @@
-import type { AxiosHeaders, AxiosRequestConfig, AxiosResponse } from 'axios'
+import type { AxiosRequestConfig, AxiosResponse } from 'axios'
 
 import axios from 'axios'
 import { userStorage } from '~/composables/storage'
 
 window.axios = axios
 
-const headers = {
+const headers: AxiosRquestHeaders = {
     'X-Requested-With': 'XMLHttpRequest',
     'Content-Type': 'application/json',
 }
@@ -90,16 +90,16 @@ function checkCodeFn(data: ResponseData<any>) {
  * ```
  */
 const api: ApiType = {
-    post(url: string, data?: Objable, header?: Objable, checkCode = true) {
+    post(url, data, header, checkCode = true) {
         return this.RESTful(url, 'post', data, header, checkCode)
     },
-    get(url: string, data?: Objable, header?: Objable, checkCode = true) {
+    get(url, data, header, checkCode = true) {
         return this.RESTful(url, 'get', data, header, checkCode)
     },
-    put(url: string, data?: Objable, header?: Objable, checkCode = true) {
+    put(url, data, header, checkCode = true) {
         return this.RESTful(url, 'put', data, header, checkCode)
     },
-    delete(url: string, data?: Objable, header?: Objable, checkCode = true) {
+    delete(url, data, header, checkCode = true) {
         return this.RESTful(url, 'delete', data, header, checkCode)
     },
     async downFile(url, method = 'get', data) {
@@ -145,7 +145,7 @@ const api: ApiType = {
             url,
         }
         if (userStorage.value && userStorage.value.token) {
-            ;(config.headers as AxiosHeaders).Authorization
+            config.headers!.Authorization
                 = `Bearer ${userStorage.value.token}`
         }
 

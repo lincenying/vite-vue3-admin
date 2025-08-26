@@ -66,53 +66,55 @@ declare interface ResponseData<T> {
 
 type Methods = 'get' | 'post' | 'delete' | 'put'
 
+declare type AxiosRquestHeaders = import('axios').AxiosRequestConfig['headers']
+
 declare interface ApiType {
     get: <T>(
         url: string,
         data?: Objable,
-        header?: Objable,
+        header?: AxiosRquestHeaders,
         checkCode?: boolean,
     ) => Promise<ResponseData<T>>
     get: <T, U = Objable>(
         url: string,
         data?: Objable,
-        header?: Objable,
+        header?: AxiosRquestHeaders,
         checkCode?: boolean,
     ) => Promise<ResponseData<T> & U>
     post: <T>(
         url: string,
         data?: Objable,
-        header?: Objable,
+        header?: AxiosRquestHeaders,
         checkCode?: boolean,
     ) => Promise<ResponseData<T>>
     post: <T, U = Objable>(
         url: string,
         data?: Objable,
-        header?: Objable,
+        header?: AxiosRquestHeaders,
         checkCode?: boolean,
     ) => Promise<ResponseData<T> & U>
     put: <T>(
         url: string,
         data?: Objable,
-        header?: Objable,
+        header?: AxiosRquestHeaders,
         checkCode?: boolean,
     ) => Promise<ResponseData<T>>
     put: <T, U = Objable>(
         url: string,
         data?: Objable,
-        header?: Objable,
+        header?: AxiosRquestHeaders,
         checkCode?: boolean,
     ) => Promise<ResponseData<T> & U>
     delete: <T>(
         url: string,
         data?: Objable,
-        header?: Objable,
+        header?: AxiosRquestHeaders,
         checkCode?: boolean,
     ) => Promise<ResponseData<T>>
     delete: <T, U = Objable>(
         url: string,
         data?: Objable,
-        header?: Objable,
+        header?: AxiosRquestHeaders,
         checkCode?: boolean,
     ) => Promise<ResponseData<T> & U>
     downFile: (url: string, method: Methods, data?: Objable) => Promise<any>
@@ -120,14 +122,14 @@ declare interface ApiType {
         url: string,
         method: Methods,
         data?: Objable,
-        header?: Objable,
+        header?: AxiosRquestHeaders,
         checkCode?: boolean,
     ) => Promise<ResponseData<T>>
     $RESTful: <T>(
         url: string,
         method: Methods,
         data?: Objable,
-        header?: Objable,
+        header?: AxiosRquestHeaders,
     ) => Promise<ResponseData<T>>
 }
 
