@@ -2,6 +2,7 @@
   "globals": {
     "$api": true,
     "AoAToSheet": true,
+    "ApiClient": true,
     "Component": true,
     "ComponentPublicInstance": true,
     "ComputedRef": true,

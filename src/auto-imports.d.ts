@@ -7,6 +7,7 @@
 export {}
 declare global {
   const $api: typeof import('./composables/fetch')['$api']
+  const ApiClient: typeof import('./composables/fetch')['ApiClient']
   const EffectScope: typeof import('vue')['EffectScope']
   const activeCategoryKey: typeof import('./composables/provide')['activeCategoryKey']
   const activeTreeKey: typeof import('./composables/provide')['activeTreeKey']
@@ -351,6 +352,9 @@ declare global {
   export type { ExcelData, JsonToSheet, AoAToSheet, ExportModalResult } from './composables/export-excel.types'
   import('./composables/export-excel.types')
   // @ts-ignore
+  export type { ApiClient } from './composables/fetch'
+  import('./composables/fetch')
+  // @ts-ignore
   export type { TabsType } from './composables/storage'
   import('./composables/storage')
   // @ts-ignore
@@ -364,6 +368,7 @@ declare module 'vue' {
   interface GlobalComponents {}
   interface ComponentCustomProperties {
     readonly $api: UnwrapRef<typeof import('./composables/fetch')['$api']>
+    readonly ApiClient: UnwrapRef<typeof import('./composables/fetch')['ApiClient']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly activeCategoryKey: UnwrapRef<typeof import('./composables/provide')['activeCategoryKey']>
     readonly activeTreeKey: UnwrapRef<typeof import('./composables/provide')['activeTreeKey']>
