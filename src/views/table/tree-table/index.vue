@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { TreeType } from '~/types/global.types'
+import type { TreeType } from '~/types/table.types'
 
 defineOptions({
     name: 'TreeTable',

@@ -1,5 +1,5 @@
 import type { MockMethod } from './_mock.types'
-import type { UserListType } from '~/types/global.types'
+import type { UserListType } from '~/types/system.types'
 
 const users: UserListType[] = [
     {

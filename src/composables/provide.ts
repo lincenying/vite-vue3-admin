@@ -1,5 +1,5 @@
 import type { AnyFn } from '@vueuse/core'
-import type { CategoryType, TreeType } from '~/types/global.types'
+import type { CategoryType, TreeType } from '~/types/table.types'
 
 export const activeCategoryKey = Symbol('activeCategoryKey') as InjectionKey<Ref<CategoryType>>
 export const updateActiveCategoryKey = Symbol('UpdateActiveCategoryKey') as InjectionKey<AnyFn>

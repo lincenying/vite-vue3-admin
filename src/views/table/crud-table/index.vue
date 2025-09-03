@@ -82,11 +82,8 @@
 </template>
 
 <script lang="ts" setup>
-import type {
-    GlobalDialogLayer,
-    GlobalTablePage,
-} from '~/types/components.types'
-import type { TableListType, UpdatePageType } from '~/types/global.types'
+import type { GlobalDialogLayer, GlobalTablePage } from '~/types/components.types'
+import type { TableListType, UpdatePageType } from '~/types/table.types'
 
 import globalTable from '~/components/global-table.vue'
 import { ElMessage } from '~/config/element'

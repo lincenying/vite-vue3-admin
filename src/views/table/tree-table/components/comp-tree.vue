@@ -32,7 +32,8 @@
 </template>
 
 <script lang="ts" setup>
-import type { TreeInstance, TreeType } from '~/types/global.types'
+import type { TreeInstance } from '~/types/global.types'
+import type { TreeType } from '~/types/table.types'
 
 import { Edit } from '@element-plus/icons-vue'
 

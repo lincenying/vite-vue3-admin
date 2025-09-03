@@ -1,5 +1,6 @@
 import type { AnyFn } from '@vueuse/core'
-import type { RoleListType, TableListType, UserListType } from '~/types/global.types'
+import type { RoleListType, UserListType } from './system.types'
+import type { TableListType } from '~/types/table.types'
 
 export interface GlobalDialogLayer<T = Objable> {
     show: boolean

@@ -11,7 +11,9 @@
       "@/*": ["src/*"]
     },
     "resolveJsonModule": true,
-    "types": [],
+    "types": [
+      "node"
+    ],
     "allowJs": true,
     "strict": true,
     "strictNullChecks": true,
@@ -22,7 +24,7 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "include": ["mock/**/*.ts", "src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "exclude": ["node_modules", "dist/**/*", "public/**/*"],
 
   "vueCompilerOptions": {

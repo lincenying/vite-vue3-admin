@@ -40,10 +40,10 @@
 <script lang="ts" setup>
 import type { FormInstance, FormItemRule } from 'element-plus'
 import type { GlobalDialogLayer } from '~/types/components.types'
-import type { GlobalDiaslogInstance, UserListType } from '~/types/global.types'
+import type { GlobalDiaslogInstance } from '~/types/global.types'
+import type { UserListType } from '~/types/system.types'
 
 import Rules from '@lincy/async-validation'
-
 import globalDialog from '~/components/global-dialog.vue'
 import { ElMessage } from '~/config/element'
 

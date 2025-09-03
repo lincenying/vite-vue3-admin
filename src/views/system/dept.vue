@@ -54,7 +54,7 @@
 
 <script lang="ts" setup>
 import type { GlobalDialogLayer } from '~/types/components.types'
-import type { DeptListType } from '~/types/global.types'
+import type { DeptListType } from '~/types/system.types'
 
 import { ElMessage } from '@/config/element'
 

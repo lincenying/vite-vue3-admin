@@ -44,12 +44,12 @@
 <script lang="ts" setup>
 import type { FormInstance, FormItemRule } from 'element-plus'
 import type { GlobalDialogLayer } from '~/types/components.types'
-import type { GlobalDiaslogInstance, TableListType } from '~/types/global.types'
+import type { GlobalDiaslogInstance } from '~/types/global.types'
+import type { TableListType } from '~/types/table.types'
 
 import Rules from '@lincy/async-validation'
 
 import { ElMessage } from '~/config/element'
-
 import { radioData, selectData } from '~/views/table/enum'
 
 defineOptions({

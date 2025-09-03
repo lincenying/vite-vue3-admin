@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { CategoryType } from '~/types/global.types'
+import type { CategoryType } from '~/types/table.types'
 
 defineOptions({
     name: 'CategoryTable',

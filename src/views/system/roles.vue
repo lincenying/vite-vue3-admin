@@ -59,8 +59,9 @@
 
 <script lang="ts" setup>
 import type { GlobalDialogLayer, GlobalTablePage } from '~/types/components.types'
-import type { RoleListType, UpdatePageType } from '~/types/global.types'
+import type { RoleListType } from '~/types/system.types'
 
+import type { UpdatePageType } from '~/types/table.types'
 import { ElMessage } from '@/config/element'
 
 interface ScopeRow {

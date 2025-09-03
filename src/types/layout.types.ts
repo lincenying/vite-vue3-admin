@@ -23,3 +23,9 @@ export interface MenuItemProps {
     menu: TabsType
     active: boolean
 }
+
+export interface SettingOption {
+    name: string
+    value: boolean
+    store: 'showLogo' | 'showTabs' | 'expandOneMenu'
+}

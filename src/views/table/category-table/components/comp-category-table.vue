@@ -75,7 +75,7 @@ import type {
     GlobalDialogLayer,
     GlobalTablePage,
 } from '~/types/components.types'
-import type { CategoryType, TableListType, UpdatePageType } from '~/types/global.types'
+import type { CategoryType, TableListType, UpdatePageType } from '~/types/table.types'
 
 import { activeCategoryKey } from '~/composables/provide'
 import { ElMessage } from '~/config/element'

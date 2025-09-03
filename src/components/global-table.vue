@@ -36,7 +36,7 @@
 <script lang="ts" setup generic="T extends string">
 import type { TableInstance } from 'element-plus'
 import type { GlobalTableProps } from '../types/components.types'
-import type { UpdatePageType } from '~/types/global.types'
+import type { UpdatePageType } from '~/types/table.types'
 
 // ['getTableData', 'selectionChange', 'updatePage']
 

@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { CategoryType } from '~/types/global.types'
+import type { CategoryType } from '~/types/table.types'
 
 import { debounce } from 'throttle-debounce'
 import { activeCategoryKey, updateActiveCategoryKey } from '~/composables/provide'

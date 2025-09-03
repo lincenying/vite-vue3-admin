@@ -38,7 +38,7 @@
 
 <script lang="ts" setup>
 import type { GlobalTablePage } from '~/types/components.types'
-import type { CardListType } from '~/types/global.types'
+import type { CardListType } from '~/types/table.types'
 
 import { ElScrollbar } from 'element-plus'
 

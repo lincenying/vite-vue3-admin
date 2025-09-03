@@ -70,7 +70,7 @@ import type {
     GlobalDialogLayer,
     GlobalTablePage,
 } from '~/types/components.types'
-import type { TableListType, TreeType, UpdatePageType } from '~/types/global.types'
+import type { TableListType, TreeType, UpdatePageType } from '~/types/table.types'
 
 import { ElMessage } from '~/config/element'
 

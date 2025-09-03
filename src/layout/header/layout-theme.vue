@@ -55,8 +55,7 @@
 <script lang="ts" setup>
 import type { ThemeState } from '~/stores/store.types'
 import type { Colors } from '~/theme/theme.types'
-import type { SettingOption } from '~/types/global.types'
-
+import type { SettingOption } from '~/types/layout.types'
 import themeColor from '~/layout/header/theme-color.vue'
 import themeIcon from '~/layout/header/theme-icon.vue'
 import { style } from '~/theme/index'
