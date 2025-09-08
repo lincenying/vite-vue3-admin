@@ -147,6 +147,9 @@ importers:
       vite-plugin-progress:
         specifier: ^0.0.7
         version: 0.0.7(vite@7.1.3(@types/node@24.3.0)(jiti@2.4.2)(sass@1.91.0)(tsx@4.19.2)(yaml@2.8.1))
+      vue-component-type-helpers:
+        specifier: ^3.0.6
+        version: 3.0.6
       vue-tsc:
         specifier: ^3.0.6
         version: 3.0.6(typescript@5.9.2)
@@ -3975,6 +3978,9 @@ packages:
 
   vscode-uri@3.0.8:
     resolution: {integrity: sha512-AyFQ0EVmsOZOlAnxoFOGOq1SQDWAB7C6aqMGS23svWAllfOaxbuFvcT8D1i8z3Gyn8fraVeZNNmN6e9bxxXkKw==}
+
+  vue-component-type-helpers@3.0.6:
+    resolution: {integrity: sha512-6CRM8X7EJqWCJOiKPvSLQG+hJPb/Oy2gyJx3pLjUEhY7PuaCthQu3e0zAGI1lqUBobrrk9IT0K8sG2GsCluxoQ==}
 
   vue-demi@0.14.10:
     resolution: {integrity: sha512-nMZBOwuzabUO0nLgIcc6rycZEebF6eeUfaiQx9+WSk8e29IbLvPU9feI6tqW4kTo3hvoYAJkMh8n8D0fuISphg==}
@@ -8351,6 +8357,8 @@ snapshots:
       yaml: 2.8.1
 
   vscode-uri@3.0.8: {}
+
+  vue-component-type-helpers@3.0.6: {}
 
   vue-demi@0.14.10(vue@3.5.20(typescript@5.9.2)):
     dependencies:

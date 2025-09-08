@@ -40,7 +40,7 @@
 <script lang="ts" setup>
 import type { FormInstance, FormItemRule } from 'element-plus'
 import type { GlobalDialogLayer } from '~/types/components.types'
-import type { GlobalDiaslogInstance } from '~/types/global.types'
+import type { GlobalDialogInstance } from '~/types/global.types'
 import type { UserListType } from '~/types/system.types'
 
 import Rules from '@lincy/async-validation'
@@ -58,7 +58,7 @@ const { layer } = defineProps<{
 const emit = defineEmits(['getTableData', 'update'])
 
 const ruleForm = $ref<Nullable<FormInstance>>(null)
-const layerDom = $ref<Nullable<GlobalDiaslogInstance>>(null)
+const layerDom = $ref<Nullable<GlobalDialogInstance>>(null)
 
 const form: UserListType = reactive({
     id: '',

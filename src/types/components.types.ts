@@ -43,7 +43,7 @@ export interface GlobalTableProps<T> {
     pageConfig?: Record<string, any>
 }
 
-interface TypeMap {
+export interface TypeMap {
     user: UserListType
     table: TableListType
     role: RoleListType

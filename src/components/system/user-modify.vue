@@ -30,7 +30,7 @@
 <script lang="ts" setup>
 import type { FormInstance } from 'element-plus'
 import type { GlobalDialogLayer } from '~/types/components.types'
-import type { GlobalDiaslogInstance } from '~/types/global.types'
+import type { GlobalDialogInstance } from '~/types/global.types'
 
 import globalDialog from '~/components/global-dialog.vue'
 import { ElMessage } from '~/config/element'
@@ -46,7 +46,7 @@ const { layer } = defineProps<{
 const emit = defineEmits(['getTableData', 'update'])
 
 const ruleForm = ref<Nullable<FormInstance>>(null)
-const layerDom = ref<Nullable<GlobalDiaslogInstance>>(null)
+const layerDom = ref<Nullable<GlobalDialogInstance>>(null)
 
 const form = reactive({
     name: '',

@@ -83,11 +83,12 @@
 
 <script lang="ts" setup>
 import type { GlobalDialogLayer, GlobalTablePage } from '~/types/components.types'
+import type { GlobalTableInstance } from '~/types/global.types'
+
 import type { TableListType, UpdatePageType } from '~/types/table.types'
-
 import globalTable from '~/components/global-table.vue'
-import { ElMessage } from '~/config/element'
 
+import { ElMessage } from '~/config/element'
 import { radioData, selectData } from '~/views/table/enum'
 
 interface ScopeRow {
@@ -119,7 +120,7 @@ const page: GlobalTablePage = reactive({
     total: 0,
 })
 
-const globalTableRef = ref<any>()
+const globalTableRef = ref<GlobalTableInstance>()
 
 const [loading, toggleLoading] = useToggle(false)
 const tableData = ref<TableListType[]>([])

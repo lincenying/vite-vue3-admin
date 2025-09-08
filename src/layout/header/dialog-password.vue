@@ -25,7 +25,7 @@
 
 <script lang="ts" setup>
 import type { GlobalDialogLayer } from '~/types/components.types'
-import type { FormInstance, GlobalDiaslogInstance } from '~/types/global.types'
+import type { FormInstance, GlobalDialogInstance } from '~/types/global.types'
 
 import { ElMessage } from '~/config/element'
 
@@ -41,7 +41,7 @@ const emit = defineEmits(['update'])
 const userStore = useUserStore()
 
 const ruleForm = ref<Nullable<FormInstance>>(null)
-const layerDom = ref<Nullable<GlobalDiaslogInstance>>(null)
+const layerDom = ref<Nullable<GlobalDialogInstance>>(null)
 
 const form = ref({
     userId: '123465',

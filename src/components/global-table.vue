@@ -33,9 +33,9 @@
     </div>
 </template>
 
-<script lang="ts" setup generic="T extends string">
+<script lang="ts" setup generic="T extends keyof TypeMap">
 import type { TableInstance } from 'element-plus'
-import type { GlobalTableProps } from '../types/components.types'
+import type { GlobalTableProps, TypeMap } from '../types/components.types'
 import type { UpdatePageType } from '~/types/table.types'
 
 // ['getTableData', 'selectionChange', 'updatePage']

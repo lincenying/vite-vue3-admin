@@ -75,11 +75,12 @@ import type {
     GlobalDialogLayer,
     GlobalTablePage,
 } from '~/types/components.types'
+import type { GlobalTableInstance } from '~/types/global.types'
+
 import type { CategoryType, TableListType, UpdatePageType } from '~/types/table.types'
-
 import { activeCategoryKey } from '~/composables/provide'
-import { ElMessage } from '~/config/element'
 
+import { ElMessage } from '~/config/element'
 import { radioData, selectData } from '~/views/table/enum'
 
 interface ScopeRow {
@@ -113,7 +114,7 @@ const [loading, toggleLoading] = useToggle(false)
 const tableData = ref<TableListType[]>([])
 const chooseData = ref<TableListType[]>([])
 
-const globalTableRef = ref<any>()
+const globalTableRef = ref<GlobalTableInstance>()
 
 // 更新选中
 function onSelectionChange(val: any[]) {

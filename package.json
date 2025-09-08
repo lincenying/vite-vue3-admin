@@ -67,6 +67,7 @@
     "vite-plugin-inspect": "^11.3.3",
     "vite-plugin-mock": "^3.0.2",
     "vite-plugin-progress": "^0.0.7",
+    "vue-component-type-helpers": "^3.0.6",
     "vue-tsc": "^3.0.6"
   },
   "simple-git-hooks": {
