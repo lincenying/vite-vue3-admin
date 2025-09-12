@@ -4,9 +4,10 @@
             v-bind="{ ...$attrs, ...tableConfig }"
             ref="tableRef"
             class="system-table"
-            border height="100%"
-            :data="data"
+            height="100%"
             row-key="id"
+            :border="true"
+            :data="data"
             @selection-change="onSelectionChange"
         >
             <el-table-column v-if="showSelection" type="selection" align="center" width="50" />

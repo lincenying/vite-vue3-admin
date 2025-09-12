@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@lincy/async-validation':
-        specifier: ^1.3.0
-        version: 1.3.0
+        specifier: ^1.3.1
+        version: 1.3.1
       '@lincy/utils':
         specifier: ^0.6.6
         version: 0.6.6
@@ -18,8 +18,8 @@ importers:
         specifier: ^13.9.0
         version: 13.9.0(vue@3.5.21(typescript@5.9.2))
       axios:
-        specifier: ^1.11.0
-        version: 1.11.0
+        specifier: ^1.12.0
+        version: 1.12.0
       element-plus:
         specifier: ^2.11.2
         version: 2.11.2(vue@3.5.21(typescript@5.9.2))
@@ -127,8 +127,8 @@ importers:
         specifier: ^20.1.0
         version: 20.1.0(@vueuse/core@13.9.0(vue@3.5.21(typescript@5.9.2)))
       unplugin-icons:
-        specifier: ^22.2.0
-        version: 22.2.0(@vue/compiler-sfc@3.5.21)(vue-template-compiler@2.7.16)
+        specifier: ^22.3.0
+        version: 22.3.0(@vue/compiler-sfc@3.5.21)(vue-template-compiler@2.7.16)
       unplugin-vue-components:
         specifier: ^29.0.0
         version: 29.0.0(@babel/parser@7.28.3)(vue@3.5.21(typescript@5.9.2))
@@ -162,9 +162,6 @@ packages:
 
   '@antfu/install-pkg@1.1.0':
     resolution: {integrity: sha512-MGQsmw10ZyI+EJo45CdSER4zEb+p31LpDAFp2Z3gkSd1yqVZGi0Ebx++YTEMonJy4oChEMLsxZ64j8FH6sSqtQ==}
-
-  '@antfu/utils@8.1.0':
-    resolution: {integrity: sha512-XPR7Jfwp0FFl/dFYPX8ZjpmU4/1mIXTjnZ1ba48BLMyKOV62/tiRjdsFcPs2hsYcSud4tzk7w3a3LjX8Fu3huA==}
 
   '@antfu/utils@9.2.0':
     resolution: {integrity: sha512-Oq1d9BGZakE/FyoEtcNeSwM7MpDO2vUBi11RWBZXf75zPsbUVWmUs03EqkRFrcgbXyKTas0BdZWC1wcuSoqSAw==}
@@ -799,9 +796,6 @@ packages:
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
 
-  '@iconify/utils@2.3.0':
-    resolution: {integrity: sha512-GmQ78prtwYW6EtzXRU1rY+KwOKfz32PD7iJh6Iyqw68GiKuoZ2A6pRtzWONz5VQJbp50mEjXh/7NkumtrAgRKA==}
-
   '@iconify/utils@3.0.1':
     resolution: {integrity: sha512-A78CUEnFGX8I/WlILxJCuIJXloL0j/OJ9PSchPAfCargEIKmUBWvvEMmKWB5oONwiUqlNt+5eRufdkLxeHIWYw==}
 
@@ -838,8 +832,8 @@ packages:
   '@keyv/serialize@1.1.0':
     resolution: {integrity: sha512-RlDgexML7Z63Q8BSaqhXdCYNBy/JQnqYIwxofUrNLGCblOMHp+xux2Q8nLMLlPpgHQPoU0Do8Z6btCpRBEqZ8g==}
 
-  '@lincy/async-validation@1.3.0':
-    resolution: {integrity: sha512-VhUphOxVy37efrqsE36SqshSq2GypZnbLuSN7CcigkPfKKG6bf/tESCCb7joe3r5MpHlOgTO+KjrImGIoxzBrw==}
+  '@lincy/async-validation@1.3.1':
+    resolution: {integrity: sha512-32BhHumwbgZ63bqT/cN2A8qQ0t0z+oH2WsPkW37S3XEXzxOI4tbs5HCJlgjs8J8NfGDGngwi8HHY5DHY1/yYpw==}
 
   '@lincy/eslint-config@5.8.1':
     resolution: {integrity: sha512-gryIfZN7JByzprf2cZTM2DzMF85m7l/dwuNj5KUcOMxpdSuoaitQ08NqC/TepiB+PSh38hlRh0ru8mIusPbVzg==}
@@ -1926,8 +1920,8 @@ packages:
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
 
-  axios@1.11.0:
-    resolution: {integrity: sha512-1Lx3WLFQWm3ooKDYZD1eXmoGO9fxYQjrycfHFC8P0sCfQVXyROp0p9PFWBehewBOdCwHc+f/b8I0fMto5eSfwA==}
+  axios@1.12.0:
+    resolution: {integrity: sha512-oXTDccv8PcfjZmPGlWsPSwtOJCZ/b6W5jAMCNcfwJbCzDckwG0jrYJFaWH1yvivfCXjVzV/SPDEhMB3Q+DSurg==}
 
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
@@ -3862,8 +3856,8 @@ packages:
       webpack:
         optional: true
 
-  unplugin-icons@22.2.0:
-    resolution: {integrity: sha512-OdrXCiXexC1rFd0QpliAgcd4cMEEEQtoCf2WIrRIGu4iW6auBPpQKMCBeWxoe55phYdRyZLUWNOtzyTX+HOFSA==}
+  unplugin-icons@22.3.0:
+    resolution: {integrity: sha512-Q7c2RoVUn4LzFADT0H/oT5ApJgiWW+xTK7D5/hi6gYtObmAuEE6ebyvejvfbinJL8tH4wanoNjkWcmlqEsTcXg==}
     peerDependencies:
       '@svgr/core': '>=7.0.0'
       '@svgx/core': ^1.0.1
@@ -3919,6 +3913,10 @@ packages:
   unplugin@1.16.1:
     resolution: {integrity: sha512-4/u/j4FrCKdi17jaxuJA0jClGxB1AvU2hw/IuayPc4ay1XGaJs/rbb4v5WKwAjNifjmXK9PIFyuPiaK8azyR9w==}
     engines: {node: '>=14.0.0'}
+
+  unplugin@2.3.10:
+    resolution: {integrity: sha512-6NCPkv1ClwH+/BGE9QeoTIl09nuiAt0gS28nn1PvYXsGKRwM2TCbFA2QiilmehPDTXIe684k4rZI1yl3A1PCUw==}
+    engines: {node: '>=18.12.0'}
 
   unplugin@2.3.5:
     resolution: {integrity: sha512-RyWSb5AHmGtjjNQ6gIlA67sHOsWpsbWpwDokLwTcejVdOjEkJZh7QKu14J00gDDVSh8kGH4KYC/TNBceXFZhtw==}
@@ -4151,8 +4149,6 @@ snapshots:
     dependencies:
       package-manager-detector: 1.3.0
       tinyexec: 1.0.1
-
-  '@antfu/utils@8.1.0': {}
 
   '@antfu/utils@9.2.0': {}
 
@@ -4710,19 +4706,6 @@ snapshots:
 
   '@iconify/types@2.0.0': {}
 
-  '@iconify/utils@2.3.0':
-    dependencies:
-      '@antfu/install-pkg': 1.1.0
-      '@antfu/utils': 8.1.0
-      '@iconify/types': 2.0.0
-      debug: 4.4.1
-      globals: 15.14.0
-      kolorist: 1.8.0
-      local-pkg: 1.1.1
-      mlly: 1.7.4
-    transitivePeerDependencies:
-      - supports-color
-
   '@iconify/utils@3.0.1':
     dependencies:
       '@antfu/install-pkg': 1.1.0
@@ -4772,7 +4755,7 @@ snapshots:
 
   '@keyv/serialize@1.1.0': {}
 
-  '@lincy/async-validation@1.3.0':
+  '@lincy/async-validation@1.3.1':
     dependencies:
       '@lincy/utils': 0.6.6
       async-validator: 4.2.5
@@ -4970,7 +4953,7 @@ snapshots:
 
   '@quansync/fs@0.1.1':
     dependencies:
-      quansync: 0.2.10
+      quansync: 0.2.11
 
   '@quansync/fs@0.1.5':
     dependencies:
@@ -6087,7 +6070,7 @@ snapshots:
 
   asynckit@0.4.0: {}
 
-  axios@1.11.0:
+  axios@1.12.0:
     dependencies:
       follow-redirects: 1.15.9
       form-data: 4.0.4
@@ -8259,13 +8242,13 @@ snapshots:
       unplugin: 1.16.1
       vite: 7.1.5(@types/node@24.3.1)(jiti@2.5.1)(sass@1.92.1)(tsx@4.19.2)(yaml@2.8.1)
 
-  unplugin-icons@22.2.0(@vue/compiler-sfc@3.5.21)(vue-template-compiler@2.7.16):
+  unplugin-icons@22.3.0(@vue/compiler-sfc@3.5.21)(vue-template-compiler@2.7.16):
     dependencies:
       '@antfu/install-pkg': 1.1.0
-      '@iconify/utils': 2.3.0
+      '@iconify/utils': 3.0.1
       debug: 4.4.1
-      local-pkg: 1.1.1
-      unplugin: 2.3.5
+      local-pkg: 1.1.2
+      unplugin: 2.3.10
     optionalDependencies:
       '@vue/compiler-sfc': 3.5.21
       vue-template-compiler: 2.7.16
@@ -8355,6 +8338,13 @@ snapshots:
   unplugin@1.16.1:
     dependencies:
       acorn: 8.14.0
+      webpack-virtual-modules: 0.6.2
+
+  unplugin@2.3.10:
+    dependencies:
+      '@jridgewell/remapping': 2.3.5
+      acorn: 8.15.0
+      picomatch: 4.0.3
       webpack-virtual-modules: 0.6.2
 
   unplugin@2.3.5:
