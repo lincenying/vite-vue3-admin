@@ -38,3 +38,35 @@ export function loginMsgBox(content: string, pathname: string) {
         },
     })
 }
+
+export function confirmMsg(content: string, callback: AnyFn) {
+    ElMessageBox.confirm(content, '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+        showClose: false,
+        buttonSize: 'small',
+        callback: (btn: string) => {
+            if (callback && callback instanceof Function) {
+                btn === 'confirm' && callback()
+            }
+        },
+    })
+}
+
+export function promptMsg(content: string, callback: AnyFn) {
+    ElMessageBox.prompt(content, '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        inputPattern: /\S/,
+        inputErrorMessage: '输入不能为空',
+        type: 'warning',
+        inputType: 'password',
+        showClose: false,
+        buttonSize: 'small',
+    }).then(({ value }) => {
+        if (callback && callback instanceof Function) {
+            callback(value)
+        }
+    }).catch(() => { })
+}
