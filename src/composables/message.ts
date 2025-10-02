@@ -46,7 +46,7 @@ export function confirmMsg(content: string, callback: AnyFn) {
         type: 'warning',
         showClose: false,
         buttonSize: 'small',
-        callback: (btn: string) => {
+        callback: (btn: 'confirm' | 'close' | 'cancel') => {
             if (callback && callback instanceof Function) {
                 btn === 'confirm' && callback()
             }

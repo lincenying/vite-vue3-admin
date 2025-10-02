@@ -23,6 +23,7 @@ declare global {
   const computedEager: typeof import('@vueuse/core')['computedEager']
   const computedInject: typeof import('@vueuse/core')['computedInject']
   const computedWithControl: typeof import('@vueuse/core')['computedWithControl']
+  const confirmMsg: typeof import('./composables/message')['confirmMsg']
   const controlledComputed: typeof import('@vueuse/core')['controlledComputed']
   const controlledRef: typeof import('@vueuse/core')['controlledRef']
   const createApp: typeof import('vue')['createApp']
@@ -101,6 +102,7 @@ declare global {
   const openWindow: typeof import('./composables/download')['openWindow']
   const pausableWatch: typeof import('@vueuse/core')['pausableWatch']
   const piniaInit: typeof import('./stores/index')['piniaInit']
+  const promptMsg: typeof import('./composables/message')['promptMsg']
   const provide: typeof import('vue')['provide']
   const provideLocal: typeof import('@vueuse/core')['provideLocal']
   const radioData: (typeof import('./views/table/crud-table/components/enum'))['radioData']
@@ -385,6 +387,7 @@ declare module 'vue' {
     readonly computedEager: UnwrapRef<typeof import('@vueuse/core')['computedEager']>
     readonly computedInject: UnwrapRef<typeof import('@vueuse/core')['computedInject']>
     readonly computedWithControl: UnwrapRef<typeof import('@vueuse/core')['computedWithControl']>
+    readonly confirmMsg: UnwrapRef<typeof import('./composables/message')['confirmMsg']>
     readonly controlledComputed: UnwrapRef<typeof import('@vueuse/core')['controlledComputed']>
     readonly controlledRef: UnwrapRef<typeof import('@vueuse/core')['controlledRef']>
     readonly createApp: UnwrapRef<typeof import('vue')['createApp']>
@@ -463,6 +466,7 @@ declare module 'vue' {
     readonly openWindow: UnwrapRef<typeof import('./composables/download')['openWindow']>
     readonly pausableWatch: UnwrapRef<typeof import('@vueuse/core')['pausableWatch']>
     readonly piniaInit: UnwrapRef<typeof import('./stores/index')['piniaInit']>
+    readonly promptMsg: UnwrapRef<typeof import('./composables/message')['promptMsg']>
     readonly provide: UnwrapRef<typeof import('vue')['provide']>
     readonly provideLocal: UnwrapRef<typeof import('@vueuse/core')['provideLocal']>
     readonly reactify: UnwrapRef<typeof import('@vueuse/core')['reactify']>
