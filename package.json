@@ -43,10 +43,10 @@
     "@lincy/eslint-config": "^5.9.0",
     "@lincy/stylelint-config": "^2.2.0",
     "@lincy/unocss-base-config": "^2.3.0",
-    "@types/node": "^24.7.1",
+    "@types/node": "^24.7.2",
     "@types/nprogress": "^0.2.3",
     "@types/throttle-debounce": "^5.0.2",
-    "@unocss/eslint-plugin": "^66.5.2",
+    "@unocss/eslint-plugin": "^66.5.3",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vitejs/plugin-vue-jsx": "^5.1.1",
     "@vue-macros/volar": "^3.1.1",
@@ -54,12 +54,12 @@
     "cross-env": "^10.1.0",
     "eslint": "^9.37.0",
     "eslint-plugin-format": "^1.0.2",
-    "lint-staged": "^16.2.3",
+    "lint-staged": "^16.2.4",
     "sass": "^1.93.2",
     "simple-git-hooks": "^2.13.1",
     "stylelint": "^16.25.0",
     "typescript": "^5.9.3",
-    "unocss": "^66.5.2",
+    "unocss": "^66.5.3",
     "unplugin-auto-import": "^20.2.0",
     "unplugin-icons": "^22.4.2",
     "unplugin-vue-components": "^29.1.0",
@@ -71,7 +71,7 @@
     "vue-macros": "^3.1.1",
     "vue-tsc": "^3.1.1"
   },
-  "simple-git-hooks": {
+  "simple-git-hooks[-del]": {
     "pre-commit": "pnpm run lint-staged"
   },
   "lint-staged": {
