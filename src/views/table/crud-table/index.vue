@@ -120,7 +120,7 @@ const page: GlobalTablePage = reactive({
     total: 0,
 })
 
-const globalTableRef = ref<GlobalTableInstance>()
+const globalTableRef = useTemplateRef<GlobalTableInstance>('globalTableRef')
 
 const [loading, toggleLoading] = useToggle(false)
 const tableData = ref<TableListType[]>([])

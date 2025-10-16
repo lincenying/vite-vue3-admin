@@ -64,7 +64,7 @@ const emit = defineEmits<{
 
 const currPage = ref<number>(1)
 
-const tableRef = ref<TableInstance>()
+const tableRef = useTemplateRef<TableInstance>('tableRef')
 let timer: Nullable<string> = null
 
 /** 重置表格滚动条位置 */

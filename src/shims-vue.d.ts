@@ -5,8 +5,6 @@ declare module '*.vue' {
     export default component
 }
 
-export {}
-
 declare module 'vue-router' {
     interface RouteMeta {
         title: string
@@ -19,3 +17,5 @@ declare module 'vue-router' {
         cache?: boolean
     }
 }
+
+export {}

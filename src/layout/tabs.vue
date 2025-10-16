@@ -83,7 +83,7 @@ const { contentFullScreen } = $(storeToRefs(globalStore))
 
 const route = useRoute()
 const router = useRouter()
-const scrollbarDom = ref<ScrollbarInstance>()
+const scrollbarDom = useTemplateRef<ScrollbarInstance>('scrollbarDom')
 const scrollLeft = ref(0)
 
 const defaultMenu: TabsType = {

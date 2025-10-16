@@ -36,7 +36,7 @@ defineOptions({
     inheritAttrs: true,
 })
 
-const listDom = ref<HTMLElement>()
+const listDom = useTemplateRef<HTMLElement>('listDom')
 const page = {
     index: 1,
     size: 30,

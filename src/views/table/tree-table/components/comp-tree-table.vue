@@ -109,7 +109,7 @@ const [loading, toggleLoading] = useToggle(false)
 const tableData = ref<TableListType[]>([])
 const chooseData = ref<TableListType[]>([])
 
-const globalTableRef = ref<GlobalTableInstance>()
+const globalTableRef = useTemplateRef<GlobalTableInstance>('globalTableRef')
 
 // 更新选中
 function onSelectionChange(val: any[]) {

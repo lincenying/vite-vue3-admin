@@ -39,8 +39,8 @@ const emit = defineEmits(['update'])
 
 const userStore = useUserStore()
 
-const ruleForm = ref<Nullable<FormInstance>>(null)
-const layerDom = ref<Nullable<GlobalDialogInstance>>(null)
+const ruleForm = useTemplateRef<FormInstance>('ruleForm')
+const layerDom = useTemplateRef<GlobalDialogInstance>('layerDom')
 
 const form = ref({
     userId: '123465',

@@ -76,8 +76,8 @@
                     <el-input v-model="ruleForm.phone" />
                 </el-form-item>
                 <el-form-item label=" ">
-                    <el-button type="primary" @click="submitForm(ruleFormRef)">创建</el-button>
-                    <el-button @click="resetForm(ruleFormRef)">重置</el-button>
+                    <el-button type="primary" @click="submitForm">创建</el-button>
+                    <el-button @click="resetForm">重置</el-button>
                 </el-form-item>
             </el-form>
         </el-card>
@@ -112,7 +112,7 @@ interface RuleForm {
 }
 
 const formSize = ref<ComponentSize>('default')
-const ruleFormRef = ref<FormInstance>()
+const ruleFormRef = useTemplateRef<FormInstance>('ruleFormRef')
 const ruleForm = reactive<RuleForm>({
     name: 'Hello',
     region: '',
@@ -142,10 +142,10 @@ const rulesObj = reactive<FormRules<RuleForm>>({
     phone: rules.phone('联系电话') as FormItemRule[],
 })
 
-async function submitForm(formEl: FormInstance | undefined) {
-    if (!formEl)
+async function submitForm() {
+    if (!ruleFormRef.value)
         return
-    await formEl.validate((valid, fields) => {
+    await ruleFormRef.value.validate((valid, fields) => {
         if (valid) {
             console.log('submit!')
         }
@@ -155,10 +155,10 @@ async function submitForm(formEl: FormInstance | undefined) {
     })
 }
 
-function resetForm(formEl: FormInstance | undefined) {
-    if (!formEl)
+function resetForm() {
+    if (!ruleFormRef.value)
         return
-    formEl.resetFields()
+    ruleFormRef.value.resetFields()
 }
 
 const options = Array.from({ length: 10 }).map((_, idx) => ({

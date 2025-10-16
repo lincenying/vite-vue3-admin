@@ -61,8 +61,8 @@ const { layer } = defineProps<{
 
 const emit = defineEmits(['getTableData', 'update'])
 
-const ruleForm = $ref<Nullable<FormInstance>>(null)
-const layerDom = $ref<Nullable<GlobalDialogInstance>>(null)
+const ruleForm = useTemplateRef<FormInstance>('ruleForm')
+const layerDom = useTemplateRef<GlobalDialogInstance>('layerDom')
 
 let form = $ref<TableListType>({
     id: undefined,
@@ -79,8 +79,8 @@ const rules = {
 }
 
 function onSubmit() {
-    if (ruleForm) {
-        ruleForm.validate((valid) => {
+    if (ruleForm.value) {
+        ruleForm.value.validate((valid) => {
             if (valid) {
                 if (layer.row) {
                     updateForm(form)

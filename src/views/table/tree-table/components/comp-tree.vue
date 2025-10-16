@@ -10,7 +10,7 @@
         </div>
         <div class="list system-scrollbar">
             <el-tree
-                ref="tree"
+                ref="elTreeRef"
                 class="my-tree"
                 :data="treeData"
                 :props="defaultProps"
@@ -43,7 +43,7 @@ defineOptions({
 })
 
 const treeData = ref<TreeType[]>([])
-const tree = ref<TreeInstance>()
+const elTreeRef = useTemplateRef<TreeInstance>('treeRef')
 
 const defaultProps = {
     children: 'children',
@@ -60,7 +60,7 @@ async function getTreeData() {
         treeData.value = data
         updateActiveTree(data[0])
         nextTick(() => {
-            tree.value && tree.value.setCurrentKey(activeTree.value.id)
+            elTreeRef.value && elTreeRef.value.setCurrentKey(activeTree.value.id)
         })
     }
 }

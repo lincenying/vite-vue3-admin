@@ -2,7 +2,7 @@
     <div class="global-box table-card">
         <div v-loading="loading" class="global-box-table" pr-5px>
             <div ref="box" class="box" mb-15px h="[calc(100%-50px)]">
-                <ElScrollbar ref="scrollBarRef" height="100%">
+                <el-scrollbar ref="scrollBarRef" height="100%">
                     <el-row :gutter="20">
                         <el-col v-for="row in list" :key="row.id" :lg="4" :md="8" :sm="12" :xs="24">
                             <el-card :body-style="{ padding: '0px' }" shadow="hover">
@@ -18,7 +18,7 @@
                         </el-col>
                     </el-row>
                     <el-empty v-show="list.length === 0" description="空空如也~" class="h-500px" />
-                </ElScrollbar>
+                </el-scrollbar>
             </div>
 
             <el-pagination
@@ -38,9 +38,8 @@
 
 <script lang="ts" setup>
 import type { GlobalTablePage } from '~/types/components.types'
+import type { ScrollbarInstance } from '~/types/global.types'
 import type { CardListType } from '~/types/table.types'
-
-import { ElScrollbar } from 'element-plus'
 
 defineOptions({
     name: 'Card',
@@ -50,9 +49,9 @@ defineOptions({
 const [loading, toggleLoading] = useToggle(false)
 
 const list = ref<CardListType[]>([])
-const box = ref<HTMLDivElement>()
 
-const scrollBarRef = ref<InstanceType<typeof ElScrollbar>>()
+const box = useTemplateRef<HTMLDivElement>('box')
+const scrollBarRef = useTemplateRef<ScrollbarInstance>('scrollBarRef')
 
 const page: GlobalTablePage = reactive({
     index: 1,

@@ -82,7 +82,6 @@ declare module 'vue' {
     IMdiCalendarExportOutline: typeof import('~icons/mdi/calendar-export-outline')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SystemUserModify: typeof import('./components/system/user-modify.vue')['default']
   }
   export interface GlobalDirectives {
     vInfiniteScroll: typeof import('element-plus/es')['ElInfiniteScroll']

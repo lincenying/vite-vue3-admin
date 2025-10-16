@@ -31,8 +31,8 @@ const { layer } = defineProps<{
 
 const emit = defineEmits(['getTableData', 'update'])
 
-const ruleForm = $ref<Nullable<FormInstance>>(null)
-const layerDom = $ref<Nullable<GlobalDialogInstance>>(null)
+const ruleForm = useTemplateRef<FormInstance>('ruleForm')
+const layerDom = useTemplateRef<GlobalDialogInstance>('layerDom')
 
 const form: RoleListType = reactive({
     id: '',
@@ -50,8 +50,8 @@ if (layer.row) {
     form.desc = layer.row.desc
 }
 function onSubmit() {
-    if (ruleForm) {
-        ruleForm.validate((valid) => {
+    if (ruleForm.value) {
+        ruleForm.value.validate((valid) => {
             if (valid) {
                 const params = form
                 if (layer.row) {
@@ -73,7 +73,7 @@ async function addForm(params: object) {
             message: '新增成功',
         })
         emit('getTableData', true)
-        layerDom?.close()
+        layerDom.value?.close()
     }
 }
 // 编辑提交事件
@@ -85,7 +85,7 @@ async function updateForm(params: object) {
             message: '编辑成功',
         })
         emit('getTableData', false)
-        layerDom?.close()
+        layerDom.value?.close()
     }
 }
 function onUpdate(payload: boolean) {
