@@ -423,7 +423,7 @@
     cursor: pointer;
     background: var(--system-header-tab-background);
     border: 1px solid var(--system-header-border-color);
-    border-radius: 2px;
+    border-radius: 5px;
 
     a {
         display: inline-block;
@@ -474,7 +474,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 40px;
+    height: 50px;
     background: var(--system-header-background);
     border-top: 1px solid var(--system-header-border-color);
     border-bottom: 1px solid var(--system-header-border-color);
