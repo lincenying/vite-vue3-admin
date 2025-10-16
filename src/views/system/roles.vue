@@ -156,13 +156,13 @@ async function handleDel(data: RoleListType[]) {
 }
 // 新增弹窗功能
 function handleAdd() {
-    layer.title = '新增数据'
+    layer.title = '新增角色'
     layer.show = true
     layer.row = undefined
 }
 // 编辑弹窗功能
 function handleEdit(row: RoleListType) {
-    layer.title = '编辑数据'
+    layer.title = '编辑角色'
     layer.row = row
     layer.show = true
 }

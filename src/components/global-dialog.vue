@@ -2,11 +2,11 @@
     <el-dialog v-model="show" :title="layer.title" :width="layer.width" :append-to-body="true" center v-bind="$attrs" :before-close="onBeforeClose">
         <slot />
         <template v-if="layer.showButton" #footer>
-            <div v-if="layer.showCancel">
-                <el-button type="primary" @click="emit('confirm')">{{ submitText }}</el-button>
-                <el-button @click="handleClose">{{ cancelText }}</el-button>
+            <div v-if="layer.showCancel" class="dialog-footer">
+                <el-button type="primary" class="w-100px" @click="emit('confirm')">{{ submitText }}</el-button>
+                <el-button class="w-100px" @click="handleClose">{{ cancelText }}</el-button>
             </div>
-            <div v-else pt-20px border-t="1px solid hex-F0F0F0">
+            <div v-else class="dialog-footer" pt-20px border-t="1px solid hex-F0F0F0">
                 <el-button type="primary" class="w-full" @click="emit('confirm')">{{ submitText }}</el-button>
             </div>
         </template>

@@ -9,8 +9,7 @@
             ref="ruleForm"
             :model="form"
             :rules="rules"
-            label-width="100px"
-            class="mr-30px"
+            label-width="6em"
         >
             <el-form-item label="名称：" prop="name">
                 <el-input v-model="form.name" placeholder="请输入名称" />

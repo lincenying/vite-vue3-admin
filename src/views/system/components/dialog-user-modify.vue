@@ -1,12 +1,6 @@
 <template>
     <global-dialog ref="layerDom" :layer="layer" @update="onUpdate" @confirm="onSubmit">
-        <el-form
-            ref="ruleForm"
-            :model="form"
-            :rules="rules"
-            label-width="120px"
-            class="mr-30px"
-        >
+        <el-form ref="ruleForm" :model="form" :rules="rules" label-width="8em">
             <el-form-item label="用户名：" prop="name">
                 <el-input v-model="form.name" placeholder="请输入用户名" />
             </el-form-item>
@@ -27,8 +21,8 @@
                     <el-radio :label="1">是</el-radio>
                 </el-radio-group>
             </el-form-item>
-            <el-form-item label="状态：" prop="isAdmin">
-                <el-radio-group v-model="form.isAdmin">
+            <el-form-item label="状态：" prop="status">
+                <el-radio-group v-model="form.status">
                     <el-radio :label="1">启用</el-radio>
                     <el-radio :label="0">禁用</el-radio>
                 </el-radio-group>
@@ -66,12 +60,14 @@ const form: UserListType = reactive({
     nickName: '',
     role: '',
     isAdmin: '',
+    status: '',
 })
 const rules = {
     name: Rules.string('姓名') as FormItemRule[],
     sort: Rules.integer('数字') as FormItemRule[],
     role: Rules.select('角色') as FormItemRule[],
     isAdmin: Rules.select('超级管理员') as FormItemRule[],
+    status: Rules.select('状态') as FormItemRule[],
 }
 const options = [
     '系统管理员',
@@ -87,6 +83,7 @@ if (layer.row) {
     form.role = layer.row.role
     form.nickName = layer.row.nickName
     form.isAdmin = layer.row.isAdmin
+    form.status = layer.row.status
 }
 function onSubmit() {
     if (ruleForm) {

@@ -42,7 +42,7 @@
                     </template>
                 </el-table-column>
             </globalTable>
-            <dialogRoleModify
+            <dialog-dept-modify
                 v-if="layer.show"
                 :layer="layer"
                 @update="(payload: boolean) => (layer.show = payload)"
@@ -120,15 +120,17 @@ async function handleDel(data: DeptListType[]) {
 }
 // 新增弹窗功能
 function handleAdd() {
-    layer.title = '新增数据'
+    layer.title = '新增部门'
     layer.show = true
     layer.row = undefined
+    layer.showCancel = true
 }
 // 编辑弹窗功能
 function handleEdit(row: DeptListType) {
-    layer.title = '编辑数据'
+    layer.title = '编辑部门'
     layer.row = row
     layer.show = true
+    layer.showCancel = true
 }
 
 getTableData()

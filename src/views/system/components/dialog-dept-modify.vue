@@ -1,11 +1,11 @@
 <template>
     <global-dialog ref="layerDom" :layer="layer" @update="onUpdate" @confirm="onSubmit">
         <el-form ref="ruleForm" :model="form" :rules="rules" label-width="7em">
-            <el-form-item label="角色名称：" prop="name">
-                <el-input v-model="form.name" placeholder="请输入角色名称" />
+            <el-form-item label="部门名称：" prop="name">
+                <el-input v-model="form.name" placeholder="请输入部门名称" />
             </el-form-item>
-            <el-form-item label="角色描述：" prop="desc">
-                <el-input v-model="form.desc" placeholder="请输入角色描述" type="textarea" :rows="4" maxlength="100" show-word-limit />
+            <el-form-item label="部门描述：" prop="desc">
+                <el-input v-model="form.desc" placeholder="请输入部门描述" type="textarea" :rows="4" maxlength="100" show-word-limit />
             </el-form-item>
         </el-form>
     </global-dialog>
@@ -40,8 +40,8 @@ const form: RoleListType = reactive({
     desc: '',
 })
 const rules = {
-    name: Rules.string('角色名称') as FormItemRule[],
-    desc: Rules.string('角色描述') as FormItemRule[],
+    name: Rules.string('部门名称') as FormItemRule[],
+    desc: Rules.string('部门描述') as FormItemRule[],
 }
 
 if (layer.row) {
@@ -66,7 +66,7 @@ function onSubmit() {
 }
 // 新增提交事件
 async function addForm(params: object) {
-    const { code } = await $api.post('/system/role/add', params)
+    const { code } = await $api.post('/system/dept/add', params)
     if (code === 200) {
         ElMessage({
             type: 'success',
@@ -78,7 +78,7 @@ async function addForm(params: object) {
 }
 // 编辑提交事件
 async function updateForm(params: object) {
-    const { code } = await $api.post('/system/role/update', params)
+    const { code } = await $api.post('/system/dept/update', params)
     if (code === 200) {
         ElMessage({
             type: 'success',

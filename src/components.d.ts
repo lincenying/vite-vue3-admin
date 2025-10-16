@@ -18,6 +18,7 @@ declare module 'vue' {
     CompTreeTable: typeof import('./views/table/tree-table/components/comp-tree-table.vue')['default']
     DialogCategoryModify: typeof import('./views/table/category-table/components/dialog-category-modify.vue')['default']
     DialogCrudModify: typeof import('./views/table/crud-table/components/dialog-crud-modify.vue')['default']
+    DialogDeptModify: typeof import('./views/system/components/dialog-dept-modify.vue')['default']
     DialogRoleModify: typeof import('./views/system/components/dialog-role-modify.vue')['default']
     DialogTreeModify: typeof import('./views/table/tree-table/components/dialog-tree-modify.vue')['default']
     DialogUserModify: typeof import('./views/system/components/dialog-user-modify.vue')['default']

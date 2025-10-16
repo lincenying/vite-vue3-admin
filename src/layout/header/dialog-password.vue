@@ -9,8 +9,7 @@
             ref="ruleForm"
             :model="form"
             :rules="rules"
-            label-width="120px"
-            class="mr-30px"
+            label-width="6em"
         >
             <el-form-item label="用户名：" prop="name"> 管理员 </el-form-item>
             <el-form-item label="原密码：" prop="old">

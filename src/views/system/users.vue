@@ -179,13 +179,13 @@ async function handleDel(data: UserListType[]) {
 }
 // 新增弹窗功能
 function handleAdd() {
-    layer.title = '新增数据'
+    layer.title = '新增用户'
     layer.show = true
     layer.row = undefined
 }
 // 编辑弹窗功能
 function handleEdit(row: UserListType) {
-    layer.title = '编辑数据'
+    layer.title = '编辑用户'
     layer.row = row
     layer.show = true
 }

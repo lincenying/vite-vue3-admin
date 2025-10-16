@@ -5,3 +5,13 @@
 .el-icon {
     text-align: center;
 }
+
+.el-overlay-dialog {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .el-dialog {
+        margin-top: 50px;
+    }
+}
