@@ -16,6 +16,10 @@ export interface GlobalDialogLayer<T = Objable> {
     row?: T
     /** 弹窗宽度 */
     width?: string
+    /** 禁用按钮 */
+    disabledBtn: boolean
+    /** loading按钮 */
+    loadingBtn: boolean
     [propName: string]: any
 }
 

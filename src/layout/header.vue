@@ -41,7 +41,7 @@
             </div>
             <dialogPassword
                 v-if="layer.show"
-                :layer="layer"
+                v-model="layer"
                 @update="(payload: boolean) => (layer.show = payload)"
             />
         </div>
@@ -71,6 +71,8 @@ const layer: GlobalDialogLayer<Objable> = reactive({
     show: false,
     title: '',
     showButton: true,
+    disabledBtn: false,
+    loadingBtn: false,
     width: '500px',
 })
 // isCollapse change to hide/show the sidebar

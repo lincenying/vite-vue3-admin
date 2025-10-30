@@ -32,10 +32,9 @@ defineOptions({
     name: 'DialogPassword',
 })
 
-const { layer } = defineProps<{
-    layer: GlobalDialogLayer<Objable>
-}>()
 const emit = defineEmits(['update'])
+
+const layer = defineModel<GlobalDialogLayer<Objable>>({ required: true })
 
 const userStore = useUserStore()
 
@@ -56,6 +55,7 @@ function onSubmit() {
     if (ruleForm.value) {
         ruleForm.value.validate(async (valid) => {
             if (valid) {
+                layer.value.loadingBtn = true
                 const params = {
                     id: form.value.userId,
                     old: form.value.old,
@@ -75,6 +75,7 @@ function onSubmit() {
                         userStore.logout()
                     }, 2000)
                 }
+                layer.value.loadingBtn = false
             }
         })
     }

@@ -25,11 +25,9 @@ defineOptions({
     name: 'DialogRoleModify',
 })
 
-const { layer } = defineProps<{
-    layer: GlobalDialogLayer<Nullable<RoleListType>>
-}>()
-
 const emit = defineEmits(['getTableData', 'update'])
+
+const layer = defineModel<GlobalDialogLayer<Nullable<RoleListType>>>({ required: true })
 
 const ruleForm = useTemplateRef<FormInstance>('ruleForm')
 const layerDom = useTemplateRef<GlobalDialogInstance>('layerDom')
@@ -44,17 +42,17 @@ const rules = {
     desc: Rules.string('角色描述') as FormItemRule[],
 }
 
-if (layer.row) {
-    form.id = layer.row.id
-    form.name = layer.row.name
-    form.desc = layer.row.desc
+if (layer.value.row) {
+    form.id = layer.value.row.id
+    form.name = layer.value.row.name
+    form.desc = layer.value.row.desc
 }
 function onSubmit() {
     if (ruleForm.value) {
         ruleForm.value.validate((valid) => {
             if (valid) {
                 const params = form
-                if (layer.row) {
+                if (layer.value.row) {
                     updateForm(params)
                 }
                 else {
@@ -66,6 +64,7 @@ function onSubmit() {
 }
 // 新增提交事件
 async function addForm(params: object) {
+    layer.value.loadingBtn = true
     const { code } = await $api.post('/system/role/add', params)
     if (code === 200) {
         ElMessage({
@@ -75,9 +74,11 @@ async function addForm(params: object) {
         emit('getTableData', true)
         layerDom.value?.close()
     }
+    layer.value.loadingBtn = false
 }
 // 编辑提交事件
 async function updateForm(params: object) {
+    layer.value.loadingBtn = true
     const { code } = await $api.post('/system/role/update', params)
     if (code === 200) {
         ElMessage({
@@ -87,6 +88,7 @@ async function updateForm(params: object) {
         emit('getTableData', false)
         layerDom.value?.close()
     }
+    layer.value.loadingBtn = false
 }
 function onUpdate(payload: boolean) {
     emit('update', payload)

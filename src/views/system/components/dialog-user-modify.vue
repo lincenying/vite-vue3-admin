@@ -45,12 +45,8 @@ defineOptions({
     name: 'DialogUserModify',
 })
 
-const { layer } = defineProps<{
-    layer: GlobalDialogLayer<Nullable<UserListType>>
-}>()
-
 const emit = defineEmits(['getTableData', 'update'])
-
+const layer = defineModel<GlobalDialogLayer<Nullable<UserListType>>>({ required: true })
 const ruleForm = useTemplateRef<FormInstance>('ruleForm')
 const layerDom = useTemplateRef<GlobalDialogInstance>('layerDom')
 
@@ -77,20 +73,20 @@ const options = [
     '普通人员',
 ]
 
-if (layer.row) {
-    form.id = layer.row.id
-    form.name = layer.row.name
-    form.role = layer.row.role
-    form.nickName = layer.row.nickName
-    form.isAdmin = layer.row.isAdmin
-    form.status = layer.row.status
+if (layer.value.row) {
+    form.id = layer.value.row.id
+    form.name = layer.value.row.name
+    form.role = layer.value.row.role
+    form.nickName = layer.value.row.nickName
+    form.isAdmin = layer.value.row.isAdmin
+    form.status = layer.value.row.status
 }
 function onSubmit() {
     if (ruleForm.value) {
         ruleForm.value.validate((valid) => {
             if (valid) {
                 const params = form
-                if (layer.row) {
+                if (layer.value.row) {
                     updateForm(params)
                 }
                 else {
@@ -102,6 +98,7 @@ function onSubmit() {
 }
 // 新增提交事件
 async function addForm(params: object) {
+    layer.value.loadingBtn = true
     const { code } = await $api.post('/system/user/add', params)
     if (code === 200) {
         ElMessage({
@@ -111,9 +108,11 @@ async function addForm(params: object) {
         emit('getTableData', true)
         layerDom.value?.close()
     }
+    layer.value.loadingBtn = false
 }
 // 编辑提交事件
 async function updateForm(params: object) {
+    layer.value.loadingBtn = true
     const { code } = await $api.post('/system/user/update', params)
     if (code === 200) {
         ElMessage({
@@ -123,6 +122,7 @@ async function updateForm(params: object) {
         emit('getTableData', false)
         layerDom.value?.close()
     }
+    layer.value.loadingBtn = false
 }
 function onUpdate(payload: boolean) {
     emit('update', payload)

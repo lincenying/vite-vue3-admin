@@ -68,7 +68,7 @@
             </globalTable>
             <dialogUserModify
                 v-if="layer.show"
-                :layer="layer"
+                v-model="layer"
                 @update="(payload: boolean) => (layer.show = payload)"
                 @get-table-data="getTableData"
             />
@@ -101,6 +101,8 @@ const layer: GlobalDialogLayer<Nullable<UserListType>> = reactive({
     show: false,
     title: '新增',
     showButton: true,
+    disabledBtn: false,
+    loadingBtn: false,
     width: '500px',
     row: null,
 })

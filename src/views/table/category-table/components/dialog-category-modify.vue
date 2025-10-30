@@ -55,11 +55,9 @@ defineOptions({
     name: 'DialogModify',
 })
 
-const { layer } = defineProps<{
-    layer: GlobalDialogLayer<Nullable<TableListType>>
-}>()
-
 const emit = defineEmits(['getTableData', 'update'])
+
+const layer = defineModel<GlobalDialogLayer<Nullable<TableListType>>>({ required: true })
 
 const ruleForm = useTemplateRef<FormInstance>('ruleForm')
 const layerDom = useTemplateRef<GlobalDialogInstance>('layerDom')
@@ -82,7 +80,7 @@ function onSubmit() {
     if (ruleForm.value) {
         ruleForm.value.validate((valid) => {
             if (valid) {
-                if (layer.row) {
+                if (layer.value.row) {
                     updateForm(form)
                 }
                 else {
@@ -94,6 +92,7 @@ function onSubmit() {
 }
 // 新增提交事件
 async function addForm(params: TableListType) {
+    layer.value.loadingBtn = true
     const { code } = await $api.post('/table/add', params)
     if (code === 200) {
         ElMessage({
@@ -103,9 +102,11 @@ async function addForm(params: TableListType) {
         emit('getTableData', true)
         onUpdate(false)
     }
+    layer.value.loadingBtn = false
 }
 // 编辑提交事件
 async function updateForm(params: TableListType) {
+    layer.value.loadingBtn = true
     const { code } = await $api.post('/table/update', params)
     if (code === 200) {
         ElMessage({
@@ -115,6 +116,7 @@ async function updateForm(params: TableListType) {
         emit('getTableData', false)
         onUpdate(false)
     }
+    layer.value.loadingBtn = false
 }
 function onUpdate(payload: boolean) {
     emit('update', payload)
@@ -122,8 +124,8 @@ function onUpdate(payload: boolean) {
 
 function init() {
     // 用于判断新增还是编辑功能
-    if (layer.row) {
-        form = deepClone(layer.row)
+    if (layer.value.row) {
+        form = deepClone(layer.value.row)
     }
 }
 init()

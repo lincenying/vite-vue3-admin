@@ -62,7 +62,7 @@
             </global-table>
             <dialog-category-modify
                 v-if="layer.show"
-                :layer="layer"
+                v-model="layer"
                 @update="(payload: boolean) => (layer.show = payload)"
                 @get-table-data="getTableData"
             />
@@ -100,6 +100,8 @@ const layer: GlobalDialogLayer<Objable> = reactive({
     show: false,
     title: '新增',
     showButton: true,
+    disabledBtn: false,
+    loadingBtn: false,
     width: '500px',
 })
 // 分页参数, 供table使用
