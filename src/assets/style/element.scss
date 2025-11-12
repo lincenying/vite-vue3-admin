@@ -13,5 +13,17 @@
 
     .el-dialog {
         margin-top: 50px;
+
+        .dialog-footer {
+            display: flex;
+            justify-content: center;
+        }
+    }
+}
+
+.el-popper {
+    .el-menu-item i,
+    .el-sub-menu__title i {
+        margin-right: 5px;
     }
 }

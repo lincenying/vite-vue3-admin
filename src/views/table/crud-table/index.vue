@@ -110,6 +110,7 @@ const layer: GlobalDialogLayer<TableListType> = reactive({
     show: false,
     title: '新增',
     showButton: true,
+    showCancel: true,
     disabledBtn: false,
     loadingBtn: false,
     row: undefined,
