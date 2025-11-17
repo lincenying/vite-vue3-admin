@@ -85,7 +85,6 @@ function setTheme() {
     body.setAttribute('data-theme', state.style)
     // 需要设置的颜色参照theme.scss，位置：assets/style/theme.scss
     // 设置主题色
-    console.log(state.primaryColor)
     body.style.setProperty('--system-primary-color', state.primaryColor)
     for (const i in userTheme) {
         if (i === 'name') {
