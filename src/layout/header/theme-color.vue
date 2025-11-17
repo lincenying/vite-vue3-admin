@@ -30,7 +30,7 @@ const props = withDefaults(defineProps<Props>(), {
     active: '',
     activeTextColor: '',
     tip: '默认蓝',
-    color: '#409eff',
+    color: '#2978f9',
     textColor: '#fff',
 })
 

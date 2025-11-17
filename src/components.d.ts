@@ -84,6 +84,10 @@ declare module 'vue' {
     IEpRefreshRight: typeof import('~icons/ep/refresh-right')['default']
     IEpSearch: typeof import('~icons/ep/search')['default']
     IMdiCalendarExportOutline: typeof import('~icons/mdi/calendar-export-outline')['default']
+    IMdiCloseCircleOutline: typeof import('~icons/mdi/close-circle-outline')['default']
+    IMdiCloseOctagon: typeof import('~icons/mdi/close-octagon')['default']
+    IMdiCloseOctagonOutline: typeof import('~icons/mdi/close-octagon-outline')['default']
+    IMdiCloseOutline: typeof import('~icons/mdi/close-outline')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
@@ -167,6 +171,10 @@ declare global {
   const IEpRefreshRight: typeof import('~icons/ep/refresh-right')['default']
   const IEpSearch: typeof import('~icons/ep/search')['default']
   const IMdiCalendarExportOutline: typeof import('~icons/mdi/calendar-export-outline')['default']
+  const IMdiCloseCircleOutline: typeof import('~icons/mdi/close-circle-outline')['default']
+  const IMdiCloseOctagon: typeof import('~icons/mdi/close-octagon')['default']
+  const IMdiCloseOctagonOutline: typeof import('~icons/mdi/close-octagon-outline')['default']
+  const IMdiCloseOutline: typeof import('~icons/mdi/close-outline')['default']
   const RouterLink: typeof import('vue-router')['RouterLink']
   const RouterView: typeof import('vue-router')['RouterView']
 }

@@ -50,9 +50,7 @@ const globalStore = useGlobalStore()
 
 const Route = useRoute()
 
-const { isCollapse, contentFullScreen, showLogo, showTabs } = $(
-    storeToRefs(globalStore),
-)
+const { isCollapse, contentFullScreen, showLogo, showTabs } = $(storeToRefs(globalStore))
 const { keepAliveComponentsName } = $(storeToRefs(keepAliveStore))
 
 // 页面宽度变化监听后执行的方法

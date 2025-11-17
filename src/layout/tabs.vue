@@ -33,17 +33,17 @@
                         </el-dropdown-item>
                         <el-dropdown-item class="tab-ddropdown-item" :disabled="currentDisabled" @click="handleCloseCurrentRoute">
                             <el-icon slots="icon" class="mr-5px">
-                                <i-ep-CircleClose />
+                                <i-mdi-close-outline />
                             </el-icon>关闭当前标签
                         </el-dropdown-item>
                         <el-dropdown-item class="tab-ddropdown-item" :disabled="tabsStorage.length < 3" @click="handleCloseOtherRoute">
                             <el-icon slots="icon" class="mr-5px">
-                                <i-ep-CircleClose />
+                                <i-mdi-close-octagon-outline />
                             </el-icon>关闭其他标签
                         </el-dropdown-item>
                         <el-dropdown-item class="tab-ddropdown-item" :disabled="tabsStorage.length <= 1" @click="handleCloseAllRoute">
                             <el-icon slots="icon" class="mr-5px">
-                                <i-ep-CircleClose />
+                                <i-mdi-close-octagon />
                             </el-icon>关闭所有标签
                         </el-dropdown-item>
                     </el-dropdown-menu>

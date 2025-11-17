@@ -29,9 +29,9 @@ const globalStore = useGlobalStore()
 const { isCollapse, expandOneMenu } = $(storeToRefs(globalStore))
 
 const route = useRoute()
+
 const activeMenu = computed(() => {
     const { meta, path } = route
     return meta.activeMenu || path
 })
-onMounted(() => {})
 </script>

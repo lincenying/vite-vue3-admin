@@ -17,7 +17,7 @@ const useGlobalStore = defineStore('globalStore', () => {
             theme: {
                 state: {
                     style: 'default',
-                    primaryColor: '#409eff',
+                    primaryColor: '#2978f9',
                     primaryTextColor: '',
                     menuType: 'side',
                 },

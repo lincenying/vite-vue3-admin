@@ -71,7 +71,7 @@ const { showLogo, showTabs, expandOneMenu, theme } = $(storeToRefs(globalStore))
 const state: ThemeState = reactive(theme.state)
 
 const themeColorArr = [
-    { color: '#409eff', textColor: '#fff', tip: '默认蓝' },
+    { color: '#2978f9', textColor: '#fff', tip: '默认蓝' },
     { color: '#d60f20', textColor: '#fff', tip: '玫瑰红' },
     { color: '#ac25e6', textColor: '#fff', tip: '优雅紫' },
     { color: '#4dc86f', textColor: '#fff', tip: '故事绿' },
@@ -80,11 +80,12 @@ const themeColorArr = [
 ]
 function setTheme() {
     const userTheme = style[state.style]
-    const body = document.getElementsByTagName('body')[0]
+    const body = document.getElementsByTagName('html')[0]
     // 设置全局顶部body上的class名称，即为主题名称，便于自定义配置符合当前主题的样式统一入口
     body.setAttribute('data-theme', state.style)
     // 需要设置的颜色参照theme.scss，位置：assets/style/theme.scss
     // 设置主题色
+    console.log(state.primaryColor)
     body.style.setProperty('--system-primary-color', state.primaryColor)
     for (const i in userTheme) {
         if (i === 'name') {
