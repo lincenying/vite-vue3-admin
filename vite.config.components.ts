@@ -49,7 +49,11 @@ export default (): PluginOption[] => [
      * @see https://github.com/antfu/unplugin-vue-components#readme
      */
     Components({
-        dirs: ['src/components', 'src/**/components'],
+        dirs: [
+            'src/components',
+            'src/**/components',
+            'src/layout',
+        ],
         include: [
             /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
             /\.vue$/,

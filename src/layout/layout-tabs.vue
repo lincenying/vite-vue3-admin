@@ -6,7 +6,7 @@
             @wheel.passive="handleWhellScroll"
             @scroll="handleScroll"
         >
-            <tabsItem
+            <tabs-item
                 v-for="menu in tabsStorage"
                 :key="menu.meta.title"
                 :menu="menu"
@@ -70,7 +70,6 @@ import type { RouteRecordName } from 'vue-router'
 import type { TabsType } from '~/composables/storage'
 
 import { tabsStorage } from '~/composables/storage'
-import tabsItem from '~/layout/tabs/item.vue'
 
 defineOptions({
     name: 'LayoutTabs',

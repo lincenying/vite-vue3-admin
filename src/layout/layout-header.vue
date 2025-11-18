@@ -5,19 +5,19 @@
             <div class="menu-icon" @click="opendStateChange">
                 <i class="iconfont head-fold" :class="isCollapse ? 'icon-s-unfold' : 'icon-s-fold'" />
             </div>
-            <breadcrumb />
+            <header-breadcrumb />
         </div>
         <div class="right-box">
             <!-- 快捷功能按钮 -->
             <div class="function-list">
                 <div class="function-list-item hidden-sm-and-down">
-                    <full-screen />
+                    <header-full-screen />
                 </div>
                 <div class="function-list-item hidden-sm-and-down">
-                    <layout-theme />
+                    <header-layout-theme />
                 </div>
                 <div class="function-list-item hidden-sm-and-down">
-                    <github />
+                    <header-github />
                 </div>
             </div>
             <!-- 用户信息 -->
@@ -39,7 +39,7 @@
                     </template>
                 </el-dropdown>
             </div>
-            <dialogPassword
+            <dialog-password
                 v-if="layer.show"
                 v-model="layer"
                 @update="(payload: boolean) => (layer.show = payload)"
@@ -50,12 +50,6 @@
 
 <script lang="ts" setup>
 import type { GlobalDialogLayer } from '~/types/components.types'
-
-import breadcrumb from '~/layout/header/breadcrumb.vue'
-import dialogPassword from '~/layout/header/dialog-password.vue'
-import fullScreen from '~/layout/header/full-screen.vue'
-import github from '~/layout/header/github.vue'
-import layoutTheme from '~/layout/header/layout-theme.vue'
 
 defineOptions({
     name: 'LayoutHeader',

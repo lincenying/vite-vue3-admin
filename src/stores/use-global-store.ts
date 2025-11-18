@@ -1,4 +1,4 @@
-import type { GlobalState } from './store.types'
+import type { GlobalState } from '../types/store.types'
 
 import { acceptHMRUpdate } from 'pinia'
 import { globalStorage } from '~/composables/storage'

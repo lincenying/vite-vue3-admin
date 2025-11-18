@@ -1,5 +1,5 @@
 import type { RouteRecordName } from 'vue-router'
-import type { KeepAliveState } from './store.types'
+import type { KeepAliveState } from '../types/store.types'
 
 import { acceptHMRUpdate } from 'pinia'
 

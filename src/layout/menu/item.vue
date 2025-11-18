@@ -18,7 +18,7 @@
                 :base-path="menu.path"
             />
         </el-sub-menu>
-        <appLink v-else-if="showMenuType === 1" :to="menu.path">
+        <app-link v-else-if="showMenuType === 1" :to="menu.path">
             <el-menu-item v-if="!menu.children[0].children || menu.children[0].children.length === 0" :index="menu.path">
                 <i
                     v-if="menu.children[0].meta.icon || menu.meta.icon"
@@ -41,13 +41,13 @@
                     :base-path="menu.path"
                 />
             </el-sub-menu>
-        </appLink>
-        <appLink v-else :to="menu.path">
+        </app-link>
+        <app-link v-else :to="menu.path">
             <el-menu-item :index="menu.path">
                 <i v-if="menu.meta.icon" :class="menu.meta.icon" />
                 <template #title>{{ menu.meta.title }}</template>
             </el-menu-item>
-        </appLink>
+        </app-link>
     </template>
 </template>
 

@@ -7,8 +7,6 @@
 <script lang="ts" setup>
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 
-import LayoutIndex from './layout/index.vue'
-
 defineOptions({
     name: 'App',
     inheritAttrs: true,

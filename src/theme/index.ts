@@ -1,4 +1,4 @@
-import type { Style } from './theme.types'
+import type { Style } from '../types/theme.types'
 
 export const style: Style = {
     default: {

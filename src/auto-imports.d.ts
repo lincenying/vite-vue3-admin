@@ -106,7 +106,6 @@ declare global {
   const promptMsg: typeof import('./composables/message')['promptMsg']
   const provide: typeof import('vue')['provide']
   const provideLocal: typeof import('@vueuse/core')['provideLocal']
-  const radioData: (typeof import('./views/table/crud-table/components/enum'))['radioData']
   const reactify: typeof import('@vueuse/core')['reactify']
   const reactifyObject: typeof import('@vueuse/core')['reactifyObject']
   const reactive: typeof import('vue')['reactive']
@@ -124,8 +123,6 @@ declare global {
   const refreshCurrentTab: typeof import('./composables/index')['refreshCurrentTab']
   const resolveComponent: typeof import('vue')['resolveComponent']
   const resolveRef: typeof import('@vueuse/core')['resolveRef']
-  const resolveUnref: typeof import('@vueuse/core')['resolveUnref']
-  const selectData: (typeof import('./views/table/crud-table/components/enum'))['selectData']
   const setupPinia: typeof import('./stores/index')['setupPinia']
   const shallowReactive: typeof import('vue')['shallowReactive']
   const shallowReadonly: typeof import('vue')['shallowReadonly']
@@ -362,9 +359,6 @@ declare global {
   // @ts-ignore
   export type { TabsType } from './composables/storage'
   import('./composables/storage')
-  // @ts-ignore
-  export type { GlobalStateOption, GlobalStateOptionKey, GlobalStateOptionValue, ThemeState, GlobalState, KeepAliveState, UserState } from './stores/store.types'
-  import('./stores/store.types')
 }
 
 // for vue template auto import

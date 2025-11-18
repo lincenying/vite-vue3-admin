@@ -1,4 +1,4 @@
-import type { UserState } from './store.types'
+import type { UserState } from '../types/store.types'
 
 import { acceptHMRUpdate } from 'pinia'
 import { userStorage } from '~/composables/storage'

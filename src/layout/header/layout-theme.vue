@@ -12,7 +12,7 @@
     >
         <h3>整体风格设置</h3>
         <div class="theme-box">
-            <themeIcon
+            <header-theme-icon
                 v-for="(row, index) in style"
                 :key="index"
                 v-model:active="state.style"
@@ -27,7 +27,7 @@
         </div>
         <h3>主题色</h3>
         <div class="theme-box">
-            <themeColor
+            <header-theme-color
                 v-for="(item, key) in themeColorArr"
                 :key="key"
                 v-model:active="state.primaryColor"
@@ -53,11 +53,9 @@
 </template>
 
 <script lang="ts" setup>
-import type { ThemeState } from '~/stores/store.types'
-import type { Colors } from '~/theme/theme.types'
 import type { SettingOption } from '~/types/layout.types'
-import themeColor from '~/layout/header/theme-color.vue'
-import themeIcon from '~/layout/header/theme-icon.vue'
+import type { ThemeState } from '~/types/store.types'
+import type { Colors } from '~/types/theme.types'
 import { style } from '~/theme/index'
 
 defineOptions({
