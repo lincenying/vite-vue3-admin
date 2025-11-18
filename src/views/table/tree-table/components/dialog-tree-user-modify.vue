@@ -11,8 +11,36 @@
             :rules="rules"
             label-width="6em"
         >
-            <el-form-item label="名称：" prop="label">
-                <el-input v-model="form.label" placeholder="请输入名称" />
+            <el-form-item label="名称：" prop="name">
+                <el-input v-model="form.name" placeholder="请输入名称" />
+            </el-form-item>
+            <el-form-item label="数字：" prop="number">
+                <el-input
+                    v-model="form.number"
+                    oninput="value=value.replace(/[^\d]/g,'')"
+                    placeholder="只能输入正整数"
+                />
+            </el-form-item>
+            <el-form-item label="选择器：" prop="select">
+                <el-select v-model="form.choose" placeholder="请选择" clearable>
+                    <el-option
+                        v-for="item in selectData"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value"
+                    />
+                </el-select>
+            </el-form-item>
+            <el-form-item label="单选框：" prop="radio">
+                <el-radio-group v-model="form.radio">
+                    <el-radio
+                        v-for="item in radioData"
+                        :key="item.value"
+                        :label="item.value"
+                    >
+                        {{ item.label }}
+                    </el-radio>
+                </el-radio-group>
             </el-form-item>
         </el-form>
     </global-dialog>
@@ -22,29 +50,36 @@
 import type { FormInstance, FormItemRule } from 'element-plus'
 import type { GlobalDialogLayer } from '~/types/components.types'
 import type { GlobalDialogInstance } from '~/types/global.types'
-import type { DeptListType } from '~/types/table.types'
+import type { TableListType } from '~/types/table.types'
 
 import Rules from '@lincy/async-validation'
 
 import { ElMessage } from '~/config/element'
+import { radioData, selectData } from '~/views/table/enum'
 
 defineOptions({
-    name: 'DialogTreeModify',
+    name: 'DialogTreeUserModify',
 })
 
 const emit = defineEmits(['getTableData', 'update'])
 
-const layer = defineModel<GlobalDialogLayer<DeptListType>>({ required: true })
+const layer = defineModel<GlobalDialogLayer<Nullable<TableListType>>>({ required: true })
 
 const ruleForm = useTemplateRef<FormInstance>('ruleForm')
 const layerDom = useTemplateRef<GlobalDialogInstance>('layerDom')
 
-let form = $ref<DeptListType>({
+let form = $ref<TableListType>({
     id: undefined,
-    label: undefined,
+    name: undefined,
+    number: undefined,
+    choose: undefined,
+    radio: undefined,
 })
 const rules = {
-    label: Rules.string('名称') as FormItemRule[],
+    name: Rules.string('姓名') as FormItemRule[],
+    number: Rules.integer('数字') as FormItemRule[],
+    choose: Rules.select('选择器') as FormItemRule[],
+    radio: Rules.select('单选框') as FormItemRule[],
 }
 
 function onSubmit() {
@@ -62,7 +97,7 @@ function onSubmit() {
     }
 }
 // 新增提交事件
-async function addForm(params: DeptListType) {
+async function addForm(params: TableListType) {
     layer.value.loadingBtn = true
     const { code } = await $api.post('/table/add', params)
     if (code === 200) {
@@ -76,7 +111,7 @@ async function addForm(params: DeptListType) {
     layer.value.loadingBtn = false
 }
 // 编辑提交事件
-async function updateForm(params: DeptListType) {
+async function updateForm(params: TableListType) {
     layer.value.loadingBtn = true
     const { code } = await $api.post('/table/update', params)
     if (code === 200) {

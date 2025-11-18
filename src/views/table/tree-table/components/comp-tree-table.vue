@@ -55,7 +55,7 @@
                     </template>
                 </el-table-column>
             </global-table>
-            <dialog-tree-modify
+            <dialog-tree-user-modify
                 v-if="layer.show"
                 v-model="layer"
                 @update="(payload: boolean) => (layer.show = payload)"

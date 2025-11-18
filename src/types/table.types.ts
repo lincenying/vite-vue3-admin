@@ -37,6 +37,8 @@ export interface TableListType {
     radioName?: string | number
 }
 
+export type DeptListType = Partial<Pick<TreeType, 'label' | 'id'>>
+
 export interface CardListType {
     id: number
     image: string

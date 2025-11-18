@@ -38,18 +38,29 @@
     --el-color-primary: var(--system-primary-color);
 }
 
-// 进度条颜色修改为主题色
-body #nprogress .bar {
-    background-color: var(--system-primary-color);
+[data-theme='light'],
+[data-theme='dark'] {
+    .layout-box .el-aside {
+        border-right: 1px solid var(--system-header-border-color);
+    }
 }
 
-body #nprogress .peg {
-    box-shadow:
-        0 0 10px var(--system-primary-color),
-        0 0 5px var(--system-primary-color);
-}
+body {
+    #nprogress {
+        // 进度条颜色修改为主题色
+        .bar {
+            background-color: var(--system-primary-color);
+        }
 
-body #nprogress .spinner-icon {
-    border-top-color: var(--system-primary-color);
-    border-left-color: var(--system-primary-color);
+        .peg {
+            box-shadow:
+                0 0 10px var(--system-primary-color),
+                0 0 5px var(--system-primary-color);
+        }
+
+        .spinner-icon {
+            border-top-color: var(--system-primary-color);
+            border-left-color: var(--system-primary-color);
+        }
+    }
 }

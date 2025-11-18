@@ -14,8 +14,6 @@
 
 <script lang="ts" setup>
 interface Props {
-    active?: string
-    activeTextColor?: string
     tip?: string
     color?: string
     textColor?: string
@@ -27,19 +25,18 @@ defineOptions({
 
 /** 使用 withDefaults 后, 不能直接解构 */
 const props = withDefaults(defineProps<Props>(), {
-    active: '',
-    activeTextColor: '',
     tip: '默认蓝',
     color: '#2978f9',
     textColor: '#fff',
 })
 
-const emit = defineEmits(['update:active', 'update:activeTextColor'])
+const active = defineModel<string>('active', { required: true })
+const activeTextColor = defineModel<string>('active-text-color', { required: true })
 
 const { color, textColor } = $(toRefs(props))
 
 function handleClick() {
-    emit('update:active', color)
-    emit('update:activeTextColor', textColor)
+    active.value = color
+    activeTextColor.value = textColor
 }
 </script>

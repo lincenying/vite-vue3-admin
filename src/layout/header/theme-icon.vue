@@ -20,7 +20,6 @@
 <script lang="ts" setup>
 interface Props {
     name?: string
-    active?: string
     menu?: string
     logo?: string
     header?: string
@@ -36,7 +35,6 @@ defineOptions({
 /** 使用 withDefaults 后, 不能直接解构 */
 const props = withDefaults(defineProps<Props>(), {
     name: 'default',
-    active: '',
     menu: '',
     logo: '',
     header: '',
@@ -45,12 +43,12 @@ const props = withDefaults(defineProps<Props>(), {
     activeColor: '',
 })
 
-const emit = defineEmits(['update:active'])
+const active = defineModel<string>('active', { required: true })
 
 const { name } = $(toRefs(props))
 
 // 点击事件，触发v-model修改active值
 function handleClick() {
-    emit('update:active', name)
+    active.value = name
 }
 </script>
