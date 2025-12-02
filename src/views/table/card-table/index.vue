@@ -6,10 +6,10 @@
                     <el-row :gutter="20">
                         <el-col v-for="row in list" :key="row.id" :lg="4" :md="8" :sm="12" :xs="24">
                             <el-card :body-style="{ padding: '0px' }" shadow="hover">
-                                <img :src="row.image" block w-full>
+                                <img :src="row.image" w-full block>
                                 <div p-14px text-left>
                                     <span>{{ row.title }}</span>
-                                    <div mt-13px flex-bc lh-12px>
+                                    <div lh-12px mt-13px flex-bc>
                                         <time text="13px hex-999">{{ row.time }}</time>
                                         <el-text type="primary" p-0 @click="showEditor">编辑</el-text>
                                     </div>
@@ -65,10 +65,7 @@ async function getListData() {
         page: page.index,
         pageSize: page.size,
     }
-    const { code, data } = await $api.post<ResDataLists<CardListType[]>>(
-        '/card/list',
-        params,
-    )
+    const { code, data } = await $axios.post<ResDataLists<CardListType[]>>('/card/list', params)
     stop()
     toggleLoading(false)
     if (code === 200) {

@@ -79,6 +79,11 @@ export interface Meta {
      */
     activeMenu?: string
     /**
+     * @name 是否隐藏标签页关闭按钮(可选)
+     * @description 默认false
+     */
+    hideClose?: boolean
+    /**
      * @name 任意值
      * @description 供自行扩展使用，但推荐在上面自己定义好
      */

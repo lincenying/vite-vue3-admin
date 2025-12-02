@@ -20,7 +20,7 @@ const useUserStore = defineStore('userStore', () => {
 
     // login by login.vue
     async function login(params: { name: string, password: string }) {
-        const { code, data } = await $api.post<{ token: string }>(
+        const { code, data } = await $axios.post<{ token: string }>(
             '/user/login',
             params,
         )
@@ -33,7 +33,7 @@ const useUserStore = defineStore('userStore', () => {
     }
     // get user info after user logined
     async function getInfo(params: { token: string }) {
-        const { code, data } = await $api.post<any>('/user/info', params)
+        const { code, data } = await $axios.post<any>('/user/info', params)
         if (code === 200) {
             infoChange(data.info)
             return data.info
@@ -43,7 +43,7 @@ const useUserStore = defineStore('userStore', () => {
 
     // login out the system after user click the logout button
     async function logout() {
-        await $api.post('/user/out')
+        await $axios.post('/user/out')
 
         globalStorage.value = null
         userStorage.value = null

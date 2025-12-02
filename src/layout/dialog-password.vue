@@ -61,7 +61,7 @@ function onSubmit() {
                     old: form.value.old,
                     new: form.value.new,
                 }
-                const { code } = await $api.post<void>(
+                const { code } = await $axios.post<void>(
                     '/user/passwordChange',
                     params,
                 )

@@ -1,4 +1,4 @@
-import type { Route } from '../index.type'
+import type { Route } from '../../types/router.types'
 
 import { createNameComponent } from '../createNode'
 

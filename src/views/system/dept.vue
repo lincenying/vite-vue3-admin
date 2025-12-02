@@ -93,10 +93,7 @@ async function getTableData() {
     const { stop } = useTimeoutFn(() => toggleLoading(true), 200)
 
     const params = {}
-    const { code, data } = await $api.post<ResDataLists<DeptListType[]>>(
-        '/system/dept/list',
-        params,
-    )
+    const { code, data } = await $axios.post<ResDataLists<DeptListType[]>>('/system/dept/list', params)
     if (code === 200) {
         tableData.value = data.list.map(item => ({
             ...item,
@@ -111,7 +108,7 @@ async function handleDel(data: DeptListType[]) {
     const params = {
         ids: data.map(e => e.id).join(','),
     }
-    const { code } = await $api.post<void>('/system/dept/del', params)
+    const { code } = await $axios.post<void>('/system/dept/del', params)
     if (code === 200) {
         ElMessage({
             type: 'success',

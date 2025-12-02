@@ -72,10 +72,7 @@ async function getCategoryData(init?: boolean) {
         pageSize: page.size,
         keyword: input.value,
     }
-    const { code, data } = await $api.post<ResDataLists<CategoryType[]>>(
-        '/table/category',
-        params,
-    )
+    const { code, data } = await $axios.post<ResDataLists<CategoryType[]>>('/table/category', params)
     if (code === 200) {
         if (page.index === 1) {
             list.value = data.list

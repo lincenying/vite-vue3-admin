@@ -64,9 +64,78 @@ declare interface ResponseData<T> {
     [propName: string]: any
 }
 
+type Methods = 'get' | 'post' | 'delete' | 'put'
+
+type FetchOptions = import('ofetch').FetchOptions
+
+declare interface FetchApiType {
+    abortKey: string
+    getAbourtKey: () => string
+    abortRequest: (abortKey?: string) => void
+    generateRequestKey: (config: ServiceType) => string
+    /**
+     * get请求
+     * @param url api接口地址
+     * @param data 发送的数据
+     * @param options 选项
+     * @returns Promise<ResponseData<T>
+     */
+    get: <T>(url: string, data?: Objable, options?: FetchOptions) => Promise<ResponseData<T>>
+    /**
+     * get请求
+     * @param url api接口地址
+     * @param data 发送的数据
+     * @param options 选项
+     * @returns Promise<ResponseData<T>
+     */
+    get: <T, U = Objable>(url: string, data?: Objable, options?: FetchOptions) => Promise<ResponseData<T> & U>
+    /**
+     * post请求
+     * @param url api接口地址
+     * @param data 发送的数据
+     * @param options 选项
+     * @returns Promise<ResponseData<T>
+     */
+    post: <T>(url: string, data?: Objable, options?: FetchOptions) => Promise<ResponseData<T>>
+    /**
+     * post请求
+     * @param url api接口地址
+     * @param data 发送的数据
+     * @param options 选项
+     * @returns Promise<ResponseData<T>
+     */
+    post: <T, U = Objable>(url: string, data?: Objable, options?: FetchOptions) => Promise<ResponseData<T> & U>
+    put: <T>(url: string, data?: Objable, options?: FetchOptions) => Promise<ResponseData<T>>
+    put: <T, U = Objable>(url: string, data?: Objable, options?: FetchOptions) => Promise<ResponseData<T> & U>
+    delete: <T>(url: string, data?: Objable, options?: FetchOptions) => Promise<ResponseData<T>>
+    delete: <T, U = Objable>(url: string, data?: Objable, options?: FetchOptions) => Promise<ResponseData<T> & U>
+    RESTful: <T>(url: string, method: Methods, data?: Objable, options?: FetchOptions) => Promise<ResponseData<T>>
+    fetch: (url: string, method: Methods, data?: Objable, options?: FetchOptions) => Promise<any>
+}
+
+/**
+ * 接口返回模板
+ * ```
+ * {
+    data: T
+    code: number
+    message: string
+    info?: string
+ * }
+ * ```
+ */
+declare interface ResponseData<T> {
+    data: T
+    code: number
+    message: string
+    info?: string
+    [propName: string]: any
+}
+
 declare interface Window {
     $$lock?: boolean
-    $$api: ApiType
+    $$api: FetchApiType
     $$time: NodeJS.Timeout
     axios: import('axios').AxiosStatic
+    $$axios: import('./composables/axios').ApiClient
 }

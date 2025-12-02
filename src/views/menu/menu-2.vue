@@ -85,12 +85,7 @@
 </template>
 
 <script lang="ts" setup>
-import type {
-    ComponentSize,
-    FormInstance,
-    FormItemRule,
-    FormRules,
-} from 'element-plus'
+import type { ComponentSize, FormInstance, FormItemRule, FormRules } from 'element-plus'
 import rules from '@lincy/async-validation'
 
 defineOptions({

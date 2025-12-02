@@ -52,7 +52,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { Route } from '~/router/index.type'
+import type { Route } from '~/types/router.types'
 
 import appLink from '~/layout/menu/link.vue'
 

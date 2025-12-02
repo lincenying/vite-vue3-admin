@@ -12,8 +12,6 @@ declare module 'vue-router' {
         transition?: string
         activeMenu?: string
         label?: string
-        hideClose?: boolean
-        hideTabs?: boolean
         cache?: boolean
     }
 }

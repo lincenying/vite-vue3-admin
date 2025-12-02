@@ -152,10 +152,7 @@ async function getTableData(isInit: boolean) {
         pageSize: page.size,
         ...query,
     }
-    const { code, data } = await $api.post<ResDataLists<TableListType[]>>(
-        '/table/list',
-        params,
-    )
+    const { code, data } = await $axios.post<ResDataLists<TableListType[]>>('/table/list', params)
     if (code === 200) {
         if (Array.isArray(data.list)) {
             tableData.value = data.list.map((item) => {
@@ -186,7 +183,7 @@ async function handleDel(data: TableListType[]) {
             })
             .join(','),
     }
-    const { code } = await $api.post('/table/del', params)
+    const { code } = await $axios.post('/table/del', params)
     if (code === 200) {
         ElMessage({
             type: 'success',

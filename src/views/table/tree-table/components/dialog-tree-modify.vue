@@ -64,7 +64,7 @@ function onSubmit() {
 // 新增提交事件
 async function addForm(params: DeptListType) {
     layer.value.loadingBtn = true
-    const { code } = await $api.post('/table/add', params)
+    const { code } = await $axios.post('/table/add', params)
     if (code === 200) {
         ElMessage({
             type: 'success',
@@ -78,7 +78,7 @@ async function addForm(params: DeptListType) {
 // 编辑提交事件
 async function updateForm(params: DeptListType) {
     layer.value.loadingBtn = true
-    const { code } = await $api.post('/table/update', params)
+    const { code } = await $axios.post('/table/update', params)
     if (code === 200) {
         ElMessage({
             type: 'success',

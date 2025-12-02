@@ -62,7 +62,7 @@ const updateActiveTree = inject(updateActiveTreeKey, () => {})
 
 async function getTreeData() {
     const params = {}
-    const { code, data } = await $api.post<TreeType[]>('/table/tree', params)
+    const { code, data } = await $axios.post<TreeType[]>('/table/tree', params)
     if (code === 200) {
         treeData.value = data
         updateActiveTree(data[0])

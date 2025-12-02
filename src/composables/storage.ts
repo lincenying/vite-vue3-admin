@@ -1,21 +1,12 @@
 import type { RouteRecordName } from 'vue-router'
-import type {
-    GlobalState,
-    KeepAliveState,
-    UserState,
-} from '~/types/store.types'
+import type { Meta } from '~/types/router.types'
 
+import type { GlobalState, KeepAliveState, UserState } from '~/types/store.types'
 import { StorageSerializers } from '@vueuse/core'
 
 export interface TabsType {
     path: string
-    meta: {
-        title: string
-        label?: string
-        hideClose?: boolean
-        hideTabs?: boolean
-        cache?: boolean
-    }
+    meta: Partial<Meta>
     name?: RouteRecordName | Nullable<string>
 }
 

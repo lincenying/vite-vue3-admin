@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { Route } from '~/router/index.type'
+import type { Route } from '~/types/router.types'
 
 import { useRoute, useRouter } from 'vue-router'
 import { modules } from '~/router/index'
@@ -23,11 +23,7 @@ const levelList = ref<Route[]>([])
 const route = useRoute()
 const router = useRouter()
 
-function findParentNames(
-    arr: Route[],
-    targetName: string,
-    parentNames: Route[] = [],
-): null | Route[] {
+function findParentNames(arr: Route[], targetName: string, parentNames: Route[] = []): null | Route[] {
     for (let i = 0; i < arr.length; i++) {
         const item = arr[i]
         // 如果找到目标name，则返回当前的父级names数组

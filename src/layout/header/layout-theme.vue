@@ -57,6 +57,7 @@ import type { SettingOption } from '~/types/layout.types'
 import type { ThemeState } from '~/types/store.types'
 import type { Colors } from '~/types/theme.types'
 import { style } from '~/theme/index'
+import { adjustHexColorHSL } from '~/utils'
 
 defineOptions({
     name: 'LayoutTheme',
@@ -84,6 +85,12 @@ function setTheme() {
     // 需要设置的颜色参照theme.scss，位置：assets/style/theme.scss
     // 设置主题色
     body.style.setProperty('--system-primary-color', state.primaryColor)
+    body.style.setProperty('--el-color-primary-light-3', adjustHexColorHSL(state.primaryColor, 15))
+    body.style.setProperty('--el-color-primary-light-5', adjustHexColorHSL(state.primaryColor, 20))
+    body.style.setProperty('--el-color-primary-light-7', adjustHexColorHSL(state.primaryColor, 25))
+    body.style.setProperty('--el-color-primary-light-8', adjustHexColorHSL(state.primaryColor, 30))
+    body.style.setProperty('--el-color-primary-light-9', adjustHexColorHSL(state.primaryColor, 35))
+    body.style.setProperty('--el-color-primary-dark-2', adjustHexColorHSL(state.primaryColor, 10))
     for (const i in userTheme) {
         if (i === 'name') {
             continue

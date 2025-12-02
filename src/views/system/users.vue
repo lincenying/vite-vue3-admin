@@ -147,10 +147,7 @@ async function getTableData(init?: boolean) {
         pageSize: page.size,
         ...query,
     }
-    const { code, data } = await $api.post<ResDataLists<UserListType[]>>(
-        '/system/user/list',
-        params,
-    )
+    const { code, data } = await $axios.post<ResDataLists<UserListType[]>>('/system/user/list', params)
     if (code === 200) {
         tableData.value = data.list.map(item => ({
             ...item,
@@ -170,7 +167,7 @@ async function handleDel(data: UserListType[]) {
             })
             .join(','),
     }
-    const { code } = await $api.post<void>('/system/user/del', params)
+    const { code } = await $axios.post<void>('/system/user/del', params)
     if (code === 200) {
         ElMessage({
             type: 'success',
@@ -202,7 +199,7 @@ async function onUpdateStatus(row: UserListType) {
         id: row.id,
         status: row.status,
     }
-    const { code } = await $api.post<void>('/system/user/updateStatus', params)
+    const { code } = await $axios.post<void>('/system/user/updateStatus', params)
     if (code === 200) {
         ElMessage({
             type: 'success',

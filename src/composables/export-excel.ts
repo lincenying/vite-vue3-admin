@@ -1,5 +1,5 @@
 import type { WorkBook } from 'xlsx'
-import type { AoAToSheet, JsonToSheet } from './export-excel.types'
+import type { AoAToSheet, JsonToSheet } from '../types/export-excel.types'
 
 import * as xlsx from 'xlsx'
 

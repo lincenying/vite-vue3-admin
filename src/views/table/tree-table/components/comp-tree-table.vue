@@ -155,10 +155,7 @@ async function getTableData(init: boolean) {
         ...query,
     }
     // 发送请求获取数据
-    const { code, data } = await $api.post<ResDataLists<TableListType[]>>(
-        '/table/list',
-        params,
-    )
+    const { code, data } = await $axios.post<ResDataLists<TableListType[]>>('/table/list', params)
     if (code === 200) {
         // 处理返回的数据，将choose和radio的值转换为对应的标签
         if (Array.isArray(data.list)) {
@@ -189,7 +186,7 @@ async function handleDel(data: object[]) {
     const params = {
         ids: data.map((e: any) => e.id).join(','),
     }
-    const { code } = await $api.post<void>('/table/del', params)
+    const { code } = await $axios.post<void>('/table/del', params)
     if (code === 200) {
         ElMessage({
             type: 'success',
