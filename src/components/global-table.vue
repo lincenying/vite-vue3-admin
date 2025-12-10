@@ -62,7 +62,7 @@ const emit = defineEmits<{
     (event: 'selectionChange', palyload: any[]): void
 }>()
 
-const currPage = ref<number>(1)
+const currPage = ref<number>(page.index || 1)
 
 const tableRef = useTemplateRef<TableInstance>('tableRef')
 let timer: Nullable<string> = null
