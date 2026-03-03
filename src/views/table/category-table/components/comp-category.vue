@@ -4,24 +4,20 @@
             <h2>分类列表</h2>
             <el-input v-model="input" placeholder="请输入内容" @input="searchData(true)" />
         </div>
-        <ul
-            ref="listDom"
-            v-infinite-scroll="getCategoryData"
-            class="system-scrollbar list overflow-auto"
-            :infinite-scroll-immediate="true"
-            :infinite-scroll-distance="10"
-        >
-            <li
-                v-for="item in list"
-                :key="item.id"
-                :class="{ active: item.id === activeCategory?.id }"
-                @click="changeActive(item)"
-            >
-                <span>{{ item.name }}</span>
-            </li>
-            <li v-if="loading" class="load-tip">==加载中...==</li>
-            <li v-if="nomore" class="load-tip">==数据加载完成==</li>
-        </ul>
+        <el-scrollbar height="100%" :distance="10" @end-reached="getCategoryDataFunc">
+            <ul ref="listDom" class="list">
+                <li
+                    v-for="item in list"
+                    :key="item.id"
+                    :class="{ active: item.id === activeCategory?.id }"
+                    @click="changeActive(item)"
+                >
+                    <span>{{ item.name }}</span>
+                </li>
+                <li v-if="loading" class="load-tip">==加载中...==</li>
+                <li v-if="nomore" class="load-tip">==数据加载完成==</li>
+            </ul>
+        </el-scrollbar>
     </div>
 </template>
 
@@ -51,6 +47,12 @@ const nomore = ref(false)
 
 const activeCategory = inject(activeCategoryKey)
 const updateActiveCategory = inject(updateActiveCategoryKey, () => {})
+
+function getCategoryDataFunc(direction: 'top' | 'bottom' | 'left' | 'right') {
+    if (direction === 'bottom' && !nomore.value) {
+        getCategoryData()
+    }
+}
 
 async function getCategoryData(init?: boolean) {
     if (init || isFirst.value) {
@@ -91,5 +93,5 @@ const searchData = debounce(300, getCategoryData)
 function changeActive(row: CategoryType) {
     updateActiveCategory(row)
 }
-// getCategoryData(true)
+getCategoryData(true)
 </script>
