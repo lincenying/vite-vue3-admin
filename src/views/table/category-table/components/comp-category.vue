@@ -4,7 +4,7 @@
             <h2>分类列表</h2>
             <el-input v-model="input" placeholder="请输入内容" @input="searchData(true)" />
         </div>
-        <el-scrollbar height="100%" :distance="10" @end-reached="getCategoryDataFunc">
+        <el-scrollbar height="100%" class="w-250px" :distance="10" @end-reached="getCategoryDataFunc">
             <ul ref="listDom" class="list">
                 <li
                     v-for="item in list"
