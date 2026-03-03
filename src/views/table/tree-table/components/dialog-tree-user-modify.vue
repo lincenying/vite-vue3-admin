@@ -36,7 +36,7 @@
                     <el-radio
                         v-for="item in radioData"
                         :key="item.value"
-                        :label="item.value"
+                        :value="item.value"
                     >
                         {{ item.label }}
                     </el-radio>
@@ -66,6 +66,7 @@ const emit = defineEmits(['getTableData', 'update'])
 const layer = defineModel<GlobalDialogLayer<Nullable<TableListType>>>({ required: true })
 
 const ruleForm = useTemplateRef<FormInstance>('ruleForm')
+// @ts-ignore 忽略未使用变量
 const layerDom = useTemplateRef<GlobalDialogInstance>('layerDom')
 
 let form = $ref<TableListType>({
