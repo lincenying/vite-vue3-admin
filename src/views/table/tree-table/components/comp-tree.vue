@@ -23,7 +23,7 @@
                 <template #default="{ node, data }">
                     <div flex="~ items-center">
                         <span>{{ node.label }}</span>
-                        <el-button type="text" class="ml-5px" :icon="Edit" circle @click.stop="handleEdit(data)"></el-button>
+                        <el-link class="ml-5px" :icon="Edit" circle @click.stop="handleEdit(data)"></el-link>
                     </div>
                 </template>
             </el-tree>
