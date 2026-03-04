@@ -14,9 +14,11 @@ declare global {
   const activeCategoryKey: typeof import('./composables/provide').activeCategoryKey
   const activeTreeKey: typeof import('./composables/provide').activeTreeKey
   const aoaToSheetXlsx: typeof import('./composables/export-excel').aoaToSheetXlsx
+  const apiError: typeof import('./composables/emitter').apiError
   const asyncComputed: typeof import('@vueuse/core').asyncComputed
   const autoResetRef: typeof import('@vueuse/core').autoResetRef
   const baseURL: typeof import('./composables/index').baseURL
+  const cancelInterval: typeof import('./composables/emitter').cancelInterval
   const changeTitle: typeof import('./composables/index').changeTitle
   const closeAllTab: typeof import('./composables/index').closeAllTab
   const closeCurrentTab: typeof import('./composables/index').closeCurrentTab
@@ -57,6 +59,7 @@ declare global {
   const downloadByUrl: typeof import('./composables/download').downloadByUrl
   const eagerComputed: typeof import('@vueuse/core').eagerComputed
   const effectScope: typeof import('vue').effectScope
+  const emitter: typeof import('./composables/emitter').default
   const extendRef: typeof import('@vueuse/core').extendRef
   const flattenArray: typeof import('./composables/index').flattenArray
   const getCurrentInstance: typeof import('vue').getCurrentInstance
@@ -81,7 +84,9 @@ declare global {
   const makeDestructurable: typeof import('@vueuse/core').makeDestructurable
   const manualResetRef: typeof import('@vueuse/core')['manualResetRef']
   const markRaw: typeof import('vue').markRaw
+  const needLogin: typeof import('./composables/emitter').needLogin
   const nextTick: typeof import('vue').nextTick
+  const noAuth: typeof import('./composables/emitter').noAuth
   const onActivated: typeof import('vue').onActivated
   const onBeforeMount: typeof import('vue').onBeforeMount
   const onBeforeRouteLeave: typeof import('vue-router').onBeforeRouteLeave
@@ -376,9 +381,10 @@ declare module 'vue' {
     readonly activeCategoryKey: UnwrapRef<typeof import('./composables/provide')['activeCategoryKey']>
     readonly activeTreeKey: UnwrapRef<typeof import('./composables/provide')['activeTreeKey']>
     readonly aoaToSheetXlsx: UnwrapRef<typeof import('./composables/export-excel')['aoaToSheetXlsx']>
+    readonly apiError: UnwrapRef<typeof import('./composables/emitter')['apiError']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
-    readonly baseURL: UnwrapRef<typeof import('./composables/index')['baseURL']>
+    readonly cancelInterval: UnwrapRef<typeof import('./composables/emitter')['cancelInterval']>
     readonly changeTitle: UnwrapRef<typeof import('./composables/index')['changeTitle']>
     readonly closeAllTab: UnwrapRef<typeof import('./composables/index')['closeAllTab']>
     readonly closeCurrentTab: UnwrapRef<typeof import('./composables/index')['closeCurrentTab']>
@@ -419,6 +425,7 @@ declare module 'vue' {
     readonly downloadByUrl: UnwrapRef<typeof import('./composables/download')['downloadByUrl']>
     readonly eagerComputed: UnwrapRef<typeof import('@vueuse/core')['eagerComputed']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
+    readonly emitter: UnwrapRef<typeof import('./composables/emitter')['default']>
     readonly extendRef: UnwrapRef<typeof import('@vueuse/core')['extendRef']>
     readonly flattenArray: UnwrapRef<typeof import('./composables/index')['flattenArray']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
@@ -442,7 +449,9 @@ declare module 'vue' {
     readonly loginMsgBox: UnwrapRef<typeof import('./composables/message')['loginMsgBox']>
     readonly makeDestructurable: UnwrapRef<typeof import('@vueuse/core')['makeDestructurable']>
     readonly markRaw: UnwrapRef<typeof import('vue')['markRaw']>
+    readonly needLogin: UnwrapRef<typeof import('./composables/emitter')['needLogin']>
     readonly nextTick: UnwrapRef<typeof import('vue')['nextTick']>
+    readonly noAuth: UnwrapRef<typeof import('./composables/emitter')['noAuth']>
     readonly onActivated: UnwrapRef<typeof import('vue')['onActivated']>
     readonly onBeforeMount: UnwrapRef<typeof import('vue')['onBeforeMount']>
     readonly onBeforeRouteLeave: UnwrapRef<typeof import('vue-router')['onBeforeRouteLeave']>

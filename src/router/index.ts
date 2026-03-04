@@ -5,17 +5,13 @@
  */
 import { createRouter, createWebHashHistory } from 'vue-router'
 
-import NProgress from '~/utils/nprogress'
+import emitter from '~/composables/emitter'
 
 import Dashboard from './modules/dashboard'
 import Feature from './modules/feature'
 import Menu from './modules/menu'
 import System from './modules/system'
 import Table from './modules/table'
-
-// 引入不需要权限的modules
-
-NProgress.configure({ showSpinner: false })
 
 /**
  * @name 初始化必须要的路由
@@ -47,7 +43,7 @@ const { keepAliveComponentsName } = $(storeToRefs(keepAliveStore))
 
 // 路由跳转前的监听操作
 router.beforeEach((to, _from) => {
-    NProgress.start()
+    emitter.emit('nprogress-start', 'router')
     to.meta.title && changeTitle(to.meta.title) // 动态title
     if (token) {
         if (to.path === '/login') {
@@ -72,7 +68,7 @@ router.afterEach((to, _from) => {
         keepAliveStore.addKeepAliveComponentsName(name)
     }
 
-    NProgress.done()
+    emitter.emit('nprogress-done', 'router')
 })
 
 export { modules }

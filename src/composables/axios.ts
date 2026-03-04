@@ -3,6 +3,7 @@ import type { AxiosRequestConfig, AxiosResponse, Method } from 'axios'
 import type { ServiceType } from '~/types/axios.types'
 import axios from 'axios'
 import { userStorage } from '~/composables/storage'
+import emitter from './emitter'
 
 window.axios = axios
 
@@ -22,12 +23,18 @@ if (import.meta.env.VITE_APP_ENV === 'production') {
 }
 
 axios.interceptors.request.use(
-    config => config,
+    (config) => {
+        emitter.emit('nprogress-start', 'api')
+        return config
+    },
     error => Promise.resolve(error.response || error),
 )
 
 axios.interceptors.response.use(
-    response => response,
+    (response) => {
+        emitter.emit('nprogress-done', 'api')
+        return response
+    },
     (error) => {
         const response = {} as AxiosResponse
         response.config = error.config
@@ -134,6 +141,7 @@ export class ApiClient {
             config.timeout = 9999999
         }
         const response = await axios(config)
+        console.log(`%c[axios: ${url}] >> `, 'color: red', response.data)
         return this.checkStatus(response)
     }
 
@@ -162,10 +170,7 @@ export class ApiClient {
         if (data.code === 401) {
             userStorage.value = null
             const pathname = encodeURIComponent(window.location.pathname)
-            if (!window.$$lock) {
-                window.$$lock = true
-                loginMsgBox('当前登录状态已失效, 请重新登录', pathname)
-            }
+            emitter.emit('need-login', pathname)
         }
         else if (!code.includes(Number(data.code))) {
             showMsg(data.message)

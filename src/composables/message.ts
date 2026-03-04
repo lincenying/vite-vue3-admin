@@ -28,13 +28,12 @@ export function showMsg(config: ConfigType) {
     ElMessage[type](content)
 }
 
-export function loginMsgBox(content: string, pathname: string) {
+export function loginMsgBox(content: string) {
     ElMessageBox.alert(content, '提示', {
         confirmButtonText: '确定',
         showClose: false,
         callback: () => {
-            window.$$lock = false
-            window.location.href = `/login?callback=${pathname}`
+            window.location.href = `/login`
         },
     })
 }

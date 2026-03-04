@@ -3,9 +3,12 @@ import type { ServiceType } from '~/types/axios.types'
 import { isFormData } from '@lincy/utils'
 import { ofetch } from 'ofetch'
 import qs from 'qs'
-import { ElMessage } from '~/config/element'
+import { getBaseUrl, isSSR } from '~/config'
 
 const pendingRequest = new Map<string, AbortController>()
+
+const baseURL = getBaseUrl()
+
 /**
  * ofetch Api 封装
  * ```
@@ -15,7 +18,7 @@ const pendingRequest = new Map<string, AbortController>()
     delete<T>(url: string, data?: Objable, header?: Objable, checkCode?: boolean): Promise<ResponseData<T>>
  * ```
  */
-export const useApi: () => FetchApiType = () => {
+export const useApi: (needSignal?: boolean) => FetchApiType = (needSignal = false) => {
     const apiFetch = ofetch.create({
         baseURL,
         headers: {
@@ -60,59 +63,64 @@ export const useApi: () => FetchApiType = () => {
         async RESTful(url, method = 'get', data, options?: FetchOptions) {
             return await this.fetch(url, method, data, options)
         },
-        async fetch(url, method, data, options?: FetchOptions) {
-            console.log('%c[request-url] >> ', 'color: red', baseURL + url, data || {})
-            this.abortKey = this.generateRequestKey({ url, method, data })
-            const controller = new AbortController()
-            const signal = controller.signal
+        async fetch(url, method = 'get', data, options?: FetchOptions) {
+            let signal: AbortSignal | undefined
+            if (needSignal) {
+                this.abortKey = this.generateRequestKey({ url, method, data })
+                const controller = new AbortController()
+                signal = controller.signal
 
-            pendingRequest.set(this.abortKey, controller)
+                pendingRequest.set(this.abortKey, controller)
+            }
 
-            const response = await apiFetch(url, {
+            return apiFetch(url, {
                 method,
                 query: method === 'get' ? data : undefined,
                 body: method === 'get' ? undefined : data,
-                timeout: 10000, // Timeout after 10 seconds
+                timeout: 5000, // Timeout after 10 seconds
                 signal,
-                ...options,
-                headers: {
-                    ...options?.headers,
-                    ...isFormData(data) ? { } : { 'Content-Type': 'application/json' },
-                },
-                async onRequest({ request, options }) {
-                    // Log request
+                onRequest({ request, options }) {
+                    emitter.emit('nprogress-start')
                     console.log('[fetch request]', request, options)
                 },
                 onRequestError({ error }) {
-                    ElMessage.closeAll()
-                    error && ElMessage.error('Sorry, The Data Request Failed')
+                    if (!isSSR) {
+                        error && emitter.emit('api-error', 'Sorry, The Data Request Failed')
+                    }
                     console.log('[fetch response error]', error)
                 },
                 onResponse({ response }) {
                     if (response._data.code === 401) {
-                        const pathname = encodeURIComponent(window.location.pathname)
-                        if (!window.$$lock) {
-                            window.$$lock = true
-                            loginMsgBox('当前登录状态已失效, 请重新登录', pathname)
-                        }
+                        emitter.emit('need-login')
                         return response._data = null
                     }
                     if (response._data.code !== 200) {
-                        ElMessage.error(response._data.message)
-                        return response._data = null
+                        if (!isSSR) {
+                            emitter.emit('api-error', response._data.message || response._data.error || '请求失败')
+                        }
+                        return response._data
                     }
+                    emitter.emit('nprogress-done')
+                    console.log(`%c[fetch: ${baseURL + url}] >> `, 'color: red', response._data)
                     return response._data = response._data || 'success'
                 },
                 onResponseError({ response }) {
+                    // Log error
+                    // ElMessage.error('[fetch response error] Sorry, The Data Request Failed')
+                    emitter.emit('nprogress-done')
                     console.log('[fetch response error]', response.status)
                 },
+                ...options,
+                headers: {
+                    ...isFormData(data) ? { } : { 'Content-Type': 'application/json' },
+                    ...options?.headers,
+                },
             })
-            return response
         },
     }
 }
 if (typeof window !== 'undefined') {
-    window.$$api = useApi()
+    window.$$api = useApi(true)
 }
 export const $api = useApi()
-export const $fetch = useApi()
+export const $fetch = useApi(true)

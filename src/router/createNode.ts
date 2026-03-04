@@ -3,7 +3,6 @@ import type { DefineComponent } from 'vue'
 // 1. 用于解决keep-alive需要name的问题，动态生成随机name供keep-alive使用
 // 2. 用于解决transition动画内部结点只能为根元素的问题，单文件可写多结点
 import { createVNode } from 'vue'
-import NProgress from '~/utils/nprogress'
 import reload from './reload.vue'
 
 export function createNameComponent(
@@ -21,10 +20,8 @@ export function createNameComponent(
                         const handleReload = () => {
                             isReload.value = true
                             timeOut && clearTimeout(timeOut)
-                            NProgress.start()
                             timeOut = setTimeout(() => {
                                 nextTick(() => {
-                                    NProgress.done()
                                     isReload.value = false
                                 })
                             }, 260)

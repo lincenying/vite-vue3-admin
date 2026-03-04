@@ -1,5 +1,3 @@
-export const baseURL = import.meta.env.VITE_APP_API
-
 /**
  * 竞态锁
  * @param fn 回调函数
