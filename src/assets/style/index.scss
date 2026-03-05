@@ -2,6 +2,6 @@
 @use './element';
 @use './layout';
 @use './components';
-@use './dashboard';
-@use './system';
-@use './table';
+@use './pages/dashboard';
+@use './pages/system';
+@use './pages/table';
