@@ -124,3 +124,22 @@ if (typeof window !== 'undefined') {
 }
 export const $api = useApi()
 export const $fetch = useApi(true)
+
+// steam demo
+// const response = await api.fetch(getStreamApi, 'get', data, {
+//     onResponse: () => {},
+//     headers: {
+//         accept: '*/*',
+//     },
+//     responseType: 'stream',
+// })
+
+// blob demo
+// const response = await api.fetch(getStreamApi, 'get', data, {
+//     onResponse: () => {},
+//     headers: {
+//         accept: '*/*',
+//     },
+//     responseType: 'blob',
+// })
+// const blobUrl = window.URL.createObjectURL(response)
