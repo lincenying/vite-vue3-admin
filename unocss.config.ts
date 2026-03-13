@@ -1,3 +1,5 @@
 import { webConfig } from '@lincy/unocss-base-config'
 
-export default webConfig('wind4')
+export default webConfig('wind3', {
+    preflight: false,
+})
