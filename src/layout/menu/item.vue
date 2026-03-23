@@ -12,9 +12,8 @@
                 <span>{{ menu.meta.title }}</span>
             </template>
             <menu-item
-                v-for="(item, key) in menu.children"
-                :key="key"
-                :menu="item"
+                v-for="(item, key) in menu.children" :key="key"
+                :menu="fixType(item)"
                 :base-path="menu.path"
             />
         </el-sub-menu>
@@ -37,7 +36,7 @@
                 <menu-item
                     v-for="(item, key) in menu.children[0].children"
                     :key="key"
-                    :menu="item"
+                    :menu="fixType(item)"
                     :base-path="menu.path"
                 />
             </el-sub-menu>
@@ -79,4 +78,8 @@ const showMenuType = computed(() => {
     }
     return 0
 })
+
+function fixType(item: any) {
+    return item as Route
+}
 </script>

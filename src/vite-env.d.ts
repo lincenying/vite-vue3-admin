@@ -7,8 +7,8 @@ interface ViteTypeOptions {
 interface ImportMetaEnv {
     readonly ENV: string
     readonly VITE_APP_ENV: string
-    readonly VITE_APP_API_DOMAIN: string
-    readonly VITE_APP_API: string
+    readonly VITE_BASE_URL: string
+    readonly VITE_ASSETS_URL: string
 }
 
 interface ImportMeta {

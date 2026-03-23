@@ -115,7 +115,7 @@ const activeCategory = inject(activeCategoryKey, ref({} as CategoryType))
 const [loading, toggleLoading] = useToggle(false)
 const tableData = ref<TableListType[]>([])
 const chooseData = ref<TableListType[]>([])
-
+// @ts-ignore 类型问题
 const globalTableRef = useTemplateRef<GlobalTableInstance>('globalTableRef')
 
 // 更新选中

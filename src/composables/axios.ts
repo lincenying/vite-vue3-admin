@@ -3,9 +3,12 @@ import type { AxiosRequestConfig, AxiosResponse, Method } from 'axios'
 import type { ServiceType } from '~/types/axios.types'
 import axios from 'axios'
 import { userStorage } from '~/composables/storage'
+import { getBaseUrl } from '~/config'
 import emitter from './emitter'
 
 window.axios = axios
+
+const baseURL = getBaseUrl()
 
 const headers: AxiosRequestConfig['headers'] = {
     'X-Requested-With': 'XMLHttpRequest',
@@ -113,7 +116,7 @@ export class ApiClient {
     async $RESTful(options: ServiceType) {
         let { url, method = 'get', data, header, otherConfig = {} } = options
 
-        url = import.meta.env.VITE_APP_API + url
+        url = baseURL + url
 
         const config: AxiosRequestConfig = {
             ...baseConfig,

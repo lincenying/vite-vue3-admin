@@ -37,6 +37,7 @@ const emit = defineEmits(['getTableData', 'update'])
 const layer = defineModel<GlobalDialogLayer<DeptListType>>({ required: true })
 
 const ruleForm = useTemplateRef<FormInstance>('ruleForm')
+// @ts-ignore 类型问题
 const layerDom = useTemplateRef<GlobalDialogInstance>('layerDom')
 
 let form = $ref<DeptListType>({

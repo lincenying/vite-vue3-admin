@@ -19,7 +19,7 @@ import Macros from './vite.config.macros'
 export default defineConfig(({ mode, command }: ConfigEnv) => {
     process.env = { ...process.env, ...loadEnv(mode, process.cwd()) }
     const __dirname = path.dirname(fileURLToPath(import.meta.url))
-    console.log(`当前编译环境: ${process.env.VITE_APP_ENV}`)
+    console.log(`当前编译环境: ${process.env.VITE_APP_ENV} | ${command}`)
 
     return {
         base: './',

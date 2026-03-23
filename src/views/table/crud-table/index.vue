@@ -123,6 +123,7 @@ const page: GlobalTablePage = reactive({
     total: 0,
 })
 
+// @ts-ignore 忽略类型错误
 const globalTableRef = useTemplateRef<GlobalTableInstance>('globalTableRef')
 
 const [loading, toggleLoading] = useToggle(false)

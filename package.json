@@ -56,6 +56,7 @@
     "@vitejs/plugin-vue-jsx": "catalog:dev",
     "@vue-macros/volar": "catalog:dev",
     "@vue/compiler-sfc": "catalog:dev",
+    "baseline-browser-mapping": "catalog:dev",
     "cross-env": "catalog:dev",
     "eslint": "catalog:lint",
     "eslint-plugin-format": "catalog:lint",
