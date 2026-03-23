@@ -9,6 +9,7 @@
   "scripts": {
     "prepare[-del]": "npx simple-git-hooks",
     "serve": "cross-env DEBUG=vite:transform vite",
+    "serve:bun": "bunx --bun vite",
     "build_test": "vite build --mode test --emptyOutDir",
     "build_pre": "vite build --mode staging --emptyOutDir",
     "build_prod": "vite build --emptyOutDir",
