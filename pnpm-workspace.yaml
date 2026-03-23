@@ -39,6 +39,7 @@ catalogs:
     eslint-plugin-format: ^2.0.1
     lint-staged: ^16.4.0
     stylelint: ^17.5.0
+
   prod:
     '@lincy/async-validation': ^1.4.0
     '@lincy/utils': ^0.7.3

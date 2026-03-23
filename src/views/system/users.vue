@@ -147,7 +147,7 @@ async function getTableData(init?: boolean) {
         pageSize: page.size,
         ...query,
     }
-    const { code, data } = await $axios.post<ResDataLists<UserListType[]>>('/system/user/list', params)
+    const { code, data } = await $api.post<ResDataLists<UserListType[]>>('/system/user/list', params)
     if (code === 200) {
         tableData.value = data.list.map(item => ({
             ...item,

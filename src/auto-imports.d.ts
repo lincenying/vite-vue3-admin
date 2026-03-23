@@ -11,6 +11,7 @@ declare global {
   const $fetch: typeof import('./composables/fetch').$fetch
   const ApiClient: typeof import('./composables/axios').ApiClient
   const EffectScope: typeof import('vue').EffectScope
+  const FetchApiClient: typeof import('./composables/fetch').FetchApiClient
   const activeCategoryKey: typeof import('./composables/provide').activeCategoryKey
   const activeTreeKey: typeof import('./composables/provide').activeTreeKey
   const aoaToSheetXlsx: typeof import('./composables/export-excel').aoaToSheetXlsx
@@ -364,6 +365,9 @@ declare global {
   export type { ApiClient } from './composables/axios'
   import('./composables/axios')
   // @ts-ignore
+  export type { FetchApiClient } from './composables/fetch'
+  import('./composables/fetch')
+  // @ts-ignore
   export type { TabsType } from './composables/storage'
   import('./composables/storage')
 }
@@ -378,6 +382,7 @@ declare module 'vue' {
     readonly $fetch: UnwrapRef<typeof import('./composables/fetch')['$fetch']>
     readonly ApiClient: UnwrapRef<typeof import('./composables/axios')['ApiClient']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
+    readonly FetchApiClient: UnwrapRef<typeof import('./composables/fetch')['FetchApiClient']>
     readonly activeCategoryKey: UnwrapRef<typeof import('./composables/provide')['activeCategoryKey']>
     readonly activeTreeKey: UnwrapRef<typeof import('./composables/provide')['activeTreeKey']>
     readonly aoaToSheetXlsx: UnwrapRef<typeof import('./composables/export-excel')['aoaToSheetXlsx']>

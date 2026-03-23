@@ -5,7 +5,7 @@ export type Methods = 'get' | 'post' | 'delete' | 'put'
 export interface ServiceType {
     url: string
     method: Method
-    data: Objable
+    data?: Objable
     /** 是否验证code, 默认:true */
     checkCode?: boolean
     /** 请求头 */

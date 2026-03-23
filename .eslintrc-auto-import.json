@@ -12,6 +12,7 @@
     "ExtractDefaultPropTypes": true,
     "ExtractPropTypes": true,
     "ExtractPublicPropTypes": true,
+    "FetchApiClient": true,
     "InjectionKey": true,
     "MaybeRef": true,
     "MaybeRefOrGetter": true,

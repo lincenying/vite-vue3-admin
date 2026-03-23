@@ -93,7 +93,7 @@ async function getTableData() {
     const { stop } = useTimeoutFn(() => toggleLoading(true), 200)
 
     const params = {}
-    const { code, data } = await $axios.post<ResDataLists<DeptListType[]>>('/system/dept/list', params)
+    const { code, data } = await $api.post<ResDataLists<DeptListType[]>>('/system/dept/list', params)
     if (code === 200) {
         tableData.value = data.list.map(item => ({
             ...item,
