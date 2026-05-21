@@ -3,11 +3,10 @@
   "type": "module",
   "version": "1.0.0",
   "private": true,
-  "packageManager": "pnpm@10.32.1",
+  "packageManager": "pnpm@11.1.3",
   "author": "lincenying <lincenying@qq.com>",
   "sideEffects": false,
   "scripts": {
-    "prepare[-del]": "npx simple-git-hooks",
     "serve": "cross-env DEBUG=vite:transform vite",
     "serve:bun": "bunx --bun vite",
     "build_test": "vite build --mode test --emptyOutDir",
@@ -18,7 +17,6 @@
     "lint:fix": "eslint . --fix",
     "lint:ts": "vue-tsc -b --noEmit",
     "lint:css": "stylelint '**/*.{css,scss}' --fix",
-    "lint-staged": "lint-staged",
     "copy": "deploy_dist vite-vue3-admin"
   },
   "dependencies": {
@@ -60,7 +58,6 @@
     "cross-env": "catalog:dev",
     "eslint": "catalog:lint",
     "eslint-plugin-format": "catalog:lint",
-    "lint-staged": "catalog:lint",
     "sass-embedded": "catalog:dev",
     "stylelint": "catalog:lint",
     "typescript": "catalog:dev",
@@ -75,14 +72,5 @@
     "vue-component-type-helpers": "catalog:dev",
     "vue-macros": "catalog:dev",
     "vue-tsc": "catalog:dev"
-  },
-  "simple-git-hooks[-del]": {
-    "pre-commit": "pnpm run lint-staged"
-  },
-  "lint-staged[-del]": {
-    "*.{[jt]s?(x),vue,md}": [
-      "eslint --fix"
-    ],
-    "*.{css,scss}": "stylelint --fix --allow-empty-input"
   }
 }
