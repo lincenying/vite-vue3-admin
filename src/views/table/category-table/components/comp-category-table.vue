@@ -49,8 +49,9 @@
                 <el-table-column prop="number" label="数字" align="center" />
                 <el-table-column prop="chooseName" label="选择器" align="center" />
                 <el-table-column prop="radioName" label="单选框" align="center" />
+                <!-- @vue-generic {TableListType} -->
                 <el-table-column label="操作" align="center" fixed="right" width="200">
-                    <template #default="{ row }: ScopeRow">
+                    <template #default="{ row }">
                         <el-button @click="handleEdit(row)">编辑</el-button>
                         <el-popconfirm title="确定删除选中的数据吗？" @confirm="handleDel([row])">
                             <template #reference>
@@ -82,10 +83,6 @@ import { activeCategoryKey } from '~/composables/provide'
 
 import { ElMessage } from '~/config/element'
 import { radioData, selectData } from '~/views/table/enum'
-
-interface ScopeRow {
-    row: TableListType
-}
 
 defineOptions({
     name: 'CompCategoryTable',
