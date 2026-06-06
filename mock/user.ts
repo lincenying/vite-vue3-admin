@@ -1,7 +1,7 @@
 import type { MockMethod } from './_mock.types'
-import type { UserListType } from '~/types/system.types'
+import type { IUserList } from '~/types/system.types'
 
-const users: UserListType[] = [
+const users: IUserList[] = [
     {
         name: 'admin',
         nickName: 'admin',

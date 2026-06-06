@@ -10,16 +10,16 @@
 </template>
 
 <script lang="ts" setup>
-import type { CategoryType } from '~/types/table.types'
+import type { ICategory } from '~/types/table.types'
 
 defineOptions({
     name: 'CategoryTable',
     inheritAttrs: true,
 })
 
-const activeCateogy = ref({} as CategoryType)
+const activeCateogy = ref({} as ICategory)
 provide(activeCategoryKey, activeCateogy)
-provide(updateActiveCategoryKey, (payload: CategoryType) => {
+provide(updateActiveCategoryKey, (payload: ICategory) => {
     activeCateogy.value = payload
 })
 </script>

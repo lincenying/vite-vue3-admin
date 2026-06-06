@@ -1,4 +1,4 @@
-export interface UserListType {
+export interface IUserList {
     id?: string
     name: string
     password?: string
@@ -13,17 +13,17 @@ export interface UserListType {
     loading?: boolean
 }
 
-export interface RoleListType {
+export interface IRoleList {
     id?: string
     name: string
     desc: string
     time?: string
 }
 
-export interface DeptListType {
+export interface IDeptList {
     id?: string
     name: string
     desc: string
     time?: string
-    children?: DeptListType[]
+    children?: IDeptList[]
 }

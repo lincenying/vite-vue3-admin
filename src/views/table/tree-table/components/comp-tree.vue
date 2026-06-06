@@ -41,7 +41,7 @@
 import type { GlobalDialogLayer } from '~/types/components.types'
 import type { TreeInstance } from '~/types/global.types'
 
-import type { DeptListType, TreeType } from '~/types/table.types'
+import type { IDeptList, ITree } from '~/types/table.types'
 import { Edit } from '@element-plus/icons-vue'
 
 defineOptions({
@@ -49,7 +49,7 @@ defineOptions({
     inheritAttrs: true,
 })
 
-const treeData = ref<TreeType[]>([])
+const treeData = ref<ITree[]>([])
 const elTreeRef = useTemplateRef<TreeInstance>('treeRef')
 
 const defaultProps = {
@@ -57,12 +57,12 @@ const defaultProps = {
     label: 'label',
 }
 
-const activeTree = inject(activeTreeKey, ref({} as TreeType))
+const activeTree = inject(activeTreeKey, ref({} as ITree))
 const updateActiveTree = inject(updateActiveTreeKey, () => {})
 
 async function getTreeData() {
     const params = {}
-    const { code, data } = await $api.post<TreeType[]>('/table/tree', params)
+    const { code, data } = await $api.post<ITree[]>('/table/tree', params)
     if (code === 200) {
         treeData.value = data
         updateActiveTree(data[0])
@@ -71,12 +71,12 @@ async function getTreeData() {
         })
     }
 }
-function handleNodeClick(row: TreeType) {
+function handleNodeClick(row: ITree) {
     updateActiveTree(row)
 }
 
 // 弹窗控制器
-const layer: GlobalDialogLayer<DeptListType> = reactive({
+const layer: GlobalDialogLayer<IDeptList> = reactive({
     show: false,
     title: '新增',
     showButton: true,
@@ -85,7 +85,7 @@ const layer: GlobalDialogLayer<DeptListType> = reactive({
     width: '500px',
 })
 
-function handleEdit(row: DeptListType) {
+function handleEdit(row: IDeptList) {
     layer.title = '编辑数据'
     layer.row = row
     layer.show = true

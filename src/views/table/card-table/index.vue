@@ -39,7 +39,7 @@
 <script lang="ts" setup>
 import type { GlobalTablePage } from '~/types/components.types'
 import type { ScrollbarInstance } from '~/types/global.types'
-import type { CardListType } from '~/types/table.types'
+import type { ICardList } from '~/types/table.types'
 
 defineOptions({
     name: 'Card',
@@ -48,7 +48,7 @@ defineOptions({
 
 const [loading, toggleLoading] = useToggle(false)
 
-const list = ref<CardListType[]>([])
+const list = ref<ICardList[]>([])
 
 const box = useTemplateRef<HTMLDivElement>('box')
 // @ts-ignore 类型问题
@@ -66,7 +66,7 @@ async function getListData() {
         page: page.index,
         pageSize: page.size,
     }
-    const { code, data } = await $api.post<ResDataLists<CardListType[]>>('/card/list', params)
+    const { code, data } = await $api.post<ResDataLists<ICardList[]>>('/card/list', params)
     stop()
     toggleLoading(false)
     if (code === 200) {

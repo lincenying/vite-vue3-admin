@@ -1,6 +1,6 @@
 import type { AnyFn } from '@vueuse/core'
-import type { RoleListType, UserListType } from './system.types'
-import type { TableListType } from '~/types/table.types'
+import type { IRoleList, IUserList } from './system.types'
+import type { ITableList } from '~/types/table.types'
 
 /** 全局弹窗数据 */
 export interface GlobalDialogLayer<T = Objable> {
@@ -56,9 +56,9 @@ export interface GlobalTableProps<T> {
 }
 
 export interface TypeMap {
-    user: UserListType
-    table: TableListType
-    role: RoleListType
+    user: IUserList
+    table: ITableList
+    role: IRoleList
 }
 
 export type DataType<Key> = Key extends keyof TypeMap ? TypeMap[Key] : unknown

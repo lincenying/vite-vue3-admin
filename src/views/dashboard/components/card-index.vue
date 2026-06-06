@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { IndexCardType } from '~/types/table.types'
+import type { IIndexCard } from '~/types/table.types'
 
 import cardRow from '~/views/dashboard/components/card-row.vue'
 
@@ -13,7 +13,7 @@ defineOptions({
     name: 'CardIndex',
 })
 
-const list = ref<IndexCardType[]>([
+const list = ref<IIndexCard[]>([
     {
         id: 1,
         name: '访问人数',

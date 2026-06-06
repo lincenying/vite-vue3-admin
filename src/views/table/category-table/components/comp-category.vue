@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { CategoryType } from '~/types/table.types'
+import type { ICategory } from '~/types/table.types'
 
 import { debounce } from 'throttle-debounce'
 import { activeCategoryKey, updateActiveCategoryKey } from '~/composables/provide'
@@ -42,7 +42,7 @@ const [loading, toggleLoading] = useToggle(false)
 const [isFirst, toggleisFirst] = useToggle(true)
 
 const input = ref('')
-const list = ref<CategoryType[]>([])
+const list = ref<ICategory[]>([])
 const nomore = ref(false)
 
 const activeCategory = inject(activeCategoryKey)
@@ -74,7 +74,7 @@ async function getCategoryData(init?: boolean) {
         pageSize: page.size,
         keyword: input.value,
     }
-    const { code, data } = await $api.post<ResDataLists<CategoryType[]>>('/table/category', params)
+    const { code, data } = await $api.post<ResDataLists<ICategory[]>>('/table/category', params)
     if (code === 200) {
         if (page.index === 1) {
             list.value = data.list
@@ -90,7 +90,7 @@ async function getCategoryData(init?: boolean) {
     toggleLoading(false)
 }
 const searchData = debounce(300, getCategoryData)
-function changeActive(row: CategoryType) {
+function changeActive(row: ICategory) {
     updateActiveCategory(row)
 }
 getCategoryData(true)

@@ -54,12 +54,12 @@
 
 <script lang="ts" setup>
 import type { GlobalDialogLayer } from '~/types/components.types'
-import type { DeptListType } from '~/types/system.types'
+import type { IDeptList } from '~/types/system.types'
 
 import { ElMessage } from '@/config/element'
 
 interface ScopeRow {
-    row: DeptListType
+    row: IDeptList
 }
 
 defineOptions({
@@ -68,7 +68,7 @@ defineOptions({
 })
 
 // 弹窗控制器
-const layer: GlobalDialogLayer<Nullable<DeptListType>> = reactive({
+const layer: GlobalDialogLayer<Nullable<IDeptList>> = reactive({
     show: false,
     title: '新增',
     showButton: true,
@@ -79,8 +79,8 @@ const layer: GlobalDialogLayer<Nullable<DeptListType>> = reactive({
 })
 
 const [loading, toggleLoading] = useToggle(false)
-const tableData = ref<DeptListType[]>([])
-const chooseData = ref<DeptListType[]>([])
+const tableData = ref<IDeptList[]>([])
+const chooseData = ref<IDeptList[]>([])
 
 // 更新选中
 function onSelectionChange(val: any[]): any {
@@ -93,7 +93,7 @@ async function getTableData() {
     const { stop } = useTimeoutFn(() => toggleLoading(true), 200)
 
     const params = {}
-    const { code, data } = await $api.post<ResDataLists<DeptListType[]>>('/system/dept/list', params)
+    const { code, data } = await $api.post<ResDataLists<IDeptList[]>>('/system/dept/list', params)
     if (code === 200) {
         tableData.value = data.list.map(item => ({
             ...item,
@@ -104,7 +104,7 @@ async function getTableData() {
     toggleLoading(false)
 }
 // 删除功能
-async function handleDel(data: DeptListType[]) {
+async function handleDel(data: IDeptList[]) {
     const params = {
         ids: data.map(e => e.id).join(','),
     }
@@ -125,7 +125,7 @@ function handleAdd() {
     layer.showCancel = true
 }
 // 编辑弹窗功能
-function handleEdit(row: DeptListType) {
+function handleEdit(row: IDeptList) {
     layer.title = '编辑部门'
     layer.row = row
     layer.show = true

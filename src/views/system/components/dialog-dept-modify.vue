@@ -15,7 +15,7 @@
 import type { FormInstance, FormItemRule } from 'element-plus'
 import type { GlobalDialogLayer } from '~/types/components.types'
 import type { GlobalDialogInstance } from '~/types/global.types'
-import type { RoleListType } from '~/types/system.types'
+import type { IRoleList } from '~/types/system.types'
 
 import Rules from '@lincy/async-validation'
 import globalDialog from '~/components/global-dialog.vue'
@@ -27,12 +27,12 @@ defineOptions({
 
 const emit = defineEmits(['getTableData', 'update'])
 
-const layer = defineModel<GlobalDialogLayer<Nullable<RoleListType>>>({ required: true })
+const layer = defineModel<GlobalDialogLayer<Nullable<IRoleList>>>({ required: true })
 
 const ruleForm = useTemplateRef<FormInstance>('ruleForm')
 const layerDom = useTemplateRef<GlobalDialogInstance>('layerDom')
 
-const form: RoleListType = reactive({
+const form: IRoleList = reactive({
     id: '',
     name: '',
     desc: '',

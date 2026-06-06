@@ -10,16 +10,16 @@
 </template>
 
 <script lang="ts" setup>
-import type { TreeType } from '~/types/table.types'
+import type { ITree } from '~/types/table.types'
 
 defineOptions({
     name: 'TreeTable',
     inheritAttrs: true,
 })
 
-const activeTree = ref({} as TreeType)
+const activeTree = ref({} as ITree)
 provide(activeTreeKey, activeTree)
-provide(updateActiveTreeKey, (payload: TreeType) => {
+provide(updateActiveTreeKey, (payload: ITree) => {
     activeTree.value = payload
 })
 </script>

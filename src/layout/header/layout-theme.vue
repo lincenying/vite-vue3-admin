@@ -55,7 +55,7 @@
 <script lang="ts" setup>
 import type { SettingOption } from '~/types/layout.types'
 import type { ThemeState } from '~/types/store.types'
-import type { Colors } from '~/types/theme.types'
+import type { IColors } from '~/types/theme.types'
 import { style } from '~/theme/index'
 import { adjustHexColorHSL } from '~/utils'
 
@@ -96,7 +96,7 @@ function setTheme() {
             continue
         }
 
-        const item: any = userTheme[i as keyof Colors]
+        const item: any = userTheme[i as keyof IColors]
         for (const y in item) {
             const cssVarName = `--system-${i}-${y.replace(/([A-Z])/g, '-$1').toLowerCase()}`
             body.style.setProperty(cssVarName, item[y])

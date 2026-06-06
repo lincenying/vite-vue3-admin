@@ -44,7 +44,7 @@
                 <el-table-column prop="number" label="数字" align="center" />
                 <el-table-column prop="chooseName" label="选择器" align="center" />
                 <el-table-column prop="radioName" label="单选框" align="center" />
-                <!-- @vue-generic {TableListType} -->
+                <!-- @vue-generic {ITableList} -->
                 <el-table-column label="操作" align="center" fixed="right" width="200">
                     <template #default="{ row }">
                         <el-button @click="handleEdit(row)"> 编辑 </el-button>
@@ -73,7 +73,7 @@ import type {
 } from '~/types/components.types'
 import type { GlobalTableInstance } from '~/types/global.types'
 
-import type { TableListType, TreeType, UpdatePageType } from '~/types/table.types'
+import type { ITableList, ITree, IUpdatePage } from '~/types/table.types'
 
 import { ElMessage } from '~/config/element'
 import { radioData, selectData } from '~/views/table/enum'
@@ -102,11 +102,11 @@ const page: GlobalTablePage = reactive({
     size: 20,
     total: 0,
 })
-const activeTree = inject(activeTreeKey, ref({} as TreeType))
+const activeTree = inject(activeTreeKey, ref({} as ITree))
 
 const [loading, toggleLoading] = useToggle(false)
-const tableData = ref<TableListType[]>([])
-const chooseData = ref<TableListType[]>([])
+const tableData = ref<ITableList[]>([])
+const chooseData = ref<ITableList[]>([])
 
 // @ts-ignore 忽略未使用变量
 const globalTableRef = useTemplateRef<GlobalTableInstance>('globalTableRef')
@@ -117,7 +117,7 @@ function onSelectionChange(val: any[]) {
 }
 
 /** 更新分页参数 */
-function onUpdatePage(payload: UpdatePageType | UpdatePageType[]) {
+function onUpdatePage(payload: IUpdatePage | IUpdatePage[]) {
     if (Array.isArray(payload)) {
         payload.forEach((item) => {
             page[item.key] = item.value
@@ -153,7 +153,7 @@ async function getTableData(init: boolean) {
         ...query,
     }
     // 发送请求获取数据
-    const { code, data } = await $api.post<ResDataLists<TableListType[]>>('/table/list', params)
+    const { code, data } = await $api.post<ResDataLists<ITableList[]>>('/table/list', params)
     if (code === 200) {
         // 处理返回的数据，将choose和radio的值转换为对应的标签
         if (Array.isArray(data.list)) {

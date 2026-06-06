@@ -22,7 +22,7 @@
 import type { FormInstance, FormItemRule } from 'element-plus'
 import type { GlobalDialogLayer } from '~/types/components.types'
 import type { GlobalDialogInstance } from '~/types/global.types'
-import type { DeptListType } from '~/types/table.types'
+import type { IDeptList } from '~/types/table.types'
 
 import Rules from '@lincy/async-validation'
 
@@ -34,13 +34,13 @@ defineOptions({
 
 const emit = defineEmits(['getTableData', 'update'])
 
-const layer = defineModel<GlobalDialogLayer<DeptListType>>({ required: true })
+const layer = defineModel<GlobalDialogLayer<IDeptList>>({ required: true })
 
 const ruleForm = useTemplateRef<FormInstance>('ruleForm')
 // @ts-ignore 类型问题
 const layerDom = useTemplateRef<GlobalDialogInstance>('layerDom')
 
-let form = $ref<DeptListType>({
+let form = $ref<IDeptList>({
     id: undefined,
     label: undefined,
 })
@@ -63,7 +63,7 @@ function onSubmit() {
     }
 }
 // 新增提交事件
-async function addForm(params: DeptListType) {
+async function addForm(params: IDeptList) {
     layer.value.loadingBtn = true
     const { code } = await $axios.post('/table/add', params)
     if (code === 200) {
@@ -77,7 +77,7 @@ async function addForm(params: DeptListType) {
     layer.value.loadingBtn = false
 }
 // 编辑提交事件
-async function updateForm(params: DeptListType) {
+async function updateForm(params: IDeptList) {
     layer.value.loadingBtn = true
     const { code } = await $axios.post('/table/update', params)
     if (code === 200) {

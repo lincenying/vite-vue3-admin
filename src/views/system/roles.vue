@@ -59,13 +59,13 @@
 
 <script lang="ts" setup>
 import type { GlobalDialogLayer, GlobalTablePage } from '~/types/components.types'
-import type { RoleListType } from '~/types/system.types'
+import type { IRoleList } from '~/types/system.types'
 
-import type { UpdatePageType } from '~/types/table.types'
+import type { IUpdatePage } from '~/types/table.types'
 import { ElMessage } from '@/config/element'
 
 interface ScopeRow {
-    row: RoleListType
+    row: IRoleList
 }
 
 defineOptions({
@@ -78,7 +78,7 @@ const query = reactive({
     input: '',
 })
 // 弹窗控制器
-const layer: GlobalDialogLayer<Nullable<RoleListType>> = reactive({
+const layer: GlobalDialogLayer<Nullable<IRoleList>> = reactive({
     show: false,
     title: '新增',
     showButton: true,
@@ -95,8 +95,8 @@ const page: GlobalTablePage = reactive({
 })
 
 const [loading, toggleLoading] = useToggle(false)
-const tableData = ref<RoleListType[]>([])
-const chooseData = ref<RoleListType[]>([])
+const tableData = ref<IRoleList[]>([])
+const chooseData = ref<IRoleList[]>([])
 
 // 更新选中
 function onSelectionChange(val: any[]): any {
@@ -104,7 +104,7 @@ function onSelectionChange(val: any[]): any {
 }
 
 // 更新分页参数
-function onUpdatePage(payload: UpdatePageType | UpdatePageType[]) {
+function onUpdatePage(payload: IUpdatePage | IUpdatePage[]) {
     if (Array.isArray(payload)) {
         payload.forEach((item) => {
             page[item.key] = item.value
@@ -128,7 +128,7 @@ async function getTableData(init?: boolean) {
         pageSize: page.size,
         ...query,
     }
-    const { code, data } = await $api.post<ResDataLists<RoleListType[]>>('/system/role/list', params)
+    const { code, data } = await $api.post<ResDataLists<IRoleList[]>>('/system/role/list', params)
     if (code === 200) {
         tableData.value = data.list.map(item => ({
             ...item,
@@ -140,7 +140,7 @@ async function getTableData(init?: boolean) {
     toggleLoading(false)
 }
 // 删除功能
-async function handleDel(data: RoleListType[]) {
+async function handleDel(data: IRoleList[]) {
     const params = {
         ids: data.map(e => e.id).join(','),
     }
@@ -160,7 +160,7 @@ function handleAdd() {
     layer.row = undefined
 }
 // 编辑弹窗功能
-function handleEdit(row: RoleListType) {
+function handleEdit(row: IRoleList) {
     layer.title = '编辑角色'
     layer.row = row
     layer.show = true

@@ -11,13 +11,13 @@
 </template>
 
 <script lang="ts" setup>
-import type { IndexCardType } from '~/types/table.types'
+import type { IIndexCard } from '~/types/table.types'
 
 defineOptions({
     name: 'CardRow',
 })
 
 const { row } = defineProps<{
-    row: IndexCardType
+    row: IIndexCard
 }>()
 </script>

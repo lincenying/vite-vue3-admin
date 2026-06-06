@@ -1,4 +1,4 @@
-export interface Colors {
+export interface IColors {
     name: string // 国际化版本请提供国际化字符串如：message.system.setting.style.default，非国际化版本直接写字符串，如：默认菜单风格
     menu: {
         textColor: string
@@ -32,8 +32,8 @@ export interface Colors {
 }
 
 export interface Style {
-    default: Colors
-    light: Colors
-    dark: Colors
-    [propName: string]: Colors
+    default: IColors
+    light: IColors
+    dark: IColors
+    [propName: string]: IColors
 }

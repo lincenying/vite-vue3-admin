@@ -37,7 +37,7 @@
 <script lang="ts" setup generic="T extends keyof TypeMap">
 import type { TableInstance } from 'element-plus'
 import type { GlobalTableProps, TypeMap } from '../types/components.types'
-import type { UpdatePageType } from '~/types/table.types'
+import type { IUpdatePage } from '~/types/table.types'
 
 // ['getTableData', 'selectionChange', 'updatePage']
 
@@ -58,7 +58,7 @@ const {
 } = defineProps<GlobalTableProps<T>>()
 
 const emit = defineEmits<{
-    (event: 'updatePage', palyload: UpdatePageType | UpdatePageType[]): void
+    (event: 'updatePage', palyload: IUpdatePage | IUpdatePage[]): void
     (event: 'selectionChange', palyload: any[]): void
 }>()
 

@@ -1,16 +1,16 @@
 import type { GlobalTablePage } from './components.types'
 
-export interface UpdatePageType {
+export interface IUpdatePage {
     key: keyof GlobalTablePage
     value: any
 }
 
-export interface CategoryType {
+export interface ICategory {
     id: number
     name: string
 }
 
-export interface TreeType {
+export interface ITree {
     label: string
     id: number
     children: {
@@ -19,7 +19,7 @@ export interface TreeType {
     }
 }
 
-export interface IndexCardType {
+export interface IIndexCard {
     id?: number
     name: string
     data: string
@@ -27,7 +27,7 @@ export interface IndexCardType {
     icon: string
 }
 
-export interface TableListType {
+export interface ITableList {
     id?: number
     name?: string
     number?: number
@@ -37,9 +37,9 @@ export interface TableListType {
     radioName?: string | number
 }
 
-export type DeptListType = Partial<Pick<TreeType, 'label' | 'id'>>
+export type IDeptList = Partial<Pick<ITree, 'label' | 'id'>>
 
-export interface CardListType {
+export interface ICardList {
     id: number
     image: string
     title: string

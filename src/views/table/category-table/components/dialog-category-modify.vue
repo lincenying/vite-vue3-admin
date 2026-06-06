@@ -44,7 +44,7 @@
 import type { FormInstance, FormItemRule } from 'element-plus'
 import type { GlobalDialogLayer } from '~/types/components.types'
 import type { GlobalDialogInstance } from '~/types/global.types'
-import type { TableListType } from '~/types/table.types'
+import type { ITableList } from '~/types/table.types'
 
 import Rules from '@lincy/async-validation'
 
@@ -57,13 +57,13 @@ defineOptions({
 
 const emit = defineEmits(['getTableData', 'update'])
 
-const layer = defineModel<GlobalDialogLayer<Nullable<TableListType>>>({ required: true })
+const layer = defineModel<GlobalDialogLayer<Nullable<ITableList>>>({ required: true })
 
 const ruleForm = useTemplateRef<FormInstance>('ruleForm')
 // @ts-ignore 忽略未使用变量
 const layerDom = useTemplateRef<GlobalDialogInstance>('layerDom')
 
-let form = $ref<TableListType>({
+let form = $ref<ITableList>({
     id: undefined,
     name: undefined,
     number: undefined,
@@ -92,7 +92,7 @@ function onSubmit() {
     }
 }
 // 新增提交事件
-async function addForm(params: TableListType) {
+async function addForm(params: ITableList) {
     layer.value.loadingBtn = true
     const { code } = await $axios.post('/table/add', params)
     if (code === 200) {
@@ -106,7 +106,7 @@ async function addForm(params: TableListType) {
     layer.value.loadingBtn = false
 }
 // 编辑提交事件
-async function updateForm(params: TableListType) {
+async function updateForm(params: ITableList) {
     layer.value.loadingBtn = true
     const { code } = await $axios.post('/table/update', params)
     if (code === 200) {

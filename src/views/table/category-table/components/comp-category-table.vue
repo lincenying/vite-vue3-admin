@@ -49,7 +49,7 @@
                 <el-table-column prop="number" label="数字" align="center" />
                 <el-table-column prop="chooseName" label="选择器" align="center" />
                 <el-table-column prop="radioName" label="单选框" align="center" />
-                <!-- @vue-generic {TableListType} -->
+                <!-- @vue-generic {ITableList} -->
                 <el-table-column label="操作" align="center" fixed="right" width="200">
                     <template #default="{ row }">
                         <el-button @click="handleEdit(row)">编辑</el-button>
@@ -78,7 +78,7 @@ import type {
 } from '~/types/components.types'
 import type { GlobalTableInstance } from '~/types/global.types'
 
-import type { CategoryType, TableListType, UpdatePageType } from '~/types/table.types'
+import type { ICategory, ITableList, IUpdatePage } from '~/types/table.types'
 import { activeCategoryKey } from '~/composables/provide'
 
 import { ElMessage } from '~/config/element'
@@ -107,11 +107,11 @@ const page: GlobalTablePage = reactive({
     size: 20,
     total: 0,
 })
-const activeCategory = inject(activeCategoryKey, ref({} as CategoryType))
+const activeCategory = inject(activeCategoryKey, ref({} as ICategory))
 
 const [loading, toggleLoading] = useToggle(false)
-const tableData = ref<TableListType[]>([])
-const chooseData = ref<TableListType[]>([])
+const tableData = ref<ITableList[]>([])
+const chooseData = ref<ITableList[]>([])
 // @ts-ignore 类型问题
 const globalTableRef = useTemplateRef<GlobalTableInstance>('globalTableRef')
 
@@ -121,7 +121,7 @@ function onSelectionChange(val: any[]) {
 }
 
 // 更新分页参数
-function onUpdatePage(payload: UpdatePageType | UpdatePageType[]) {
+function onUpdatePage(payload: IUpdatePage | IUpdatePage[]) {
     if (Array.isArray(payload)) {
         payload.forEach((item) => {
             page[item.key] = item.value
@@ -149,7 +149,7 @@ async function getTableData(isInit: boolean) {
         pageSize: page.size,
         ...query,
     }
-    const { code, data } = await $api.post<ResDataLists<TableListType[]>>('/table/list', params)
+    const { code, data } = await $api.post<ResDataLists<ITableList[]>>('/table/list', params)
     if (code === 200) {
         if (Array.isArray(data.list)) {
             tableData.value = data.list.map((item) => {
@@ -172,7 +172,7 @@ async function getTableData(isInit: boolean) {
     toggleLoading(false)
 }
 // 删除功能
-async function handleDel(data: TableListType[]) {
+async function handleDel(data: ITableList[]) {
     const params = {
         ids: data
             .map((e) => {
