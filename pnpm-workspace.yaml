@@ -33,6 +33,7 @@ trustPolicyExclude:
   - cached-factory
 
 allowBuilds:
+  '@parcel/watcher': true
   esbuild: true
   oxc-resolver: true
 
@@ -43,7 +44,7 @@ catalogs:
     '@vitejs/plugin-vue-jsx': ^5.1.5
     '@vue-macros/volar': ^3.1.2
     '@vue/compiler-sfc': ^3.5.35
-    baseline-browser-mapping: ^2.10.33
+    baseline-browser-mapping: ^2.10.34
     cross-env: ^10.1.0
     sass-embedded: ^1.100.0
     typescript: ^5.9.3
@@ -55,9 +56,9 @@ catalogs:
     vite-plugin-inspect: ^11.4.1
     vite-plugin-mock: ^3.0.2
     vite-plugin-progress: ^0.0.7
-    vue-component-type-helpers: ^3.3.3
+    vue-component-type-helpers: ^3.3.4
     vue-macros: ^3.1.2
-    vue-tsc: ^3.3.3
+    vue-tsc: ^3.3.4
 
   icons:
     '@iconify-json/ant-design': ^1.2.5
@@ -73,7 +74,7 @@ catalogs:
     eslint: ^10.4.1
     eslint-plugin-format: ^2.0.1
     lint-staged: ^17.0.7
-    stylelint: ^17.12.0
+    stylelint: ^17.13.0
 
   prod:
     '@lincy/async-validation': ^1.4.0
@@ -93,7 +94,7 @@ catalogs:
     xlsx: ^0.18.5
 
   types:
-    '@types/node': ^25.9.1
+    '@types/node': ^25.9.2
     '@types/nprogress': ^0.2.3
     '@types/qs': ^6.15.1
     '@types/throttle-debounce': ^5.0.2
