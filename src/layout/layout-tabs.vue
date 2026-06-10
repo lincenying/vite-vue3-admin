@@ -56,7 +56,8 @@
                 placement="bottom"
             >
                 <el-icon @click="handleFullscreen">
-                    <i-ep-full-screen />
+                    <i v-if="!contentFullScreen" i-ant-design-fullscreen-outlined />
+                    <i v-else i-ant-design-fullscreen-exit-outlined />
                 </el-icon>
             </el-tooltip>
         </div>
